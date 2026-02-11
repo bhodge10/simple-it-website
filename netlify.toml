@@ -1,0 +1,576 @@
+[functions]
+
+  [functions.emails]
+  included_files = [
+    "./emails/**"
+  ]
+
+[build]
+functions = "netlify/functions"
+publish = "_site"
+command = "npm install && npx @11ty/eleventy"
+
+[[redirects]]
+from = "/about-us"
+to = "/about-us.html"
+status = 301
+
+[[redirects]]
+from = "/our-services/"
+to = "/our-services.html"
+status = 301
+
+[[redirects]]
+from = "/our-services"
+to = "/our-services.html"
+status = 301
+
+[[redirects]]
+from = "/contact-us"
+to = "/contact-us.html"
+status = 301
+
+[[redirects]]
+from = "/testimonials/"
+to = "/about-us.html"
+status = 301
+
+[[redirects]]
+from = "/testimonials"
+to = "/about-us.html"
+status = 301
+
+[[redirects]]
+from = "/cyberready/"
+to = "/cybersecurity-solutions.html"
+status = 301
+
+[[redirects]]
+from = "/cyberready"
+to = "/cybersecurity-solutions.html"
+status = 301
+
+[[redirects]]
+from = "/blogs/"
+to = "/blog/"
+status = 301
+
+[[redirects]]
+from = "/blogs"
+to = "/blog/"
+status = 301
+
+[[redirects]]
+from = "/blogs/*"
+to = "/blog/"
+status = 301
+
+[[redirects]]
+from = "/locations/fort-mitchell/"
+to = "/it-services-ft-mitchell-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/fort-mitchell"
+to = "/it-services-ft-mitchell-ky.html"
+status = 301
+
+[[redirects]]
+from = "/fort-mitchell/"
+to = "/it-services-ft-mitchell-ky.html"
+status = 301
+
+[[redirects]]
+from = "/fort-mitchell"
+to = "/it-services-ft-mitchell-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/covington/"
+to = "/it-services-covington-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/covington"
+to = "/it-services-covington-ky.html"
+status = 301
+
+[[redirects]]
+from = "/covington/"
+to = "/it-services-covington-ky.html"
+status = 301
+
+[[redirects]]
+from = "/covington"
+to = "/it-services-covington-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/florence/"
+to = "/it-services-florence-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/florence"
+to = "/it-services-florence-ky.html"
+status = 301
+
+[[redirects]]
+from = "/florence/"
+to = "/it-services-florence-ky.html"
+status = 301
+
+[[redirects]]
+from = "/florence"
+to = "/it-services-florence-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/erlanger/"
+to = "/it-services-erlanger-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/erlanger"
+to = "/it-services-erlanger-ky.html"
+status = 301
+
+[[redirects]]
+from = "/erlanger/"
+to = "/it-services-erlanger-ky.html"
+status = 301
+
+[[redirects]]
+from = "/erlanger"
+to = "/it-services-erlanger-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/newport/"
+to = "/it-services-newport-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/newport"
+to = "/it-services-newport-ky.html"
+status = 301
+
+[[redirects]]
+from = "/newport/"
+to = "/it-services-newport-ky.html"
+status = 301
+
+[[redirects]]
+from = "/newport"
+to = "/it-services-newport-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/independence/"
+to = "/it-services-independence-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/independence"
+to = "/it-services-independence-ky.html"
+status = 301
+
+[[redirects]]
+from = "/independence/"
+to = "/it-services-independence-ky.html"
+status = 301
+
+[[redirects]]
+from = "/independence"
+to = "/it-services-independence-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/edgewood/"
+to = "/it-services-edgewood-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/edgewood"
+to = "/it-services-edgewood-ky.html"
+status = 301
+
+[[redirects]]
+from = "/edgewood/"
+to = "/it-services-edgewood-ky.html"
+status = 301
+
+[[redirects]]
+from = "/edgewood"
+to = "/it-services-edgewood-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/villa-hills/"
+to = "/it-services-villa-hills-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/villa-hills"
+to = "/it-services-villa-hills-ky.html"
+status = 301
+
+[[redirects]]
+from = "/villa-hills/"
+to = "/it-services-villa-hills-ky.html"
+status = 301
+
+[[redirects]]
+from = "/villa-hills"
+to = "/it-services-villa-hills-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/crescent-springs/"
+to = "/it-services-crescent-springs-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/crescent-springs"
+to = "/it-services-crescent-springs-ky.html"
+status = 301
+
+[[redirects]]
+from = "/crescent-springs/"
+to = "/it-services-crescent-springs-ky.html"
+status = 301
+
+[[redirects]]
+from = "/crescent-springs"
+to = "/it-services-crescent-springs-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/union/"
+to = "/it-services-union-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/union"
+to = "/it-services-union-ky.html"
+status = 301
+
+[[redirects]]
+from = "/union-ky/"
+to = "/it-services-union-ky.html"
+status = 301
+
+[[redirects]]
+from = "/union-ky"
+to = "/it-services-union-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/hebron/"
+to = "/it-services-hebron-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/hebron"
+to = "/it-services-hebron-ky.html"
+status = 301
+
+[[redirects]]
+from = "/hebron/"
+to = "/it-services-hebron-ky.html"
+status = 301
+
+[[redirects]]
+from = "/hebron"
+to = "/it-services-hebron-ky.html"
+status = 301
+
+[[redirects]]
+from = "/locations/cincinnati/"
+to = "/it-services-cincinnati-oh.html"
+status = 301
+
+[[redirects]]
+from = "/locations/cincinnati"
+to = "/it-services-cincinnati-oh.html"
+status = 301
+
+[[redirects]]
+from = "/cincinnati/"
+to = "/it-services-cincinnati-oh.html"
+status = 301
+
+[[redirects]]
+from = "/cincinnati"
+to = "/it-services-cincinnati-oh.html"
+status = 301
+
+[[redirects]]
+from = "/locations/"
+to = "/index.html"
+status = 301
+
+[[redirects]]
+from = "/locations"
+to = "/index.html"
+status = 301
+
+[[redirects]]
+from = "/about/"
+to = "/about-us.html"
+status = 301
+
+[[redirects]]
+from = "/about"
+to = "/about-us.html"
+status = 301
+
+[[redirects]]
+from = "/about-us/"
+to = "/about-us.html"
+status = 301
+
+[[redirects]]
+from = "/our-team/"
+to = "/about-us.html"
+status = 301
+
+[[redirects]]
+from = "/our-team"
+to = "/about-us.html"
+status = 301
+
+[[redirects]]
+from = "/contact/"
+to = "/contact-us.html"
+status = 301
+
+[[redirects]]
+from = "/contact"
+to = "/contact-us.html"
+status = 301
+
+[[redirects]]
+from = "/contact-us/"
+to = "/contact-us.html"
+status = 301
+
+[[redirects]]
+from = "/get-in-touch/"
+to = "/contact-us.html"
+status = 301
+
+[[redirects]]
+from = "/get-in-touch"
+to = "/contact-us.html"
+status = 301
+
+[[redirects]]
+from = "/faq/"
+to = "/faq.html"
+status = 301
+
+[[redirects]]
+from = "/faq"
+to = "/faq.html"
+status = 301
+
+[[redirects]]
+from = "/faqs/"
+to = "/faq.html"
+status = 301
+
+[[redirects]]
+from = "/faqs"
+to = "/faq.html"
+status = 301
+
+[[redirects]]
+from = "/frequently-asked-questions/"
+to = "/faq.html"
+status = 301
+
+[[redirects]]
+from = "/remote-support/"
+to = "/remote-support.html"
+status = 301
+
+[[redirects]]
+from = "/remote-support"
+to = "/remote-support.html"
+status = 301
+
+[[redirects]]
+from = "/remote-access/"
+to = "/remote-support.html"
+status = 301
+
+[[redirects]]
+from = "/remote-access"
+to = "/remote-support.html"
+status = 301
+
+[[redirects]]
+from = "/submit-ticket/"
+to = "/submit-ticket.html"
+status = 301
+
+[[redirects]]
+from = "/submit-ticket"
+to = "/submit-ticket.html"
+status = 301
+
+[[redirects]]
+from = "/support-ticket/"
+to = "/submit-ticket.html"
+status = 301
+
+[[redirects]]
+from = "/support-ticket"
+to = "/submit-ticket.html"
+status = 301
+
+[[redirects]]
+from = "/create-ticket/"
+to = "/submit-ticket.html"
+status = 301
+
+[[redirects]]
+from = "/create-ticket"
+to = "/submit-ticket.html"
+status = 301
+
+[[redirects]]
+from = "/blog"
+to = "/blog/"
+status = 301
+
+[[redirects]]
+from = "/news/"
+to = "/index.html"
+status = 301
+
+[[redirects]]
+from = "/news"
+to = "/index.html"
+status = 301
+
+[[redirects]]
+from = "/wp-admin/*"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/wp-content/*"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/wp-includes/*"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/wp-json/*"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/xmlrpc.php"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/wp-login.php"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/readme.html"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/license.txt"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/index.html"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/home.html"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/home"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/privacy-policy/"
+to = "/privacy-policy.html"
+status = 301
+
+[[redirects]]
+from = "/privacy-policy"
+to = "/privacy-policy.html"
+status = 301
+
+[[redirects]]
+from = "/privacy/"
+to = "/privacy-policy.html"
+status = 301
+
+[[redirects]]
+from = "/privacy"
+to = "/privacy-policy.html"
+status = 301
+
+[[redirects]]
+from = "/terms-of-service/"
+to = "/terms-of-service.html"
+status = 301
+
+[[redirects]]
+from = "/terms-of-service"
+to = "/terms-of-service.html"
+status = 301
+
+[[redirects]]
+from = "/terms/"
+to = "/terms-of-service.html"
+status = 301
+
+[[redirects]]
+from = "/terms"
+to = "/terms-of-service.html"
+status = 301
+
+[[redirects]]
+from = "/*"
+to = "/"
+status = 301
+
+[context]
+
+  [context.production]
+
+    [context.production.functions]
+
+      [context.production.functions.emails]
+      included_files = [
+        "./emails/**"
+      ]
+
+  [context.master]
+
+    [context.master.functions]
+
+      [context.master.functions.emails]
+      included_files = [
+        "./emails/**"
+      ]

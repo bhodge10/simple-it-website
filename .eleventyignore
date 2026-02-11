@@ -1,0 +1,10 @@
+# Ignore root markdown files (not blog posts)
+claude.md
+CLAUDE.md
+README.md
+HOW-TO-ADD-REVIEWS.md
+MANUAL-REVIEWS-SETUP-COMPLETE.md
+REVIEWS-UPDATE-SUMMARY.md
+FINAL-REVIEWS-CONFIG.md
+node_modules/
+_site/

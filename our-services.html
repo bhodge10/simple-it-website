@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Services Northern Kentucky | Managed IT, Cybersecurity & Cloud Solutions</title>
+    <meta name="description" content="Complete IT services for Northern Kentucky businesses. Managed IT support, cybersecurity, cloud solutions, emergency support, and business continuity. 15-minute response guaranteed.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #00D4AA;
+            --dark: #0A0E27;
+            --dark-secondary: #1A1F3A;
+            --text: #E8EBF7;
+            --text-secondary: #9CA3C3;
+            --accent-orange: #FF6B35;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-ticket-btn {
+            background: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            color: white !important;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Hero */
+        .services-hero {
+            padding: 6rem 0 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 170, 0.1) 100%);
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid var(--secondary);
+            border-radius: 50px;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Services Grid */
+        .services-section {
+            padding: 6rem 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: var(--dark-secondary);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .service-features li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Why Section */
+        .why-section {
+            padding: 6rem 0;
+            background: var(--dark-secondary);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+        
+        .why-card {
+            background: var(--dark);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .why-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .why-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 6rem 0;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .step h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        /* CTA */
+        .cta-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 170, 0.1) 100%);
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-secondary);
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        footer p {
+            color: var(--text-secondary);
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid,
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6T2XSC5NN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-W6T2XSC5NN');
+    </script>
+    <!-- End Google Analytics -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">Simple <span>IT</span></a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about-us">About</a></li>
+                <li><a href="/our-services">Services</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/#contact">Contact</a></li>
+                <li><a href="/submit-ticket" class="nav-ticket-btn">Open Ticket</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="services-hero">
+        <div class="container">
+            <span class="tag">Our Services</span>
+            <h1>Complete IT Solutions for<br>Northern Kentucky Businesses</h1>
+            <p class="subtitle">
+                From everyday support to enterprise security, we handle your technology so you can focus on running your business.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-grid">
+                <!-- Managed IT -->
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Managed IT Services</h3>
+                    <p>Complete IT management for a predictable monthly fee. We handle everything from monitoring to maintenance to user support.</p>
+                    <ul class="service-features">
+                        <li>24/7 network monitoring</li>
+                        <li>15-minute response time</li>
+                        <li>Unlimited help desk support</li>
+                        <li>Proactive maintenance</li>
+                        <li>Strategic IT planning</li>
+                    </ul>
+                    <a href="/managed-it-services" class="btn-primary">Learn More →</a>
+                </div>
+
+                <!-- Cybersecurity -->
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>Cybersecurity</h3>
+                    <p>Multi-layered security that protects your business from ransomware, phishing, data breaches, and compliance violations.</p>
+                    <ul class="service-features">
+                        <li>Advanced threat protection</li>
+                        <li>Security awareness training</li>
+                        <li>Vulnerability assessments</li>
+                        <li>Compliance management</li>
+                        <li>Dark web monitoring</li>
+                    </ul>
+                    <a href="/cybersecurity-solutions" class="btn-primary">Learn More →</a>
+                </div>
+
+                <!-- Cloud -->
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Microsoft 365, Azure, cloud backups, and hybrid solutions that let your team work from anywhere securely.</p>
+                    <ul class="service-features">
+                        <li>Microsoft 365 management</li>
+                        <li>Cloud migration services</li>
+                        <li>Hybrid cloud solutions</li>
+                        <li>Cloud backup & recovery</li>
+                        <li>Collaboration tools</li>
+                    </ul>
+                    <a href="/cloud-solutions" class="btn-primary">Learn More →</a>
+                </div>
+
+                <!-- Emergency Support -->
+                <div class="service-card">
+                    <div class="service-icon">🚨</div>
+                    <h3>Emergency IT Support</h3>
+                    <p>When disaster strikes, we respond fast. Server crashes, network outages, security breaches—we handle it all.</p>
+                    <ul class="service-features">
+                        <li>15-minute guaranteed response</li>
+                        <li>Same-day onsite support</li>
+                        <li>24/7 emergency hotline</li>
+                        <li>Rapid issue resolution</li>
+                        <li>Crisis management</li>
+                    </ul>
+                    <a href="/emergency-it-support" class="btn-primary">Learn More →</a>
+                </div>
+
+                <!-- Business Continuity -->
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Business Continuity</h3>
+                    <p>Backup, disaster recovery, and business continuity planning that ensures you're never down for long.</p>
+                    <ul class="service-features">
+                        <li>Automated cloud backups</li>
+                        <li>Disaster recovery planning</li>
+                        <li>Business continuity testing</li>
+                        <li>Rapid recovery solutions</li>
+                        <li>Compliance documentation</li>
+                    </ul>
+                    <a href="/business-continuity" class="btn-primary">Learn More →</a>
+                </div>
+
+                <!-- VoIP -->
+                <div class="service-card">
+                    <div class="service-icon">📞</div>
+                    <h3>VoIP Phone Systems</h3>
+                    <p>Modern cloud phone systems that work anywhere, cost less than traditional phones, and integrate with your tools.</p>
+                    <ul class="service-features">
+                        <li>Cloud-based phone systems</li>
+                        <li>Work from anywhere</li>
+                        <li>Advanced call features</li>
+                        <li>CRM integration</li>
+                        <li>Lower monthly costs</li>
+                    </ul>
+                    <a href="/#contact" class="btn-primary">Get Pricing →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-section">
+        <div class="container">
+            <h2>Why Businesses Choose Simple IT</h2>
+            
+            <div class="why-grid">
+                <div class="why-card">
+                    <h4>⚡ Actually Fast Response Times</h4>
+                    <p>
+                        Most MSPs promise "same day" response. We guarantee 15 minutes and average 11 minutes in practice. 
+                        When you're down, every minute costs money. We get that.
+                    </p>
+                </div>
+                
+                <div class="why-card">
+                    <h4>💰 Transparent, Predictable Pricing</h4>
+                    <p>
+                        No surprise bills, no hidden fees, no "that'll be extra." You know exactly what you're paying 
+                        every month. And if something changes, we tell you before it affects your bill.
+                    </p>
+                </div>
+                
+                <div class="why-card">
+                    <h4>📅 Month-to-Month Agreements</h4>
+                    <p>
+                        We don't lock you into long-term contracts because we're confident you'll want to stay. If our 
+                        service is great (and it is), you'll keep us around. If not, you shouldn't be stuck.
+                    </p>
+                </div>
+                
+                <div class="why-card">
+                    <h4>🎯 Proactive, Not Reactive</h4>
+                    <p>
+                        We monitor your systems 24/7 to catch problems before they impact your business. Hard drives filling up, 
+                        security patches needed, backups failing—we fix it before you even notice.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process -->
+    <section class="process-section">
+        <div class="container">
+            <h2>How We Work With You</h2>
+            <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem;">
+                Getting started with Simple IT is straightforward
+            </p>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Free Assessment</h4>
+                    <p>We review your current IT setup, identify risks and opportunities, and provide honest recommendations.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Custom Proposal</h4>
+                    <p>You get a detailed proposal with transparent pricing, clear deliverables, and no long-term commitment required.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Smooth Onboarding</h4>
+                    <p>We transition your IT systems with minimal disruption, documenting everything and training your team.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Ongoing Support</h4>
+                    <p>You get proactive monitoring, fast support, regular check-ins, and strategic IT guidance as your business grows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Upgrade Your IT?</h2>
+                <p>
+                    Let's have an honest conversation about your technology. No sales pitch, no pressure—just a 
+                    real discussion about whether we're a good fit for your business.
+                </p>
+                <a href="/#contact" class="btn-primary" style="background: white; color: var(--primary); font-size: 1.1rem; padding: 1.2rem 2.5rem;">
+                    Schedule Free Assessment →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Simple IT, LLC. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="/privacy-policy">Privacy Policy</a> | 
+                <a href="/terms-of-service">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+    <script src="/ga4-events.js"></script>
+</body>
+</html>

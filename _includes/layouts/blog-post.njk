@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ seoTitle if seoTitle else title }} | Simple IT Blog</title>
+    <meta name="description" content="{{ metaDescription if metaDescription else content | excerpt }}">
+    {% if focusKeyphrase %}<meta name="keywords" content="{{ focusKeyphrase }}">{% endif %}
+    <link rel="canonical" href="https://simple-it.us{{ page.url }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ ogTitle if ogTitle else (seoTitle if seoTitle else title) }}">
+    <meta property="og:description" content="{{ ogDescription if ogDescription else (metaDescription if metaDescription else content | excerpt) }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://simple-it.us{{ page.url }}">
+    {% if featuredImage %}<meta property="og:image" content="https://simple-it.us{{ featuredImage }}">{% endif %}
+    <meta property="og:site_name" content="Simple IT">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ ogTitle if ogTitle else (seoTitle if seoTitle else title) }}">
+    <meta name="twitter:description" content="{{ ogDescription if ogDescription else (metaDescription if metaDescription else content | excerpt) }}">
+    {% if featuredImage %}<meta name="twitter:image" content="https://simple-it.us{{ featuredImage }}">{% endif %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/blog.css">
+
+    <!-- BlogPosting Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ title }}",
+      "description": "{{ metaDescription if metaDescription else content | excerpt }}",
+      "datePublished": "{{ date | isoDate }}",
+      "dateModified": "{{ date | isoDate }}",
+      {% if featuredImage %}"image": "https://simple-it.us{{ featuredImage }}",{% endif %}
+      "author": {
+        "@type": "Person",
+        "name": "{{ author if author else 'Simple IT Team' }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Simple IT, LLC",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://simple-it.us/simple-it-logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://simple-it.us{{ page.url }}"
+      }
+      {% if focusKeyphrase %},"keywords": "{{ focusKeyphrase }}"{% endif %}
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">Simple <span class="logo-highlight">IT</span></a>
+            <ul class="nav-links">
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#why-us">Why Us</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/remote-support" class="nav-support-btn">Remote Support</a></li>
+                <li><a href="/submit-ticket.html" class="nav-ticket-btn">Open Ticket</a></li>
+                <li><a href="/#contact" class="nav-cta">Get Started</a></li>
+            </ul>
+            <div class="contact-info">
+                <span>&#128222; 859-449-7878</span>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">&#9776;</button>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="blog-breadcrumb">
+        <div class="blog-container">
+            <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>{{ title }}</span>
+        </div>
+    </div>
+
+    <!-- Article -->
+    <article class="blog-article">
+        <div class="blog-container">
+            <!-- Article Header -->
+            <header class="article-header">
+                {% if categories %}
+                <div class="article-categories">
+                    {% for cat in categories %}
+                    <span class="category-tag">{{ cat }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <h1>{{ title }}</h1>
+
+                <div class="article-meta">
+                    <span class="meta-author">{{ author if author else "Simple IT Team" }}</span>
+                    <span class="meta-separator">&#183;</span>
+                    <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+                    <span class="meta-separator">&#183;</span>
+                    <span class="meta-reading-time">{{ content | readingTime }}</span>
+                </div>
+            </header>
+
+            {% if featuredImage %}
+            <div class="article-featured-image">
+                <img src="{{ featuredImage }}" alt="{{ featuredImageAlt if featuredImageAlt else title }}" loading="lazy">
+            </div>
+            {% endif %}
+
+            <!-- Article Body -->
+            <div class="article-body">
+                {{ content | safe }}
+            </div>
+
+            <!-- CTA Box -->
+            <div class="article-cta">
+                <h3>Need IT Help?</h3>
+                <p>Simple IT provides guaranteed 15-minute response time IT support for businesses in Northern Kentucky and Cincinnati.</p>
+                <div class="cta-actions">
+                    <a href="tel:8594497878" class="cta-phone">&#128222; 859-449-7878</a>
+                    <a href="/#contact" class="cta-assessment">Free IT Assessment</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Related Posts -->
+    {% set relatedPosts = collections.blog | reverse %}
+    {% if relatedPosts.length > 1 %}
+    <section class="related-posts">
+        <div class="blog-container">
+            <h2>More from the Blog</h2>
+            <div class="related-grid">
+                {% for post in relatedPosts %}
+                {% if post.url !== page.url %}
+                {% if loop.index0 < 3 %}
+                <a href="{{ post.url }}" class="related-card">
+                    {% if post.data.featuredImage %}
+                    <div class="related-image">
+                        <img src="{{ post.data.featuredImage }}" alt="{{ post.data.featuredImageAlt if post.data.featuredImageAlt else post.data.title }}" loading="lazy">
+                    </div>
+                    {% endif %}
+                    <div class="related-content">
+                        <h3>{{ post.data.title }}</h3>
+                        <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+                    </div>
+                </a>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>SIMPLE IT</h3>
+                <p>Business Technology Made Simple. Serving Northern Kentucky and Greater Cincinnati with guaranteed 15-minute response times.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/GoSimpleIT/" target="_blank">Facebook</a>
+                    <a href="https://www.linkedin.com/company/simpleit-llc" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="/managed-it-services">Managed IT</a></li>
+                    <li><a href="/cybersecurity-solutions">Cybersecurity</a></li>
+                    <li><a href="/cloud-solutions">Cloud Solutions</a></li>
+                    <li><a href="/emergency-it-support">Emergency Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:8594497878">859-449-7878</a></li>
+                    <li><a href="mailto:info@simple-it.us">info@simple-it.us</a></li>
+                    <li>2220 Grandview Drive<br>Suite 250<br>Ft. Mitchell, KY 41017</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Simple IT, LLC. All rights reserved.</p>
+            <div>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '\u2715' : '\u2630';
+                mobileMenuBtn.setAttribute('aria-label', navLinks.classList.contains('active') ? 'Close menu' : 'Open menu');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.textContent = '\u2630';
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('nav')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.textContent = '\u2630';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

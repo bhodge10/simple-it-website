@@ -1,0 +1,101 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/blog"
+public_folder: "/images/blog"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "blog"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    editor:
+      preview: false
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        hint: "The main headline of your blog post"
+
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        default: "Simple IT Team"
+
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
+        hint: "Set to true to save without publishing"
+
+      - label: "Featured Image"
+        name: "featuredImage"
+        widget: "image"
+        required: false
+        hint: "Recommended size: 1200x630px"
+
+      - label: "Featured Image Alt Text"
+        name: "featuredImageAlt"
+        widget: "string"
+        required: false
+        hint: "Describe the image for accessibility and SEO"
+
+      - label: "Categories"
+        name: "categories"
+        widget: "select"
+        multiple: true
+        options:
+          - "Cybersecurity"
+          - "Managed IT"
+          - "Cloud"
+          - "Business Tips"
+          - "Tech Tips"
+          - "Industry News"
+          - "Company Updates"
+        hint: "Select one or more categories"
+
+      - label: "SEO Title"
+        name: "seoTitle"
+        widget: "string"
+        required: false
+        hint: "Custom title for search engines (max 70 characters). Leave blank to use the post title."
+        pattern: ['^.{0,70}$', "Must be 70 characters or fewer"]
+
+      - label: "Meta Description"
+        name: "metaDescription"
+        widget: "string"
+        required: false
+        hint: "The snippet shown in Google search results (50-170 characters)"
+        pattern: ['^.{0,170}$', "Must be 170 characters or fewer"]
+
+      - label: "Focus Keyphrase"
+        name: "focusKeyphrase"
+        widget: "string"
+        required: false
+        hint: "The primary keyword you want this post to rank for"
+
+      - label: "OG Title (Social Media)"
+        name: "ogTitle"
+        widget: "string"
+        required: false
+        hint: "Custom title for social media shares. Leave blank to use SEO title."
+
+      - label: "OG Description (Social Media)"
+        name: "ogDescription"
+        widget: "string"
+        required: false
+        hint: "Custom description for social media shares. Leave blank to use meta description."
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Write your blog post content here"

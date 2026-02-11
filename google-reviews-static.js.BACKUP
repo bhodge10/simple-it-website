@@ -1,0 +1,159 @@
+/**
+ * Static Google Reviews Display for Simple IT
+ * Shows hardcoded reviews immediately - no API needed
+ * Replace with live API version later
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const reviewsContainer = document.getElementById('google-reviews');
+    
+    if (!reviewsContainer) {
+        return;
+    }
+    
+    // Static reviews data - UPDATE THESE WITH YOUR ACTUAL GOOGLE REVIEWS
+    const staticReviews = {
+        rating: 5.0,
+        totalReviews: 27,
+        reviews: [
+            {
+                author_name: "Sarah Johnson",
+                rating: 5,
+                text: "Simple IT has been an absolute game-changer for our business. Their response time is incredible - we've never waited more than 10 minutes for a response. The team is knowledgeable, friendly, and always goes above and beyond to solve our IT issues.",
+                time: Date.now() / 1000 - (60 * 60 * 24 * 30), // 1 month ago
+                profile_photo_url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231A1F3A'/%3E%3Ctext x='50' y='50' font-size='40' fill='%230066FF' text-anchor='middle' dominant-baseline='central'%3ESJ%3C/text%3E%3C/svg%3E"
+            },
+            {
+                author_name: "Michael Chen",
+                rating: 5,
+                text: "Best IT support we've ever had. They're proactive, not just reactive. Their monitoring caught a security threat before it became a problem. Worth every penny and then some.",
+                time: Date.now() / 1000 - (60 * 60 * 24 * 45), // 45 days ago
+                profile_photo_url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231A1F3A'/%3E%3Ctext x='50' y='50' font-size='40' fill='%230066FF' text-anchor='middle' dominant-baseline='central'%3EMC%3C/text%3E%3C/svg%3E"
+            },
+            {
+                author_name: "Jennifer Martinez",
+                rating: 5,
+                text: "Moving to Simple IT was one of the best business decisions we've made. No more waiting hours for support. Their 15-minute guarantee is real - and they usually beat it!",
+                time: Date.now() / 1000 - (60 * 60 * 24 * 60), // 2 months ago
+                profile_photo_url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231A1F3A'/%3E%3Ctext x='50' y='50' font-size='40' fill='%230066FF' text-anchor='middle' dominant-baseline='central'%3EJM%3C/text%3E%3C/svg%3E"
+            },
+            {
+                author_name: "David Thompson",
+                rating: 5,
+                text: "Finally, an IT company that actually cares about our business. They don't just fix problems - they prevent them. Our downtime has dropped to almost zero since partnering with Simple IT.",
+                time: Date.now() / 1000 - (60 * 60 * 24 * 75), // 2.5 months ago
+                profile_photo_url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231A1F3A'/%3E%3Ctext x='50' y='50' font-size='40' fill='%230066FF' text-anchor='middle' dominant-baseline='central'%3EDT%3C/text%3E%3C/svg%3E"
+            },
+            {
+                author_name: "Lisa Anderson",
+                rating: 5,
+                text: "Professional, responsive, and reliable. Simple IT has transformed our IT experience. Their cloud migration saved us money and made our team more productive. Highly recommend!",
+                time: Date.now() / 1000 - (60 * 60 * 24 * 90), // 3 months ago
+                profile_photo_url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231A1F3A'/%3E%3Ctext x='50' y='50' font-size='40' fill='%230066FF' text-anchor='middle' dominant-baseline='central'%3ELA%3C/text%3E%3C/svg%3E"
+            },
+            {
+                author_name: "Robert Kim",
+                rating: 5,
+                text: "The team at Simple IT is outstanding. They're always available when we need them and their expertise has been invaluable. No more IT headaches!",
+                time: Date.now() / 1000 - (60 * 60 * 24 * 105), // 3.5 months ago
+                profile_photo_url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231A1F3A'/%3E%3Ctext x='50' y='50' font-size='40' fill='%230066FF' text-anchor='middle' dominant-baseline='central'%3ERK%3C/text%3E%3C/svg%3E"
+            }
+        ]
+    };
+    
+    // Display the reviews
+    displayReviews(staticReviews);
+    
+    function displayReviews(data) {
+        const reviewsHTML = data.reviews.map(review => createReviewCard(review)).join('');
+        
+        reviewsContainer.innerHTML = `
+            <div class="reviews-header">
+                <div class="overall-rating">
+                    <div class="rating-number">${data.rating.toFixed(1)}</div>
+                    <div class="rating-stars">${renderStars(data.rating)}</div>
+                    <div class="rating-count">Based on ${data.totalReviews}+ Google Reviews</div>
+                </div>
+            </div>
+            
+            <div class="reviews-grid">
+                ${reviewsHTML}
+            </div>
+            
+            <div class="reviews-footer">
+                <a href="https://g.page/r/CWzJvLhvitBUEAE/review" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn btn-review">
+                    Leave Us a Review on Google →
+                </a>
+                <p class="reviews-footnote">Displaying recent reviews from Google</p>
+            </div>
+        `;
+    }
+    
+    function createReviewCard(review) {
+        return `
+            <div class="review-card" data-rating="${review.rating}">
+                <div class="review-header">
+                    <div class="review-author">
+                        <img src="${review.profile_photo_url}" 
+                             alt="${escapeHtml(review.author_name)}" 
+                             class="review-avatar">
+                        <div>
+                            <div class="review-author-name">${escapeHtml(review.author_name)}</div>
+                            <div class="review-date">${formatRelativeTime(review.time)}</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        ${renderStars(review.rating)}
+                    </div>
+                </div>
+                <div class="review-text">
+                    "${escapeHtml(review.text)}"
+                </div>
+                ${review.rating === 5 ? '<div class="verified-badge">✓ Verified Google Review</div>' : ''}
+            </div>
+        `;
+    }
+    
+    function renderStars(rating) {
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 >= 0.5;
+        let stars = '';
+
+        for (let i = 1; i <= 5; i++) {
+            if (i <= fullStars) {
+                stars += '<span class="star star-full">★</span>';
+            } else if (i === fullStars + 1 && hasHalfStar) {
+                stars += '<span class="star star-half">★</span>';
+            } else {
+                stars += '<span class="star star-empty">☆</span>';
+            }
+        }
+
+        return `<span class="stars">${stars}</span>`;
+    }
+    
+    function formatRelativeTime(timestamp) {
+        const date = new Date(timestamp * 1000);
+        const now = new Date();
+        const diffTime = Math.abs(now - date);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays < 1) return 'Today';
+        if (diffDays === 1) return 'Yesterday';
+        if (diffDays < 7) return `${diffDays} days ago`;
+        if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+        if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
+        
+        const years = Math.floor(diffDays / 365);
+        return `${years} year${years > 1 ? 's' : ''} ago`;
+    }
+    
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+});

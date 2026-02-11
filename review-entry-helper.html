@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Entry Helper - Simple IT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #0066FF;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #0066FF;
+        }
+
+        .btn {
+            background: #0066FF;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+
+        .btn:hover {
+            background: #0052CC;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        .output {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 2px solid #0066FF;
+        }
+
+        .output h3 {
+            color: #0066FF;
+            margin-bottom: 1rem;
+        }
+
+        .json-output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .reviews-list {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .review-item {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .review-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .review-info {
+            flex: 1;
+        }
+
+        .review-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .review-preview {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .btn-delete:hover {
+            background: #c82333;
+        }
+
+        .counter {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            color: #0066FF;
+            font-weight: 600;
+        }
+
+        .instructions {
+            background: #e7f3ff;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #0066FF;
+        }
+
+        .instructions h3 {
+            color: #0066FF;
+            margin-bottom: 0.5rem;
+        }
+
+        .instructions ol {
+            margin-left: 1.5rem;
+        }
+
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Review Entry Helper</h1>
+        <p class="subtitle">Easy tool to add your Google reviews one at a time</p>
+
+        <div class="instructions">
+            <h3>How to Use:</h3>
+            <ol>
+                <li>Go to your Google Business Profile and open your reviews</li>
+                <li>For each review, copy the info and paste it in the form below</li>
+                <li>Click "Add Review" to save it to the list</li>
+                <li>After adding all 27 reviews, click "Generate JSON"</li>
+                <li>Copy the JSON output and paste it into your reviews-data.json file</li>
+            </ol>
+        </div>
+
+        <div class="counter" id="counter">Reviews Added: 0 / 27</div>
+
+        <form id="reviewForm">
+            <div class="form-group">
+                <label for="authorName">Reviewer Name *</label>
+                <input type="text" id="authorName" required placeholder="John Smith">
+            </div>
+
+            <div class="form-group">
+                <label for="rating">Star Rating *</label>
+                <select id="rating" required>
+                    <option value="5" selected>⭐⭐⭐⭐⭐ (5 stars)</option>
+                    <option value="4">⭐⭐⭐⭐ (4 stars)</option>
+                    <option value="3">⭐⭐⭐ (3 stars)</option>
+                    <option value="2">⭐⭐ (2 stars)</option>
+                    <option value="1">⭐ (1 star)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="reviewText">Review Text *</label>
+                <textarea id="reviewText" required placeholder="Simple IT has been fantastic! Their response time is amazing..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="reviewDate">Review Date (approximate is fine)</label>
+                <input type="date" id="reviewDate" value="">
+            </div>
+
+            <button type="submit" class="btn">Add Review</button>
+            <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear Form</button>
+        </form>
+
+        <div class="reviews-list" id="reviewsList" style="display: none;">
+            <h3>Added Reviews</h3>
+            <div id="reviewsContainer"></div>
+            <button class="btn" onclick="generateJSON()" style="margin-top: 1rem;">Generate JSON</button>
+        </div>
+
+        <div class="output" id="output" style="display: none;">
+            <h3>📋 Copy this JSON to your reviews-data.json file:</h3>
+            <div class="json-output" id="jsonOutput"></div>
+            <button class="btn" onclick="copyJSON()" style="margin-top: 1rem;">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <script>
+        let reviews = [];
+
+        // Set today's date as default
+        document.getElementById('reviewDate').valueAsDate = new Date();
+
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            addReview();
+        });
+
+        function addReview() {
+            const review = {
+                author_name: document.getElementById('authorName').value,
+                rating: parseInt(document.getElementById('rating').value),
+                text: document.getElementById('reviewText').value,
+                time: document.getElementById('reviewDate').value,
+                profile_photo_url: ""
+            };
+
+            reviews.push(review);
+            updateReviewsList();
+            clearForm();
+            updateCounter();
+        }
+
+        function updateCounter() {
+            document.getElementById('counter').textContent = `Reviews Added: ${reviews.length} / 27`;
+        }
+
+        function updateReviewsList() {
+            const container = document.getElementById('reviewsContainer');
+            const listDiv = document.getElementById('reviewsList');
+
+            if (reviews.length > 0) {
+                listDiv.style.display = 'block';
+                container.innerHTML = reviews.map((review, index) => `
+                    <div class="review-item">
+                        <div class="review-info">
+                            <div class="review-name">${review.author_name} - ${'⭐'.repeat(review.rating)}</div>
+                            <div class="review-preview">${review.text.substring(0, 60)}${review.text.length > 60 ? '...' : ''}</div>
+                        </div>
+                        <button class="btn-delete" onclick="deleteReview(${index})">Delete</button>
+                    </div>
+                `).join('');
+            } else {
+                listDiv.style.display = 'none';
+            }
+        }
+
+        function deleteReview(index) {
+            reviews.splice(index, 1);
+            updateReviewsList();
+            updateCounter();
+        }
+
+        function clearForm() {
+            document.getElementById('reviewForm').reset();
+            document.getElementById('reviewDate').valueAsDate = new Date();
+            document.getElementById('authorName').focus();
+        }
+
+        function generateJSON() {
+            const output = {
+                rating: 5.0,
+                totalReviews: reviews.length,
+                reviews: reviews
+            };
+
+            const jsonString = JSON.stringify(output, null, 2);
+            document.getElementById('jsonOutput').textContent = jsonString;
+            document.getElementById('output').style.display = 'block';
+            document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyJSON() {
+            const jsonText = document.getElementById('jsonOutput').textContent;
+            navigator.clipboard.writeText(jsonText).then(() => {
+                alert('✅ JSON copied to clipboard! Paste it into your reviews-data.json file.');
+            });
+        }
+    </script>
+</body>
+</html>

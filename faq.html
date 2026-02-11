@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Support FAQ | Simple IT Northern Kentucky</title>
+    <meta name="description" content="Common questions about Simple IT's managed services, pricing, response times, and cybersecurity. Get answers about our 15-minute guarantee, month-to-month agreements, and more.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #00D4AA;
+            --dark: #0A0E27;
+            --dark-secondary: #1A1F3A;
+            --text: #E8EBF7;
+            --text-secondary: #9CA3C3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-ticket-btn {
+            background: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            color: white !important;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Hero */
+        .faq-hero {
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Categories */
+        .category-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+        
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--dark-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 2rem 0 4rem;
+        }
+        
+        .faq-category {
+            margin-bottom: 4rem;
+        }
+        
+        .category-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .faq-item {
+            background: var(--dark-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+        
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        
+        .faq-question h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+        
+        .faq-answer-content {
+            padding: 0 2rem 2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .faq-answer-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .faq-answer-content ul {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+        
+        .faq-answer-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .faq-answer-content strong {
+            color: var(--text);
+        }
+        
+        /* CTA Box */
+        .cta-box {
+            background: var(--primary);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .cta-box h2 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-secondary);
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        footer p {
+            color: var(--text-secondary);
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .category-nav {
+                flex-direction: column;
+            }
+            
+            .faq-question {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .faq-question h3 {
+                font-size: 1.1rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6T2XSC5NN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-W6T2XSC5NN');
+    </script>
+    <!-- End Google Analytics -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">Simple <span>IT</span></a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about-us">About</a></li>
+                <li><a href="/our-services">Services</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact-us">Contact</a></li>
+                <li><a href="/submit-ticket" class="nav-ticket-btn">Open Ticket</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p class="subtitle">
+                Everything you need to know about working with Simple IT. Can't find what you're looking for? 
+                <a href="/contact-us" style="color: var(--primary);">Give us a call</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="faq-section">
+        <div class="container">
+            
+            <!-- Getting Started -->
+            <div class="faq-category" id="getting-started">
+                <h2 class="category-title">🚀 Getting Started</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is your 15-minute response time guarantee?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>For our managed service clients, we guarantee that a qualified technician will <strong>begin working on your issue within 15 minutes</strong> of receiving your support request during business hours (Monday-Friday, 8 AM - 6 PM ET).</p>
+                            <p>This isn't just "we'll call you back in 15 minutes." We actually <strong>start diagnosing and fixing your problem</strong> within 15 minutes. Our average response time is actually 11 minutes.</p>
+                            <p><strong>Important:</strong> This guarantee applies to managed service clients on active support agreements. Break-fix clients receive support based on technician availability.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I get started with Simple IT?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>It's straightforward:</p>
+                            <ul>
+                                <li><strong>Schedule a free assessment:</strong> We review your current IT setup, identify risks and opportunities</li>
+                                <li><strong>Receive a proposal:</strong> Transparent pricing, clear deliverables, no long-term commitment</li>
+                                <li><strong>Smooth onboarding:</strong> We transition your systems with minimal disruption to your business</li>
+                                <li><strong>Ongoing support:</strong> You get proactive monitoring, fast support, and strategic IT guidance</li>
+                            </ul>
+                            <p>The whole process typically takes 2-3 weeks from first call to full management.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you require long-term contracts?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>No long-term contracts required.</strong> We operate on month-to-month agreements.</p>
+                            <p>We believe that if we're doing great work, you'll want to stay. If we're not delivering value, you shouldn't be locked in. Simple as that.</p>
+                            <p>No cancellation fees, no early termination penalties, no "gotchas." Just 30 days notice and you're free to go.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing -->
+            <div class="faq-category" id="pricing">
+                <h2 class="category-title">💰 Pricing & Billing</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How much does IT support cost?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Our managed IT services typically range from <strong>$1,500 to $4,500 per month</strong>, depending on:</p>
+                            <ul>
+                                <li>Number of users/devices</li>
+                                <li>Complexity of your IT environment</li>
+                                <li>Level of support needed</li>
+                                <li>Additional services (cybersecurity, cloud, etc.)</li>
+                            </ul>
+                            <p>Most businesses with 10-25 employees pay between $2,000-$3,000/month for complete IT management.</p>
+                            <p><strong>What's included:</strong> Unlimited support, 24/7 monitoring, cybersecurity, backups, strategic planning, and more. You know exactly what you're paying each month—no surprise bills.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are there any hidden fees?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>No hidden fees. Period.</strong></p>
+                            <p>Your monthly fee covers all labor, monitoring, and standard support. If something requires new hardware or software purchases, we'll get your approval first.</p>
+                            <p>We believe in transparent pricing. You'll know exactly what you're paying and what you're getting.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I get emergency support without a managed services agreement?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Yes! We offer break-fix support for businesses who aren't ready for full managed services.</p>
+                            <p><strong>Break-fix rates:</strong> $150/hour with a 1-hour minimum, billed in 15-minute increments.</p>
+                            <p><strong>What you get:</strong> Expert technicians, same skillset as managed clients, just billed by the hour instead of monthly.</p>
+                            <p><strong>What you don't get:</strong> The 15-minute response guarantee, proactive monitoring, or discounted rates. Break-fix clients are supported based on technician availability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <div class="faq-category" id="services">
+                <h2 class="category-title">🛠️ Services & Support</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What's included in managed IT services?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Everything you need to run your business:</strong></p>
+                            <ul>
+                                <li>24/7 network and server monitoring</li>
+                                <li>Unlimited help desk support (email, phone, remote)</li>
+                                <li>Proactive maintenance and updates</li>
+                                <li>Cybersecurity protection</li>
+                                <li>Cloud backup and disaster recovery</li>
+                                <li>Strategic IT planning and consulting</li>
+                                <li>User onboarding and training</li>
+                                <li>Vendor management</li>
+                                <li>Regular technology assessments</li>
+                            </ul>
+                            <p>Basically, if it plugs in or connects to the internet, we handle it.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you provide on-site support?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Yes!</strong> While we can solve most issues remotely, we provide same-day on-site support when needed.</p>
+                            <p>Because we're local to Northern Kentucky, we can typically have a technician at your office within 20-30 minutes for urgent issues.</p>
+                            <p>On-site support is included in your managed services agreement—no extra trip charges or hidden fees.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What hours do you provide support?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Regular Business Hours:</strong><br>
+                            Monday - Friday, 8:00 AM - 6:00 PM ET</p>
+                            <p><strong>After Hours/Emergency Support:</strong><br>
+                            Available 24/7 for managed service clients for critical issues</p>
+                            <p>Our 15-minute response guarantee applies during regular business hours. After hours, we respond as quickly as possible based on the severity of the issue.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What if my current IT person/company is still under contract?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>We'll work with your timeline. Many businesses find it helpful to:</p>
+                            <ul>
+                                <li>Start with a consultation now to understand what's possible</li>
+                                <li>Plan the transition for when your current contract expires</li>
+                                <li>Have us review the contract to understand your options</li>
+                            </ul>
+                            <p>We're patient and understand these transitions take planning. We'd rather do it right than do it fast.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security -->
+            <div class="faq-category" id="security">
+                <h2 class="category-title">🔒 Security & Compliance</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do you protect my business from cyber threats?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Multi-layered security approach:</strong></p>
+                            <ul>
+                                <li><strong>Advanced threat protection:</strong> Enterprise-grade firewalls, antivirus, and email filtering</li>
+                                <li><strong>Employee training:</strong> Regular security awareness training to prevent phishing</li>
+                                <li><strong>Dark web monitoring:</strong> We watch for your company data on the dark web</li>
+                                <li><strong>Vulnerability assessments:</strong> Regular scans to find and fix security gaps</li>
+                                <li><strong>Security updates:</strong> Automated patch management keeps everything current</li>
+                                <li><strong>Access controls:</strong> Multi-factor authentication and proper permission management</li>
+                            </ul>
+                            <p>Cybersecurity isn't an add-on—it's built into everything we do.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What happens if we get hacked or hit with ransomware?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>First, we work hard to prevent this.</strong> But if it happens:</p>
+                            <ul>
+                                <li>Immediate containment to stop the spread</li>
+                                <li>Assessment of what was affected</li>
+                                <li>Recovery from our secure, tested backups</li>
+                                <li>Investigation to understand how it happened</li>
+                                <li>Remediation to prevent it from happening again</li>
+                            </ul>
+                            <p>Our average recovery time from ransomware is under 4 hours. Compare that to the 16-day industry average.</p>
+                            <p>We've never paid a ransom for any client because our backup strategy works.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are my backups tested?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Yes, regularly.</strong> A backup that doesn't restore isn't a backup—it's a false sense of security.</p>
+                            <p>We perform quarterly restore tests to verify your backups actually work. You'll receive a report showing:</p>
+                            <ul>
+                                <li>What was tested</li>
+                                <li>How long the restore took</li>
+                                <li>Any issues found (and how we fixed them)</li>
+                            </ul>
+                            <p>Plus, our backup system monitors itself daily and alerts us immediately if a backup fails.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical -->
+            <div class="faq-category" id="technical">
+                <h2 class="category-title">⚙️ Technical Questions</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I work remotely with your IT support?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Absolutely.</strong> We specialize in secure remote work setups.</p>
+                            <p>We'll set you up with:</p>
+                            <ul>
+                                <li>Secure VPN access to your office systems</li>
+                                <li>Cloud-based file access (Microsoft 365, SharePoint)</li>
+                                <li>Collaboration tools (Teams, Zoom)</li>
+                                <li>Multi-factor authentication for security</li>
+                                <li>Remote desktop solutions if needed</li>
+                            </ul>
+                            <p>Your team can work from anywhere with the same security and access as if they were in the office.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need to replace all my equipment to work with you?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Usually not.</strong> We work with what you have and recommend upgrades only when necessary.</p>
+                            <p>During our assessment, we'll identify:</p>
+                            <ul>
+                                <li>What's working fine and can stay</li>
+                                <li>What's creating security or reliability risks</li>
+                                <li>What would provide good ROI if upgraded</li>
+                            </ul>
+                            <p>We're honest about what needs replacing versus what's just "nice to have." We'd rather keep you as a long-term client than make a quick buck on unnecessary hardware sales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What if I have industry-specific software or requirements?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>We work with businesses in healthcare, legal, manufacturing, professional services, and more. Each industry has specific needs:</p>
+                            <ul>
+                                <li><strong>Healthcare:</strong> HIPAA compliance, EHR systems, practice management</li>
+                                <li><strong>Legal:</strong> Document management, case management systems, trust accounting</li>
+                                <li><strong>Manufacturing:</strong> Industrial control systems, CAD/CAM software, inventory management</li>
+                                <li><strong>Professional Services:</strong> CRM, project management, billing systems</li>
+                            </ul>
+                            <p>We learn your industry-specific software and work with your vendors to ensure everything integrates properly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container">
+        <div class="cta-box">
+            <h2>Still Have Questions?</h2>
+            <p>Let's talk. No pressure, no sales pitch—just honest answers about your specific situation.</p>
+            <a href="/contact-us" class="btn">Schedule a Call →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Simple IT, LLC. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="/privacy-policy">Privacy Policy</a> | 
+                <a href="/terms-of-service">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const wasActive = faqItem.classList.contains('active');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle clicked FAQ
+                if (!wasActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <script src="/ga4-events.js"></script>
+</body>
+</html>

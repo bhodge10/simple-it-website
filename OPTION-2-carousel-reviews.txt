@@ -1,0 +1,75 @@
+OPTION 2: Add a Carousel/Slider for All Reviews
+
+If you want to show all 27 reviews in a scrollable carousel instead of random selection, follow these steps:
+
+1. Add a carousel library to your index.html (in the <head> section, after google-reviews.css):
+
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+2. Update google-reviews.js line 240 to show more reviews:
+   Change: maxReviews: 6,
+   To:     maxReviews: 27,
+
+3. Replace the reviews grid div in the displayReviews function (around line 66-68):
+
+   FIND:
+   <div class="reviews-grid">
+       ${reviewsHTML}
+   </div>
+
+   REPLACE WITH:
+   <div class="swiper reviews-carousel">
+       <div class="swiper-wrapper">
+           ${reviewsHTML.replace(/<div class="review-card"/g, '<div class="swiper-slide"><div class="review-card"').replace(/<\/div>\s*(?=<div class="review-card"|$)/g, '</div></div>')}
+       </div>
+       <div class="swiper-pagination"></div>
+       <div class="swiper-button-prev"></div>
+       <div class="swiper-button-next"></div>
+   </div>
+
+4. Add this JavaScript at the end of google-reviews.js (after line 246):
+
+   // Initialize carousel after reviews load
+   setTimeout(() => {
+       new Swiper('.reviews-carousel', {
+           slidesPerView: 1,
+           spaceBetween: 30,
+           loop: true,
+           autoplay: {
+               delay: 5000,
+               disableOnInteraction: false,
+           },
+           pagination: {
+               el: '.swiper-pagination',
+               clickable: true,
+           },
+           navigation: {
+               nextEl: '.swiper-button-next',
+               prevEl: '.swiper-button-prev',
+           },
+           breakpoints: {
+               640: { slidesPerView: 2 },
+               1024: { slidesPerView: 3 },
+           }
+       });
+   }, 500);
+
+5. Add CSS for carousel styling to google-reviews.css:
+
+   .swiper-slide {
+       height: auto;
+   }
+
+   .swiper-button-prev,
+   .swiper-button-next {
+       color: var(--primary);
+   }
+
+   .swiper-pagination-bullet-active {
+       background: var(--primary);
+   }
+
+This will create an auto-scrolling carousel showing 3 reviews at a time on desktop, 2 on tablet, 1 on mobile.
+
+NOTE: This is more complex than Option 1 (random reviews). Only use this if you really want the carousel feature.

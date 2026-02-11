@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Simple IT | Fort Mitchell, Kentucky IT Support</title>
+    <meta name="description" content="Contact Simple IT for IT support in Northern Kentucky. Call 859-449-7878 or schedule a free assessment. Located in Fort Mitchell, serving all of NKY.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #00D4AA;
+            --dark: #0A0E27;
+            --dark-secondary: #1A1F3A;
+            --text: #E8EBF7;
+            --text-secondary: #9CA3C3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-ticket-btn {
+            background: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            color: white !important;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Hero */
+        .contact-hero {
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 4rem 0;
+        }
+        
+        /* Contact Info */
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .info-card {
+            background: var(--dark-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .info-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .info-card a:hover {
+            color: var(--secondary);
+        }
+        
+        .hours {
+            margin-top: 1rem;
+        }
+        
+        .hours p {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .hours p:last-child {
+            border-bottom: none;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: var(--dark-secondary);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-form h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .required {
+            color: var(--secondary);
+        }
+        
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: 'Sora', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 4rem 0;
+            background: var(--dark-secondary);
+        }
+        
+        .map-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 450px;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        footer p {
+            color: var(--text-secondary);
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6T2XSC5NN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-W6T2XSC5NN');
+    </script>
+    <!-- End Google Analytics -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">Simple <span>IT</span></a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about-us">About</a></li>
+                <li><a href="/our-services">Services</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact-us">Contact</a></li>
+                <li><a href="/submit-ticket" class="nav-ticket-btn">Open Ticket</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Let's Talk About Your IT</h1>
+            <p class="subtitle">
+                Whether you need emergency support or want to explore managed IT services, we're here to help. 
+                No sales pitch, no pressure—just honest advice from people who care about your business.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Grid -->
+    <section class="contact-grid container">
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            
+            <div class="info-card">
+                <h3>📞 Phone</h3>
+                <p><strong>Main Line:</strong> <a href="tel:8594497878">859-449-7878</a></p>
+                <p>Call us for immediate assistance or to schedule a consultation</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>📧 Email</h3>
+                <p><strong>General Inquiries:</strong> <a href="mailto:info@simple-it.us">info@simple-it.us</a></p>
+                <p><strong>Support:</strong> <a href="mailto:info@simple-it.us">info@simple-it.us</a></p>
+                <p>We typically respond within 2 hours during business hours</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>📍 Office Location</h3>
+                <p><strong>Simple IT, LLC</strong></p>
+                <p>2220 Grandview Drive, Suite 250</p>
+                <p>Fort Mitchell, KY 41017</p>
+                <p style="margin-top: 1rem;">
+                    <a href="https://maps.google.com/?q=2220+Grandview+Drive+Suite+250+Fort+Mitchell+KY+41017" target="_blank">
+                        Get Directions →
+                    </a>
+                </p>
+            </div>
+            
+            <div class="info-card">
+                <h3>🕐 Business Hours</h3>
+                <div class="hours">
+                    <p><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM ET</p>
+                    <p><strong>Saturday - Sunday:</strong> Closed</p>
+                    <p><strong>Emergency Support:</strong> 24/7 for managed clients</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>Request a Free Assessment</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Fill out this form and we'll get back to you within 24 hours to schedule your complimentary IT assessment.
+            </p>
+            
+            <form id="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="fax-number" action="/thank-you.html">
+                <input type="hidden" name="form-name" value="contact">
+                <input type="hidden" name="contact-loaded-at" id="contactLoadedAt" value="">
+                <!-- Honeypot field - hidden from real users, bots will fill it -->
+                <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+                    <label>Don't fill this out: <input type="text" name="fax-number" tabindex="-1" autocomplete="off"></label>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Your Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company Name <span class="required">*</span></label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="employees">Number of Employees</label>
+                    <select id="employees" name="employees">
+                        <option value="">Select...</option>
+                        <option value="1-10">1-10 employees</option>
+                        <option value="11-25">11-25 employees</option>
+                        <option value="26-50">26-50 employees</option>
+                        <option value="51-100">51-100 employees</option>
+                        <option value="100+">100+ employees</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="interest">What are you interested in?</label>
+                    <select id="interest" name="interest">
+                        <option value="">Select...</option>
+                        <option value="managed-it">Managed IT Services</option>
+                        <option value="cybersecurity">Cybersecurity Assessment</option>
+                        <option value="cloud">Cloud Solutions / Microsoft 365</option>
+                        <option value="backup">Backup & Disaster Recovery</option>
+                        <option value="emergency">Emergency Support</option>
+                        <option value="consultation">General Consultation</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Tell us about your needs</label>
+                    <textarea id="message" name="message" placeholder="What challenges are you facing with your current IT setup? What are you hoping to accomplish?"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="contactSubmitBtn">Request Free Assessment →</button>
+                <div id="contactFormMessage" style="margin-top: 10px; display: none;"></div>
+            </form>
+            <script>
+            (function() {
+                document.getElementById('contactLoadedAt').value = Date.now().toString();
+
+                document.getElementById('contactForm').addEventListener('submit', function(e) {
+                    var honeypot = document.querySelector('input[name="fax-number"]').value;
+                    var loadedAt = parseInt(document.getElementById('contactLoadedAt').value, 10);
+                    var elapsed = Date.now() - loadedAt;
+
+                    if (honeypot || elapsed < 3000) {
+                        e.preventDefault();
+                        var msg = document.getElementById('contactFormMessage');
+                        msg.style.display = 'block';
+                        msg.style.color = '#28a745';
+                        msg.innerHTML = '<strong>Thank you!</strong> We\'ll be in touch shortly.';
+                        return;
+                    }
+                });
+            })();
+            </script>
+        </d
