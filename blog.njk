@@ -1,21 +1,40 @@
 ---
-permalink: /blog/index.html
+pagination:
+  data: collections.blog
+  size: 18
+  reverse: true
+  alias: posts
+permalink: "/blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}"
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Blog | Simple IT - Technology Tips & Insights</title>
+    <title>IT Blog{% if pagination.pageNumber > 0 %} - Page {{ pagination.pageNumber + 1 }}{% endif %} | Simple IT - Technology Tips & Insights</title>
     <meta name="description" content="Expert IT insights, cybersecurity tips, and technology advice for businesses in Northern Kentucky and Cincinnati from Simple IT.">
     <meta name="keywords" content="IT blog, cybersecurity tips, managed IT insights, business technology, Northern Kentucky IT">
+    {% if pagination.pageNumber > 0 %}
+    <link rel="canonical" href="https://simple-it.us/blog/page/{{ pagination.pageNumber + 1 }}/">
+    {% else %}
     <link rel="canonical" href="https://simple-it.us/blog/">
+    {% endif %}
+    {% if pagination.href.previous %}
+    <link rel="prev" href="https://simple-it.us{{ pagination.href.previous }}">
+    {% endif %}
+    {% if pagination.href.next %}
+    <link rel="next" href="https://simple-it.us{{ pagination.href.next }}">
+    {% endif %}
 
     <!-- Open Graph -->
-    <meta property="og:title" content="IT Blog | Simple IT">
+    <meta property="og:title" content="IT Blog{% if pagination.pageNumber > 0 %} - Page {{ pagination.pageNumber + 1 }}{% endif %} | Simple IT">
     <meta property="og:description" content="Expert IT insights, cybersecurity tips, and technology advice for businesses.">
     <meta property="og:type" content="website">
+    {% if pagination.pageNumber > 0 %}
+    <meta property="og:url" content="https://simple-it.us/blog/page/{{ pagination.pageNumber + 1 }}/">
+    {% else %}
     <meta property="og:url" content="https://simple-it.us/blog/">
+    {% endif %}
     <meta property="og:site_name" content="Simple IT">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,7 +92,6 @@ permalink: /blog/index.html
     <!-- Blog Posts Grid -->
     <section class="blog-listing">
         <div class="blog-container">
-            {% set posts = collections.blog | reverse %}
             {% if posts.length > 0 %}
             <div class="blog-grid">
                 {% for post in posts %}
@@ -107,6 +125,31 @@ permalink: /blog/index.html
                 {% endif %}
                 {% endfor %}
             </div>
+
+            {% if pagination.pages.length > 1 %}
+            <nav class="blog-pagination" aria-label="Blog pagination">
+                {% if pagination.href.previous %}
+                <a href="{{ pagination.href.previous }}" class="page-link page-prev">&laquo; Previous</a>
+                {% else %}
+                <span class="page-link page-prev disabled">&laquo; Previous</span>
+                {% endif %}
+
+                {% for pageEntry in pagination.pages %}
+                {% if loop.index0 == pagination.pageNumber %}
+                <span class="page-link active">{{ loop.index }}</span>
+                {% else %}
+                <a href="{{ pagination.hrefs[loop.index0] }}" class="page-link">{{ loop.index }}</a>
+                {% endif %}
+                {% endfor %}
+
+                {% if pagination.href.next %}
+                <a href="{{ pagination.href.next }}" class="page-link page-next">Next &raquo;</a>
+                {% else %}
+                <span class="page-link page-next disabled">Next &raquo;</span>
+                {% endif %}
+            </nav>
+            {% endif %}
+
             {% else %}
             <div class="blog-empty">
                 <h2>Coming Soon</h2>

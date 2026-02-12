@@ -342,6 +342,89 @@ nav {
     margin-bottom: 2rem;
 }
 
+/* ---- Blog Pagination ---- */
+.blog-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    padding: 0.5rem 1rem;
+    background: var(--dark-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.page-link:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+}
+
+.page-link.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    cursor: default;
+}
+
+.page-link.active:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.page-link.disabled {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+}
+
+.page-link.disabled:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+}
+
+.page-prev,
+.page-next {
+    padding: 0.5rem 1.25rem;
+}
+
+@media (max-width: 640px) {
+    .blog-pagination {
+        gap: 0.35rem;
+    }
+
+    .page-link {
+        min-width: 38px;
+        height: 38px;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .page-prev,
+    .page-next {
+        padding: 0.4rem 0.9rem;
+    }
+}
+
 /* ---- Article Header ---- */
 .blog-article {
     padding: 2rem 0 4rem;
