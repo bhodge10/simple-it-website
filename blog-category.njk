@@ -1,0 +1,188 @@
+---
+pagination:
+  data: collections.blogByCategory
+  size: 1
+  alias: categorySlug
+permalink: "/blog/category/{{ categorySlug }}/"
+---
+{%- set category = collections.blogByCategory[categorySlug] -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.name }} Articles | Simple IT Blog</title>
+    <meta name="description" content="Browse {{ category.posts.length }} {{ category.name | lower }} articles from Simple IT. Expert insights for Northern Kentucky and Cincinnati businesses.">
+    <link rel="canonical" href="https://simple-it.us/blog/category/{{ categorySlug }}/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ category.name }} Articles | Simple IT Blog">
+    <meta property="og:description" content="Browse {{ category.posts.length }} {{ category.name | lower }} articles from Simple IT.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simple-it.us/blog/category/{{ categorySlug }}/">
+    <meta property="og:site_name" content="Simple IT">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">Simple <span class="logo-highlight">IT</span></a>
+            <ul class="nav-links">
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#why-us">Why Us</a></li>
+                <li><a href="/blog/" class="active">Blog</a></li>
+                <li><a href="/remote-support" class="nav-support-btn">Remote Support</a></li>
+                <li><a href="/submit-ticket.html" class="nav-ticket-btn">Open Ticket</a></li>
+                <li><a href="/#contact" class="nav-cta">Get Started</a></li>
+            </ul>
+            <div class="contact-info">
+                <span>&#128222; 859-449-7878</span>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">&#9776;</button>
+        </div>
+    </nav>
+
+    <!-- Category Header -->
+    <section class="blog-hero">
+        <div class="blog-container">
+            <div class="blog-breadcrumb" style="padding: 0; margin-bottom: 1.5rem; text-align: left;">
+                <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>{{ category.name }}</span>
+            </div>
+            <h1><span class="highlight">{{ category.name }}</span></h1>
+            <p>{{ category.posts.length }} article{% if category.posts.length != 1 %}s{% endif %} on {{ category.name | lower }} for Northern Kentucky and Cincinnati businesses.</p>
+        </div>
+    </section>
+
+    <!-- Category Navigation -->
+    <section style="padding: 0 0 2rem;">
+        <div class="blog-container" style="max-width: 1100px;">
+            <nav class="blog-category-nav" aria-label="Blog categories">
+                <a href="/blog/" class="category-nav-link">All Posts</a>
+                {%- for slug, cat in collections.blogByCategory %}
+                <a href="/blog/category/{{ slug }}/" class="category-nav-link{% if slug == categorySlug %} active{% endif %}">{{ cat.name }} ({{ cat.posts.length }})</a>
+                {%- endfor %}
+            </nav>
+        </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="blog-listing">
+        <div class="blog-container">
+            {% if category.posts.length > 0 %}
+            <div class="blog-grid">
+                {% for post in category.posts %}
+                {% if not post.data.draft %}
+                <a href="{{ post.url }}" class="blog-card">
+                    {% if post.data.featuredImage %}
+                    <div class="card-image">
+                        <img src="{{ post.data.featuredImage }}" alt="{{ post.data.featuredImageAlt if post.data.featuredImageAlt else post.data.title }}" loading="lazy">
+                    </div>
+                    {% else %}
+                    <div class="card-image card-image-placeholder">
+                        <span>Simple IT</span>
+                    </div>
+                    {% endif %}
+                    <div class="card-content">
+                        {% if post.data.categories %}
+                        <div class="card-categories">
+                            {% for cat in post.data.categories %}
+                            <span class="category-tag">{{ cat }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <h2>{{ post.data.title }}</h2>
+                        <p class="card-excerpt">{{ post.data.metaDescription if post.data.metaDescription else post.templateContent | excerpt }}</p>
+                        <div class="card-meta">
+                            <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+                            <span>{{ post.templateContent | readingTime }}</span>
+                        </div>
+                    </div>
+                </a>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>SIMPLE IT</h3>
+                <p>Business Technology Made Simple. Serving Northern Kentucky and Greater Cincinnati with guaranteed 15-minute response times.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/GoSimpleIT/" target="_blank">Facebook</a>
+                    <a href="https://www.linkedin.com/company/simpleit-llc" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="/managed-it-services">Managed IT</a></li>
+                    <li><a href="/cybersecurity-solutions">Cybersecurity</a></li>
+                    <li><a href="/cloud-solutions">Cloud Solutions</a></li>
+                    <li><a href="/emergency-it-support">Emergency Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:8594497878">859-449-7878</a></li>
+                    <li><a href="mailto:info@simple-it.us">info@simple-it.us</a></li>
+                    <li>2220 Grandview Drive<br>Suite 250<br>Ft. Mitchell, KY 41017</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Simple IT, LLC. All rights reserved.</p>
+            <div>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '\u2715' : '\u2630';
+                mobileMenuBtn.setAttribute('aria-label', navLinks.classList.contains('active') ? 'Close menu' : 'Open menu');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.textContent = '\u2630';
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('nav')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.textContent = '\u2630';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

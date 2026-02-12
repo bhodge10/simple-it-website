@@ -1,0 +1,35 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Simple IT Blog</title>
+  <subtitle>Expert IT insights, cybersecurity tips, and technology advice for businesses in Northern Kentucky and Cincinnati.</subtitle>
+  <link href="https://simple-it.us/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://simple-it.us/blog/" rel="alternate" type="text/html"/>
+  <id>https://simple-it.us/blog/</id>
+  {%- set latestPost = collections.blog | last %}
+  <updated>{{ latestPost.date | isoDate }}</updated>
+  <author>
+    <name>Simple IT Team</name>
+  </author>
+  {%- for post in collections.blog | reverse | limit(20) %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="https://simple-it.us{{ post.url }}" rel="alternate" type="text/html"/>
+    <id>https://simple-it.us{{ post.url }}</id>
+    <published>{{ post.date | isoDate }}</published>
+    <updated>{{ post.date | isoDate }}</updated>
+    <author>
+      <name>{{ post.data.author if post.data.author else "Simple IT Team" }}</name>
+    </author>
+    {%- if post.data.categories %}
+    {%- for cat in post.data.categories %}
+    <category term="{{ cat }}"/>
+    {%- endfor %}
+    {%- endif %}
+    <summary>{{ post.data.metaDescription if post.data.metaDescription else post.templateContent | excerpt }}</summary>
+  </entry>
+  {%- endfor %}
+</feed>

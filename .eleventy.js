@@ -94,6 +94,24 @@ module.exports = function(eleventyConfig) {
     return (arr || []).slice(0, count);
   });
 
+  // --- Blog by Category Collection ---
+  eleventyConfig.addCollection("blogByCategory", (collectionApi) => {
+    const posts = collectionApi.getFilteredByTag("blog");
+    const categories = {};
+    posts.forEach(post => {
+      (post.data.categories || []).forEach(cat => {
+        const slug = cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+        if (!categories[slug]) categories[slug] = { name: cat, slug: slug, posts: [] };
+        categories[slug].posts.push(post);
+      });
+    });
+    // Sort posts within each category by date descending
+    Object.values(categories).forEach(cat => {
+      cat.posts.sort((a, b) => b.date - a.date);
+    });
+    return categories;
+  });
+
   return {
     templateFormats: ["md", "njk"],
     htmlTemplateEngine: false,

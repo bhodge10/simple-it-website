@@ -325,6 +325,38 @@ nav {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* ---- Blog Category Navigation ---- */
+.blog-category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.category-nav-link {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: var(--dark-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.category-nav-link:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.category-nav-link.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
 /* ---- Blog Empty State ---- */
 .blog-empty {
     text-align: center;
