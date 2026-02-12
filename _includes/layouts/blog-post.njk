@@ -39,7 +39,8 @@
       {% if featuredImage %}"image": "https://simple-it.us{{ featuredImage }}",{% endif %}
       "author": {
         "@type": "Person",
-        "name": "{{ author if author else 'Simple IT Team' }}"
+        "name": "{{ author if author else 'Simple IT Team' }}",
+        "url": "https://simple-it.us/"
       },
       "publisher": {
         "@type": "Organization",
