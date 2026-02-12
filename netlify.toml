@@ -550,6 +550,46 @@ from = "/terms"
 to = "/terms-of-service.html"
 status = 301
 
+# Fix truncated/mismatched blog URLs found in Google Search Console
+[[redirects]]
+from = "/microsoft-365-cost-savings-*"
+to = "/blog/microsoft-365-cost-savings-simple-it/"
+status = 301
+
+[[redirects]]
+from = "/credential-theft-protection-*"
+to = "/blog/credential-theft-protection-strong-logins-safe-data/"
+status = 301
+
+[[redirects]]
+from = "/prevent-account-hacks-*"
+to = "/blog/prevent-account-hacks-advanced-business-security-tips/"
+status = 301
+
+[[redirects]]
+from = "/cyber-insurance-small-business-nky"
+to = "/blog/cyber-insurance-northern-kentucky-guide/"
+status = 301
+
+[[redirects]]
+from = "/no-hassle-new-hires-northern-kentucky-businesses-onboard"
+to = "/blog/no-hassle-new-hires-northern-kentucky-it-onboarding/"
+status = 301
+
+[[redirects]]
+from = "/securing-your-vendor-network-cybersecurity-nky-businesses"
+to = "/blog/securing-vendor-network-cybersecurity-nky-businesses/"
+status = 301
+
+[[redirects]]
+from = "/services/cabling/"
+to = "/our-services.html"
+status = 301
+
+[[redirects]]
+from = "/services/cabling"
+to = "/our-services.html"
+status = 301
 
 # WordPress blog post redirects (old root URLs -> new /blog/ URLs)
 
