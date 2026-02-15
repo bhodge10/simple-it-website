@@ -1637,11 +1637,11 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">
+            <a href="/" class="logo">
                 <span>SIMPLE IT</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
+                <li><a href="/our-services">Services</a></li>
                 <li><a href="#why-us">Why Us</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="/blog/">Blog</a></li>
@@ -1746,7 +1746,7 @@
                     <li>Help Desk Support</li>
                     <li>Hardware & Software Management</li>
                 </ul>
-                <a href="managed-it-services.html" class="service-link">See How It Works →</a>
+                <a href="/managed-it-services" class="service-link">See How It Works →</a>
             </div>
             
             <div class="service-card">
@@ -1762,7 +1762,7 @@
                     <li>Data Backup & Disaster Recovery</li>
                     <li>Employee Security Training</li>
                 </ul>
-                <a href="cybersecurity-solutions.html" class="service-link">Check Your Security →</a>
+                <a href="/cybersecurity-solutions" class="service-link">Check Your Security →</a>
             </div>
             
             <div class="service-card">
@@ -1778,7 +1778,7 @@
                     <li>Cloud Backup Solutions</li>
                     <li>Hybrid Cloud Configuration</li>
                 </ul>
-                <a href="cloud-solutions.html" class="service-link">Start Your Migration →</a>
+                <a href="/cloud-solutions" class="service-link">Start Your Migration →</a>
             </div>
             
             <div class="service-card">
@@ -1794,7 +1794,7 @@
                     <li>Remote Support Available</li>
                     <li>After-Hours Emergency Support</li>
                 </ul>
-                <a href="emergency-it-support.html" class="service-link">Learn About Emergency Support →</a>
+                <a href="/emergency-it-support" class="service-link">Learn About Emergency Support →</a>
             </div>
             
             <div class="service-card">
@@ -1810,7 +1810,7 @@
                     <li>Business Continuity Testing</li>
                     <li>Rapid Recovery Solutions</li>
                 </ul>
-                <a href="business-continuity.html" class="service-link">Get Protected →</a>
+                <a href="/business-continuity" class="service-link">Get Protected →</a>
             </div>
             
             <div class="service-card">
@@ -1826,7 +1826,7 @@
                     <li>Video Conferencing</li>
                     <li>Mobile Integration</li>
                 </ul>
-                <a href="voip-phone-systems.html" class="service-link">Learn More →</a>
+                <a href="/voip-phone-systems" class="service-link">Learn More →</a>
             </div>
             
             <div class="service-card">
@@ -1842,7 +1842,7 @@
                     <li>Fiber Optic Solutions</li>
                     <li>Network Equipment Installation</li>
                 </ul>
-                <a href="network-cabling.html" class="service-link">Learn More →</a>
+                <a href="/network-cabling" class="service-link">Learn More →</a>
             </div>
             
             <div class="service-card">
@@ -1858,7 +1858,7 @@
                     <li>Video Surveillance Monitoring</li>
                     <li>Badge & Entry Management</li>
                 </ul>
-                <a href="security-cameras.html" class="service-link">Learn More →</a>
+                <a href="/security-cameras" class="service-link">Learn More →</a>
             </div>
         </div>
     </section>
@@ -2470,10 +2470,10 @@
             <div class="footer-section">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="#why-us">About Us</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/about-us#testimonials">Testimonials</a></li>
                     <li><a href="/blog/">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="/#contact">Contact</a></li>
                 </ul>
             </div>
             
@@ -2490,8 +2490,8 @@
         <div class="footer-bottom">
             <p>© 2026 Simple IT, LLC. All rights reserved.</p>
             <div>
-                <a href="privacy-policy.html" style="margin-right: 1rem;">Privacy Policy</a>
-                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="/privacy-policy" style="margin-right: 1rem;">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
             </div>
         </div>
     </footer>
@@ -2689,6 +2689,80 @@
           }
         ]
       }
+    }
+    </script>
+
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does it cost to switch IT providers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We're upfront about costs: there's a one-time onboarding fee that covers migration, infrastructure documentation, and coordination with your current provider to ensure zero downtime. The fee varies based on your setup's complexity—we'll give you an exact quote during your free assessment. For businesses concerned about upfront costs, we can often roll the onboarding fee into your first few months of service. Our ongoing managed IT rates are competitive and most clients find they're getting significantly better service for similar or lower monthly costs than they were paying before."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if you don't respond in 15 minutes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Honestly? It almost never happens—our average is actually 11 minutes. But on the rare occasion we miss the 15-minute mark, you'll receive that month's service credit. We track every response time, and our guarantee is backed by our service agreement. That said, in 15+ years, we've maintained this standard consistently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens during the transition from our current IT provider?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We make it seamless. We'll coordinate with your existing provider, document your entire infrastructure, and create a transition plan with zero downtime. Most transitions are completed within 2-4 weeks, and we handle all the technical heavy lifting. You'll have a dedicated project manager guiding you through every step."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What software and platforms do you support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We support all major business platforms including Microsoft 365, Google Workspace, QuickBooks, industry-specific software, and most line-of-business applications. We work with Windows, Mac, iOS, and Android devices. During your assessment, we'll review your specific software stack and confirm compatibility—but in 15 years, we've yet to encounter software we couldn't support."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a contract? What if we're not satisfied?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No long-term contracts—just month-to-month agreements. We believe we should earn your business every month through great service, not keep it through legal obligations. Our 98% retention rate proves this approach works—clients stay because they want to, not because they have to. If we're ever not the right fit for you, we'll help you transition elsewhere professionally."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can we try your service for a month before committing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely—and since we operate on month-to-month agreements, you're never locked in. That said, we ask for at least 90 days to fully onboard your systems and get everything up to our standards before you make a final decision. This gives us time to complete migration, implement our monitoring and security protocols, and demonstrate the full value of our proactive approach."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What industries do you specialize in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We serve diverse industries across Northern Kentucky including healthcare (HIPAA-compliant), legal firms, manufacturing, professional services, retail, and more. Our team has experience with industry-specific compliance requirements and software."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with businesses our size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We work with businesses from 5 to 150+ employees across Northern Kentucky. Whether you're a small professional practice or a growing manufacturer, we scale our services to fit your needs."
+          }
+        }
+      ]
     }
     </script>
 
