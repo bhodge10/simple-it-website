@@ -10,6 +10,57 @@ functions = "netlify/functions"
 publish = "_site"
 command = "npm install && npx @11ty/eleventy"
 
+# Service page pretty URLs
+[[redirects]]
+from = "/managed-it-services/"
+to = "/managed-it-services.html"
+status = 301
+
+[[redirects]]
+from = "/managed-it-services"
+to = "/managed-it-services.html"
+status = 301
+
+[[redirects]]
+from = "/cybersecurity-solutions/"
+to = "/cybersecurity-solutions.html"
+status = 301
+
+[[redirects]]
+from = "/cybersecurity-solutions"
+to = "/cybersecurity-solutions.html"
+status = 301
+
+[[redirects]]
+from = "/cloud-solutions/"
+to = "/cloud-solutions.html"
+status = 301
+
+[[redirects]]
+from = "/cloud-solutions"
+to = "/cloud-solutions.html"
+status = 301
+
+[[redirects]]
+from = "/emergency-it-support/"
+to = "/emergency-it-support.html"
+status = 301
+
+[[redirects]]
+from = "/emergency-it-support"
+to = "/emergency-it-support.html"
+status = 301
+
+[[redirects]]
+from = "/business-continuity/"
+to = "/business-continuity.html"
+status = 301
+
+[[redirects]]
+from = "/business-continuity"
+to = "/business-continuity.html"
+status = 301
+
 [[redirects]]
 from = "/about-us"
 to = "/about-us.html"
