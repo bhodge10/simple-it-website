@@ -126,6 +126,20 @@ PAGE SPEED: Check for: number and size of external scripts, inline vs external C
 
 LOCAL SEO: Check for: location-specific content, city/region mentions, local landing pages linked from nav, NAP (name, address, phone) consistency, Google Business Profile links.
 
+SCORING WEIGHTS FOR OVERALL SCORE:
+Do NOT average all six categories equally. Use these weights to calculate the overall score:
+- Content Quality: 25% (most important — Google rewards helpful, specific content)
+- Local SEO: 20% (critical for service-area businesses)
+- Schema Markup: 20% (directly impacts rich results and AI search citations)
+- Meta Tags & Titles: 15% (important but baseline technical hygiene)
+- Mobile Friendliness: 12% (table stakes — most sites pass this)
+- Page Speed: 8% (Google confirms this is a minor signal, only affects the slowest sites)
+
+Calculate overall_score as: (content * 0.25) + (local * 0.20) + (schema * 0.20) + (meta * 0.15) + (mobile * 0.12) + (performance * 0.08)
+
+Round to the nearest whole number. Then assign overall_grade based on:
+95-100 = A+, 90-94 = A, 85-89 = A-, 80-84 = B+, 75-79 = B, 70-74 = B-, 65-69 = C+, 60-64 = C, 55-59 = C-, 50-54 = D+, 45-49 = D, below 45 = F
+
 Respond with ONLY a JSON object — no markdown, no backticks, no explanation:
 
 {"overall_score":<0-100>,"overall_grade":"<letter grade>","summary":"<one sentence specific to this site>","categories":{"meta":{"score":<0-100>,"visible_issue":"<one specific issue you actually found or 'No major issues detected'>"},"content":{"score":<0-100>,"visible_issue":"<one specific issue>"},"schema":{"score":<0-100>,"visible_issue":"<one specific issue>"},"mobile":{"score":<0-100>,"visible_issue":"<one specific issue>"},"performance":{"score":<0-100>,"visible_issue":"<one specific issue>"},"local":{"score":<0-100>,"visible_issue":"<one specific issue>"}},"critical_count":<number>,"warning_count":<number>,"passed_count":<number>,"blurred_findings":["<teaser 1>","<teaser 2>","<teaser 3>"]}
