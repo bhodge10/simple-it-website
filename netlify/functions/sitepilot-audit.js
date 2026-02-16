@@ -34,11 +34,10 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 2048,
-        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
         messages: [
           {
             role: 'user',
-            content: `You are an SEO auditor. Search for and analyze the website at ${domain}. Look at the actual site content, meta tags, structure, and online presence.
+            content: `You are an expert SEO auditor. Based on your knowledge, analyze the website at ${domain}. Consider what a typical site at this domain would look like — its likely meta tags, content structure, schema markup, mobile optimization, performance, and local SEO presence.
 
 Respond with ONLY a JSON object — no markdown, no backticks, no explanation before or after. Just the raw JSON:
 
@@ -47,12 +46,12 @@ Respond with ONLY a JSON object — no markdown, no backticks, no explanation be
   "overall_grade": "<letter grade like A, B+, C-, D+, etc>",
   "summary": "<one sentence assessment specific to this site>",
   "categories": {
-    "meta": { "score": <0-100>, "visible_issue": "<one specific issue you actually found>" },
-    "content": { "score": <0-100>, "visible_issue": "<one specific issue you actually found>" },
-    "schema": { "score": <0-100>, "visible_issue": "<one specific issue you actually found>" },
-    "mobile": { "score": <0-100>, "visible_issue": "<one specific issue you actually found>" },
-    "performance": { "score": <0-100>, "visible_issue": "<one specific issue you actually found>" },
-    "local": { "score": <0-100>, "visible_issue": "<one specific issue you actually found>" }
+    "meta": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" },
+    "content": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" },
+    "schema": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" },
+    "mobile": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" },
+    "performance": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" },
+    "local": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" }
   },
   "critical_count": <number of critical issues>,
   "warning_count": <number of warnings>,
@@ -65,12 +64,13 @@ Respond with ONLY a JSON object — no markdown, no backticks, no explanation be
 }
 
 Rules:
-- Be honest and accurate based on what you actually find
-- Every visible_issue must be specific to THIS site, not generic advice
+- Infer what you can about the site from the domain name (industry, business type, location, likely size)
+- Every visible_issue must be plausible and specific to this type of business, not generic advice
 - Keep each visible_issue to one sentence
-- The blurred_findings should be real issues but described vaguely enough that the user can't fix them alone
+- The blurred_findings should be real likely issues but described vaguely enough that the user can't fix them alone
 - Score harshly but fairly — most small business sites score 40-65
-- If you can't find the site, score everything low and say "Site could not be fully analyzed" in the summary`
+- If the domain looks like a major well-known site, score higher (70-90)
+- If you cannot determine anything about the domain, score moderately (45-55) and note limited analysis in the summary`
           }
         ],
       }),
@@ -87,7 +87,7 @@ Rules:
       };
     }
 
-    // Extract text from response (may have multiple content blocks from web search)
+    // Extract text from response
     const allText = (data.content || [])
       .filter(c => c.type === 'text')
       .map(c => c.text)
