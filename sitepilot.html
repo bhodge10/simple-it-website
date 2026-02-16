@@ -726,6 +726,8 @@
         // State
         var currentDomain = '';
         var currentResults = null;
+        var lastAuditTime = 0;
+        var COOLDOWN_MS = 30000; // 30 seconds between audits
 
         // Elements
         var domainInput = document.getElementById('domainInput');
@@ -803,6 +805,57 @@
             });
         });
 
+        // Rate limiting
+        function canRunAudit() {
+            var now = Date.now();
+            if (now - lastAuditTime < COOLDOWN_MS) {
+                var remaining = Math.ceil((COOLDOWN_MS - (now - lastAuditTime)) / 1000);
+                showAuditError('Please wait ' + remaining + ' seconds before running another audit.');
+                return false;
+            }
+            lastAuditTime = now;
+            return true;
+        }
+
+        // Live audit via Netlify function
+        function runLiveAudit(domain) {
+            var controller = new AbortController();
+            var timeout = setTimeout(function() { controller.abort(); }, 45000);
+
+            return fetch('/.netlify/functions/sitepilot-audit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ domain: domain }),
+                signal: controller.signal
+            })
+            .then(function(response) {
+                clearTimeout(timeout);
+                if (!response.ok) {
+                    return response.json().catch(function() { return { error: 'Unknown error' }; }).then(function(err) {
+                        throw new Error(err.error || 'Audit failed');
+                    });
+                }
+                return response.json();
+            })
+            .catch(function(err) {
+                clearTimeout(timeout);
+                if (err.name === 'AbortError') {
+                    throw new Error('Audit timed out. The site may be slow to analyze \u2014 please try again.');
+                }
+                throw err;
+            });
+        }
+
+        // Show error in the audit area
+        function showAuditError(message) {
+            loadingSection.style.display = 'none';
+            checksSection.style.display = 'block';
+            // Brief flash of error on the input
+            domainInput.style.borderColor = '#FF4757';
+            setTimeout(function() { domainInput.style.borderColor = 'rgba(255,255,255,0.08)'; }, 3000);
+            alert(message);
+        }
+
         function startAudit() {
             var domain = domainInput.value.trim().toLowerCase();
             if (!domain) {
@@ -818,13 +871,16 @@
                 return;
             }
 
+            // Rate limiting check
+            if (!canRunAudit()) return;
+
             // Show loading
             checksSection.style.display = 'none';
             resultsSection.style.display = 'none';
             loadingSection.style.display = 'block';
             loadingDomain.textContent = 'Auditing ' + domain + '...';
 
-            // Rotating messages
+            // Rotating messages (cycle every 2 seconds for the longer live audit)
             var messages = [
                 'Fetching homepage...',
                 'Analyzing meta tags and titles...',
@@ -832,6 +888,9 @@
                 'Evaluating content quality...',
                 'Testing mobile responsiveness...',
                 'Reviewing local SEO signals...',
+                'Analyzing competitor landscape...',
+                'Checking page speed metrics...',
+                'Reviewing internal link structure...',
                 'Compiling results...'
             ];
             var msgIndex = 0;
@@ -844,21 +903,39 @@
                         loadingStatus.textContent = messages[msgIndex];
                         loadingStatus.style.opacity = '1';
                     }, 200);
+                } else {
+                    // Loop back to keep messages going if API takes longer
+                    msgIndex = 0;
+                    loadingStatus.style.opacity = '0';
+                    setTimeout(function() {
+                        loadingStatus.textContent = messages[0];
+                        loadingStatus.style.opacity = '1';
+                    }, 200);
                 }
-            }, 800);
+            }, 2000);
 
-            // Random delay 4-7 seconds
-            var delay = 4000 + Math.random() * 3000;
-            setTimeout(function() {
+            currentDomain = domain;
+
+            // Call live API with fallback to mock
+            runLiveAudit(domain)
+            .then(function(results) {
                 clearInterval(msgInterval);
                 loadingSection.style.display = 'none';
-                currentDomain = domain;
-                currentResults = generateResults(domain);
+                currentResults = results;
                 showResults(currentResults);
-            }, delay);
+            })
+            .catch(function(err) {
+                console.warn('Live audit failed, using estimated results:', err.message);
+                clearInterval(msgInterval);
+                loadingSection.style.display = 'none';
+                currentResults = generateMockResults(domain);
+                currentResults.summary = 'Estimated assessment based on common patterns for sites like ' + domain + '. Request a detailed audit for accurate results.';
+                showResults(currentResults);
+            });
         }
 
-        function generateResults(domain) {
+        // Mock results fallback
+        function generateMockResults(domain) {
             var seed = 0;
             for (var i = 0; i < domain.length; i++) seed += domain.charCodeAt(i);
             var r = function(min, max) {
