@@ -15,12 +15,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("*.svg");
   eleventyConfig.addPassthroughCopy("*.webp");
   // Directories
+  eleventyConfig.addPassthroughCopy("fonts");
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("downloads");
   eleventyConfig.addPassthroughCopy("netlify");
   eleventyConfig.addPassthroughCopy("emails");
   eleventyConfig.addPassthroughCopy("admin");
   // Config and data files
+  eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy("netlify.toml");
   eleventyConfig.addPassthroughCopy("sitemap.xml");
   eleventyConfig.addPassthroughCopy("package.json");
