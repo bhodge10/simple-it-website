@@ -787,6 +787,15 @@
             })
             .then(function(response) {
                 if (!response.ok) throw new Error('Form submission failed');
+                // GA4: Track lead form submission
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'audit_form_submitted', {
+                        'event_category': 'SitePilot',
+                        'event_label': currentDomain,
+                        'audit_score': currentResults ? currentResults.overall_score : 0,
+                        'audit_grade': currentResults ? currentResults.overall_grade : ''
+                    });
+                }
                 var userName = document.getElementById('leadName').value;
                 var successEl = document.getElementById('formSuccess');
                 successEl.innerHTML =
@@ -876,6 +885,14 @@
             // Rate limiting check
             if (!canRunAudit()) return;
 
+            // GA4: Track audit started
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'audit_started', {
+                    'event_category': 'SitePilot',
+                    'event_label': domain
+                });
+            }
+
             // Show loading
             checksSection.style.display = 'none';
             resultsSection.style.display = 'none';
@@ -924,6 +941,16 @@
                 clearInterval(msgInterval);
                 loadingSection.style.display = 'none';
                 currentResults = results;
+                // GA4: Track audit completed (live)
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'audit_completed', {
+                        'event_category': 'SitePilot',
+                        'event_label': domain,
+                        'audit_source': 'live',
+                        'audit_score': results.overall_score,
+                        'audit_grade': results.overall_grade
+                    });
+                }
                 showResults(currentResults);
             })
             .catch(function(err) {
@@ -932,6 +959,16 @@
                 loadingSection.style.display = 'none';
                 currentResults = generateMockResults(domain);
                 currentResults.summary = 'Estimated assessment based on common patterns for sites like ' + domain + '. Request a detailed audit for accurate results.';
+                // GA4: Track audit completed (mock fallback)
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'audit_completed', {
+                        'event_category': 'SitePilot',
+                        'event_label': domain,
+                        'audit_source': 'mock',
+                        'audit_score': currentResults.overall_score,
+                        'audit_grade': currentResults.overall_grade
+                    });
+                }
                 showResults(currentResults);
             });
         }
