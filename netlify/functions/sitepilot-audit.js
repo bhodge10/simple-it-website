@@ -38,12 +38,31 @@ exports.handler = async (event) => {
 
       if (res.ok) {
         const fullHtml = await res.text();
-        // Extract <head> (meta tags, schema) and first part of <body> (headings, content)
+
+        // Extract <head> section
         const headMatch = fullHtml.match(/<head[\s\S]*?<\/head>/i);
-        const bodyMatch = fullHtml.match(/<body[\s\S]*?<\/body>/i);
         const head = headMatch ? headMatch[0] : '';
-        const bodyPreview = bodyMatch ? bodyMatch[0].slice(0, 8000) : '';
-        liveHtml = head + '\n<!-- BODY PREVIEW (first 8000 chars) -->\n' + bodyPreview;
+
+        // Extract ALL JSON-LD schema blocks from the FULL HTML (before truncation)
+        const schemaBlocks = [];
+        const schemaRegex = /<script\s+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+        let schemaMatch;
+        while ((schemaMatch = schemaRegex.exec(fullHtml)) !== null) {
+          schemaBlocks.push(schemaMatch[0]);
+        }
+
+        // Get body preview (truncated for content analysis)
+        const bodyMatch = fullHtml.match(/<body[\s\S]*?<\/body>/i);
+        const bodyPreview = bodyMatch ? bodyMatch[0].slice(0, 10000) : '';
+
+        // Build the HTML context with schema blocks preserved separately
+        liveHtml = head + '\n<!-- BODY PREVIEW (first 10000 chars) -->\n' + bodyPreview;
+
+        if (schemaBlocks.length > 0) {
+          liveHtml += '\n\n<!-- ALL SCHEMA MARKUP BLOCKS (extracted from full HTML, not truncated) -->\n';
+          liveHtml += schemaBlocks.join('\n');
+        }
+
         break;
       }
     } catch (err) {
@@ -99,7 +118,7 @@ META TAGS & TITLES: Check the live HTML <head> for: unique <title> tag with keyw
 
 CONTENT QUALITY: Check the live HTML <body> for: sufficient word count (300+ words on homepage), clear value proposition in the hero/header area, specific metrics or differentiators (not generic marketing speak), testimonials or social proof, clear calls to action.
 
-SCHEMA MARKUP: Check the live HTML for: JSON-LD script tags, LocalBusiness schema, FAQPage schema, Service schema, proper nesting and required fields. This is the most important category to check from live HTML since search engines may not have indexed new schema yet.
+SCHEMA MARKUP: All JSON-LD schema blocks have been extracted from the FULL page HTML and included below — look for the section labeled "ALL SCHEMA MARKUP BLOCKS". Check for: LocalBusiness schema, FAQPage schema, Service schema, OfferCatalog, AggregateRating, proper nesting and required fields. If multiple schema blocks are present, that is a strong positive signal — score accordingly.
 
 MOBILE FRIENDLINESS: Check for: viewport meta tag, click-to-call links for phone numbers, responsive indicators in CSS, mobile-friendly navigation patterns.
 
