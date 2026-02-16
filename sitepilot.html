@@ -1037,42 +1037,82 @@
                 }, 200);
             }, 3000);
 
-            // Show email capture card after 8 seconds of waiting
+            // Show email capture card after 10 seconds of waiting
             setTimeout(function() {
                 if (loadingSection.style.display === 'block') {
                     document.getElementById('emailCaptureCard').style.display = 'block';
                 }
-            }, 8000);
+            }, 10000);
 
-            // Call background function (returns 202 immediately)
-            fetch('/.netlify/functions/sitepilot-audit-background', {
+            // Step 1: Try synchronous audit (works for most sites within Netlify timeout)
+            var syncController = new AbortController();
+            var syncTimeout = setTimeout(function() { syncController.abort(); }, 15000);
+
+            fetch('/.netlify/functions/sitepilot-audit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ domain: domain, auditId: currentAuditId })
+                body: JSON.stringify({ domain: domain }),
+                signal: syncController.signal
             })
             .then(function(res) {
-                if (!res.ok && res.status !== 202) {
-                    throw new Error('Failed to start audit');
+                clearTimeout(syncTimeout);
+                if (!res.ok) {
+                    return res.json().catch(function() { return { error: 'Unknown error' }; }).then(function(err) {
+                        throw new Error(err.error || 'Audit failed');
+                    });
                 }
-                // Start polling for results
-                pollStartTime = Date.now();
-                pollTimer = setTimeout(pollForResults, 5000);
+                return res.json();
             })
-            .catch(function(err) {
-                console.warn('Background audit failed to start:', err.message);
+            .then(function(results) {
+                if (!results || !results.overall_score) throw new Error('Invalid results');
+                // Sync audit succeeded — show results immediately
                 cleanupLoading();
-                currentResults = generateMockResults(domain);
-                currentResults.summary = 'Estimated assessment based on common patterns for sites like ' + domain + '. Request a detailed audit for accurate results.';
+                currentResults = results;
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'audit_completed', {
                         'event_category': 'SitePilot',
                         'event_label': domain,
-                        'audit_source': 'mock',
-                        'audit_score': currentResults.overall_score,
-                        'audit_grade': currentResults.overall_grade
+                        'audit_source': 'live',
+                        'audit_score': results.overall_score,
+                        'audit_grade': results.overall_grade
                     });
                 }
                 showResults(currentResults);
+            })
+            .catch(function(syncErr) {
+                clearTimeout(syncTimeout);
+                console.warn('Sync audit failed:', syncErr.message, '— trying background function');
+
+                // Step 2: Try background function (for slow sites / longer analysis)
+                fetch('/.netlify/functions/sitepilot-audit-background', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ domain: domain, auditId: currentAuditId })
+                })
+                .then(function(res) {
+                    if (!res.ok && res.status !== 202) {
+                        throw new Error('Background function returned ' + res.status);
+                    }
+                    // Background function started — poll for results
+                    pollStartTime = Date.now();
+                    pollTimer = setTimeout(pollForResults, 5000);
+                })
+                .catch(function(bgErr) {
+                    console.warn('Background audit also failed:', bgErr.message, '— showing estimated results');
+                    cleanupLoading();
+                    currentResults = generateMockResults(domain);
+                    currentResults.summary = 'Estimated assessment based on common patterns for sites like ' + domain + '. Request a detailed audit for accurate results.';
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'audit_completed', {
+                            'event_category': 'SitePilot',
+                            'event_label': domain,
+                            'audit_source': 'mock',
+                            'audit_score': currentResults.overall_score,
+                            'audit_grade': currentResults.overall_grade
+                        });
+                    }
+                    showResults(currentResults);
+                });
             });
         }
 
