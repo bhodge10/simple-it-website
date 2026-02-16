@@ -565,7 +565,7 @@
         </div>
         <div class="trust">
             <span>&#x1F50D; Real AI analysis, not a template</span>
-            <span>&#x26A1; Results in under 30 seconds</span>
+            <span>&#x26A1; Results in under 60 seconds</span>
             <span>&#x1F512; No login required</span>
         </div>
     </section>
@@ -606,6 +606,19 @@
         <div class="spinner"></div>
         <h3 id="loadingDomain">Auditing...</h3>
         <p class="status" id="loadingStatus">Fetching homepage...</p>
+        <div id="emailCaptureCard" style="display:none;margin:30px auto 0;max-width:440px;background:#111638;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:24px;">
+            <p style="color:#E8E6F0;font-size:14px;margin:0 0 4px;font-weight:600;">Get your results by email</p>
+            <p style="color:#8B8AA0;font-size:12px;margin:0 0 16px;">We'll send the full report as soon as it's ready — even if you close this page.</p>
+            <div id="emailCaptureForm">
+                <input type="text" id="notifyName" placeholder="Your name" style="width:100%;box-sizing:border-box;padding:10px 14px;margin-bottom:8px;background:#0A0E27;border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#E8E6F0;font-family:Sora,sans-serif;font-size:13px;">
+                <input type="email" id="notifyEmail" placeholder="you@yourbusiness.com" required style="width:100%;box-sizing:border-box;padding:10px 14px;margin-bottom:10px;background:#0A0E27;border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#E8E6F0;font-family:Sora,sans-serif;font-size:13px;">
+                <button id="notifyBtn" onclick="submitEmailNotify()" style="width:100%;padding:11px;background:linear-gradient(135deg,#0066FF,#00D4AA);color:#fff;border:none;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;font-family:Sora,sans-serif;">Email My Report →</button>
+            </div>
+            <div id="emailCaptureSuccess" style="display:none;text-align:center;">
+                <p style="color:#00D4AA;font-size:14px;margin:0;">✓ We'll email your report when it's ready!</p>
+            </div>
+        </div>
+        <p style="color:#555;font-size:11px;margin-top:16px;text-align:center;" id="loadingOrWait">Results will appear here automatically</p>
     </section>
 
     <!-- Results -->
@@ -728,8 +741,13 @@
         // State
         var currentDomain = '';
         var currentResults = null;
+        var currentAuditId = '';
         var lastAuditTime = 0;
         var COOLDOWN_MS = 30000; // 30 seconds between audits
+        var pollTimer = null;
+        var pollStartTime = 0;
+        var MAX_POLL_MS = 90000; // 90 seconds max before mock fallback
+        var msgInterval = null;
 
         // Elements
         var domainInput = document.getElementById('domainInput');
@@ -828,34 +846,114 @@
             return true;
         }
 
-        // Live audit via Netlify function
-        function runLiveAudit(domain) {
-            var controller = new AbortController();
-            var timeout = setTimeout(function() { controller.abort(); }, 45000);
+        // Clean up loading state
+        function cleanupLoading() {
+            if (msgInterval) { clearInterval(msgInterval); msgInterval = null; }
+            if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
+            loadingSection.style.display = 'none';
+        }
 
-            return fetch('/.netlify/functions/sitepilot-audit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ domain: domain }),
-                signal: controller.signal
-            })
-            .then(function(response) {
-                clearTimeout(timeout);
-                if (!response.ok) {
-                    return response.json().catch(function() { return { error: 'Unknown error' }; }).then(function(err) {
-                        throw new Error(err.error || 'Audit failed');
+        // Poll for audit results from background function
+        function pollForResults() {
+            var elapsed = Date.now() - pollStartTime;
+            if (elapsed > MAX_POLL_MS) {
+                // Timeout — fall back to mock
+                cleanupLoading();
+                currentResults = generateMockResults(currentDomain);
+                currentResults.summary = 'Estimated assessment based on common patterns for sites like ' + currentDomain + '. Request a detailed audit for accurate results.';
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'audit_completed', {
+                        'event_category': 'SitePilot',
+                        'event_label': currentDomain,
+                        'audit_source': 'mock',
+                        'audit_score': currentResults.overall_score,
+                        'audit_grade': currentResults.overall_grade
                     });
                 }
-                return response.json();
-            })
-            .catch(function(err) {
-                clearTimeout(timeout);
-                if (err.name === 'AbortError') {
-                    throw new Error('Audit timed out. The site may be slow to analyze \u2014 please try again.');
+                showResults(currentResults);
+                return;
+            }
+
+            fetch('/.netlify/functions/sitepilot-status?id=' + encodeURIComponent(currentAuditId))
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.status === 'complete' && data.results) {
+                    // Results ready!
+                    cleanupLoading();
+                    currentResults = data.results;
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'audit_completed', {
+                            'event_category': 'SitePilot',
+                            'event_label': currentDomain,
+                            'audit_source': 'live',
+                            'audit_score': currentResults.overall_score,
+                            'audit_grade': currentResults.overall_grade
+                        });
+                    }
+                    showResults(currentResults);
+                } else if (data.status === 'error') {
+                    // Background function errored — fall back to mock
+                    cleanupLoading();
+                    currentResults = generateMockResults(currentDomain);
+                    currentResults.summary = 'Estimated assessment based on common patterns for sites like ' + currentDomain + '. Request a detailed audit for accurate results.';
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'audit_completed', {
+                            'event_category': 'SitePilot',
+                            'event_label': currentDomain,
+                            'audit_source': 'mock',
+                            'audit_score': currentResults.overall_score,
+                            'audit_grade': currentResults.overall_grade
+                        });
+                    }
+                    showResults(currentResults);
+                } else {
+                    // Still processing — poll again in 5 seconds
+                    pollTimer = setTimeout(pollForResults, 5000);
                 }
-                throw err;
+            })
+            .catch(function() {
+                // Network error on poll — try again
+                pollTimer = setTimeout(pollForResults, 5000);
             });
         }
+
+        // Submit email for notification when results are ready
+        function submitEmailNotify() {
+            var email = document.getElementById('notifyEmail').value.trim();
+            var name = document.getElementById('notifyName').value.trim();
+            if (!email) {
+                document.getElementById('notifyEmail').style.borderColor = '#FF4757';
+                setTimeout(function() { document.getElementById('notifyEmail').style.borderColor = 'rgba(255,255,255,0.08)'; }, 2000);
+                return;
+            }
+            var btn = document.getElementById('notifyBtn');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+
+            fetch('/.netlify/functions/sitepilot-notify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ auditId: currentAuditId, email: email, name: name, domain: currentDomain })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function() {
+                document.getElementById('emailCaptureForm').style.display = 'none';
+                document.getElementById('emailCaptureSuccess').style.display = 'block';
+                // GA4: Track email capture
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'audit_email_captured', {
+                        'event_category': 'SitePilot',
+                        'event_label': currentDomain
+                    });
+                }
+            })
+            .catch(function() {
+                btn.disabled = false;
+                btn.textContent = 'Email My Report \u2192';
+            });
+        }
+        // Expose for onclick handler
+        window.submitEmailNotify = submitEmailNotify;
 
         // Show error in the audit area
         function showAuditError(message) {
@@ -893,13 +991,26 @@
                 });
             }
 
+            // Generate audit ID and store state
+            currentDomain = domain;
+            currentAuditId = domain.replace(/[^a-z0-9]/g, '-') + '-' + Date.now();
+
             // Show loading
             checksSection.style.display = 'none';
             resultsSection.style.display = 'none';
             loadingSection.style.display = 'block';
             loadingDomain.textContent = 'Auditing ' + domain + '...';
 
-            // Rotating messages (cycle every 2 seconds for the longer live audit)
+            // Reset email capture card
+            document.getElementById('emailCaptureCard').style.display = 'none';
+            document.getElementById('emailCaptureForm').style.display = 'block';
+            document.getElementById('emailCaptureSuccess').style.display = 'none';
+            document.getElementById('notifyName').value = '';
+            document.getElementById('notifyEmail').value = '';
+            document.getElementById('notifyBtn').disabled = false;
+            document.getElementById('notifyBtn').textContent = 'Email My Report \u2192';
+
+            // Rotating status messages (cycle every 3 seconds)
             var messages = [
                 'Fetching homepage...',
                 'Analyzing meta tags and titles...',
@@ -910,56 +1021,48 @@
                 'Analyzing competitor landscape...',
                 'Checking page speed metrics...',
                 'Reviewing internal link structure...',
-                'Compiling results...'
+                'Compiling results...',
+                'Almost there...',
+                'Finalizing your report...'
             ];
             var msgIndex = 0;
             loadingStatus.textContent = messages[0];
-            var msgInterval = setInterval(function() {
+            msgInterval = setInterval(function() {
                 msgIndex++;
-                if (msgIndex < messages.length) {
-                    loadingStatus.style.opacity = '0';
-                    setTimeout(function() {
-                        loadingStatus.textContent = messages[msgIndex];
-                        loadingStatus.style.opacity = '1';
-                    }, 200);
-                } else {
-                    // Loop back to keep messages going if API takes longer
-                    msgIndex = 0;
-                    loadingStatus.style.opacity = '0';
-                    setTimeout(function() {
-                        loadingStatus.textContent = messages[0];
-                        loadingStatus.style.opacity = '1';
-                    }, 200);
-                }
-            }, 2000);
+                if (msgIndex >= messages.length) msgIndex = 0;
+                loadingStatus.style.opacity = '0';
+                setTimeout(function() {
+                    loadingStatus.textContent = messages[msgIndex];
+                    loadingStatus.style.opacity = '1';
+                }, 200);
+            }, 3000);
 
-            currentDomain = domain;
-
-            // Call live API with fallback to mock
-            runLiveAudit(domain)
-            .then(function(results) {
-                clearInterval(msgInterval);
-                loadingSection.style.display = 'none';
-                currentResults = results;
-                // GA4: Track audit completed (live)
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'audit_completed', {
-                        'event_category': 'SitePilot',
-                        'event_label': domain,
-                        'audit_source': 'live',
-                        'audit_score': results.overall_score,
-                        'audit_grade': results.overall_grade
-                    });
+            // Show email capture card after 8 seconds of waiting
+            setTimeout(function() {
+                if (loadingSection.style.display === 'block') {
+                    document.getElementById('emailCaptureCard').style.display = 'block';
                 }
-                showResults(currentResults);
+            }, 8000);
+
+            // Call background function (returns 202 immediately)
+            fetch('/.netlify/functions/sitepilot-audit-background', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ domain: domain, auditId: currentAuditId })
+            })
+            .then(function(res) {
+                if (!res.ok && res.status !== 202) {
+                    throw new Error('Failed to start audit');
+                }
+                // Start polling for results
+                pollStartTime = Date.now();
+                pollTimer = setTimeout(pollForResults, 5000);
             })
             .catch(function(err) {
-                console.warn('Live audit failed, using estimated results:', err.message);
-                clearInterval(msgInterval);
-                loadingSection.style.display = 'none';
+                console.warn('Background audit failed to start:', err.message);
+                cleanupLoading();
                 currentResults = generateMockResults(domain);
                 currentResults.summary = 'Estimated assessment based on common patterns for sites like ' + domain + '. Request a detailed audit for accurate results.';
-                // GA4: Track audit completed (mock fallback)
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'audit_completed', {
                         'event_category': 'SitePilot',
