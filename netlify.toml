@@ -1989,6 +1989,17 @@ from = "/ticket-submitted"
 to = "/ticket-submitted.html"
 status = 301
 
+# SitePilot pretty URLs
+[[redirects]]
+from = "/sitepilot/"
+to = "/sitepilot.html"
+status = 301
+
+[[redirects]]
+from = "/sitepilot"
+to = "/sitepilot.html"
+status = 301
+
 # Catch-all: return 404 page (not a redirect)
 [[redirects]]
 from = "/*"

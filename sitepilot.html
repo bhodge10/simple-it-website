@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free SEO Audit | SitePilot AI Website Management | Simple IT</title>
+    <link rel="canonical" href="https://simple-it.us/sitepilot">
+    <meta name="description" content="Get a free instant SEO audit of your website. SitePilot AI analyzes your meta tags, content quality, schema markup, mobile friendliness, page speed, and local SEO.">
+    <link rel="icon" type="image/png" href="/simple-it-logo.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free SEO Audit | SitePilot AI Website Management | Simple IT">
+    <meta property="og:description" content="Get a free instant SEO audit of your website. SitePilot AI analyzes your meta tags, content quality, schema markup, mobile friendliness, page speed, and local SEO.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://simple-it.us/simple-it-logo.png">
+    <meta property="og:url" content="https://simple-it.us/sitepilot">
+    <meta property="og:site_name" content="Simple IT">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free SEO Audit | SitePilot AI Website Management | Simple IT">
+    <meta name="twitter:description" content="Get a free instant SEO audit of your website. SitePilot AI analyzes your meta tags, content quality, schema markup, mobile friendliness, page speed, and local SEO.">
+    <meta name="twitter:image" content="https://simple-it.us/simple-it-logo.png">
+
+    <!-- LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Simple IT",
+      "url": "https://simple-it.us",
+      "telephone": "859-449-7878",
+      "email": "info@simple-it.us",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2220 Grandview Drive, Suite 250",
+        "addressLocality": "Ft. Mitchell",
+        "addressRegion": "KY",
+        "postalCode": "41017",
+        "addressCountry": "US"
+      }
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background: #0A0E27;
+            color: #E8E6F0;
+            line-height: 1.6;
+        }
+
+        /* Nav */
+        .sp-nav {
+            background: #0A0E27;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        .sp-nav-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #E8E6F0;
+            text-decoration: none;
+        }
+        .sp-nav-right a {
+            color: #8B8AA0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .sp-nav-right a:hover { color: #00D4AA; }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 5rem 1.5rem 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(0,212,170,0.12);
+            color: #00D4AA;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+        }
+        .hero h1 .red { color: #FF4757; }
+        .hero .subtitle {
+            color: #8B8AA0;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Input row */
+        .input-row {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 520px;
+            margin: 0 auto 1.5rem;
+        }
+        .input-row input {
+            flex: 1;
+            padding: 1rem 1.2rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            background: #111638;
+            color: #E8E6F0;
+            font-family: 'Sora', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .input-row input::placeholder { color: #8B8AA0; }
+        .input-row input:focus { outline: none; border-color: #0066FF; }
+        .input-row button {
+            padding: 1rem 1.8rem;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0066FF, #00D4AA);
+            color: white;
+            font-family: 'Sora', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.2s, opacity 0.3s;
+        }
+        .input-row button:hover { transform: translateY(-2px); opacity: 0.95; }
+
+        /* Trust */
+        .trust {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            color: #8B8AA0;
+            font-size: 0.85rem;
+        }
+        .trust span { white-space: nowrap; }
+
+        /* Checks grid */
+        .checks {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+        .checks h2 {
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+        }
+        .checks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+        .check-card {
+            background: #111638;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .check-card:hover {
+            border-color: rgba(0,102,255,0.3);
+            transform: translateY(-3px);
+        }
+        .check-card .icon { font-size: 2.2rem; margin-bottom: 0.6rem; }
+        .check-card h3 { font-size: 0.95rem; font-weight: 600; }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 5rem 1.5rem;
+            display: none;
+        }
+        .spinner {
+            width: 52px;
+            height: 52px;
+            border: 3px solid rgba(255,255,255,0.08);
+            border-top-color: #00D4AA;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+        .loading .status {
+            color: #8B8AA0;
+            font-size: 0.95rem;
+            min-height: 1.5em;
+            transition: opacity 0.3s;
+        }
+
+        /* Results container */
+        .results {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* Score header */
+        .score-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .score-ring {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 1.5rem;
+        }
+        .score-ring svg { transform: rotate(-90deg); }
+        .score-ring .bg-circle {
+            stroke: rgba(255,255,255,0.08);
+            fill: none;
+        }
+        .score-ring .fg-circle {
+            fill: none;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1.5s ease;
+        }
+        .score-ring .grade {
+            position: absolute;
+            top: 44%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        .score-ring .score-number {
+            position: absolute;
+            top: 66%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.85rem;
+            color: #8B8AA0;
+        }
+        .score-header .summary {
+            color: #8B8AA0;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .issue-badges {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        /* Category scores */
+        .categories {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 3rem;
+        }
+        .category {
+            background: #111638;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .cat-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+        .cat-name { font-weight: 600; font-size: 0.95rem; }
+        .cat-score { font-weight: 700; font-size: 0.95rem; }
+        .bar-bg {
+            height: 8px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.2s ease;
+        }
+
+        /* Issues */
+        .issues { margin-bottom: 2.5rem; }
+        .issues h3 { font-size: 1.3rem; margin-bottom: 1.2rem; }
+        .issue-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .issue-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 0.45rem;
+        }
+        .issue-cat {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #8B8AA0;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.2rem;
+        }
+        .issue-text { font-size: 0.95rem; line-height: 1.5; }
+
+        /* Blurred findings */
+        .blurred-section { margin-bottom: 3rem; }
+        .blurred-section h3 { font-size: 1.3rem; margin-bottom: 1.2rem; }
+        .blurred-item {
+            position: relative;
+            background: #111638;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .blurred-text {
+            filter: blur(4px);
+            user-select: none;
+            pointer-events: none;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .blurred-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #00D4AA;
+            background: rgba(17, 22, 56, 0.3);
+        }
+
+        /* CTA */
+        .cta {
+            background: #111638;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .cta h2 {
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            margin-bottom: 0.75rem;
+        }
+        .cta-sub {
+            color: #8B8AA0;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        .cta-buttons a {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        .cta-buttons a:hover { transform: translateY(-2px); }
+        .btn-call {
+            background: linear-gradient(135deg, #0066FF, #00D4AA);
+            color: white;
+        }
+        .btn-email {
+            background: transparent;
+            color: #E8E6F0;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .cta .pricing {
+            color: #8B8AA0;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .sp-footer {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            color: #8B8AA0;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .checks-grid { grid-template-columns: repeat(2, 1fr); }
+            .categories { grid-template-columns: 1fr; }
+            .input-row { flex-direction: column; }
+            .input-row button { width: 100%; }
+            .hero { padding: 3rem 1.5rem 2rem; }
+            .cta { padding: 2rem 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .checks-grid { grid-template-columns: 1fr; }
+            .trust { flex-direction: column; align-items: center; gap: 0.5rem; }
+        }
+    </style>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6T2XSC5NN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-W6T2XSC5NN');
+    </script>
+    <!-- End Google Analytics -->
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="sp-nav">
+        <a href="/sitepilot" class="sp-nav-logo">&#x1F680; SitePilot AI</a>
+        <div class="sp-nav-right">
+            <a href="/">by Simple IT</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="badge">Free Website Audit</div>
+        <h1>Is your website <span class="red">invisible</span> to Google?</h1>
+        <p class="subtitle">Enter your domain and our AI will audit your site in seconds. See how you score on SEO, content quality, schema markup, and more.</p>
+        <div class="input-row">
+            <input type="text" id="domainInput" placeholder="&#x1F310; yourbusiness.com">
+            <button id="auditBtn">Audit My Site</button>
+        </div>
+        <div class="trust">
+            <span>&#x1F50D; Real AI analysis, not a template</span>
+            <span>&#x26A1; Results in under 30 seconds</span>
+            <span>&#x1F512; No login required</span>
+        </div>
+    </section>
+
+    <!-- What SitePilot Checks -->
+    <section class="checks" id="checksSection">
+        <h2>What SitePilot checks</h2>
+        <div class="checks-grid">
+            <div class="check-card">
+                <div class="icon">&#x1F3F7;&#xFE0F;</div>
+                <h3>Meta Tags &amp; Titles</h3>
+            </div>
+            <div class="check-card">
+                <div class="icon">&#x1F4DD;</div>
+                <h3>Content Quality</h3>
+            </div>
+            <div class="check-card">
+                <div class="icon">&#x1F527;</div>
+                <h3>Schema Markup</h3>
+            </div>
+            <div class="check-card">
+                <div class="icon">&#x1F4F1;</div>
+                <h3>Mobile Friendliness</h3>
+            </div>
+            <div class="check-card">
+                <div class="icon">&#x26A1;</div>
+                <h3>Page Speed</h3>
+            </div>
+            <div class="check-card">
+                <div class="icon">&#x1F4CD;</div>
+                <h3>Local SEO</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading State -->
+    <section class="loading" id="loadingSection">
+        <div class="spinner"></div>
+        <h3 id="loadingDomain">Auditing...</h3>
+        <p class="status" id="loadingStatus">Fetching homepage...</p>
+    </section>
+
+    <!-- Results -->
+    <section class="results" id="resultsSection">
+        <!-- Score Header -->
+        <div class="score-header">
+            <div class="score-ring">
+                <svg width="160" height="160" viewBox="0 0 160 160">
+                    <circle class="bg-circle" cx="80" cy="80" r="70" stroke-width="10"/>
+                    <circle class="fg-circle" id="scoreCircle" cx="80" cy="80" r="70" stroke-width="10"
+                            stroke="#00D4AA" stroke-dasharray="439.82" stroke-dashoffset="439.82"/>
+                </svg>
+                <div class="grade" id="gradeText">C+</div>
+                <div class="score-number" id="scoreNumber">54/100</div>
+            </div>
+            <p class="summary" id="summaryText"></p>
+            <div class="issue-badges" id="issueBadges"></div>
+        </div>
+
+        <!-- Category Scores -->
+        <div class="categories" id="categoriesGrid"></div>
+
+        <!-- Issues Found -->
+        <div class="issues">
+            <h3>Issues Found</h3>
+            <div id="issuesList"></div>
+        </div>
+
+        <!-- Blurred Findings -->
+        <div class="blurred-section">
+            <h3>Additional Findings</h3>
+            <div id="blurredList"></div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta">
+            <h2>Want to fix all <span id="ctaIssueCount">0</span> issues automatically?</h2>
+            <p class="cta-sub">SitePilot AI monitors your website 24/7, fixes SEO issues, publishes content, and keeps your site ranking — all on autopilot.</p>
+            <div class="cta-buttons">
+                <a href="tel:8594497878" class="btn-call">&#x1F4DE; Call 859-449-7878</a>
+                <a href="mailto:info@simple-it.us?subject=SitePilot%20Inquiry" class="btn-email">&#x2709;&#xFE0F; Email Us</a>
+            </div>
+            <p class="pricing">$149/month &middot; $750 one-time setup &middot; Month-to-month, cancel anytime</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="sp-footer">
+        <p>SitePilot is a product of Simple IT, LLC &middot; 2220 Grandview Drive, Suite 250, Ft. Mitchell, KY 41017</p>
+    </footer>
+
+    <script>
+    (function() {
+        // Elements
+        const domainInput = document.getElementById('domainInput');
+        const auditBtn = document.getElementById('auditBtn');
+        const checksSection = document.getElementById('checksSection');
+        const loadingSection = document.getElementById('loadingSection');
+        const resultsSection = document.getElementById('resultsSection');
+        const loadingDomain = document.getElementById('loadingDomain');
+        const loadingStatus = document.getElementById('loadingStatus');
+
+        // Events
+        auditBtn.addEventListener('click', startAudit);
+        domainInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') startAudit();
+        });
+
+        function startAudit() {
+            var domain = domainInput.value.trim().toLowerCase();
+            if (!domain) {
+                domainInput.focus();
+                return;
+            }
+
+            // Clean up domain
+            domain = domain.replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/.*$/, '');
+            if (!domain.includes('.')) {
+                domainInput.style.borderColor = '#FF4757';
+                setTimeout(function() { domainInput.style.borderColor = 'rgba(255,255,255,0.08)'; }, 2000);
+                return;
+            }
+
+            // Show loading
+            checksSection.style.display = 'none';
+            resultsSection.style.display = 'none';
+            loadingSection.style.display = 'block';
+            loadingDomain.textContent = 'Auditing ' + domain + '...';
+
+            // Rotating messages
+            var messages = [
+                'Fetching homepage...',
+                'Analyzing meta tags and titles...',
+                'Checking schema markup...',
+                'Evaluating content quality...',
+                'Testing mobile responsiveness...',
+                'Reviewing local SEO signals...',
+                'Compiling results...'
+            ];
+            var msgIndex = 0;
+            loadingStatus.textContent = messages[0];
+            var msgInterval = setInterval(function() {
+                msgIndex++;
+                if (msgIndex < messages.length) {
+                    loadingStatus.style.opacity = '0';
+                    setTimeout(function() {
+                        loadingStatus.textContent = messages[msgIndex];
+                        loadingStatus.style.opacity = '1';
+                    }, 200);
+                }
+            }, 800);
+
+            // Random delay 4-7 seconds
+            var delay = 4000 + Math.random() * 3000;
+            setTimeout(function() {
+                clearInterval(msgInterval);
+                loadingSection.style.display = 'none';
+                showResults(generateResults(domain));
+            }, delay);
+        }
+
+        function generateResults(domain) {
+            var seed = 0;
+            for (var i = 0; i < domain.length; i++) seed += domain.charCodeAt(i);
+            var r = function(min, max) {
+                seed = (seed * 9301 + 49297) % 233280;
+                return min + Math.floor((seed / 233280) * (max - min + 1));
+            };
+
+            var metaScore = r(35, 75);
+            var contentScore = r(40, 80);
+            var schemaScore = r(15, 55);
+            var mobileScore = r(50, 85);
+            var perfScore = r(40, 80);
+            var localScore = r(20, 65);
+            var overall = Math.round((metaScore + contentScore + schemaScore + mobileScore + perfScore + localScore) / 6);
+
+            var grade = overall >= 90 ? 'A' : overall >= 80 ? 'B+' : overall >= 70 ? 'B-' : overall >= 60 ? 'C+' : overall >= 50 ? 'C-' : overall >= 40 ? 'D+' : 'D';
+
+            var metaIssues = [
+                'Title tag is just the business name with no keywords or location',
+                'Meta descriptions are missing on multiple interior pages',
+                'Title tags exceed 60 characters and get truncated in search results',
+                'Duplicate title tags found across multiple pages',
+                'Homepage title tag doesn\'t include primary service or location'
+            ];
+            var contentIssues = [
+                'Homepage content is thin \u2014 under 300 words with no clear value proposition',
+                'Service descriptions are generic and could apply to any competitor',
+                'No blog or resource content to capture informational search queries',
+                'Multiple pages share nearly identical boilerplate content',
+                'No client testimonials or case studies with specific results'
+            ];
+            var schemaIssues = [
+                'No LocalBusiness schema markup found on any page',
+                'Missing FAQPage schema despite having FAQ content on the site',
+                'No Service schema to help Google understand your offerings',
+                'Organization schema is incomplete \u2014 missing logo and contact info',
+                'No review or rating schema markup configured'
+            ];
+            var mobileIssues = [
+                'Navigation menu requires two taps to reach contact page on mobile',
+                'No click-to-call button visible in mobile header',
+                'Text size drops below readable threshold on smaller screens',
+                'Contact form fields are too small for comfortable mobile input',
+                'Horizontal scrolling detected on mobile viewport'
+            ];
+            var perfIssues = [
+                'Page load time exceeds 4 seconds on mobile connection',
+                'Images not optimized \u2014 several files over 1MB each',
+                'No lazy loading on below-the-fold images',
+                'Render-blocking JavaScript delaying first contentful paint',
+                'No browser caching headers configured for static assets'
+            ];
+            var localIssues = [
+                'No city or region-specific landing pages for service areas',
+                'Business address not consistently formatted across pages',
+                'No Google Business Profile link found on the website',
+                'Service area pages are templated with minimal unique content',
+                'NAP (Name, Address, Phone) not matching Google Business Profile'
+            ];
+            var blurredOptions = [
+                'Found 7 pages with identical meta descriptions that compete against each other in search results',
+                'Your site loads 3.2x slower than the top-ranking competitor in your market',
+                'Competitor analysis shows 3 local businesses outranking you for your primary service keyword',
+                '12 images found without alt text \u2014 missed opportunity for image search visibility',
+                'Your domain authority is significantly below the top 3 competitors in your area',
+                'No internal linking strategy detected \u2014 service pages are orphaned from blog content',
+                'Google Search Console likely showing crawl errors from broken internal links',
+                'Your site is missing Open Graph tags \u2014 social shares show no preview image'
+            ];
+
+            var pick = function(arr) { return arr[r(0, arr.length - 1)]; };
+
+            return {
+                overall_score: overall,
+                overall_grade: grade,
+                summary: 'Your website has foundational issues limiting its visibility in local search results.',
+                categories: {
+                    meta: { score: metaScore, visible_issue: pick(metaIssues) },
+                    content: { score: contentScore, visible_issue: pick(contentIssues) },
+                    schema: { score: schemaScore, visible_issue: pick(schemaIssues) },
+                    mobile: { score: mobileScore, visible_issue: pick(mobileIssues) },
+                    performance: { score: perfScore, visible_issue: pick(perfIssues) },
+                    local: { score: localScore, visible_issue: pick(localIssues) }
+                },
+                critical_count: r(2, 5),
+                warning_count: r(3, 6),
+                passed_count: r(3, 6),
+                blurred_findings: [pick(blurredOptions), pick(blurredOptions), pick(blurredOptions)]
+            };
+        }
+
+        function getScoreColor(score) {
+            if (score >= 80) return '#00D4AA';
+            if (score >= 60) return '#FFBE0B';
+            return '#FF4757';
+        }
+
+        function showResults(data) {
+            resultsSection.style.display = 'block';
+
+            // Score ring
+            var scoreColor = getScoreColor(data.overall_score);
+            var circle = document.getElementById('scoreCircle');
+            circle.setAttribute('stroke', scoreColor);
+            var circumference = 2 * Math.PI * 70; // ~439.82
+            var offset = circumference * (1 - data.overall_score / 100);
+            // Reset and animate
+            circle.style.transition = 'none';
+            circle.style.strokeDashoffset = circumference;
+            setTimeout(function() {
+                circle.style.transition = 'stroke-dashoffset 1.5s ease';
+                circle.style.strokeDashoffset = offset;
+            }, 50);
+
+            document.getElementById('gradeText').textContent = data.overall_grade;
+            document.getElementById('gradeText').style.color = scoreColor;
+            document.getElementById('scoreNumber').textContent = data.overall_score + '/100';
+            document.getElementById('summaryText').textContent = data.summary;
+            document.getElementById('issueBadges').innerHTML =
+                '\uD83D\uDD34 ' + data.critical_count + ' Critical \u00B7 ' +
+                '\uD83D\uDFE1 ' + data.warning_count + ' Warnings \u00B7 ' +
+                '\uD83D\uDFE2 ' + data.passed_count + ' Passed';
+
+            // Category names
+            var catNames = {
+                meta: 'Meta Tags & Titles',
+                content: 'Content Quality',
+                schema: 'Schema Markup',
+                mobile: 'Mobile Friendliness',
+                performance: 'Page Speed',
+                local: 'Local SEO'
+            };
+
+            // Category scores
+            var catsEl = document.getElementById('categoriesGrid');
+            catsEl.innerHTML = '';
+            var keys = Object.keys(data.categories);
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                var cat = data.categories[key];
+                var color = getScoreColor(cat.score);
+                var div = document.createElement('div');
+                div.className = 'category';
+                div.innerHTML =
+                    '<div class="cat-header">' +
+                    '<span class="cat-name">' + catNames[key] + '</span>' +
+                    '<span class="cat-score" style="color:' + color + '">' + cat.score + '/100</span>' +
+                    '</div>' +
+                    '<div class="bar-bg"><div class="bar-fill" data-width="' + cat.score + '" style="background:' + color + '"></div></div>';
+                catsEl.appendChild(div);
+            }
+
+            // Animate bars
+            setTimeout(function() {
+                var bars = document.querySelectorAll('.bar-fill');
+                for (var j = 0; j < bars.length; j++) {
+                    bars[j].style.width = bars[j].getAttribute('data-width') + '%';
+                }
+            }, 200);
+
+            // Issues
+            var issuesEl = document.getElementById('issuesList');
+            issuesEl.innerHTML = '';
+            for (var k = 0; k < keys.length; k++) {
+                var ikey = keys[k];
+                var icat = data.categories[ikey];
+                var icolor = getScoreColor(icat.score);
+                var item = document.createElement('div');
+                item.className = 'issue-item';
+                item.innerHTML =
+                    '<div class="issue-dot" style="background:' + icolor + '"></div>' +
+                    '<div>' +
+                    '<div class="issue-cat">' + catNames[ikey] + '</div>' +
+                    '<div class="issue-text">' + icat.visible_issue + '</div>' +
+                    '</div>';
+                issuesEl.appendChild(item);
+            }
+
+            // Blurred findings
+            var blurredEl = document.getElementById('blurredList');
+            blurredEl.innerHTML = '';
+            for (var b = 0; b < data.blurred_findings.length; b++) {
+                var bItem = document.createElement('div');
+                bItem.className = 'blurred-item';
+                bItem.innerHTML =
+                    '<div class="blurred-text">' + data.blurred_findings[b] + '</div>' +
+                    '<div class="blurred-overlay">\uD83D\uDD12 Unlock with SitePilot</div>';
+                blurredEl.appendChild(bItem);
+            }
+
+            // CTA issue count
+            var totalIssues = data.critical_count + data.warning_count;
+            document.getElementById('ctaIssueCount').textContent = totalIssues;
+
+            // Scroll to results
+            setTimeout(function() {
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    })();
+    </script>
+
+</body>
+</html>

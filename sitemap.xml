@@ -82,6 +82,13 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- SitePilot -->
+  <url>
+    <loc>https://simple-it.us/sitepilot</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Support Pages -->
   <url>
     <loc>https://simple-it.us/remote-support</loc>
