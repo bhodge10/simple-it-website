@@ -527,6 +527,7 @@
             .cta { padding: 2rem 1.5rem; }
             .cta-grid { grid-template-columns: 1fr; }
             .summary-box { margin-top: 0.5rem; }
+            #resultsEmailForm > div { flex-direction: column; }
         }
         @media (max-width: 480px) {
             .checks-grid { grid-template-columns: 1fr; }
@@ -640,6 +641,22 @@
 
         <!-- Category Scores -->
         <div class="categories" id="categoriesGrid"></div>
+
+        <!-- Email Report Card -->
+        <div id="resultsEmailCard" style="margin-bottom:2rem;background:#111638;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:24px;text-align:center;">
+            <p style="color:#E8E6F0;font-size:15px;margin:0 0 4px;font-weight:600;">Save a copy of your report</p>
+            <p style="color:#8B8AA0;font-size:13px;margin:0 0 16px;">We'll email you the full breakdown so you can reference it anytime.</p>
+            <div id="resultsEmailForm" style="max-width:400px;margin:0 auto;">
+                <div style="display:flex;gap:8px;margin-bottom:8px;">
+                    <input type="text" id="resultsEmailName" placeholder="Your name" style="flex:1;padding:10px 14px;background:#0A0E27;border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#E8E6F0;font-family:Sora,sans-serif;font-size:13px;">
+                    <input type="email" id="resultsEmailAddr" placeholder="you@yourbusiness.com" required style="flex:1.5;padding:10px 14px;background:#0A0E27;border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#E8E6F0;font-family:Sora,sans-serif;font-size:13px;">
+                </div>
+                <button id="resultsEmailBtn" onclick="sendResultsEmail()" style="width:100%;padding:11px;background:linear-gradient(135deg,#0066FF,#00D4AA);color:#fff;border:none;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;font-family:Sora,sans-serif;">Email My Report &rarr;</button>
+            </div>
+            <div id="resultsEmailSuccess" style="display:none;">
+                <p style="color:#00D4AA;font-size:14px;margin:0;">&#x2705; Report sent! Check your inbox.</p>
+            </div>
+        </div>
 
         <!-- Issues Found -->
         <div class="issues">
@@ -977,6 +994,45 @@
         // Expose for onclick handler
         window.submitEmailNotify = submitEmailNotify;
 
+        // Send results email from the results page
+        function sendResultsEmail() {
+            var email = document.getElementById('resultsEmailAddr').value.trim();
+            var name = document.getElementById('resultsEmailName').value.trim();
+            if (!email) {
+                document.getElementById('resultsEmailAddr').style.borderColor = '#FF4757';
+                setTimeout(function() { document.getElementById('resultsEmailAddr').style.borderColor = 'rgba(255,255,255,0.08)'; }, 2000);
+                return;
+            }
+            var btn = document.getElementById('resultsEmailBtn');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+
+            fetch('/.netlify/functions/sitepilot-notify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ auditId: currentAuditId, email: email, name: name, domain: currentDomain, results: currentResults })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function() {
+                document.getElementById('resultsEmailForm').style.display = 'none';
+                document.getElementById('resultsEmailSuccess').style.display = 'block';
+                // GA4: Track email capture from results page
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'audit_email_captured', {
+                        'event_category': 'SitePilot',
+                        'event_label': currentDomain,
+                        'audit_score': currentResults ? currentResults.overall_score : 0,
+                        'audit_grade': currentResults ? currentResults.overall_grade : ''
+                    });
+                }
+            })
+            .catch(function() {
+                btn.disabled = false;
+                btn.textContent = 'Email My Report \u2192';
+            });
+        }
+        window.sendResultsEmail = sendResultsEmail;
+
         // Show error in the audit area
         function showAuditError(message) {
             loadingSection.style.display = 'none';
@@ -1142,6 +1198,14 @@
 
         function showResults(data) {
             resultsSection.style.display = 'block';
+
+            // Reset results email card
+            document.getElementById('resultsEmailForm').style.display = 'block';
+            document.getElementById('resultsEmailSuccess').style.display = 'none';
+            document.getElementById('resultsEmailName').value = '';
+            document.getElementById('resultsEmailAddr').value = '';
+            document.getElementById('resultsEmailBtn').disabled = false;
+            document.getElementById('resultsEmailBtn').textContent = 'Email My Report \u2192';
 
             // Score ring
             var scoreColor = getScoreColor(data.overall_score);
