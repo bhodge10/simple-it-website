@@ -14,30 +14,41 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request' }) };
   }
 
-  const { auditId, email, name, domain } = body;
-  if (!auditId || !email) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Missing auditId or email' }) };
+  const { auditId, email, name, domain, results } = body;
+  if (!email) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Missing email' }) };
   }
 
   try {
-    const store = getStore('sitepilot-audits');
+    // If frontend already has results, send email immediately (no Blobs needed)
+    if (results && results.overall_score) {
+      await sendReportEmail(email, name, domain, results);
+      await sendInternalNotification(email, name, domain, results);
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sent: true }),
+      };
+    }
 
-    // Store email request for this audit
-    await store.setJSON(`email-${auditId}`, { email, name, domain, requestedAt: Date.now() });
+    // No results yet — store email request for background function to pick up
+    if (auditId) {
+      const store = getStore('sitepilot-audits');
+      await store.setJSON(`email-${auditId}`, { email, name, domain, requestedAt: Date.now() });
 
-    // Check if results already exist
-    const raw = await store.get(auditId);
-    if (raw) {
-      const auditData = JSON.parse(raw);
-      if (auditData.status === 'complete' && auditData.results) {
-        // Results ready — send email now
-        await sendReportEmail(email, name, domain, auditData.results);
-        await sendInternalNotification(email, name, domain, auditData.results);
-        return {
-          statusCode: 200,
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sent: true }),
-        };
+      // Check if background function already finished
+      const raw = await store.get(auditId);
+      if (raw) {
+        const auditData = JSON.parse(raw);
+        if (auditData.status === 'complete' && auditData.results) {
+          await sendReportEmail(email, name, domain, auditData.results);
+          await sendInternalNotification(email, name, domain, auditData.results);
+          return {
+            statusCode: 200,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sent: true }),
+          };
+        }
       }
     }
 

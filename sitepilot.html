@@ -947,10 +947,15 @@
             btn.disabled = true;
             btn.textContent = 'Sending...';
 
+            var notifyPayload = { auditId: currentAuditId, email: email, name: name, domain: currentDomain };
+            // If results are already available (sync audit succeeded), include them
+            if (currentResults) {
+                notifyPayload.results = currentResults;
+            }
             fetch('/.netlify/functions/sitepilot-notify', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ auditId: currentAuditId, email: email, name: name, domain: currentDomain })
+                body: JSON.stringify(notifyPayload)
             })
             .then(function(res) { return res.json(); })
             .then(function() {
