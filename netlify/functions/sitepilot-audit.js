@@ -148,12 +148,28 @@ Respond with ONLY a JSON object — no markdown, no backticks, no explanation:
 Rules:
 - Base technical scores on the LIVE HTML, not guesses
 - If a category looks good in the live HTML, score it high
-- Be specific — reference actual tag content, actual schema types found, actual heading text
 - Keep visible_issue to one sentence
-- Blurred findings should be concerning but not actionable without help
 - If schema markup IS present in the live HTML, acknowledge it and score accordingly
 - Most small business sites score 40-70. A well-optimized site with schema, good content, and local pages should score 75-90.
-- If you could not access the live HTML, note that in the summary and score conservatively (45-55)`
+- If you could not access the live HTML, note that in the summary and score conservatively (45-55)
+
+CRITICAL — LANGUAGE RULES FOR ALL visible_issue, summary, AND blurred_findings TEXT:
+- Write for a small business owner, NOT a developer or marketer
+- NEVER use these words: schema, meta tags, markup, SEO, crawl, index, render, viewport, canonical, alt text, H1, heading tags, JSON-LD, structured data, backlinks, domain authority, internal linking, anchor text
+- Instead, describe the BUSINESS IMPACT of each issue
+- Examples of good vs bad:
+  BAD: "No LocalBusiness schema markup found"
+  GOOD: "Google doesn't know your address, hours, or services — so it can't recommend you to nearby searchers"
+  BAD: "Missing meta descriptions on 3 pages"
+  GOOD: "3 pages on your site have no description in Google search results — searchers see a blank snippet and skip you"
+  BAD: "No FAQ schema despite having FAQ content"
+  GOOD: "Your FAQ answers could be showing directly in Google search results, but they're not set up to appear there"
+  BAD: "Duplicate title tags across multiple pages"
+  GOOD: "Several of your pages look identical to Google, so it doesn't know which one to show searchers"
+- For blurred_findings, write teaser sentences about business impact that make the reader want the full report:
+  GOOD: "Your top competitor is getting found for searches that should be sending customers to you"
+  GOOD: "Visitors on phones are having trouble reaching you — and most of your traffic is mobile"
+  GOOD: "Google is showing your competitor's hours, ratings, and services in search results but not yours"`
           }
         ],
       }),

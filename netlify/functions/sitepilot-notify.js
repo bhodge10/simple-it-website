@@ -101,12 +101,12 @@ async function sendReportEmail(email, name, domain, results) {
   const scoreColor = getScoreColor(results.overall_score);
 
   const catRows = Object.entries({
-    meta: 'Meta Tags & Titles',
-    content: 'Content Quality',
-    schema: 'Schema Markup',
-    mobile: 'Mobile Friendliness',
-    performance: 'Page Speed',
-    local: 'Local SEO',
+    meta: 'Can Customers Find You?',
+    content: 'Does Your Site Win Them Over?',
+    schema: 'Does Your Listing Stand Out?',
+    mobile: 'Does It Work on Phones?',
+    performance: 'Is Your Site Fast Enough?',
+    local: 'Do Nearby Customers See You?',
   }).map(([key, label]) => {
     const cat = results.categories[key];
     const color = getScoreColor(cat.score);
