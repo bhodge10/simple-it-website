@@ -922,13 +922,16 @@
                 clearInterval(msgInterval);
                 loadingSection.style.display = 'none';
                 currentResults = results;
+                currentResults._source = 'live';
                 showResults(currentResults);
             })
             .catch(function(err) {
-                console.warn('Live audit failed, using estimated results:', err.message);
+                console.error('Live audit failed:', err.message, err);
                 clearInterval(msgInterval);
                 loadingSection.style.display = 'none';
                 currentResults = generateMockResults(domain);
+                currentResults._source = 'mock';
+                currentResults._error = err.message;
                 currentResults.summary = 'Estimated assessment based on common patterns for sites like ' + domain + '. Request a detailed audit for accurate results.';
                 showResults(currentResults);
             });
@@ -1035,6 +1038,22 @@
 
         function showResults(data) {
             resultsSection.style.display = 'block';
+
+            // Debug: show source indicator (remove after debugging)
+            var debugEl = document.getElementById('auditSourceDebug');
+            if (!debugEl) {
+                debugEl = document.createElement('div');
+                debugEl.id = 'auditSourceDebug';
+                debugEl.style.cssText = 'position:fixed;top:10px;right:10px;padding:8px 16px;border-radius:8px;font-size:12px;font-family:monospace;z-index:9999;color:#fff;';
+                document.body.appendChild(debugEl);
+            }
+            if (data._source === 'live') {
+                debugEl.style.background = '#00D4AA';
+                debugEl.textContent = 'LIVE AI RESULTS';
+            } else {
+                debugEl.style.background = '#FF4757';
+                debugEl.textContent = 'MOCK FALLBACK — Error: ' + (data._error || 'unknown');
+            }
 
             // Score ring
             var scoreColor = getScoreColor(data.overall_score);
