@@ -2,12 +2,10 @@
 const fetch = require('node-fetch');
 
 exports.handler = async (event) => {
-  // Only allow POST
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
   }
 
-  // Parse the domain from the request
   let domain;
   try {
     const body = JSON.parse(event.body);
@@ -20,15 +18,69 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: 'Domain is required' }) };
   }
 
-  // Clean the domain
   domain = domain.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/\/+$/, '');
 
+  // ─── Step 1: Fetch the LIVE homepage HTML ───
+  let liveHtml = '';
+  let fetchError = '';
+  const urls = [`https://${domain}`, `http://${domain}`];
+
+  for (const url of urls) {
+    try {
+      const res = await fetch(url, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; SitePilot SEO Auditor; +https://simple-it.us/sitepilot)',
+          'Accept': 'text/html',
+        },
+        redirect: 'follow',
+        timeout: 5000,
+      });
+
+      if (res.ok) {
+        const fullHtml = await res.text();
+        // Extract <head> (meta tags, schema) and first part of <body> (headings, content)
+        const headMatch = fullHtml.match(/<head[\s\S]*?<\/head>/i);
+        const bodyMatch = fullHtml.match(/<body[\s\S]*?<\/body>/i);
+        const head = headMatch ? headMatch[0] : '';
+        const bodyPreview = bodyMatch ? bodyMatch[0].slice(0, 8000) : '';
+        liveHtml = head + '\n<!-- BODY PREVIEW (first 8000 chars) -->\n' + bodyPreview;
+        break;
+      }
+    } catch (err) {
+      fetchError = err.message;
+    }
+  }
+
+  // ─── Step 2: Build the prompt with live HTML context ───
+  let htmlContext = '';
+  if (liveHtml) {
+    htmlContext = `
+
+Here is the LIVE HTML fetched directly from ${domain} right now (not cached):
+
+<homepage_html>
+${liveHtml}
+</homepage_html>
+
+IMPORTANT: Base your technical analysis (meta tags, titles, schema markup, heading structure, internal links, content quality) on this LIVE HTML. The live HTML is the ground truth for what is currently on the site.`;
+  } else {
+    htmlContext = `
+
+NOTE: Could not fetch live HTML from ${domain} (${fetchError || 'connection failed'}). Base your analysis on your knowledge of this domain and what a typical site like this would have.`;
+  }
+
+  // ─── Step 3: Call Claude API with live HTML context ───
   try {
+    const apiKey = process.env.ANTHROPIC_API_KEY;
+    if (!apiKey) {
+      return { statusCode: 500, body: JSON.stringify({ error: 'API key not configured' }) };
+    }
+
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'x-api-key': apiKey,
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
@@ -37,40 +89,37 @@ exports.handler = async (event) => {
         messages: [
           {
             role: 'user',
-            content: `You are an expert SEO auditor. Based on your knowledge, analyze the website at ${domain}. Consider what a typical site at this domain would look like — its likely meta tags, content structure, schema markup, mobile optimization, performance, and local SEO presence.
+            content: `You are an expert SEO auditor. Analyze the website at ${domain}.${htmlContext}
 
-Respond with ONLY a JSON object — no markdown, no backticks, no explanation before or after. Just the raw JSON:
+Score each category based on what you ACTUALLY find in the live HTML.
 
-{
-  "overall_score": <number 0-100>,
-  "overall_grade": "<letter grade like A, B+, C-, D+, etc>",
-  "summary": "<one sentence assessment specific to this site>",
-  "categories": {
-    "meta": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" },
-    "content": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" },
-    "schema": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" },
-    "mobile": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" },
-    "performance": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" },
-    "local": { "score": <0-100>, "visible_issue": "<one specific likely issue for this type of site>" }
-  },
-  "critical_count": <number of critical issues>,
-  "warning_count": <number of warnings>,
-  "passed_count": <number of checks passed>,
-  "blurred_findings": [
-    "<specific teaser finding — concerning but not actionable without help>",
-    "<specific teaser finding>",
-    "<specific teaser finding>"
-  ]
-}
+Here is exactly what to check in each category:
+
+META TAGS & TITLES: Check the live HTML <head> for: unique <title> tag with keywords and location, <meta name="description"> present and descriptive, Open Graph tags, Twitter card tags, canonical URL. Penalize if title is just the business name with no keywords.
+
+CONTENT QUALITY: Check the live HTML <body> for: sufficient word count (300+ words on homepage), clear value proposition in the hero/header area, specific metrics or differentiators (not generic marketing speak), testimonials or social proof, clear calls to action.
+
+SCHEMA MARKUP: Check the live HTML for: JSON-LD script tags, LocalBusiness schema, FAQPage schema, Service schema, proper nesting and required fields. This is the most important category to check from live HTML since search engines may not have indexed new schema yet.
+
+MOBILE FRIENDLINESS: Check for: viewport meta tag, click-to-call links for phone numbers, responsive indicators in CSS, mobile-friendly navigation patterns.
+
+PAGE SPEED: Check for: number and size of external scripts, inline vs external CSS, image optimization hints, lazy loading attributes, render-blocking resources.
+
+LOCAL SEO: Check for: location-specific content, city/region mentions, local landing pages linked from nav, NAP (name, address, phone) consistency, Google Business Profile links.
+
+Respond with ONLY a JSON object — no markdown, no backticks, no explanation:
+
+{"overall_score":<0-100>,"overall_grade":"<letter grade>","summary":"<one sentence specific to this site>","categories":{"meta":{"score":<0-100>,"visible_issue":"<one specific issue you actually found or 'No major issues detected'>"},"content":{"score":<0-100>,"visible_issue":"<one specific issue>"},"schema":{"score":<0-100>,"visible_issue":"<one specific issue>"},"mobile":{"score":<0-100>,"visible_issue":"<one specific issue>"},"performance":{"score":<0-100>,"visible_issue":"<one specific issue>"},"local":{"score":<0-100>,"visible_issue":"<one specific issue>"}},"critical_count":<number>,"warning_count":<number>,"passed_count":<number>,"blurred_findings":["<teaser 1>","<teaser 2>","<teaser 3>"]}
 
 Rules:
-- Infer what you can about the site from the domain name (industry, business type, location, likely size)
-- Every visible_issue must be plausible and specific to this type of business, not generic advice
-- Keep each visible_issue to one sentence
-- The blurred_findings should be real likely issues but described vaguely enough that the user can't fix them alone
-- Score harshly but fairly — most small business sites score 40-65
-- If the domain looks like a major well-known site, score higher (70-90)
-- If you cannot determine anything about the domain, score moderately (45-55) and note limited analysis in the summary`
+- Base technical scores on the LIVE HTML, not guesses
+- If a category looks good in the live HTML, score it high
+- Be specific — reference actual tag content, actual schema types found, actual heading text
+- Keep visible_issue to one sentence
+- Blurred findings should be concerning but not actionable without help
+- If schema markup IS present in the live HTML, acknowledge it and score accordingly
+- Most small business sites score 40-70. A well-optimized site with schema, good content, and local pages should score 75-90.
+- If you could not access the live HTML, note that in the summary and score conservatively (45-55)`
           }
         ],
       }),
@@ -115,28 +164,19 @@ Rules:
         try {
           parsed = JSON.parse(match[0]);
         } catch {
-          console.error('JSON parse failed. Response:', cleaned.slice(0, 500));
-          return {
-            statusCode: 500,
-            body: JSON.stringify({ error: 'Could not parse audit results' }),
-          };
+          console.error('JSON parse failed:', cleaned.slice(0, 500));
+          return { statusCode: 500, body: JSON.stringify({ error: 'Could not parse audit results' }) };
         }
       } else {
-        console.error('No JSON found. Response:', cleaned.slice(0, 500));
-        return {
-          statusCode: 500,
-          body: JSON.stringify({ error: 'Audit returned unexpected format' }),
-        };
+        console.error('No JSON found:', cleaned.slice(0, 500));
+        return { statusCode: 500, body: JSON.stringify({ error: 'Audit returned unexpected format' }) };
       }
     }
 
     // Validate required fields exist
     if (!parsed.overall_score || !parsed.overall_grade || !parsed.categories) {
-      console.error('Missing required fields:', Object.keys(parsed));
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: 'Audit results incomplete' }),
-      };
+      console.error('Missing fields:', Object.keys(parsed));
+      return { statusCode: 500, body: JSON.stringify({ error: 'Audit results incomplete' }) };
     }
 
     return {
