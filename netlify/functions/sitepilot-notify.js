@@ -84,14 +84,20 @@ function getTransporter() {
 }
 
 function getScoreColor(score) {
-  if (score >= 80) return '#00D4AA';
-  if (score >= 60) return '#FFBE0B';
-  return '#FF4757';
+  if (score >= 80) return '#16a34a';
+  if (score >= 60) return '#ca8a04';
+  return '#dc2626';
+}
+
+function getScoreLabel(score) {
+  if (score >= 80) return 'Good';
+  if (score >= 60) return 'Needs Work';
+  return 'Critical';
 }
 
 async function sendReportEmail(email, name, domain, results) {
   const transporter = getTransporter();
-  const greeting = name ? `Hi ${name},` : 'Hi,';
+  const greeting = name ? `Hi ${name},` : 'Hi there,';
   const scoreColor = getScoreColor(results.overall_score);
 
   const catRows = Object.entries({
@@ -104,10 +110,11 @@ async function sendReportEmail(email, name, domain, results) {
   }).map(([key, label]) => {
     const cat = results.categories[key];
     const color = getScoreColor(cat.score);
+    const hasIssue = cat.visible_issue && !cat.visible_issue.toLowerCase().includes('no major issues');
     return `<tr>
-      <td style="padding:10px 12px;border-bottom:1px solid #1a2050;color:#E8E6F0;">${label}</td>
-      <td style="padding:10px 12px;border-bottom:1px solid #1a2050;color:${color};font-weight:700;text-align:center;">${cat.score}/100</td>
-      <td style="padding:10px 12px;border-bottom:1px solid #1a2050;color:#8B8AA0;font-size:13px;">${cat.visible_issue}</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #f0f0f0;color:#333;font-size:14px;">${label}</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #f0f0f0;text-align:center;"><span style="color:${color};font-weight:700;font-size:14px;">${cat.score}</span><span style="color:#999;font-size:12px;">/100</span></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #f0f0f0;color:${hasIssue ? '#666' : '#16a34a'};font-size:13px;">${cat.visible_issue}</td>
     </tr>`;
   }).join('');
 
@@ -116,47 +123,76 @@ async function sendReportEmail(email, name, domain, results) {
     to: email,
     subject: `Your SEO Audit Results for ${domain} — Grade: ${results.overall_grade}`,
     html: `
-      <div style="font-family:Arial,sans-serif;max-width:640px;margin:0 auto;background:#0A0E27;color:#E8E6F0;">
-        <div style="padding:30px;text-align:center;border-bottom:1px solid #1a2050;">
-          <h1 style="margin:0;font-size:24px;color:#fff;">🚀 SitePilot SEO Audit</h1>
-          <p style="margin:8px 0 0;color:#8B8AA0;font-size:14px;">by Simple IT</p>
+      <div style="font-family:Arial,Helvetica,sans-serif;max-width:640px;margin:0 auto;background:#ffffff;">
+        <!-- Header -->
+        <div style="padding:28px 30px;border-bottom:2px solid #0066FF;">
+          <table width="100%" cellpadding="0" cellspacing="0"><tr>
+            <td style="font-size:20px;font-weight:700;color:#333;">SitePilot SEO Audit</td>
+            <td style="text-align:right;font-size:13px;color:#999;">by Simple IT</td>
+          </tr></table>
         </div>
+
+        <!-- Body -->
         <div style="padding:30px;">
-          <p style="color:#E8E6F0;font-size:16px;">${greeting}</p>
-          <p style="color:#E8E6F0;">Your SEO audit for <strong>${domain}</strong> is complete. Here are your results:</p>
-          <div style="text-align:center;margin:30px 0;">
-            <div style="display:inline-block;background:#111638;border-radius:16px;padding:30px 50px;">
-              <div style="font-size:48px;font-weight:800;color:${scoreColor};">${results.overall_grade}</div>
-              <div style="font-size:20px;color:#8B8AA0;margin-top:4px;">${results.overall_score}/100</div>
-            </div>
+          <p style="color:#333;font-size:15px;margin:0 0 5px;">${greeting}</p>
+          <p style="color:#555;font-size:15px;margin:0 0 30px;line-height:1.5;">Your SEO audit for <strong style="color:#333;">${domain}</strong> is complete.</p>
+
+          <!-- Score Card -->
+          <div style="text-align:center;padding:30px 20px;border:1px solid #e5e5e5;border-radius:8px;margin-bottom:30px;">
+            <div style="font-size:56px;font-weight:800;color:${scoreColor};line-height:1;">${results.overall_grade}</div>
+            <div style="font-size:16px;color:#999;margin-top:6px;">${results.overall_score} out of 100</div>
           </div>
-          <p style="color:#8B8AA0;text-align:center;font-style:italic;margin-bottom:30px;">${results.summary}</p>
-          <div style="text-align:center;margin-bottom:20px;">
-            <span style="color:#FF4757;">🔴 ${results.critical_count} Critical</span> &nbsp;·&nbsp;
-            <span style="color:#FFBE0B;">🟡 ${results.warning_count} Warnings</span> &nbsp;·&nbsp;
-            <span style="color:#00D4AA;">🟢 ${results.passed_count} Passed</span>
-          </div>
-          <table style="width:100%;border-collapse:collapse;background:#111638;border-radius:10px;overflow:hidden;">
-            <tr style="background:#0d1230;">
-              <th style="padding:12px;text-align:left;color:#8B8AA0;font-size:12px;text-transform:uppercase;">Category</th>
-              <th style="padding:12px;text-align:center;color:#8B8AA0;font-size:12px;text-transform:uppercase;">Score</th>
-              <th style="padding:12px;text-align:left;color:#8B8AA0;font-size:12px;text-transform:uppercase;">Key Issue</th>
+
+          <!-- Summary -->
+          <p style="color:#555;font-size:14px;line-height:1.6;margin:0 0 24px;text-align:center;font-style:italic;">${results.summary}</p>
+
+          <!-- Issue Counts -->
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:30px;">
+            <tr>
+              <td style="text-align:center;padding:12px;border:1px solid #fecaca;border-radius:6px;background:#fef2f2;">
+                <div style="font-size:22px;font-weight:700;color:#dc2626;">${results.critical_count}</div>
+                <div style="font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.5px;">Critical</div>
+              </td>
+              <td width="12"></td>
+              <td style="text-align:center;padding:12px;border:1px solid #fef08a;border-radius:6px;background:#fefce8;">
+                <div style="font-size:22px;font-weight:700;color:#ca8a04;">${results.warning_count}</div>
+                <div style="font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.5px;">Warnings</div>
+              </td>
+              <td width="12"></td>
+              <td style="text-align:center;padding:12px;border:1px solid #bbf7d0;border-radius:6px;background:#f0fdf4;">
+                <div style="font-size:22px;font-weight:700;color:#16a34a;">${results.passed_count}</div>
+                <div style="font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.5px;">Passed</div>
+              </td>
+            </tr>
+          </table>
+
+          <!-- Category Table -->
+          <table style="width:100%;border-collapse:collapse;border:1px solid #e5e5e5;border-radius:8px;">
+            <tr style="background:#f9fafb;">
+              <th style="padding:10px 16px;text-align:left;color:#999;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #e5e5e5;">Category</th>
+              <th style="padding:10px 16px;text-align:center;color:#999;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #e5e5e5;">Score</th>
+              <th style="padding:10px 16px;text-align:left;color:#999;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #e5e5e5;">Key Finding</th>
             </tr>
             ${catRows}
           </table>
-          <div style="margin-top:30px;padding:20px;background:#111638;border-left:3px solid #0066FF;border-radius:10px;">
-            <h3 style="margin:0 0 10px;color:#fff;font-size:16px;">Want to fix these issues?</h3>
-            <p style="color:#8B8AA0;margin:0 0 15px;font-size:14px;">Our SitePilot service can auto-fix most SEO issues. We'll review your audit and show you exactly what we can improve.</p>
+
+          <!-- CTA -->
+          <div style="margin-top:30px;padding:24px;background:#f9fafb;border-radius:8px;border-left:4px solid #0066FF;">
+            <h3 style="margin:0 0 8px;color:#333;font-size:16px;">Want help fixing these issues?</h3>
+            <p style="color:#666;margin:0 0 16px;font-size:14px;line-height:1.5;">Our SitePilot service can auto-fix most SEO issues. We'll review your audit and show you exactly what we can improve.</p>
             <div style="text-align:center;">
-              <a href="https://simple-it.us/contact-us" style="display:inline-block;background:linear-gradient(135deg,#0066FF,#00D4AA);color:#fff;padding:12px 30px;border-radius:8px;text-decoration:none;font-weight:700;">Get Your Full Report →</a>
+              <a href="https://simple-it.us/contact-us" style="display:inline-block;background:#0066FF;color:#ffffff;padding:12px 32px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px;">Get Your Full Report &rarr;</a>
             </div>
           </div>
-          <p style="color:#8B8AA0;font-size:13px;margin-top:20px;text-align:center;">Or call us directly: <strong style="color:#E8E6F0;">859-449-7878</strong></p>
+
+          <p style="color:#999;font-size:13px;margin-top:20px;text-align:center;">Or call us directly: <strong style="color:#333;">859-449-7878</strong></p>
         </div>
-        <div style="padding:20px 30px;border-top:1px solid #1a2050;text-align:center;font-size:11px;color:#555;">
-          <p style="margin:5px 0;"><strong>Simple IT, LLC</strong></p>
-          <p style="margin:5px 0;">2220 Grandview Drive, Suite 250 | Ft. Mitchell, KY 41017</p>
-          <p style="margin:10px 0 0;color:#444;">You're receiving this because you requested an SEO audit on simple-it.us/sitepilot</p>
+
+        <!-- Footer -->
+        <div style="padding:20px 30px;border-top:1px solid #e5e5e5;text-align:center;font-size:12px;color:#999;">
+          <p style="margin:4px 0;"><strong style="color:#666;">Simple IT, LLC</strong></p>
+          <p style="margin:4px 0;">2220 Grandview Drive, Suite 250 | Ft. Mitchell, KY 41017</p>
+          <p style="margin:10px 0 0;font-size:11px;color:#bbb;">You received this because you requested an SEO audit on simple-it.us/sitepilot</p>
         </div>
       </div>
     `,
