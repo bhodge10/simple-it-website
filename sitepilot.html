@@ -746,8 +746,10 @@
         var COOLDOWN_MS = 30000; // 30 seconds between audits
         var pollTimer = null;
         var pollStartTime = 0;
-        var MAX_POLL_MS = 90000; // 90 seconds max before mock fallback
+        var SLOW_POLL_AFTER_MS = 90000; // switch to slow polling after 90s
+        var STOP_POLL_AFTER_MS = 300000; // stop polling after 5 minutes
         var msgInterval = null;
+        var pendingShown = false;
 
         // Elements
         var domainInput = document.getElementById('domainInput');
@@ -851,27 +853,48 @@
             if (msgInterval) { clearInterval(msgInterval); msgInterval = null; }
             if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
             loadingSection.style.display = 'none';
+            pendingShown = false;
+        }
+
+        // Show "audit pending" state — keeps prospect on page with email capture
+        function showAuditPending(headline, message) {
+            if (msgInterval) { clearInterval(msgInterval); msgInterval = null; }
+            // Stop spinner but keep loading section visible
+            var spinner = document.querySelector('.spinner');
+            if (spinner) spinner.style.display = 'none';
+            loadingDomain.textContent = headline || 'Your audit is still processing...';
+            loadingStatus.textContent = message || 'This site is taking longer than usual to analyze.';
+            loadingStatus.style.opacity = '1';
+            // Show email capture prominently
+            document.getElementById('emailCaptureCard').style.display = 'block';
+            // Update bottom text with retry option
+            document.getElementById('loadingOrWait').innerHTML =
+                'Results will still appear if you stay on this page. Or <a href="javascript:void(0)" onclick="location.reload()" style="color:#0066FF;text-decoration:underline;">start a new audit</a>.';
+            pendingShown = true;
         }
 
         // Poll for audit results from background function
         function pollForResults() {
             var elapsed = Date.now() - pollStartTime;
-            if (elapsed > MAX_POLL_MS) {
-                // Timeout — fall back to mock
-                cleanupLoading();
-                currentResults = generateMockResults(currentDomain);
-                currentResults.summary = 'Estimated assessment based on common patterns for sites like ' + currentDomain + '. Request a detailed audit for accurate results.';
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'audit_completed', {
-                        'event_category': 'SitePilot',
-                        'event_label': currentDomain,
-                        'audit_source': 'mock',
-                        'audit_score': currentResults.overall_score,
-                        'audit_grade': currentResults.overall_grade
-                    });
-                }
-                showResults(currentResults);
+
+            // After 5 minutes, stop polling — show email-only state
+            if (elapsed > STOP_POLL_AFTER_MS) {
+                if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
+                showAuditPending(
+                    'Your audit is still being generated',
+                    'Enter your email above and we\u2019ll send your full report as soon as it\u2019s ready.'
+                );
+                document.getElementById('loadingOrWait').innerHTML =
+                    '<a href="javascript:void(0)" onclick="location.reload()" style="color:#0066FF;text-decoration:underline;">Start a new audit</a>';
                 return;
+            }
+
+            // After 90 seconds, switch to slow polling + show pending state
+            if (elapsed > SLOW_POLL_AFTER_MS && !pendingShown) {
+                showAuditPending(
+                    'Your audit is taking a bit longer...',
+                    'We\u2019re still analyzing the site. Results will appear automatically, or enter your email above.'
+                );
             }
 
             fetch('/.netlify/functions/sitepilot-status?id=' + encodeURIComponent(currentAuditId))
@@ -892,28 +915,22 @@
                     }
                     showResults(currentResults);
                 } else if (data.status === 'error') {
-                    // Background function errored — fall back to mock
-                    cleanupLoading();
-                    currentResults = generateMockResults(currentDomain);
-                    currentResults.summary = 'Estimated assessment based on common patterns for sites like ' + currentDomain + '. Request a detailed audit for accurate results.';
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'audit_completed', {
-                            'event_category': 'SitePilot',
-                            'event_label': currentDomain,
-                            'audit_source': 'mock',
-                            'audit_score': currentResults.overall_score,
-                            'audit_grade': currentResults.overall_grade
-                        });
-                    }
-                    showResults(currentResults);
+                    // Background function errored — show pending state with email capture
+                    if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
+                    showAuditPending(
+                        'We ran into an issue analyzing this site',
+                        'Enter your email above and we\u2019ll send your report, or try again.'
+                    );
                 } else {
-                    // Still processing — poll again in 5 seconds
-                    pollTimer = setTimeout(pollForResults, 5000);
+                    // Still processing — poll again (slower after 90s)
+                    var delay = elapsed > SLOW_POLL_AFTER_MS ? 15000 : 5000;
+                    pollTimer = setTimeout(pollForResults, delay);
                 }
             })
             .catch(function() {
-                // Network error on poll — try again
-                pollTimer = setTimeout(pollForResults, 5000);
+                // Network error on poll — retry
+                var delay = elapsed > SLOW_POLL_AFTER_MS ? 15000 : 5000;
+                pollTimer = setTimeout(pollForResults, delay);
             });
         }
 
@@ -1000,6 +1017,11 @@
             resultsSection.style.display = 'none';
             loadingSection.style.display = 'block';
             loadingDomain.textContent = 'Auditing ' + domain + '...';
+            // Reset spinner (may have been hidden by showAuditPending)
+            var spinner = document.querySelector('.spinner');
+            if (spinner) spinner.style.display = 'block';
+            document.getElementById('loadingOrWait').textContent = 'Results will appear here automatically';
+            pendingShown = false;
 
             // Reset email capture card
             document.getElementById('emailCaptureCard').style.display = 'none';
@@ -1098,115 +1120,13 @@
                     pollTimer = setTimeout(pollForResults, 5000);
                 })
                 .catch(function(bgErr) {
-                    console.warn('Background audit also failed:', bgErr.message, '— showing estimated results');
-                    cleanupLoading();
-                    currentResults = generateMockResults(domain);
-                    currentResults.summary = 'Estimated assessment based on common patterns for sites like ' + domain + '. Request a detailed audit for accurate results.';
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'audit_completed', {
-                            'event_category': 'SitePilot',
-                            'event_label': domain,
-                            'audit_source': 'mock',
-                            'audit_score': currentResults.overall_score,
-                            'audit_grade': currentResults.overall_grade
-                        });
-                    }
-                    showResults(currentResults);
+                    console.warn('Background audit also failed:', bgErr.message);
+                    showAuditPending(
+                        'Your audit is being processed',
+                        'Enter your email below and we\u2019ll send your full report as soon as it\u2019s ready.'
+                    );
                 });
             });
-        }
-
-        // Mock results fallback
-        function generateMockResults(domain) {
-            var seed = 0;
-            for (var i = 0; i < domain.length; i++) seed += domain.charCodeAt(i);
-            var r = function(min, max) {
-                seed = (seed * 9301 + 49297) % 233280;
-                return min + Math.floor((seed / 233280) * (max - min + 1));
-            };
-
-            var metaScore = r(35, 75);
-            var contentScore = r(40, 80);
-            var schemaScore = r(15, 55);
-            var mobileScore = r(50, 85);
-            var perfScore = r(40, 80);
-            var localScore = r(20, 65);
-            var overall = Math.round((metaScore + contentScore + schemaScore + mobileScore + perfScore + localScore) / 6);
-
-            var grade = overall >= 90 ? 'A' : overall >= 80 ? 'B+' : overall >= 70 ? 'B-' : overall >= 60 ? 'C+' : overall >= 50 ? 'C-' : overall >= 40 ? 'D+' : 'D';
-
-            var metaIssues = [
-                'Title tag is just the business name with no keywords or location',
-                'Meta descriptions are missing on multiple interior pages',
-                'Title tags exceed 60 characters and get truncated in search results',
-                'Duplicate title tags found across multiple pages',
-                'Homepage title tag doesn\'t include primary service or location'
-            ];
-            var contentIssues = [
-                'Homepage content is thin \u2014 under 300 words with no clear value proposition',
-                'Service descriptions are generic and could apply to any competitor',
-                'No blog or resource content to capture informational search queries',
-                'Multiple pages share nearly identical boilerplate content',
-                'No client testimonials or case studies with specific results'
-            ];
-            var schemaIssues = [
-                'No LocalBusiness schema markup found on any page',
-                'Missing FAQPage schema despite having FAQ content on the site',
-                'No Service schema to help Google understand your offerings',
-                'Organization schema is incomplete \u2014 missing logo and contact info',
-                'No review or rating schema markup configured'
-            ];
-            var mobileIssues = [
-                'Navigation menu requires two taps to reach contact page on mobile',
-                'No click-to-call button visible in mobile header',
-                'Text size drops below readable threshold on smaller screens',
-                'Contact form fields are too small for comfortable mobile input',
-                'Horizontal scrolling detected on mobile viewport'
-            ];
-            var perfIssues = [
-                'Page load time exceeds 4 seconds on mobile connection',
-                'Images not optimized \u2014 several files over 1MB each',
-                'No lazy loading on below-the-fold images',
-                'Render-blocking JavaScript delaying first contentful paint',
-                'No browser caching headers configured for static assets'
-            ];
-            var localIssues = [
-                'No city or region-specific landing pages for service areas',
-                'Business address not consistently formatted across pages',
-                'No Google Business Profile link found on the website',
-                'Service area pages are templated with minimal unique content',
-                'NAP (Name, Address, Phone) not matching Google Business Profile'
-            ];
-            var blurredOptions = [
-                'Found 7 pages with identical meta descriptions that compete against each other in search results',
-                'Your site loads 3.2x slower than the top-ranking competitor in your market',
-                'Competitor analysis shows 3 local businesses outranking you for your primary service keyword',
-                '12 images found without alt text \u2014 missed opportunity for image search visibility',
-                'Your domain authority is significantly below the top 3 competitors in your area',
-                'No internal linking strategy detected \u2014 service pages are orphaned from blog content',
-                'Google Search Console likely showing crawl errors from broken internal links',
-                'Your site is missing Open Graph tags \u2014 social shares show no preview image'
-            ];
-
-            var pick = function(arr) { return arr[r(0, arr.length - 1)]; };
-
-            return {
-                overall_score: overall,
-                overall_grade: grade,
-                summary: 'Your website has foundational issues limiting its visibility in local search results.',
-                categories: {
-                    meta: { score: metaScore, visible_issue: pick(metaIssues) },
-                    content: { score: contentScore, visible_issue: pick(contentIssues) },
-                    schema: { score: schemaScore, visible_issue: pick(schemaIssues) },
-                    mobile: { score: mobileScore, visible_issue: pick(mobileIssues) },
-                    performance: { score: perfScore, visible_issue: pick(perfIssues) },
-                    local: { score: localScore, visible_issue: pick(localIssues) }
-                },
-                critical_count: r(2, 5),
-                warning_count: r(3, 6),
-                passed_count: r(3, 6),
-                blurred_findings: [pick(blurredOptions), pick(blurredOptions), pick(blurredOptions)]
-            };
         }
 
         function getScoreColor(score) {
