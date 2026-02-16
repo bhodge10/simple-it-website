@@ -918,8 +918,8 @@
                     // Background function errored — show pending state with email capture
                     if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
                     showAuditPending(
-                        'We ran into an issue analyzing this site',
-                        'Enter your email above and we\u2019ll send your report, or try again.'
+                        'Your audit needs a closer look',
+                        'This site requires a deeper analysis. Enter your email above and we\u2019ll send your full report shortly.'
                     );
                 } else {
                     // Still processing — poll again (slower after 90s)
