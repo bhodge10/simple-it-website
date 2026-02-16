@@ -80,10 +80,11 @@ Rules:
 
     // Check for API errors
     if (data.error) {
-      console.error('Anthropic API error:', data.error);
+      console.error('Anthropic API error:', JSON.stringify(data.error));
+      const errMsg = data.error.message || data.error.type || 'Unknown API error';
       return {
         statusCode: 500,
-        body: JSON.stringify({ error: 'Audit service temporarily unavailable' }),
+        body: JSON.stringify({ error: 'API: ' + errMsg }),
       };
     }
 
