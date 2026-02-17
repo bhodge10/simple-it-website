@@ -790,7 +790,7 @@
                         passed_count: results.passed_count
                     } : null
                 };
-                fetch('https://sitepilot-portal.netlify.app/.netlify/functions/ingest-lead', {
+                fetch('https://sitepilotadmindashboard.netlify.app/.netlify/functions/ingest-lead', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
