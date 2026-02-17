@@ -772,6 +772,32 @@
         var msgInterval = null;
         var pendingShown = false;
 
+        // Fire-and-forget scan tracking to portal
+        function trackScan(domain, results) {
+            try {
+                var body = {
+                    source: 'scan',
+                    domain: domain,
+                    audit_overall_score: results ? String(results.overall_score) : null,
+                    audit_overall_grade: results ? results.overall_grade : null,
+                    audit_json: results ? {
+                        overall_score: results.overall_score,
+                        overall_grade: results.overall_grade,
+                        summary: results.summary,
+                        categories: results.categories,
+                        critical_count: results.critical_count,
+                        warning_count: results.warning_count,
+                        passed_count: results.passed_count
+                    } : null
+                };
+                fetch('https://sitepilot-portal.netlify.app/.netlify/functions/ingest-lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                }).catch(function() {});
+            } catch(e) {}
+        }
+
         // Elements
         var domainInput = document.getElementById('domainInput');
         var auditBtn = document.getElementById('auditBtn');
@@ -925,6 +951,7 @@
                     // Results ready!
                     cleanupLoading();
                     currentResults = data.results;
+                    trackScan(currentDomain, currentResults);
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'audit_completed', {
                             'event_category': 'SitePilot',
@@ -1154,6 +1181,7 @@
                 // Sync audit succeeded — show results immediately
                 cleanupLoading();
                 currentResults = results;
+                trackScan(domain, currentResults);
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'audit_completed', {
                         'event_category': 'SitePilot',
