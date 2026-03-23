@@ -11,94 +11,55 @@ publish = "_site"
 command = "npm install && npx @11ty/eleventy"
 
 # Service page pretty URLs
-[[redirects]]
-from = "/managed-it-services/"
-to = "/managed-it-services.html"
-status = 301
 
 [[redirects]]
-from = "/managed-it-services"
-to = "/managed-it-services.html"
+from = "/managed-it-services/"
+to = "/managed-it-services"
 status = 301
 
 [[redirects]]
 from = "/cybersecurity-solutions/"
-to = "/cybersecurity-solutions.html"
-status = 301
-
-[[redirects]]
-from = "/cybersecurity-solutions"
-to = "/cybersecurity-solutions.html"
+to = "/cybersecurity-solutions"
 status = 301
 
 [[redirects]]
 from = "/cloud-solutions/"
-to = "/cloud-solutions.html"
-status = 301
-
-[[redirects]]
-from = "/cloud-solutions"
-to = "/cloud-solutions.html"
+to = "/cloud-solutions"
 status = 301
 
 [[redirects]]
 from = "/emergency-it-support/"
-to = "/emergency-it-support.html"
-status = 301
-
-[[redirects]]
-from = "/emergency-it-support"
-to = "/emergency-it-support.html"
+to = "/emergency-it-support"
 status = 301
 
 [[redirects]]
 from = "/business-continuity/"
-to = "/business-continuity.html"
-status = 301
-
-[[redirects]]
-from = "/business-continuity"
-to = "/business-continuity.html"
-status = 301
-
-[[redirects]]
-from = "/about-us"
-to = "/about-us.html"
+to = "/business-continuity"
 status = 301
 
 [[redirects]]
 from = "/our-services/"
-to = "/our-services.html"
-status = 301
-
-[[redirects]]
-from = "/our-services"
-to = "/our-services.html"
-status = 301
-
-[[redirects]]
-from = "/contact-us"
-to = "/contact-us.html"
+to = "/our-services"
 status = 301
 
 [[redirects]]
 from = "/testimonials/"
-to = "/about-us.html"
+to = "/about-us"
 status = 301
 
 [[redirects]]
 from = "/testimonials"
-to = "/about-us.html"
+to = "/about-us"
 status = 301
 
 [[redirects]]
 from = "/cyberready/"
-to = "/cybersecurity-solutions.html"
+to = "/cybersecurity-solutions"
 status = 301
 
 [[redirects]]
 from = "/cyberready"
-to = "/cybersecurity-solutions.html"
+to = "/cybersecurity-solutions"
 status = 301
 
 [[redirects]]
@@ -118,242 +79,242 @@ status = 301
 
 [[redirects]]
 from = "/locations/fort-mitchell/"
-to = "/it-services-ft-mitchell-ky.html"
+to = "/it-services-ft-mitchell-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/fort-mitchell"
-to = "/it-services-ft-mitchell-ky.html"
+to = "/it-services-ft-mitchell-ky"
 status = 301
 
 [[redirects]]
 from = "/fort-mitchell/"
-to = "/it-services-ft-mitchell-ky.html"
+to = "/it-services-ft-mitchell-ky"
 status = 301
 
 [[redirects]]
 from = "/fort-mitchell"
-to = "/it-services-ft-mitchell-ky.html"
+to = "/it-services-ft-mitchell-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/covington/"
-to = "/it-services-covington-ky.html"
+to = "/it-services-covington-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/covington"
-to = "/it-services-covington-ky.html"
+to = "/it-services-covington-ky"
 status = 301
 
 [[redirects]]
 from = "/covington/"
-to = "/it-services-covington-ky.html"
+to = "/it-services-covington-ky"
 status = 301
 
 [[redirects]]
 from = "/covington"
-to = "/it-services-covington-ky.html"
+to = "/it-services-covington-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/florence/"
-to = "/it-services-florence-ky.html"
+to = "/it-services-florence-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/florence"
-to = "/it-services-florence-ky.html"
+to = "/it-services-florence-ky"
 status = 301
 
 [[redirects]]
 from = "/florence/"
-to = "/it-services-florence-ky.html"
+to = "/it-services-florence-ky"
 status = 301
 
 [[redirects]]
 from = "/florence"
-to = "/it-services-florence-ky.html"
+to = "/it-services-florence-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/erlanger/"
-to = "/it-services-erlanger-ky.html"
+to = "/it-services-erlanger-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/erlanger"
-to = "/it-services-erlanger-ky.html"
+to = "/it-services-erlanger-ky"
 status = 301
 
 [[redirects]]
 from = "/erlanger/"
-to = "/it-services-erlanger-ky.html"
+to = "/it-services-erlanger-ky"
 status = 301
 
 [[redirects]]
 from = "/erlanger"
-to = "/it-services-erlanger-ky.html"
+to = "/it-services-erlanger-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/newport/"
-to = "/it-services-newport-ky.html"
+to = "/it-services-newport-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/newport"
-to = "/it-services-newport-ky.html"
+to = "/it-services-newport-ky"
 status = 301
 
 [[redirects]]
 from = "/newport/"
-to = "/it-services-newport-ky.html"
+to = "/it-services-newport-ky"
 status = 301
 
 [[redirects]]
 from = "/newport"
-to = "/it-services-newport-ky.html"
+to = "/it-services-newport-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/independence/"
-to = "/it-services-independence-ky.html"
+to = "/it-services-independence-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/independence"
-to = "/it-services-independence-ky.html"
+to = "/it-services-independence-ky"
 status = 301
 
 [[redirects]]
 from = "/independence/"
-to = "/it-services-independence-ky.html"
+to = "/it-services-independence-ky"
 status = 301
 
 [[redirects]]
 from = "/independence"
-to = "/it-services-independence-ky.html"
+to = "/it-services-independence-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/edgewood/"
-to = "/it-services-edgewood-ky.html"
+to = "/it-services-edgewood-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/edgewood"
-to = "/it-services-edgewood-ky.html"
+to = "/it-services-edgewood-ky"
 status = 301
 
 [[redirects]]
 from = "/edgewood/"
-to = "/it-services-edgewood-ky.html"
+to = "/it-services-edgewood-ky"
 status = 301
 
 [[redirects]]
 from = "/edgewood"
-to = "/it-services-edgewood-ky.html"
+to = "/it-services-edgewood-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/villa-hills/"
-to = "/it-services-villa-hills-ky.html"
+to = "/it-services-villa-hills-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/villa-hills"
-to = "/it-services-villa-hills-ky.html"
+to = "/it-services-villa-hills-ky"
 status = 301
 
 [[redirects]]
 from = "/villa-hills/"
-to = "/it-services-villa-hills-ky.html"
+to = "/it-services-villa-hills-ky"
 status = 301
 
 [[redirects]]
 from = "/villa-hills"
-to = "/it-services-villa-hills-ky.html"
+to = "/it-services-villa-hills-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/crescent-springs/"
-to = "/it-services-crescent-springs-ky.html"
+to = "/it-services-crescent-springs-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/crescent-springs"
-to = "/it-services-crescent-springs-ky.html"
+to = "/it-services-crescent-springs-ky"
 status = 301
 
 [[redirects]]
 from = "/crescent-springs/"
-to = "/it-services-crescent-springs-ky.html"
+to = "/it-services-crescent-springs-ky"
 status = 301
 
 [[redirects]]
 from = "/crescent-springs"
-to = "/it-services-crescent-springs-ky.html"
+to = "/it-services-crescent-springs-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/union/"
-to = "/it-services-union-ky.html"
+to = "/it-services-union-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/union"
-to = "/it-services-union-ky.html"
+to = "/it-services-union-ky"
 status = 301
 
 [[redirects]]
 from = "/union-ky/"
-to = "/it-services-union-ky.html"
+to = "/it-services-union-ky"
 status = 301
 
 [[redirects]]
 from = "/union-ky"
-to = "/it-services-union-ky.html"
+to = "/it-services-union-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/hebron/"
-to = "/it-services-hebron-ky.html"
+to = "/it-services-hebron-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/hebron"
-to = "/it-services-hebron-ky.html"
+to = "/it-services-hebron-ky"
 status = 301
 
 [[redirects]]
 from = "/hebron/"
-to = "/it-services-hebron-ky.html"
+to = "/it-services-hebron-ky"
 status = 301
 
 [[redirects]]
 from = "/hebron"
-to = "/it-services-hebron-ky.html"
+to = "/it-services-hebron-ky"
 status = 301
 
 [[redirects]]
 from = "/locations/cincinnati/"
-to = "/it-services-cincinnati-oh.html"
+to = "/it-services-cincinnati-oh"
 status = 301
 
 [[redirects]]
 from = "/locations/cincinnati"
-to = "/it-services-cincinnati-oh.html"
+to = "/it-services-cincinnati-oh"
 status = 301
 
 [[redirects]]
 from = "/cincinnati/"
-to = "/it-services-cincinnati-oh.html"
+to = "/it-services-cincinnati-oh"
 status = 301
 
 [[redirects]]
 from = "/cincinnati"
-to = "/it-services-cincinnati-oh.html"
+to = "/it-services-cincinnati-oh"
 status = 301
 
 [[redirects]]
@@ -368,127 +329,112 @@ status = 301
 
 [[redirects]]
 from = "/about/"
-to = "/about-us.html"
+to = "/about-us"
 status = 301
 
 [[redirects]]
 from = "/about"
-to = "/about-us.html"
+to = "/about-us"
 status = 301
 
 [[redirects]]
 from = "/about-us/"
-to = "/about-us.html"
+to = "/about-us"
 status = 301
 
 [[redirects]]
 from = "/our-team/"
-to = "/about-us.html"
+to = "/about-us"
 status = 301
 
 [[redirects]]
 from = "/our-team"
-to = "/about-us.html"
+to = "/about-us"
 status = 301
 
 [[redirects]]
 from = "/contact/"
-to = "/contact-us.html"
+to = "/contact-us"
 status = 301
 
 [[redirects]]
 from = "/contact"
-to = "/contact-us.html"
+to = "/contact-us"
 status = 301
 
 [[redirects]]
 from = "/contact-us/"
-to = "/contact-us.html"
+to = "/contact-us"
 status = 301
 
 [[redirects]]
 from = "/get-in-touch/"
-to = "/contact-us.html"
+to = "/contact-us"
 status = 301
 
 [[redirects]]
 from = "/get-in-touch"
-to = "/contact-us.html"
+to = "/contact-us"
 status = 301
 
 [[redirects]]
 from = "/faq/"
-to = "/faq.html"
-status = 301
-
-[[redirects]]
-from = "/faq"
-to = "/faq.html"
+to = "/faq"
 status = 301
 
 [[redirects]]
 from = "/faqs/"
-to = "/faq.html"
+to = "/faq"
 status = 301
 
 [[redirects]]
 from = "/faqs"
-to = "/faq.html"
+to = "/faq"
 status = 301
 
 [[redirects]]
 from = "/frequently-asked-questions/"
-to = "/faq.html"
+to = "/faq"
 status = 301
 
 [[redirects]]
 from = "/remote-support/"
-to = "/remote-support.html"
-status = 301
-
-[[redirects]]
-from = "/remote-support"
-to = "/remote-support.html"
+to = "/remote-support"
 status = 301
 
 [[redirects]]
 from = "/remote-access/"
-to = "/remote-support.html"
+to = "/remote-support"
 status = 301
 
 [[redirects]]
 from = "/remote-access"
-to = "/remote-support.html"
+to = "/remote-support"
 status = 301
 
 [[redirects]]
 from = "/submit-ticket/"
-to = "/submit-ticket.html"
-status = 301
-
-[[redirects]]
-from = "/submit-ticket"
-to = "/submit-ticket.html"
+to = "/submit-ticket"
 status = 301
 
 [[redirects]]
 from = "/support-ticket/"
-to = "/submit-ticket.html"
+to = "/submit-ticket"
 status = 301
 
 [[redirects]]
 from = "/support-ticket"
-to = "/submit-ticket.html"
+to = "/submit-ticket"
 status = 301
 
 [[redirects]]
 from = "/create-ticket/"
-to = "/submit-ticket.html"
+to = "/submit-ticket"
 status = 301
 
 [[redirects]]
 from = "/create-ticket"
-to = "/submit-ticket.html"
+to = "/submit-ticket"
 status = 301
 
 [[redirects]]
@@ -563,45 +509,36 @@ status = 301
 
 [[redirects]]
 from = "/privacy-policy/"
-to = "/privacy-policy.html"
-status = 301
-
-[[redirects]]
-from = "/privacy-policy"
-to = "/privacy-policy.html"
+to = "/privacy-policy"
 status = 301
 
 [[redirects]]
 from = "/privacy/"
-to = "/privacy-policy.html"
+to = "/privacy-policy"
 status = 301
 
 [[redirects]]
 from = "/privacy"
-to = "/privacy-policy.html"
+to = "/privacy-policy"
 status = 301
 
 [[redirects]]
 from = "/terms-of-service/"
-to = "/terms-of-service.html"
-status = 301
-
-[[redirects]]
-from = "/terms-of-service"
-to = "/terms-of-service.html"
+to = "/terms-of-service"
 status = 301
 
 [[redirects]]
 from = "/terms/"
-to = "/terms-of-service.html"
+to = "/terms-of-service"
 status = 301
 
 [[redirects]]
 from = "/terms"
-to = "/terms-of-service.html"
+to = "/terms-of-service"
 status = 301
 
 # Fix truncated/mismatched blog URLs found in Google Search Console
+
 [[redirects]]
 from = "/microsoft-365-cost-savings-*"
 to = "/blog/microsoft-365-cost-savings-simple-it/"
@@ -634,12 +571,12 @@ status = 301
 
 [[redirects]]
 from = "/services/cabling/"
-to = "/network-cabling.html"
+to = "/network-cabling"
 status = 301
 
 [[redirects]]
 from = "/services/cabling"
-to = "/network-cabling.html"
+to = "/network-cabling"
 status = 301
 
 # WordPress blog post redirects (old root URLs -> new /blog/ URLs)
@@ -1785,223 +1722,140 @@ to = "/blog/your-it-roadmap-for-confident-business-growth/"
 status = 301
 
 # VoIP Phone Systems pretty URLs
-[[redirects]]
-from = "/voip-phone-systems/"
-to = "/voip-phone-systems.html"
-status = 301
 
 [[redirects]]
-from = "/voip-phone-systems"
-to = "/voip-phone-systems.html"
+from = "/voip-phone-systems/"
+to = "/voip-phone-systems"
 status = 301
 
 [[redirects]]
 from = "/voip/"
-to = "/voip-phone-systems.html"
+to = "/voip-phone-systems"
 status = 301
 
 [[redirects]]
 from = "/voip"
-to = "/voip-phone-systems.html"
+to = "/voip-phone-systems"
 status = 301
 
 # Network Cabling pretty URLs
-[[redirects]]
-from = "/network-cabling/"
-to = "/network-cabling.html"
-status = 301
 
 [[redirects]]
-from = "/network-cabling"
-to = "/network-cabling.html"
+from = "/network-cabling/"
+to = "/network-cabling"
 status = 301
 
 [[redirects]]
 from = "/cabling/"
-to = "/network-cabling.html"
+to = "/network-cabling"
 status = 301
 
 [[redirects]]
 from = "/cabling"
-to = "/network-cabling.html"
+to = "/network-cabling"
 status = 301
 
 # Security Cameras pretty URLs
-[[redirects]]
-from = "/security-cameras/"
-to = "/security-cameras.html"
-status = 301
 
 [[redirects]]
-from = "/security-cameras"
-to = "/security-cameras.html"
+from = "/security-cameras/"
+to = "/security-cameras"
 status = 301
 
 [[redirects]]
 from = "/cameras/"
-to = "/security-cameras.html"
+to = "/security-cameras"
 status = 301
 
 [[redirects]]
 from = "/cameras"
-to = "/security-cameras.html"
+to = "/security-cameras"
 status = 301
 
 # Location pages pretty URLs
-[[redirects]]
-from = "/it-services-ft-mitchell-ky/"
-to = "/it-services-ft-mitchell-ky.html"
-status = 301
 
 [[redirects]]
-from = "/it-services-ft-mitchell-ky"
-to = "/it-services-ft-mitchell-ky.html"
+from = "/it-services-ft-mitchell-ky/"
+to = "/it-services-ft-mitchell-ky"
 status = 301
 
 [[redirects]]
 from = "/it-services-covington-ky/"
-to = "/it-services-covington-ky.html"
-status = 301
-
-[[redirects]]
-from = "/it-services-covington-ky"
-to = "/it-services-covington-ky.html"
+to = "/it-services-covington-ky"
 status = 301
 
 [[redirects]]
 from = "/it-services-florence-ky/"
-to = "/it-services-florence-ky.html"
-status = 301
-
-[[redirects]]
-from = "/it-services-florence-ky"
-to = "/it-services-florence-ky.html"
+to = "/it-services-florence-ky"
 status = 301
 
 [[redirects]]
 from = "/it-services-erlanger-ky/"
-to = "/it-services-erlanger-ky.html"
-status = 301
-
-[[redirects]]
-from = "/it-services-erlanger-ky"
-to = "/it-services-erlanger-ky.html"
+to = "/it-services-erlanger-ky"
 status = 301
 
 [[redirects]]
 from = "/it-services-newport-ky/"
-to = "/it-services-newport-ky.html"
-status = 301
-
-[[redirects]]
-from = "/it-services-newport-ky"
-to = "/it-services-newport-ky.html"
+to = "/it-services-newport-ky"
 status = 301
 
 [[redirects]]
 from = "/it-services-independence-ky/"
-to = "/it-services-independence-ky.html"
-status = 301
-
-[[redirects]]
-from = "/it-services-independence-ky"
-to = "/it-services-independence-ky.html"
+to = "/it-services-independence-ky"
 status = 301
 
 [[redirects]]
 from = "/it-services-edgewood-ky/"
-to = "/it-services-edgewood-ky.html"
-status = 301
-
-[[redirects]]
-from = "/it-services-edgewood-ky"
-to = "/it-services-edgewood-ky.html"
+to = "/it-services-edgewood-ky"
 status = 301
 
 [[redirects]]
 from = "/it-services-villa-hills-ky/"
-to = "/it-services-villa-hills-ky.html"
-status = 301
-
-[[redirects]]
-from = "/it-services-villa-hills-ky"
-to = "/it-services-villa-hills-ky.html"
+to = "/it-services-villa-hills-ky"
 status = 301
 
 [[redirects]]
 from = "/it-services-crescent-springs-ky/"
-to = "/it-services-crescent-springs-ky.html"
-status = 301
-
-[[redirects]]
-from = "/it-services-crescent-springs-ky"
-to = "/it-services-crescent-springs-ky.html"
+to = "/it-services-crescent-springs-ky"
 status = 301
 
 [[redirects]]
 from = "/it-services-union-ky/"
-to = "/it-services-union-ky.html"
-status = 301
-
-[[redirects]]
-from = "/it-services-union-ky"
-to = "/it-services-union-ky.html"
+to = "/it-services-union-ky"
 status = 301
 
 [[redirects]]
 from = "/it-services-hebron-ky/"
-to = "/it-services-hebron-ky.html"
-status = 301
-
-[[redirects]]
-from = "/it-services-hebron-ky"
-to = "/it-services-hebron-ky.html"
+to = "/it-services-hebron-ky"
 status = 301
 
 [[redirects]]
 from = "/it-services-cincinnati-oh/"
-to = "/it-services-cincinnati-oh.html"
-status = 301
-
-[[redirects]]
-from = "/it-services-cincinnati-oh"
-to = "/it-services-cincinnati-oh.html"
+to = "/it-services-cincinnati-oh"
 status = 301
 
 # Utility pages pretty URLs
-[[redirects]]
-from = "/thank-you/"
-to = "/thank-you.html"
-status = 301
 
 [[redirects]]
-from = "/thank-you"
-to = "/thank-you.html"
+from = "/thank-you/"
+to = "/thank-you"
 status = 301
 
 [[redirects]]
 from = "/ticket-submitted/"
-to = "/ticket-submitted.html"
-status = 301
-
-[[redirects]]
-from = "/ticket-submitted"
-to = "/ticket-submitted.html"
+to = "/ticket-submitted"
 status = 301
 
 # SitePilot pretty URLs
-[[redirects]]
-from = "/sitepilot/"
-to = "/sitepilot.html"
-status = 301
 
 [[redirects]]
-from = "/sitepilot"
-to = "/sitepilot.html"
+from = "/sitepilot/"
+to = "/sitepilot"
 status = 301
 
 # WordPress legacy redirects - old URL patterns from before Eleventy migration
 # Date archives → blog index
+
 [[redirects]]
 from = "/2025/:month/"
 to = "/blog/"
@@ -2018,11 +1872,22 @@ to = "/blog/"
 status = 301
 
 [[redirects]]
+from = "/2026/:month/"
+to = "/blog/"
+status = 301
+
+[[redirects]]
+from = "/2026/"
+to = "/blog/"
+status = 301
+
+[[redirects]]
 from = "/2024/"
 to = "/blog/"
 status = 301
 
 # WordPress category → Eleventy blog category mappings
+
 [[redirects]]
 from = "/category/cloud/*"
 to = "/blog/category/cloud/"
@@ -2059,6 +1924,7 @@ to = "/blog/category/company-updates/"
 status = 301
 
 # Catch-all for any other old WordPress categories/tags
+
 [[redirects]]
 from = "/category/*"
 to = "/blog/"
@@ -2070,18 +1936,54 @@ to = "/blog/"
 status = 301
 
 # WordPress per-post /feed/ suffix → actual blog post
+
 [[redirects]]
 from = "/blog/*/feed/"
 to = "/blog/:splat/"
 status = 301
 
 # Old WordPress post URLs without /blog/ prefix that had /feed/ appended
+
 [[redirects]]
 from = "/*/feed/"
 to = "/blog/:splat/"
 status = 301
 
+# Old WordPress post URLs without /blog/ prefix → blog
+
+[[redirects]]
+from = "/simple-it-refresh-strategy/"
+to = "/blog/simple-it-refresh-strategy/"
+status = 301
+
+# Old WordPress query parameter URLs
+
+[[redirects]]
+from = "/"
+query = { page_id = ":id" }
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/"
+query = { cat = ":cat" }
+to = "/blog/"
+status = 301
+
+[[redirects]]
+from = "/"
+query = { ref = ":ref" }
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/"
+query = { et_core_page_resource = ":val" }
+to = "/"
+status = 301
+
 # Truncated/malformed old post URLs → matching blog posts
+
 [[redirects]]
 from = "/cloud-compliance-nky-"
 to = "/blog/cloud-compliance-nky-businesses/"
@@ -2092,7 +1994,40 @@ from = "/jungle/"
 to = "/blog/"
 status = 301
 
+# Duplicate/test pages → redirect to proper pages
+
+[[redirects]]
+from = "/simple-it-redesign.html"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/simple-it-redesign"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/review-entry-helper.html"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/review-entry-helper"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/ticket-confirmation-email-preview.html"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/ticket-confirmation-email-preview"
+to = "/"
+status = 301
+
 # Catch-all: return 404 page (not a redirect)
+
 [[redirects]]
 from = "/*"
 to = "/404.html"

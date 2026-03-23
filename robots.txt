@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /.netlify/
+Disallow: /simple-it-redesign
+Disallow: /review-entry-helper
+Disallow: /ticket-confirmation-email-preview
 
 Sitemap: https://simple-it.us/sitemap.xml
