@@ -2000,6 +2000,98 @@ from = "/sitepilot"
 to = "/sitepilot.html"
 status = 301
 
+# WordPress legacy redirects - old URL patterns from before Eleventy migration
+# Date archives → blog index
+[[redirects]]
+from = "/2025/:month/"
+to = "/blog/"
+status = 301
+
+[[redirects]]
+from = "/2024/:month/"
+to = "/blog/"
+status = 301
+
+[[redirects]]
+from = "/2025/"
+to = "/blog/"
+status = 301
+
+[[redirects]]
+from = "/2024/"
+to = "/blog/"
+status = 301
+
+# WordPress category → Eleventy blog category mappings
+[[redirects]]
+from = "/category/cloud/*"
+to = "/blog/category/cloud/"
+status = 301
+
+[[redirects]]
+from = "/category/cybersecurity/*"
+to = "/blog/category/cybersecurity/"
+status = 301
+
+[[redirects]]
+from = "/category/managed-it/*"
+to = "/blog/category/managed-it/"
+status = 301
+
+[[redirects]]
+from = "/category/tech-tips/*"
+to = "/blog/category/tech-tips/"
+status = 301
+
+[[redirects]]
+from = "/category/industry-news/*"
+to = "/blog/category/industry-news/"
+status = 301
+
+[[redirects]]
+from = "/category/business-tips/*"
+to = "/blog/category/business-tips/"
+status = 301
+
+[[redirects]]
+from = "/category/company-updates/*"
+to = "/blog/category/company-updates/"
+status = 301
+
+# Catch-all for any other old WordPress categories/tags
+[[redirects]]
+from = "/category/*"
+to = "/blog/"
+status = 301
+
+[[redirects]]
+from = "/tag/*"
+to = "/blog/"
+status = 301
+
+# WordPress per-post /feed/ suffix → actual blog post
+[[redirects]]
+from = "/blog/*/feed/"
+to = "/blog/:splat/"
+status = 301
+
+# Old WordPress post URLs without /blog/ prefix that had /feed/ appended
+[[redirects]]
+from = "/*/feed/"
+to = "/blog/:splat/"
+status = 301
+
+# Truncated/malformed old post URLs → matching blog posts
+[[redirects]]
+from = "/cloud-compliance-nky-"
+to = "/blog/cloud-compliance-nky-businesses/"
+status = 301
+
+[[redirects]]
+from = "/jungle/"
+to = "/blog/"
+status = 301
+
 # Catch-all: return 404 page (not a redirect)
 [[redirects]]
 from = "/*"
