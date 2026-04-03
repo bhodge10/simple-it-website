@@ -240,7 +240,7 @@ exports.handler = async (event, context) => {
         // Internal notification email to team
         const internalEmail = {
             from: '"Simple IT Website" <support@simple-it.us>',
-            to: 'sit_website_ticket@simple-it.us',
+            to: 'sit_website_ticket@simple-it.us, SupportTicketsPortal@simple-it.us',
             subject: `[${priorityLabel}] New Ticket #${ticketNumber}: ${subject}`,
             html: `
 <!DOCTYPE html>
