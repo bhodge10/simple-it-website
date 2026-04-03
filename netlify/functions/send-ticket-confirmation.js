@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
 
     try {
         const data = JSON.parse(event.body);
-        const { contact_email, contact_name, subject, ticketNumber, priority } = data;
+        const { contact_email, contact_name, contact_phone, company_name, subject, description, ticketNumber, priority } = data;
 
         // Validate required fields
         if (!contact_email || !contact_name || !ticketNumber) {
@@ -237,8 +237,104 @@ exports.handler = async (event, context) => {
             `
         };
 
-        // Send email
-        await transporter.sendMail(customerEmail);
+        // Internal notification email to team
+        const internalEmail = {
+            from: '"Simple IT Website" <support@simple-it.us>',
+            to: 'sit_website_ticket@simple-it.us',
+            subject: `[${priorityLabel}] New Ticket #${ticketNumber}: ${subject}`,
+            html: `
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 8px 8px 0 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .content {
+            background: #ffffff;
+            padding: 25px 30px;
+            border: 1px solid #e0e0e0;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .info-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .info-table td:first-child {
+            font-weight: 600;
+            color: #666;
+            width: 130px;
+        }
+        .priority {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .priority-urgent { background: #ff4444; color: white; }
+        .priority-high { background: #ff9800; color: white; }
+        .priority-normal { background: #4CAF50; color: white; }
+        .priority-low { background: #9e9e9e; color: white; }
+        .description-box {
+            background: #f5f7fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>New Website Ticket #${ticketNumber}</h1>
+    </div>
+    <div class="content">
+        <table class="info-table">
+            <tr><td>Ticket #</td><td><strong>${ticketNumber}</strong></td></tr>
+            <tr><td>Subject</td><td>${subject}</td></tr>
+            <tr><td>Priority</td><td><span class="priority priority-${priority}">${priorityLabel}</span></td></tr>
+            <tr><td>Contact Name</td><td>${contact_name}</td></tr>
+            <tr><td>Email</td><td><a href="mailto:${contact_email}">${contact_email}</a></td></tr>
+            <tr><td>Phone</td><td>${contact_phone || 'N/A'}</td></tr>
+            <tr><td>Company</td><td>${company_name || 'N/A'}</td></tr>
+        </table>
+
+        <p><strong>Description:</strong></p>
+        <div class="description-box">${description || 'No description provided.'}</div>
+    </div>
+</body>
+</html>
+            `
+        };
+
+        // Send both emails
+        await Promise.all([
+            transporter.sendMail(customerEmail),
+            transporter.sendMail(internalEmail)
+        ]);
 
         return {
             statusCode: 200,
