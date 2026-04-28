@@ -974,7 +974,23 @@
                         console.error('Failed to send confirmation email:', emailError);
                         // Don't show error to user - ticket was still created successfully
                     }
-                    
+
+                    // Dual-write to new portal during transition. Fire-and-forget: Syncro is the
+                    // source of truth, portal is shadow-recording so the team can test against
+                    // real submissions. Failures must not affect customer-visible success.
+                    fetch('https://portal.simple-it.us/api/public/tickets', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            ...formData,
+                            externalRef: 'syncro:' + data.syncroTicketNumber
+                        })
+                    })
+                        .then(r => console.log('Portal ticket recorded:', r.status))
+                        .catch(err => console.warn('Portal dual-write failed:', err));
+
                     // Show success message with ticket number
                     showSuccess(data.syncroTicketNumber);
                 } else {
