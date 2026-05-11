@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketer Application | Simple IT</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Application form for the Simple IT remote digital marketer role.">
+
+    <link rel="icon" type="image/png" href="/simple-it-logo.png">
+    <link rel="stylesheet" href="/fonts.css">
+
+    <style>
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #00D4AA;
+            --dark: #0A0E27;
+            --dark-secondary: #1A1F3A;
+            --text: #E8EBF7;
+            --text-secondary: #9CA3C3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .intro-card {
+            background: var(--dark-secondary);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            border-left: 3px solid var(--secondary);
+            margin: 2rem 0;
+            color: var(--text-secondary);
+        }
+
+        .intro-card strong {
+            color: var(--text);
+        }
+
+        .application-form {
+            background: var(--dark-secondary);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 4rem;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        .form-section h2 {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .required {
+            color: var(--secondary);
+        }
+
+        .help-text {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-top: 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: var(--dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: 'Sora', sans-serif;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 1rem;
+            background: var(--dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .checkbox-item:hover {
+            border-color: rgba(0, 102, 255, 0.4);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .checkbox-item span {
+            font-size: 0.95rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-footer-note {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background: var(--dark);
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .application-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">Simple <span>IT</span></a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Digital Marketer Application</h1>
+            <p class="subtitle">
+                Thanks for your interest in the role. The questions below help us understand your background
+                and how you'd approach the work. Most fields are quick &mdash; budget about 10 minutes.
+            </p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="intro-card">
+            <p><strong>A note before you start:</strong> This form is shared only with candidates we'd like to learn more about.
+            Please answer honestly &mdash; we'd rather know you're still learning a tool than discover it later. If a question doesn't apply, write "n/a".</p>
+        </div>
+
+        <form
+            id="applicationForm"
+            name="marketer-application"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="company-website"
+            action="/thank-you.html"
+            class="application-form"
+        >
+            <input type="hidden" name="form-name" value="marketer-application">
+            <input type="hidden" name="loaded-at" id="loadedAt" value="">
+
+            <!-- Honeypot -->
+            <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+                <label>Don't fill this out: <input type="text" name="company-website" tabindex="-1" autocomplete="off"></label>
+            </div>
+
+            <!-- ============== Section 1: About You ============== -->
+            <div class="form-section">
+                <h2>1. About You</h2>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="full-name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="full-name" name="full-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone (optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location &amp; Time Zone <span class="required">*</span></label>
+                        <span class="help-text">City, country, and your time zone (e.g., "Manila, PH &mdash; GMT+8")</span>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn Profile (optional)</label>
+                        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/...">
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio">Portfolio or Writing Samples (optional)</label>
+                        <span class="help-text">Link to a blog post, social campaign, or anything you've published</span>
+                        <input type="url" id="portfolio" name="portfolio" placeholder="https://...">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="english-fluency">English Fluency (Written &amp; Spoken) <span class="required">*</span></label>
+                    <select id="english-fluency" name="english-fluency" required>
+                        <option value="">Select...</option>
+                        <option value="native">Native</option>
+                        <option value="fluent-professional">Fluent / Professional working proficiency</option>
+                        <option value="conversational">Conversational</option>
+                        <option value="basic">Basic</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- ============== Section 2: Experience ============== -->
+            <div class="form-section">
+                <h2>2. Experience</h2>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="years-experience">Years in Digital Marketing <span class="required">*</span></label>
+                        <select id="years-experience" name="years-experience" required>
+                            <option value="">Select...</option>
+                            <option value="0-1">Less than 1 year</option>
+                            <option value="1-3">1&ndash;3 years</option>
+                            <option value="3-5">3&ndash;5 years</option>
+                            <option value="5-10">5&ndash;10 years</option>
+                            <option value="10+">10+ years</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="industry-experience">B2B / MSP / IT Industry Experience <span class="required">*</span></label>
+                        <select id="industry-experience" name="industry-experience" required>
+                            <option value="">Select...</option>
+                            <option value="extensive-msp">Yes &mdash; specifically MSP / IT services</option>
+                            <option value="extensive-b2b">Yes &mdash; B2B but not IT-specific</option>
+                            <option value="some">Some exposure</option>
+                            <option value="none">None, but willing to ramp up</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Marketing &amp; CRM Platforms You've Used <span class="required">*</span></label>
+                    <span class="help-text">Check all that apply. Growably / HighLevel is what we use.</span>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item"><input type="checkbox" name="crm-platforms" value="HighLevel / Growably"><span>HighLevel / Growably</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="crm-platforms" value="HubSpot"><span>HubSpot</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="crm-platforms" value="ActiveCampaign"><span>ActiveCampaign</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="crm-platforms" value="Mailchimp"><span>Mailchimp</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="crm-platforms" value="Klaviyo"><span>Klaviyo</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="crm-platforms" value="Salesforce / Pardot"><span>Salesforce / Pardot</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="crm-platforms" value="Constant Contact"><span>Constant Contact</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="crm-platforms" value="Other"><span>Other (list below)</span></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="crm-other">If "Other" or you want to add detail, list here:</label>
+                    <input type="text" id="crm-other" name="crm-other" placeholder="e.g., Brevo, Drip, custom in-house tool">
+                </div>
+
+                <div class="form-group">
+                    <label>Social Platforms You've Created Content For</label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item"><input type="checkbox" name="social-platforms" value="LinkedIn"><span>LinkedIn</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="social-platforms" value="Facebook"><span>Facebook</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="social-platforms" value="Instagram"><span>Instagram</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="social-platforms" value="X / Twitter"><span>X / Twitter</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="social-platforms" value="YouTube"><span>YouTube</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="social-platforms" value="TikTok"><span>TikTok</span></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Paid Ads Experience (optional)</label>
+                    <span class="help-text">Nice to have &mdash; check any you've actively managed campaigns in.</span>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item"><input type="checkbox" name="paid-ads" value="Google Ads"><span>Google Ads</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="paid-ads" value="LinkedIn Ads"><span>LinkedIn Ads</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="paid-ads" value="Meta / Facebook Ads"><span>Meta / Facebook Ads</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="paid-ads" value="None yet"><span>None yet</span></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tech-tribe">Familiar with Tech Tribe content resources?</label>
+                    <select id="tech-tribe" name="tech-tribe">
+                        <option value="">Select...</option>
+                        <option value="yes-used">Yes &mdash; I've adapted Tech Tribe content before</option>
+                        <option value="heard-of">Heard of it, haven't used it</option>
+                        <option value="no">No, but I'm comfortable adapting any source content</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- ============== Section 3: How You Work ============== -->
+            <div class="form-section">
+                <h2>3. How You Work</h2>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="weekly-hours">Weekly Hours You Can Commit <span class="required">*</span></label>
+                        <select id="weekly-hours" name="weekly-hours" required>
+                            <option value="">Select...</option>
+                            <option value="under-10">Under 10 hrs/week</option>
+                            <option value="10-20">10&ndash;20 hrs/week</option>
+                            <option value="20-30">20&ndash;30 hrs/week</option>
+                            <option value="30-plus">30+ hrs/week</option>
+                            <option value="flexible">Flexible / depends on workload</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="us-overlap">Daily Overlap With US Eastern Hours <span class="required">*</span></label>
+                        <span class="help-text">How many hours of your day overlap with 8 AM&ndash;6 PM ET?</span>
+                        <select id="us-overlap" name="us-overlap" required>
+                            <option value="">Select...</option>
+                            <option value="0-2">0&ndash;2 hours</option>
+                            <option value="2-4">2&ndash;4 hours</option>
+                            <option value="4-6">4&ndash;6 hours</option>
+                            <option value="6-plus">6+ hours</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="seo-approach">In 2&ndash;3 sentences, how do you approach SEO when adapting a blog post? <span class="required">*</span></label>
+                    <span class="help-text">No right answer &mdash; we want to see how you think.</span>
+                    <textarea id="seo-approach" name="seo-approach" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="mql-example">Tell us about one campaign or email sequence you ran that actually generated qualified leads. What worked and how did you know? <span class="required">*</span></label>
+                    <textarea id="mql-example" name="mql-example" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="cover-note">Anything else you'd like us to know?</label>
+                    <span class="help-text">Optional &mdash; why this role, what you're hoping for, questions for us, etc.</span>
+                    <textarea id="cover-note" name="cover-note"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Submit Application &rarr;</button>
+            <p class="form-footer-note">We'll review your application and reach out within 5 business days if it's a fit.</p>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Simple IT, LLC. All rights reserved.</p>
+    </footer>
+
+    <script>
+        (function () {
+            document.getElementById('loadedAt').value = Date.now().toString();
+
+            document.getElementById('applicationForm').addEventListener('submit', function (e) {
+                var honeypot = document.querySelector('input[name="company-website"]').value;
+                var loadedAt = parseInt(document.getElementById('loadedAt').value, 10);
+                var elapsed = Date.now() - loadedAt;
+
+                if (honeypot || elapsed < 3000) {
+                    e.preventDefault();
+                    // Silently "succeed" for bots
+                    window.location.href = '/thank-you.html';
+                    return;
+                }
+
+                var btn = document.getElementById('submitBtn');
+                btn.disabled = true;
+                btn.textContent = 'Submitting...';
+            });
+        })();
+    </script>
+</body>
+</html>

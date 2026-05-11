@@ -4,5 +4,6 @@ Disallow: /.netlify/
 Disallow: /simple-it-redesign
 Disallow: /review-entry-helper
 Disallow: /ticket-confirmation-email-preview
+Disallow: /marketer-application
 
 Sitemap: https://simple-it.us/sitemap.xml
