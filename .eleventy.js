@@ -1,4 +1,5 @@
 const markdownIt = require("markdown-it");
+const fetchPortalPosts = require("./_data/portalPosts.js");
 
 module.exports = function(eleventyConfig) {
   // --- Passthrough Copy: copy ALL existing site files as-is ---
@@ -24,7 +25,6 @@ module.exports = function(eleventyConfig) {
   // Config and data files
   eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy("netlify.toml");
-  eleventyConfig.addPassthroughCopy("sitemap.xml");
   eleventyConfig.addPassthroughCopy("package.json");
   eleventyConfig.addPassthroughCopy("package-lock.json");
   eleventyConfig.addPassthroughCopy("reviews-data.json");
@@ -94,6 +94,31 @@ module.exports = function(eleventyConfig) {
   // Limit filter for arrays (used in related posts)
   eleventyConfig.addFilter("limit", (arr, count) => {
     return (arr || []).slice(0, count);
+  });
+
+  // --- Merged blog index: local markdown posts + portal-authored posts ---
+  // Portal posts are wrapped so they expose the same shape as Eleventy
+  // collection items (`url`, `date`, `data.*`, `templateContent`) — that lets
+  // blog.njk and feed.njk iterate the merged collection without branching.
+  eleventyConfig.addCollection("allBlogPosts", async (collectionApi) => {
+    const local = collectionApi.getFilteredByTag("blog").filter(p => !p.data.draft);
+    const portal = await fetchPortalPosts();
+    const portalItems = portal.map(p => ({
+      url: p.url,
+      date: p.publishedAtDate,
+      data: {
+        title: p.title,
+        metaDescription: p.metaDescription,
+        featuredImage: p.ogImageUrl,
+        categories: p.tags,
+        author: p.author.fullName,
+        draft: false,
+        isPortal: true,
+        portal: p,
+      },
+      templateContent: p.bodyHtml,
+    }));
+    return [...local, ...portalItems].sort((a, b) => a.date - b.date);
   });
 
   // --- Blog by Category Collection ---

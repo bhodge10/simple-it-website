@@ -1623,6 +1623,8 @@
     <link rel="stylesheet" href="/google-reviews.css">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6T2XSC5NN"></script>
+    <script src="/attribution.js" defer></script>
+    <script src="/lead-capture.js" defer></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -2152,6 +2154,17 @@
                                 body: JSON.stringify(formData)
                             });
 
+                            // Dual-write to portal /api/public/leads. Fire-and-forget;
+                            // send-guide is still responsible for the customer email.
+                            if (typeof window.submitLeadToPortal === 'function') {
+                                window.submitLeadToPortal('lead_magnet', {
+                                    fullName: formData.name,
+                                    email: formData.email,
+                                    company: formData.company,
+                                    leadMagnet: 'IT Security Checklist'
+                                });
+                            }
+
                             if (response.ok) {
                                 // Success!
                                 messageDiv.style.display = 'block';
@@ -2239,6 +2252,17 @@
                         msg.style.color = '#28a745';
                         msg.innerHTML = '<strong>Thank you!</strong> We\'ll be in touch shortly.';
                         return;
+                    }
+
+                    // Dual-write to portal /api/public/leads. Fire-and-forget;
+                    // Netlify Forms remains the customer-visible source of truth.
+                    if (typeof window.submitLeadToPortal === 'function') {
+                        var form = document.getElementById('assessmentForm');
+                        window.submitLeadToPortal('assessment_request', {
+                            fullName: form.querySelector('input[name="name"]').value.trim(),
+                            email: form.querySelector('input[name="email"]').value.trim(),
+                            phone: form.querySelector('input[name="phone"]').value.trim()
+                        });
                     }
                     // Otherwise, let the form submit normally to Netlify
                 });

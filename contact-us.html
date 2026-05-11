@@ -322,6 +322,8 @@
     </style>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6T2XSC5NN"></script>
+    <script src="/attribution.js" defer></script>
+    <script src="/lead-capture.js" defer></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -485,6 +487,21 @@
                         msg.style.color = '#28a745';
                         msg.innerHTML = '<strong>Thank you!</strong> We\'ll be in touch shortly.';
                         return;
+                    }
+
+                    // Dual-write to portal /api/public/leads. Fire-and-forget:
+                    // Netlify Forms remains primary; portal is a shadow record
+                    // so a portal outage never blocks a customer lead.
+                    if (typeof window.submitLeadToPortal === 'function') {
+                        window.submitLeadToPortal('contact', {
+                            fullName: document.getElementById('name').value.trim(),
+                            email: document.getElementById('email').value.trim(),
+                            phone: document.getElementById('phone').value.trim(),
+                            company: document.getElementById('company').value.trim(),
+                            employeeCountRange: document.getElementById('employees').value,
+                            message: document.getElementById('message').value.trim(),
+                            interest: document.getElementById('interest').value
+                        });
                     }
                 });
             })();

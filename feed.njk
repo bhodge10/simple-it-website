@@ -9,12 +9,12 @@ eleventyExcludeFromCollections: true
   <link href="https://simple-it.us/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://simple-it.us/blog/" rel="alternate" type="text/html"/>
   <id>https://simple-it.us/blog/</id>
-  {%- set latestPost = collections.blog | last %}
+  {%- set latestPost = collections.allBlogPosts | last %}
   <updated>{{ latestPost.date | isoDate }}</updated>
   <author>
     <name>Simple IT Team</name>
   </author>
-  {%- for post in collections.blog | reverse | limit(20) %}
+  {%- for post in collections.allBlogPosts | reverse | limit(20) %}
   <entry>
     <title>{{ post.data.title }}</title>
     <link href="https://simple-it.us{{ post.url }}" rel="alternate" type="text/html"/>

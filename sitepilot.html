@@ -537,6 +537,8 @@
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6T2XSC5NN"></script>
+    <script src="/attribution.js" defer></script>
+    <script src="/lead-capture.js" defer></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -847,6 +849,22 @@
             }
 
             var formData = new FormData(leadForm);
+
+            // Dual-write to portal /api/public/leads. Fire-and-forget;
+            // Netlify Forms remains the primary success path.
+            if (typeof window.submitLeadToPortal === 'function') {
+                window.submitLeadToPortal('sitepilot_audit', {
+                    fullName: document.getElementById('leadName').value.trim(),
+                    email: document.getElementById('leadEmail').value.trim(),
+                    phone: (leadForm.querySelector('input[name="phone"]') || {}).value || '',
+                    company: (leadForm.querySelector('input[name="business"]') || {}).value || '',
+                    message: (leadForm.querySelector('textarea[name="message"]') || {}).value || '',
+                    auditDomain: currentDomain,
+                    auditOverallScore: currentResults ? currentResults.overall_score : null,
+                    auditOverallGrade: currentResults ? currentResults.overall_grade : null
+                });
+            }
+
             fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ seoTitle if seoTitle else title }} | Simple IT Blog</title>
-    <meta name="description" content="{{ metaDescription if metaDescription else content | excerpt }}">
-    {% if focusKeyphrase %}<meta name="keywords" content="{{ focusKeyphrase }}">{% endif %}
-    <link rel="canonical" href="https://simple-it.us{{ page.url }}">
+    {%- set effectiveTitle = post.metaTitle if post.metaTitle else post.title -%}
+    {%- set effectiveDescription = post.metaDescription if post.metaDescription else post.excerpt -%}
+    {%- set ogImage = post.ogImageUrl if post.ogImageUrl else 'https://simple-it.us/simple-it-logo.png' -%}
+    {%- set siteUrl = 'https://simple-it.us/blog/' + post.slug + '/' -%}
+    {%- set canonicalUrl = post.canonicalUrl if post.canonicalUrl else siteUrl -%}
+
+    <title>{{ effectiveTitle }} | Simple IT</title>
+    <meta name="description" content="{{ effectiveDescription }}">
+    <link rel="canonical" href="{{ canonicalUrl }}">
 
     <link rel="icon" type="image/png" href="/simple-it-logo.png">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="{{ ogTitle if ogTitle else (seoTitle if seoTitle else title) }}">
-    <meta property="og:description" content="{{ ogDescription if ogDescription else (metaDescription if metaDescription else content | excerpt) }}">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://simple-it.us{{ page.url }}">
-    {% if featuredImage %}<meta property="og:image" content="https://simple-it.us{{ featuredImage }}">{% endif %}
+    <meta property="og:title" content="{{ effectiveTitle }}">
+    <meta property="og:description" content="{{ effectiveDescription }}">
+    <meta property="og:url" content="{{ siteUrl }}">
+    <meta property="og:image" content="{{ ogImage }}">
     <meta property="og:site_name" content="Simple IT">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ ogTitle if ogTitle else (seoTitle if seoTitle else title) }}">
-    <meta name="twitter:description" content="{{ ogDescription if ogDescription else (metaDescription if metaDescription else content | excerpt) }}">
-    {% if featuredImage %}<meta name="twitter:image" content="https://simple-it.us{{ featuredImage }}">{% endif %}
+    <meta name="twitter:title" content="{{ effectiveTitle }}">
+    <meta name="twitter:description" content="{{ effectiveDescription }}">
+    <meta name="twitter:image" content="{{ ogImage }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,14 +49,14 @@
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "{{ title }}",
-      "description": "{{ metaDescription if metaDescription else content | excerpt }}",
-      "datePublished": "{{ date | isoDate }}",
-      "dateModified": "{{ date | isoDate }}",
-      {% if featuredImage %}"image": "https://simple-it.us{{ featuredImage }}",{% endif %}
+      "headline": {{ post.title | dump | safe }},
+      "description": {{ effectiveDescription | dump | safe }},
+      "datePublished": "{{ post.publishedAt }}",
+      "dateModified": "{{ post.updatedAt }}",
+      "image": "{{ ogImage }}",
       "author": {
         "@type": "Person",
-        "name": "{{ author if author else 'Simple IT Team' }}",
+        "name": {{ post.author.fullName | dump | safe }},
         "url": "https://simple-it.us/"
       },
       "publisher": {
@@ -64,9 +69,8 @@
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://simple-it.us{{ page.url }}"
+        "@id": "{{ siteUrl }}"
       }
-      {% if focusKeyphrase %},"keywords": "{{ focusKeyphrase }}"{% endif %}
     }
     </script>
 
@@ -78,7 +82,7 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simple-it.us/" },
         { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://simple-it.us/blog/" },
-        { "@type": "ListItem", "position": 3, "name": "{{ title }}", "item": "https://simple-it.us{{ page.url }}" }
+        { "@type": "ListItem", "position": 3, "name": {{ post.title | dump | safe }}, "item": "{{ siteUrl }}" }
       ]
     }
     </script>
@@ -106,46 +110,43 @@
     <!-- Breadcrumb -->
     <div class="blog-breadcrumb">
         <div class="blog-container">
-            <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>{{ title }}</span>
+            <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>{{ post.title }}</span>
         </div>
     </div>
 
     <!-- Article -->
     <article class="blog-article">
         <div class="blog-container">
-            <!-- Article Header -->
             <header class="article-header">
-                {% if categories %}
+                {% if post.tags and post.tags.length > 0 %}
                 <div class="article-categories">
-                    {% for cat in categories %}
-                    <span class="category-tag">{{ cat }}</span>
+                    {% for tag in post.tags %}
+                    <span class="category-tag">{{ tag }}</span>
                     {% endfor %}
                 </div>
                 {% endif %}
 
-                <h1>{{ title }}</h1>
+                <h1>{{ post.title }}</h1>
 
                 <div class="article-meta">
-                    <span class="meta-author">{{ author if author else "Simple IT Team" }}</span>
+                    <span class="meta-author">{{ post.author.fullName }}</span>
                     <span class="meta-separator">&#183;</span>
-                    <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+                    <time datetime="{{ post.publishedAtDate | htmlDateString }}">{{ post.publishedAtDate | readableDate }}</time>
                     <span class="meta-separator">&#183;</span>
-                    <span class="meta-reading-time">{{ content | readingTime }}</span>
+                    <span class="meta-reading-time">{{ post.bodyHtml | readingTime }}</span>
                 </div>
             </header>
 
-            {% if featuredImage %}
+            {% if post.ogImageUrl %}
             <div class="article-featured-image">
-                <img src="{{ featuredImage }}" alt="{{ featuredImageAlt if featuredImageAlt else title }}" loading="lazy">
+                <img src="{{ post.ogImageUrl }}" alt="{{ post.title }}" loading="lazy">
             </div>
             {% endif %}
 
-            <!-- Article Body -->
             <div class="article-body">
-                {{ content | safe }}
+                {{ post.bodyHtml | safe }}
             </div>
 
-            <!-- CTA Box -->
             <div class="article-cta">
                 <h3>Need IT Help?</h3>
                 <p>Simple IT provides guaranteed 15-minute response time IT support for businesses in Northern Kentucky and Cincinnati.</p>
@@ -157,36 +158,6 @@
         </div>
     </article>
 
-    <!-- Related Posts -->
-    {% set relatedPosts = collections.blog | reverse %}
-    {% if relatedPosts.length > 1 %}
-    <section class="related-posts">
-        <div class="blog-container">
-            <h2>More from the Blog</h2>
-            <div class="related-grid">
-                {% for post in relatedPosts %}
-                {% if post.url !== page.url %}
-                {% if loop.index0 < 3 %}
-                <a href="{{ post.url }}" class="related-card">
-                    {% if post.data.featuredImage %}
-                    <div class="related-image">
-                        <img src="{{ post.data.featuredImage }}" alt="{{ post.data.featuredImageAlt if post.data.featuredImageAlt else post.data.title }}" loading="lazy">
-                    </div>
-                    {% endif %}
-                    <div class="related-content">
-                        <h3>{{ post.data.title }}</h3>
-                        <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-                    </div>
-                </a>
-                {% endif %}
-                {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    {% endif %}
-
-    <!-- Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-brand">
@@ -237,29 +208,18 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
-
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navLinks.classList.toggle('active');
-                mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '\u2715' : '\u2630';
-                mobileMenuBtn.setAttribute('aria-label', navLinks.classList.contains('active') ? 'Close menu' : 'Open menu');
+                mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
             });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    mobileMenuBtn.textContent = '\u2630';
-                });
-            });
-
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('nav')) {
                     navLinks.classList.remove('active');
-                    mobileMenuBtn.textContent = '\u2630';
+                    mobileMenuBtn.textContent = '☰';
                 }
             });
         }
