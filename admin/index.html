@@ -9,5 +9,31 @@
 </head>
 <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      // Default a new post's author to the logged-in user.
+      // Decap can't pre-fill the form field from the current user, so we set it
+      // at save time — but only when the author is still empty or the generic
+      // default, so deliberate names (and other authors' posts) are preserved.
+      CMS.registerEventListener({
+        name: "preSave",
+        handler: ({ entry }) => {
+          const data = entry.get("data");
+          const author = data.get("author");
+          if (author && author !== "Simple IT Team") {
+            return; // leave a deliberately-set author alone
+          }
+          const user =
+            window.netlifyIdentity && window.netlifyIdentity.currentUser();
+          if (!user) {
+            return;
+          }
+          const name =
+            (user.user_metadata && user.user_metadata.full_name) || user.email;
+          if (name) {
+            return data.set("author", name);
+          }
+        },
+      });
+    </script>
 </body>
 </html>
