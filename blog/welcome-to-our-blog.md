@@ -1,9 +1,9 @@
 ---
 title: Welcome to the Simple IT Blog
 date: 2026-02-11
-author: Simple IT Team
+author: Kevin Lane
 draft: false
-featuredImage: /images/blog/6-helpful-tips-to-troubleshoot-common-business-network-issues.png
+featuredImage: /images/blog/keep-it-simple.png
 featuredImageAlt: ""
 categories:
   - Company Updates
