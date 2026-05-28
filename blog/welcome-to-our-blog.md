@@ -1,15 +1,17 @@
 ---
-title: "Welcome to the Simple IT Blog"
+title: Welcome to the Simple IT Blog
 date: 2026-02-11
-author: "Simple IT Team"
+author: Simple IT Team
 draft: false
-featuredImage: ""
+featuredImage: /images/blog/6-helpful-tips-to-troubleshoot-common-business-network-issues.png
 featuredImageAlt: ""
 categories:
-  - "Company Updates"
-seoTitle: "Welcome to the Simple IT Blog | IT Tips & Insights"
-metaDescription: "Stay up to date with the latest IT tips, cybersecurity insights, and technology advice for businesses in Northern Kentucky and Cincinnati."
-focusKeyphrase: "Simple IT blog"
+  - Company Updates
+seoTitle: Welcome to the Simple IT Blog | IT Tips & Insights
+metaDescription: Stay up to date with the latest IT tips, cybersecurity
+  insights, and technology advice for businesses in Northern Kentucky and
+  Cincinnati.
+focusKeyphrase: Simple IT blog
 ogTitle: ""
 ogDescription: ""
 ---
