@@ -3,7 +3,7 @@ title: "Stop the Bleeding: How Revoking Admin Rights Eliminates Support Tickets"
 date: 2026-06-03
 author: Kevin Lane
 draft: true
-featuredImage: /images/blog/photo-1508780709619-79562169bc64-1-.avif
+featuredImage: ""
 featuredImageAlt: Person typing on a laptop while managing admin rights and
   cybersecurity settings
 categories:
