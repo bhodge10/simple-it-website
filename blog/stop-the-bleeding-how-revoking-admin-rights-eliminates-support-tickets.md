@@ -23,6 +23,8 @@ The usual reason is efficiency.
 
 The practical result is the opposite. Machines that drift from baseline, infections that spread before they are caught, and remediation tickets nobody planned for. Revoking local admin rights directly removes the root cause of most of those tickets.
 
+Here at Simple IT, we often see that businesses benefit most when least-privilege access is properly enforced from the start.
+
 **<H2>The Admin Rights and Support Ticket Connection</H2>**
 
 A standard user account limits what software can be installed, what system settings can be changed, and what processes can run at an elevated level. These limits are not arbitrary friction. They are the boundary that prevents most common problems from ever reaching the helpdesk.
@@ -94,5 +96,7 @@ The friction you may anticipate is usually larger than the friction you actually
 **<H2>What to Do Before You Flip the Switch</H2>**
 
 Ready to reduce your support ticket volume and tighten endpoint security for your team at the same time? 
+
+Here at Simple IT, we help businesses implement least-privilege access and enforce secure user permissions without disrupting daily operations.
 
 Contact us or schedule a consultation to plan a least-privilege rollout that works for your team.
