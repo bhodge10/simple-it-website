@@ -15,7 +15,7 @@ metaDescription: Deepfake technology is fueling new invoice fraud scams.
   Discover how to secure your accounts payable team against voice and email
   cloning attacks.  Option 3
 focusKeyphrase: Deepfake invoice fraud
-ogTitle: ""
+ogTitle: "Your Next Invoice Could Be Fake: The Rise of Deepfake Fraud"
 ogDescription: "That urgent email from the CEO asking for a rush payment? It
   might be an AI deepfake. 🤖 Attackers are now cloning voices and mimicking
   writing styles perfectly to bypass the red flags we used to rely on. It’s time
