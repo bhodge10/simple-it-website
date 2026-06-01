@@ -3,7 +3,7 @@ title: "Stop the Bleeding: How Revoking Admin Rights Eliminates Support Tickets"
 date: 2026-06-03
 author: Kevin Lane
 draft: true
-featuredImage: ""
+featuredImage: /images/blog/photo-1508780709619-79562169bc64-1-.avif
 featuredImageAlt: Person typing on a laptop while managing admin rights and
   cybersecurity settings
 categories:
@@ -99,4 +99,4 @@ Ready to reduce your support ticket volume and tighten endpoint security for you
 
 Here at Simple IT, we help businesses implement least-privilege access and enforce secure user permissions without disrupting daily operations.
 
-Contact us or schedule a consultation to plan a least-privilege rollout that works for your team.
+[Contact us](https://simple-it.us/submit-ticket) or schedule a consultation to plan a least-privilege rollout that works for your team.
