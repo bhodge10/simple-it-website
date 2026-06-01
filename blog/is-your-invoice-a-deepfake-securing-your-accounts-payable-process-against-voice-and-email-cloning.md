@@ -91,15 +91,15 @@ At Simple IT, we believe effective cybersecurity comes from strong processes, la
 
 The most effective defense is not sharper instincts. It is removing ambiguity from high-risk actions.
 
-### **Out-of-band verification as standard**
+* ### **Out-of-band verification as standard**
 
 Any request to change supplier bank details or approve an urgent payment outside the normal cycle should require secondary confirmation through a known, independent channel — not a reply to the same email thread. Calling a supplier on a number already on file, or confirming with a colleague directly, breaks the impersonation chain regardless of how convincing the original request appeared. This step does not require technology. It requires a written procedure and the team's habit of following it.
 
-### Layered access and authentication controls
+* ### Layered access and authentication controls
 
 Restricting access to financial systems and enforcing multi-factor authentication limits the damage a compromised account can cause. If an attacker gains access to a vendor's email, MFA requirements on the receiving end create friction that can slow or stop a fraudulent change before any money moves.
 
-### A culture that supports slowing down
+* ### A culture that supports slowing down
 
 Fraud prevention improves when staff feel safe questioning requests, including from senior leadership. 
 
