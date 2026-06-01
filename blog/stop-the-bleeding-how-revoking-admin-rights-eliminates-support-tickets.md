@@ -14,6 +14,10 @@ metaDescription: Stop support overload by revoking admin rights to reduce IT
   tickets, improve security, and simplify access management across your
   organization.
 focusKeyphrase: Revoking Admin Rights
+ogDescription: "The most expensive IT ticket isn't a hardware crash; it’s the
+  infection caused because a user had the power to install something they
+  shouldn’t have. 🛑 Revoking local admin rights can eliminate up to 75% of
+  critical vulnerabilities and slash your support ticket volume. "
 ---
 The most time-consuming ticket in your queue is rarely a hardware failure. It’s the PC infection that started when a user installed something they shouldn’t have been able to. Or it’s the broken configuration left behind after someone changed a setting IT can’t trace.
 
