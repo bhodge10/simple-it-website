@@ -77,7 +77,7 @@ Revoking admin rights and enforcing managed software deployment closes this drif
 
 ## **But I Need to Install Things**
 
-### **1. Just-in-time elevation**
+### **Just-in-time elevation**
 
 The concern is legitimate. As a user on your network, you do occasionally need elevated access for specific tasks. 
 
@@ -87,7 +87,7 @@ This keeps users productive and IT informed.
 
 Every elevation request is logged. Unapproved actions do not happen silently. The volume and pattern of requests also becomes useful data in its own right, revealing exactly which tasks genuinely require escalation and which ones users were performing only because nothing was stopping them. 
 
-### **2. What standard users can already do**
+### **What standard users can already do**
 
 Standard accounts support normal application use, browser activity, printing, file access, and the vast majority of day-to-day tasks without any escalation at all. 
 
