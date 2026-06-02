@@ -1,6 +1,6 @@
 ---
 title: The Ultimate Guide to Revoking Admin Rights for Less Tickets (2026)
-date: 2026-06-03
+date: 2026-06-02
 author: William Jones
 draft: true
 featuredImage: /images/blog/photo-1508780709619-79562169bc64-1-.avif
