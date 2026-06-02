@@ -1,6 +1,5 @@
 ---
-title: Is Your Invoice a Deepfake? Securing Your Accounts Payable Process
-  Against Voice and Email Cloning
+title: "Stop Invoice Deepfakes: Protect Accounts Payable from Voice & Email Cloning"
 date: 2026-06-05
 author: Kevin Lane
 draft: true
@@ -10,17 +9,19 @@ featuredImageAlt: Illustration of a cybercriminal delivering a fake invoice,
 categories:
   - Cybersecurity
   - Business Tips
-seoTitle: How to Prevent Deepfake Invoice Fraud in Your Accounts Payable Process
+seoTitle: "Deepfake Invoice Fraud: Protecting Accounts Payable Teams"
 metaDescription: Deepfake technology is fueling new invoice fraud scams.
   Discover how to secure your accounts payable team against voice and email
   cloning attacks.  Option 3
 focusKeyphrase: Deepfake invoice fraud
 ogTitle: "Your Next Invoice Could Be Fake: The Rise of Deepfake Fraud"
-ogDescription: Learn how AI-driven deepfakes are targeting accounts payable
-  teams through fake invoices, voice cloning, and email impersonation, and how
-  to defend against them.
+ogDescription: Learn how deepfake technology, voice cloning, and email
+  impersonation are increasing invoice fraud risks, and how accounts payable
+  teams can protect their organizations.
 ---
-According to the FBI's 2025 Internet Crime Report, business email compromise (BEC) cost US businesses more than $3 billion last year.
+It’s a statistic that sends a shiver down the backs of SME owners, managers and employees.  
+
+According to the [FBI's 2025 Internet Crime Report](https://www.fbi.gov/investigate/cyber/alerts/2025), business email compromise (BEC) cost US businesses more than $3 billion last year.
 
 This makes it one of the most financially damaging cybercrimes on record. 
 
@@ -38,13 +39,13 @@ For many businesses throughout Cincinnati and Northern Kentucky, AP departments 
 
 Most successful fraud does not involve breaking into systems. 
 
-The FBI's Internet Crime Complaint Center (IC3) has consistently found that BEC attacks rely on impersonation. This involves posing as a trusted executive, supplier, or internal colleague to redirect payments or update bank details before anyone notices.
+The [FBI's Internet Crime Complaint Center (IC3)](https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-frauds-and-scams/business-email-compromise) has consistently found that BEC attacks rely on impersonation. This involves posing as a trusted executive, supplier, or internal colleague to redirect payments or update bank details before anyone notices.
 
 AI has made that impersonation dramatically more scalable. 
 
 Where it once required skill and time to craft a convincing request, tools are now widely available that automate the research, writing, and contextual tailoring that make fraud blend into normal AP workflows.
 
-By mid-2024, an estimated 40% of BEC phishing emails were already AI-generated, with that share expected to grow significantly.
+[By mid-2024, an estimated 40% of BEC phishing emails were already AI-generated](https://hoxhunt.com/blog/business-email-compromise-statistics), with that share expected to grow significantly.
 
 ## What AI-Enhanced Fraud Looks Like in Practice
 
@@ -94,7 +95,7 @@ Any request to change supplier bank details or approve an urgent payment outside
 
 * ### Layered access and authentication controls
 
-Restricting access to financial systems and enforcing multi-factor authentication limits the damage a compromised account can cause. If an attacker gains access to a vendor's email, MFA requirements on the receiving end create friction that can slow or stop a fraudulent change before any money moves.
+Restricting access to financial systems and enforcing [multi-factor authentication](https://yourwebsite.com/blog/multi-factor-authentication) limits the damage a compromised account can cause. If an attacker gains access to a vendor's email, MFA requirements on the receiving end create friction that can slow or stop a fraudulent change before any money moves.
 
 * ### A culture that supports slowing down
 
@@ -104,7 +105,7 @@ A team member who pauses a payment to verify it is not being obstructive. They a
 
 Building that culture starts with leadership modeling the behavior and making clear that slowing down on high-risk actions is always the right call.
 
-The FBI's 2025 Internet Crime Report included a dedicated AI section for the first time, logging more than $893 million in AI-enabled scam losses across more than 22,000 complaints.
+The [FBI's 2025 Internet Crime Report](https://www.govtech.com/security/fbi-crypto-ai-scams-drove-billions-in-losses-in-2025) included a dedicated AI section for the first time, logging more than $893 million in AI-enabled scam losses across more than 22,000 complaints.
 
 When verification is standard and questioning is encouraged, AI-enhanced fraud loses much of its advantage. 
 
@@ -114,6 +115,10 @@ The technology attackers use is advancing quickly, but the process controls that
 
 Concerned about AI-enhanced fraud targeting your finance teams or clients? 
 
-At Simple IT, we help businesses strengthen their defenses against AI-enhanced fraud targeting accounts payable processes, including email impersonation, voice cloning, and invoice manipulation.
+At **Simple IT**, we help businesses strengthen their defenses against AI-enhanced fraud targeting accounts payable processes, including email impersonation, voice cloning, and invoice manipulation.
 
-[Contact us](https://simple-it.us/#) or schedule a consultation to review your current controls and identify where the most important gaps are.
+[Contact us](https://simple-it.us/about-us) or [schedule a consultation](https://simple-it.us/#contact) to review your current controls and identify where the most important gaps are.
+
+###### *\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__*
+
+###### *Article used with permission from [The Technology Press](https://thetechnologypress.com/stop-the-bleeding-how-revoking-admin-rights-eliminates-support-tickets/).*
