@@ -1,8 +1,8 @@
 ---
 title: The Ultimate Guide to Revoking Admin Rights and Reducing Tickets (2026)
-date: 2026-06-02
+date: 2026-06-03
 author: William Jones
-draft: true
+draft: false
 featuredImage: /images/blog/photo-1508780709619-79562169bc64-1-.avif
 featuredImageAlt: Person typing on a laptop while managing admin rights and
   cybersecurity settings
