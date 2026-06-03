@@ -1,6 +1,5 @@
 ---
-title: "The “Zombie” SaaS Audit: Finding the 3 Apps Your Former Employees Still
-  Access"
+title: What Is a Zombie SaaS Audit? Stop Hidden Access in Northern Kentucky Businesses
 date: 2026-06-09
 author: Brad Hodge
 draft: true
@@ -9,9 +8,7 @@ featuredImageAlt: Laptop used for SaaS audit and identifying inactive employee a
 categories:
   - Cybersecurity
   - Managed IT
-  - Cloud
   - Business Tips
-  - Tech Tips
 seoTitle: "How to Conduct a 'Zombie' SaaS Audit: Apps Former Employees Access"
 metaDescription: Former employees may still access your SaaS tools. Learn how to
   find and remove zombie accounts with a simple SaaS audit.
