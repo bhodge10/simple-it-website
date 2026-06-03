@@ -14,6 +14,15 @@ collections:
     create: true
     slug: "{{slug}}"
     extension: "md"
+    # Contents list view: show the draft/published status and the real
+    # last-updated date/time (from the git commit), so Brad & James can see
+    # at a glance what changed and when. Sort defaults to most-recently-updated.
+    summary: "{{title}}  ·  {{fields.draft | ternary('DRAFT','PUBLISHED')}}  ·  Updated {{commit_date | date('MMM D, YYYY h:mm A')}}"
+    sortable_fields:
+      - commit_date
+      - title
+      - date
+      - author
     editor:
       preview: false
     fields:
