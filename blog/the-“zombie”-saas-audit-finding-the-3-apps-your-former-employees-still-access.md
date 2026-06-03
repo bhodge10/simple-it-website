@@ -12,7 +12,13 @@ categories:
   - Cloud
   - Business Tips
   - Tech Tips
+seoTitle: "How to Conduct a 'Zombie' SaaS Audit: Apps Former Employees Access"
+metaDescription: Former employees may still access your SaaS tools. Learn how to
+  find and remove zombie accounts with a simple SaaS audit.
 focusKeyphrase: zombie SaaS audit
+ogTitle: "The Zombie SaaS Audit: Hidden Employee Access Risk"
+ogDescription: Hidden SaaS access from former employees can put your business at
+  risk. Learn how to find and remove zombie accounts.
 ---
 Someone leaves the company on a Friday. By Monday, their email account is disabled, and their laptop is back in the pile.
 
