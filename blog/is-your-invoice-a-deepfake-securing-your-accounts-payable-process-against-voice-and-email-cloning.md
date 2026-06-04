@@ -12,22 +12,22 @@ categories:
 seoTitle: "Deepfake Invoice Fraud: Protecting Accounts Payable Teams"
 metaDescription: Deepfake technology is fueling new invoice fraud scams.
   Discover how to secure your accounts payable team against voice and email
-  cloning attacks.  Option 3
+  cloning attacks.
 focusKeyphrase: Deepfake invoice fraud
 ogTitle: "Your Next Invoice Could Be Fake: The Rise of Deepfake Fraud"
 ogDescription: Learn how deepfake technology, voice cloning, and email
   impersonation are increasing invoice fraud risks, and how accounts payable
   teams can protect their organizations.
 ---
-It’s a statistic that sends a shiver down the backs of SME owners, managers and employees.  
+It’s a statistic that should send a shiver down the backs of Northern Kentucky business owners.  As well, it should heighten the awareness of all managers and employees at small and medium businesses from Alexandria to Walton.
 
-According to the [FBI's 2025 Internet Crime Report](https://www.fbi.gov/investigate/cyber/alerts/2025), business email compromise (BEC) cost US businesses more than $3 billion last year.
+According to the [FBI's 2025 Internet Crime Report](https://www.fbi.gov/investigate/cyber/alerts/2025), business email compromise (BEC) cost US businesses more than $3 BILLION last year.
 
-This makes it one of the most financially damaging cybercrimes on record. 
+This makes it one of the most financially damaging cybercrimes on record.
 
-AI has made these attacks harder to detect. The question for AP teams is no longer whether they can identify suspicious requests. It is whether the processes around payments make fraud difficult regardless of how convincing it looks.
+AI has made these attacks harder to detect. The question for Account Payable (AP) teams is no longer whether they can identify suspicious requests. It is whether their payment processes will make fraud difficult regardless of how convincing it looks.
 
-Here at Simple IT, we've seen businesses across Northern Kentucky and Cincinnati face increasingly sophisticated cyber threats that make fraudulent requests look almost identical to legitimate business communications.
+Here at Simple IT, we've seen our Northern Kentucky partners face increasingly sophisticated cyber threats that make fraudulent requests look almost identical to legitimate business communications.  Small businesses, big businesses, non-profit agencies, government agencies are all at risk - if your organization sends or receives invoices electronically, then it's an ideal target.    
 
 ## Why AP Teams Are in the Crosshairs
 
@@ -35,13 +35,13 @@ Accounts payable sits at the intersection of trust and timing. AP teams process 
 
 For attackers, that combination is ideal.
 
-For many businesses throughout Cincinnati and Northern Kentucky, AP departments are expected to move quickly while maintaining accuracy, making them a prime target for attackers who exploit urgency and trust.
+For many businesses in the vicinity of the 41017 zip code, AP departments are expected to move quickly while maintaining accuracy, making them a prime target for attackers who exploit urgency and trust.
 
 Most successful fraud does not involve breaking into systems. 
 
 The [FBI's Internet Crime Complaint Center (IC3)](https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-frauds-and-scams/business-email-compromise) has consistently found that BEC attacks rely on impersonation. This involves posing as a trusted executive, supplier, or internal colleague to redirect payments or update bank details before anyone notices.
 
-AI has made that impersonation dramatically more scalable. 
+AI has made that impersonation dramatically more scalable, and believeable.
 
 Where it once required skill and time to craft a convincing request, tools are now widely available that automate the research, writing, and contextual tailoring that make fraud blend into normal AP workflows.
 
@@ -95,7 +95,7 @@ Any request to change supplier bank details or approve an urgent payment outside
 
 * ### Layered access and authentication controls
 
-Restricting access to financial systems and enforcing [multi-factor authentication](https://yourwebsite.com/blog/multi-factor-authentication) limits the damage a compromised account can cause. If an attacker gains access to a vendor's email, MFA requirements on the receiving end create friction that can slow or stop a fraudulent change before any money moves.
+Restricting access to financial systems and enforcing [multi-factor authentication](https://www.microsoft.com/en-us/security/business/security-101/what-is-multifactor-authentication-mfa) limits the damage a compromised account can cause. If an attacker gains access to a vendor's email, MFA requirements on the receiving end create friction that can slow or stop a fraudulent change before any money moves.
 
 * ### A culture that supports slowing down
 
