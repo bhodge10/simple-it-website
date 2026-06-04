@@ -8,6 +8,8 @@ featuredImageAlt: Laptop displaying a username and password login screen with a
   padlock icon, representing traditional password authentication.
 categories:
   - Cybersecurity
+  - Cloud
+  - Tech Tips
 seoTitle: "Passkey Migration: Eliminate Passwords and Improve Security"
 metaDescription: Struggling with password resets and phishing risks? Learn what
   passkey migration is, how it works, and how it can boost security and
@@ -103,4 +105,10 @@ NIST's 2025 update to[ SP 800-63-4](https://pages.nist.gov/800-63-4/) now requir
 
 Ready to start your passkey migration?
 
-Contact us or schedule a consultation to map out which platforms in your environment support passkeys today and build a migration plan that works for your team.
+Here at **Simple IT**, we help Northern Kentucky businesses move beyond password risk by implementing secure, modern authentication through passkey migration and strong access controls. So whether you're a Financial Services firm in Florence or a Commercial Property Manager in Covington, we’ll help you reduce password headaches and strengthen security the simple way.
+
+[Contact us](https://simple-it.us/about-us) or [schedule a consultation](https://simple-it.us/#contact) to map out which platforms in your environment support passkeys today and build a migration plan that works for your team.
+
+###### *\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__*
+
+###### *Article used with permission from [The Technology Press](https://thetechnologypress.com/stop-the-bleeding-how-revoking-admin-rights-eliminates-support-tickets/).*
