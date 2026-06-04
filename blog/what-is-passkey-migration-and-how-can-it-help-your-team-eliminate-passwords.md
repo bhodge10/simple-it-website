@@ -58,9 +58,7 @@ Passkey migration is not a single cutover. It is a gradual transition that runs 
 A migration plan typically covers three things:
 
 1. Which platforms already support passkeys
-
 2. Which users to start with
-
 3. What fallback options exist for tools that are not yet ready
 
 For most business teams running Microsoft 365 or Google Workspace, the infrastructure is already in place.
