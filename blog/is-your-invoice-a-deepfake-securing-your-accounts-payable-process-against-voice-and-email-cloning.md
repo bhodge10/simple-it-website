@@ -1,6 +1,6 @@
 ---
 title: "Stop Invoice Deepfakes: Protect Accounts Payable from Voice & Email Cloning"
-date: 2026-06-04
+date: 2026-06-05
 author: Kevin Lane
 draft: false
 featuredImage: /images/blog/invoice-deepfake.png
