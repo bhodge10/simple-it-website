@@ -1,5 +1,6 @@
 ---
-title: What Is Passkey Migration and How Can It Help Your Team Eliminate Passwords?
+title: "The Next Step in Business Security for NKY: Switching from Passwords to
+  Passkeys"
 date: 2026-06-11
 author: Brad Hodge
 draft: true
