@@ -1,6 +1,6 @@
 ---
-title: "The Next Step in Business Security for NKY: Switching from Passwords to
-  Passkeys"
+title: "Switching from Passwords to Passkeys: The Next Step in Business Security
+  for NKY"
 date: 2026-06-11
 author: Brad Hodge
 draft: true
