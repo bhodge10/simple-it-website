@@ -3,7 +3,7 @@ title: "Stop Invoice Deepfakes: Protect Accounts Payable from Voice & Email Clon
 date: 2026-06-05
 author: Kevin Lane
 draft: false
-featuredImage: ""
+featuredImage: /images/blog/is-your-invoice-a-deepfake-securing-your-accounts-payable-process-against-voice-and-email-cloning.png
 featuredImageAlt: Illustration of a cybercriminal delivering a fake invoice,
   representing invoice fraud, email spoofing, and voice cloning attacks.
 categories:
