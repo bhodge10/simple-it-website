@@ -8,8 +8,8 @@ featuredImage: /images/blog/creativecanvasshop-laptop-10164292_1920.png
 featuredImageAlt: Close-up of a laptop keyboard illustrating business password security.
 categories:
   - Cybersecurity
-  - Cloud
   - Tech Tips
+  - Cloud
 seoTitle: "Password Security: Switching from Passwords to Passkeys"
 metaDescription: Struggling with password resets and phishing risks? Learn what
   passkey migration is, how it works, and how it can boost security and
