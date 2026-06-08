@@ -5,18 +5,19 @@ date: 2026-06-09
 author: Brad Hodge
 draft: true
 featuredImage: /images/blog/pexels-afitab-152665775-13751210.jpg
-featuredImageAlt: Laptop used for SaaS audit and identifying inactive employee app access
+featuredImageAlt: Close-up of a silver laptop keyboard used to review SaaS offboarding security
 categories:
   - Cybersecurity
   - Managed IT
   - Business Tips
-seoTitle: "How to Conduct a 'Zombie' SaaS Audit: Apps Former Employees Access"
-metaDescription: Former employees may still access your SaaS tools. Learn how to
-  find and remove zombie accounts with a simple SaaS audit.
-focusKeyphrase: zombie SaaS audit
-ogTitle: "The Zombie SaaS Audit: Hidden Employee Access Risk"
-ogDescription: Hidden SaaS access from former employees can put your business at
-  risk. Learn how to find and remove zombie accounts.
+seoTitle: "SaaS Offboarding Security: Stop Hidden Access from Former Employees"
+metaDescription: Former employees may still have active logins to your SaaS
+  tools. Learn how to run a zombie SaaS audit and close the gaps before they
+  become a breach.
+focusKeyphrase: SaaS offboarding security
+ogTitle: Your Former Employees May Still Have Access to Your Apps
+ogDescription: Active logins don't disappear when employees leave. Learn how to
+  find and remove zombie SaaS accounts before they become a security problem.
 ---
 Someone leaves the company on a Friday. By Monday, their email account is disabled, and their laptop is back in the pile.
 
