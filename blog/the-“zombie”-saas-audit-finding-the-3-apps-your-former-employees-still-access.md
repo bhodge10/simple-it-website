@@ -4,7 +4,7 @@ title: What Is a Zombie SaaS Audit? Stop Hidden Access in Your Northern Kentucky
 date: 2026-06-08
 author: Brad Hodge
 draft: false
-featuredImage: ""
+featuredImage: https://i.imgur.com/bL11mez.jpg
 featuredImageAlt: Close-up of a silver laptop keyboard used to review SaaS offboarding security
 categories:
   - Cybersecurity
