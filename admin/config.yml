@@ -7,6 +7,23 @@ publish_mode: editorial_workflow
 media_folder: "images/blog"
 public_folder: "/images/blog"
 
+# --- Cloudinary media library (TRIAL) -------------------------------------
+# Routes image uploads to Cloudinary's CDN instead of committing files into the
+# git repo. This removes the featured-image filename-mismatch problem at its
+# source: the field stores the image's permanent CDN URL, so the saved path can
+# never drift away from the actual file.
+#
+# ACTIVATE: replace the two placeholders below with the values from your
+# Cloudinary dashboard (Settings > API Keys). The api_key is the PUBLIC key and
+# is safe to commit — never put the API *secret* here.
+# Full walkthrough: admin/CLOUDINARY-SETUP.md
+media_library:
+  name: cloudinary
+  output_filename_only: false
+  config:
+    cloud_name: YOUR_CLOUD_NAME
+    api_key: YOUR_API_KEY
+
 collections:
   - name: "blog"
     label: "Blog Posts"
