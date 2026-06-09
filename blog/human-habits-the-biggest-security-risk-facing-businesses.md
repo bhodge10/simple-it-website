@@ -13,7 +13,7 @@ seoTitle: How Human Habits Increase Business Security Risk
 metaDescription: See how human habits and security risk are connected, and learn
   practical ways to reduce cybersecurity threats to your business.
 focusKeyphrase: Human Habits Security Risk
-ogTitle: How Everyday Human Habits Create Serious Security Risks
+ogTitle: Why Human Habits Remain a Top Cybersecurity Threat
 ogDescription: A single click, reused password, or personal account can expose
   business systems. Learn how to reduce human-driven cybersecurity risk.
 ---
