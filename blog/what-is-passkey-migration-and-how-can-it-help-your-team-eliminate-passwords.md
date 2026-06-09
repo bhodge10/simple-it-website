@@ -3,7 +3,7 @@ title: "Passkey Migration: How to Move Your Team Beyond Password Risk"
 date: 2026-06-10
 author: Brad Hodge
 draft: false
-featuredImage: /images/blog/creativecanvasshop-laptop-10164292_1920.png
+featuredImage: /images/blog/2026-06-5.png
 featuredImageAlt: IT professional setting up passkey migration on a laptop for a
   small business team
 categories:
