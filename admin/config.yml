@@ -21,8 +21,8 @@ media_library:
   name: cloudinary
   output_filename_only: false
   config:
-    cloud_name: YOUR_CLOUD_NAME
-    api_key: YOUR_API_KEY
+    cloud_name: dygso04l2
+    api_key: "853624135741432"
 
 collections:
   - name: "blog"
