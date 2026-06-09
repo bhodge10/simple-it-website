@@ -105,4 +105,8 @@ Helping clients reduce human-driven security risk is one of the most impactful c
 
 For Northern Kentucky businesses, including those in Florence, Ft. Mitchell, Covington, Erlanger, and Independence, reducing human-driven cybersecurity risk is often one of the fastest ways to strengthen cybersecurity, improve data protection, and safeguard sensitive business information.
 
-Contact us or schedule a consultation to review current controls and identify where the most important gaps are.
+[Contact us](https://simple-it.us/about-us) or [schedule a consultation](https://simple-it.us/#contact) to review current controls and identify where the most important gaps are.
+
+###### *\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__*
+
+###### *Article used with permission from The Technology Press.*
