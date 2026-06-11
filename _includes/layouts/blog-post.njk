@@ -10,19 +10,24 @@
 
     <link rel="icon" type="image/png" href="/simple-it-logo.png">
 
+    {#- Absolute URL for social/SEO image tags. Repo-relative paths (starting
+        with "/") get the site domain prefixed; absolute URLs (e.g. Cloudinary
+        CDN links) are used as-is to avoid double-prefixing. -#}
+    {%- set featuredImageAbs = ('https://simple-it.us' + featuredImage) if (featuredImage and featuredImage[0] == '/') else featuredImage -%}
+
     <!-- Open Graph -->
     <meta property="og:title" content="{{ ogTitle if ogTitle else (seoTitle if seoTitle else title) }}">
     <meta property="og:description" content="{{ ogDescription if ogDescription else (metaDescription if metaDescription else content | excerpt) }}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://simple-it.us{{ page.url }}">
-    {% if featuredImage %}<meta property="og:image" content="https://simple-it.us{{ featuredImage }}">{% endif %}
+    {% if featuredImage %}<meta property="og:image" content="{{ featuredImageAbs }}">{% endif %}
     <meta property="og:site_name" content="Simple IT">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ ogTitle if ogTitle else (seoTitle if seoTitle else title) }}">
     <meta name="twitter:description" content="{{ ogDescription if ogDescription else (metaDescription if metaDescription else content | excerpt) }}">
-    {% if featuredImage %}<meta name="twitter:image" content="https://simple-it.us{{ featuredImage }}">{% endif %}
+    {% if featuredImage %}<meta name="twitter:image" content="{{ featuredImageAbs }}">{% endif %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +53,7 @@
       "description": "{{ metaDescription if metaDescription else content | excerpt }}",
       "datePublished": "{{ date | isoDate }}",
       "dateModified": "{{ date | isoDate }}",
-      {% if featuredImage %}"image": "https://simple-it.us{{ featuredImage }}",{% endif %}
+      {% if featuredImage %}"image": "{{ featuredImageAbs }}",{% endif %}
       "author": {
         "@type": "Person",
         "name": "{{ author if author else 'Simple IT Team' }}",
