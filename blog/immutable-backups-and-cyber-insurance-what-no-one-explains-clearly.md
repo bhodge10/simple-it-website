@@ -92,13 +92,13 @@ If your provider does not know what you're asking, or cannot give a clear answer
 
 Checking no on the form will likely cost you something at renewal, either in premium or in coverage terms. That's a known cost, and it's manageable. Take the hit on the application, and use the months between now and your next renewal to close the gap.
 
-## Not sure where to start on the insurance side? 
+## Not sure where to start? 
+
+For **Northern Kentucky businesses**, including those in Ft. Mitchell, Florence, Covington, Erlanger, Newport, and Independence, understanding immutable backups is becoming an important part of meeting cyber insurance requirements and strengthening ransomware resilience. 
 
 Thankfully, Simple IT works with a trusted local insurance partner, so we have the resources who can help you navigate cyber coverage options, and that's a tech connection we're happy to make!
 
-For **Northern Kentucky businesses**, including those in Ft. Mitchell, Florence, Covington, Erlanger, Newport, and Independence, understanding immutable backups is becoming an important part of meeting cyber insurance requirements and strengthening ransomware resilience.
-
-Is your backup setup ready for your next cyber insurance renewal? **[Simple IT](www.simple-it.us)** can help! Call us at **859-449-7878** or email **[info@simple-it.us](mailto:info@simple-it.us)** — we'll take a look at what you have, tell you exactly where you stand, and most importantly, we'll guide you for a successful outcome! 
+Is your backup setup ready for your next cyber insurance renewal? **[Simple IT](www.simple-it.us)** is ready to help! Give us a call at **859-449-7878** or email **[info@simple-it.us](mailto:info@simple-it.us)** - We'll gladly take a look at what you have, tell you exactly where you stand, and most importantly, we'll guide your business toward a winning outcome!
 
 ###### *\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__*
 
