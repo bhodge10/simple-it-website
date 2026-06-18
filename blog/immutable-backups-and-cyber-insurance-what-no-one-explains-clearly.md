@@ -3,6 +3,9 @@ title: "Immutable Backups and Cyber Insurance: What No One Explains Clearly"
 date: 2026-06-19
 author: Brad Hodge
 draft: true
+featuredImageAlt: A cybersecurity concept image showing protected cloud storage
+  with shield and umbrella icons on a dark blue background, representing
+  immutable backups and cyber insurance.
 categories:
   - Cybersecurity
 seoTitle: What Is an Immutable Backup? A Practical Guide for NKY Businesses
