@@ -24,7 +24,7 @@ Carriers added that question to renewal forms because ransomware operators worke
 
 This post covers what immutable backup means, three common backup setups that do not qualify, the questions to send your IT provider before you sign the form, and what to do if your honest answer is no.
 
-# **Immutable Backup, Defined**
+## **Immutable Backup, Defined**
 
 An immutable backup is one that cannot be modified or deleted for a fixed period of time, including by you, by your IT provider, and by anyone using stolen admin credentials.
 
@@ -92,7 +92,9 @@ If your provider does not know what you're asking, or cannot give a clear answer
 
 Checking no on the form will likely cost you something at renewal, either in premium or in coverage terms. That's a known cost, and it's manageable. Take the hit on the application, and use the months between now and your next renewal to close the gap.
 
-Not sure where to start on the insurance side? Thankfully, Simple IT works with a trusted local insurance partner, so we have the resources who can help you navigate cyber coverage options, and that's a tech connection we're happy to make!
+## Not sure where to start on the insurance side? 
+
+Thankfully, Simple IT works with a trusted local insurance partner, so we have the resources who can help you navigate cyber coverage options, and that's a tech connection we're happy to make!
 
 For **Northern Kentucky businesses**, including those in Ft. Mitchell, Florence, Covington, Erlanger, Newport, and Independence, understanding immutable backups is becoming an important part of meeting cyber insurance requirements and strengthening ransomware resilience.
 
