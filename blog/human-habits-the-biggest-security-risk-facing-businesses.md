@@ -65,7 +65,7 @@ The security risk is not the intention behind the choice. It is what happens to 
 
 Once business information moves into platforms that IT cannot see, audit, or secure, it falls outside every control in place. The tool usage is predictable. The data exposure is not.
 
-## **Why Blocking Behavior Doesn't Work** 
+## **Why Blocking Behavior Doesn't Work**
 
 The instinct is to lock things down: block personal apps, restrict browsing, enforce strict device policies.
 
@@ -109,4 +109,4 @@ For Northern Kentucky businesses, including those in Florence, Ft. Mitchell, Cov
 
 ###### *\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__*
 
-###### *Article used with permission from The Technology Press.*
+###### *Article used with permission from The [Technology Press](https://thetechnologypress.com/stop-the-bleeding-how-revoking-admin-rights-eliminates-support-tickets/).*
