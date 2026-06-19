@@ -2,7 +2,7 @@
 title: "Immutable Backups and Cyber Insurance: What No One Explains Clearly"
 date: 2026-06-19
 author: Brad Hodge
-draft: true
+draft: false
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1781809544/ChatGPT_Image_Jun_19_2026_03_05_12_AM_p4w803.png
 featuredImageAlt: A cybersecurity concept image showing protected cloud storage
   with shield and umbrella icons on a dark blue background, representing
