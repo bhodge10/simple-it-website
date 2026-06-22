@@ -84,3 +84,15 @@ Verifying external forwarding (#2) is silent unless someone has a legitimate for
 The sharing default (#1) will eventually generate user questions, particularly from anyone used to clicking “share” and pasting the link into an email. Communicate the change before you flip the tenant setting.
 
 The MFA and Conditional Access review (#5) is the highest-stakes change and the one most likely to lock people out if it's done badly. Save it for last and budget the time to do it properly.
+
+### Not sure where to start?
+
+At **[Simple IT](www.simple-it.us)**, we take a security-first approach to Microsoft 365 management, helping Northern Kentucky businesses reduce risk before problems become incidents.
+
+Not sure if your Microsoft 365 environment is configured securely? Schedule a free IT assessment with Simple IT and we'll help identify potential gaps.
+
+Give us a call at **859-449-7878** or email **[info@simple-it.us](mailto:info@simple-it.us)** to schedule a conversation with our team!
+
+###### *\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__*
+
+###### *Article used with permission from [The Technology Press](https://thetechnologypress.com/what-immutable-backup-means-on-your-cyber-insurance-form/).*
