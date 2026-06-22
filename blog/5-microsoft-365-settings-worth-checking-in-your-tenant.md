@@ -7,7 +7,7 @@ featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1782115462/pex
 featuredImageAlt: IT specialist auditing Microsoft 365 tenant settings to
   strengthen security, compliance, and user access controls
 categories:
-  - Cybersecurity
+  - Managed IT
 seoTitle: Top 5 Microsoft 365 Security Settings for Tenant Protection
 metaDescription: Review 5 Microsoft 365 security settings every admin should
   check to improve tenant security, reduce risks, and strengthen user
@@ -19,15 +19,13 @@ ogDescription: Overlooked Microsoft 365 settings can leave your tenant
   vulnerable to security risks and unauthorized access. Learn how to identify
   and fix 5 key settings every admin should review.
 ---
-Microsoft has tightened several default settings in Microsoft 365 over the past few years. Newer tenants get more protection out of the box than tenants set up before 2022 or so. The problem is that legacy configurations stay in place. A setting changed for new tenants in 2024 doesn't retroactively change in yours, and historical user consents, inbox rules, or sharing links granted before the change are still active.
+If your Microsoft 365 environment is more than two or three years old, there's a good chance it has security gaps you don't know about. Not because something went wrong — but because Microsoft regularly tightens its default settings, and those changes don't automatically apply to older setups. Your Microsoft 365 environment (your company's unique instance, often called a 'tenant') stays exactly as it was when it was first built, even as the threat landscape around it keeps evolving. 
 
-Here are five settings worth checking in your tenant, especially if it's more than two or three years old, was set up by a previous IT provider, or has not been audited in a while.
-
-A few caveats before we start. Some of these settings require Microsoft 365 Business Premium, E3, or E5 licensing to change, so if a toggle is grayed out, your license tier is most likely the reason. A couple of these changes will generate support tickets from your team because they change how something already works. None of them need to be flipped all at once.
+Here are five settings worth reviewing, especially if your environment hasn't been audited recently, or if it was set up by a previous IT provider.
 
 ## **1. The default sharing link in SharePoint and OneDrive**
 
-When someone in your organization shares a file from SharePoint or OneDrive, the link they generate has a default scope. In tenants set up before Microsoft tightened the new-site defaults, that scope is often “Anyone with the link,” which means anyone who receives the URL can open the file without signing in. No expiration. No record of who else the link was forwarded to.
+Every time someone on your team shares a file, Microsoft generates a link — and in older environments, that link may be accessible to anyone who receives it, with no login required and no expiration date. That's a problem if a departing employee ever shared a sensitive file, because that link could still be working today. In tenants set up before Microsoft tightened the new-site defaults, that scope is often “Anyone with the link,” which means anyone who receives the URL can open the file without signing in. No expiration. No record of who else the link was forwarded to.
 
 Newer Teams-created sites now default to “Only people in your organization.” Older sites and the tenant-level setting often still allow Anyone links. A departing employee who emailed a proposal to their personal account six months ago still has a working link, unless someone manually revoked it.
 
@@ -39,7 +37,7 @@ Rough time to change: 15 minutes. This has no impact on existing links until the
 
 Microsoft now[ blocks automatic email forwarding to external addresses](https://learn.microsoft.com/en-us/defender-office-365/outbound-spam-policies-external-email-forwarding) at the tenant level by default, through the outbound spam policy. This rolled out as part of Microsoft's secure-by-default effort.
 
-Forwarding rules created before that change can still be active, though, and tenants with custom outbound spam policies configured years ago may not reflect the current default. A user who set up a rule a few years ago to forward every email to a personal Gmail address may still be exporting your data, depending on how their rule was constructed and whether it predates the policy.
+An employee who set up a rule years ago to automatically forward company emails to their personal account may still be doing exactly that — quietly exporting your data without anyone noticing. It's one of the more common and overlooked security gaps we see in older Microsoft 365 environments.
 
 Verify two things. In the Microsoft Defender portal, under Email & Collaboration > Policies & Rules > Anti-spam policies > Anti-spam outbound policy, confirm the “Automatic forwarding rules” setting is set to “Off” or “Automatic - System-controlled.” Then audit existing inbox rules across your users for any forward-to-external configurations. The Microsoft Purview audit log lets you search for inbox rule creation events.
 
@@ -57,7 +55,7 @@ Rough time: 30 to 60 minutes for the review, depending on how many historical ap
 
 ## **4. Mailbox and tenant audit log retention**
 
-The default audit log retention period in Microsoft 365 changed in October 2023.[ Audit (Standard) logs](https://learn.microsoft.com/en-us/purview/audit-log-retention-policies) are now retained for 180 days, up from the previous 90 days. Customers with E5 licensing or the Microsoft Purview Audit (Premium) add-on get one year of retention for Exchange, SharePoint, OneDrive, and Entra ID audit records, with other activity types staying at 180 days.
+How long Microsoft 365 retains your audit logs may not match your compliance obligations, and if your environment hasn't been reviewed recently, you may not know the difference. [Audit (Standard) logs](https://learn.microsoft.com/en-us/purview/audit-log-retention-policies) are now retained for 180 days, up from the previous 90 days. Customers with E5 licensing or the Microsoft Purview Audit (Premium) add-on get one year of retention for Exchange, SharePoint, OneDrive, and Entra ID audit records, with other activity types staying at 180 days.
 
 If you're in healthcare, financial services, legal, or any other regulated industry, 180 days may not match your retention obligations. HIPAA, the FTC Safeguards Rule, and most state bar rules around client data assume you can produce records on request, and the relevant period is often measured in years, not months.
 
@@ -65,7 +63,7 @@ Audit retention policies live in the Microsoft Purview compliance portal under A
 
 ## **5. MFA enforcement and Security Defaults**
 
-MFA enforcement is the area most likely to be inconsistent in older tenants. Microsoft introduced[ Security Defaults](https://learn.microsoft.com/en-us/entra/fundamentals/security-defaults) in late 2019, and the feature now enforces MFA automatically on new tenants. Microsoft has also been progressively making MFA mandatory for admin actions in the Microsoft 365 admin center and Azure portal through 2024 and 2025.
+Of the five areas covered in this article, this one carries the most risk if it's not configured correctly — and it's the area most likely to have gaps in older Microsoft 365 environments. Microsoft introduced[ Security Defaults](https://learn.microsoft.com/en-us/entra/fundamentals/security-defaults) in late 2019, and the feature now enforces MFA automatically on new tenants. Microsoft has also been progressively making MFA mandatory for admin actions in the Microsoft 365 admin center and Azure portal through 2024 and 2025.
 
 Tenants created before Security Defaults rolled out may have no baseline enforcement. There's also a common configuration trap. When an admin enables a Conditional Access policy, which is available with Business Premium and above, Microsoft expects you to take over MFA enforcement through that policy and may turn Security Defaults off. If the transition was done quickly, you can end up with Security Defaults off and a Conditional Access policy that doesn't cover every user.
 
@@ -87,9 +85,9 @@ The MFA and Conditional Access review (#5) is the highest-stakes change and the 
 
 ### Not sure where to start?
 
-At **[Simple IT](www.simple-it.us)**, we take a security-first approach to Microsoft 365 management, helping Northern Kentucky businesses reduce risk before problems become incidents.
+If any of these five areas gave you pause, that's a good sign it's time for a fresh set of eyes on your Microsoft 365 environment. At **Simple IT**, we take a security-first approach to Microsoft 365 management and we work with Northern Kentucky businesses every day to close exactly these kinds of gaps, before they become incidents.
 
-Not sure if your Microsoft 365 environment is configured securely? Schedule a free IT assessment with Simple IT and we'll help identify potential gaps.
+Want some peace of mind to be sure your businesses' Microsoft 365 environment is configured securely? **[Schedule a free IT assessment](https://simple-it.us/#contact)** and we'll help identify the potential gaps, as well the suggested adjustments to lock them down.
 
 Give us a call at **859-449-7878** or email **[info@simple-it.us](mailto:info@simple-it.us)** to schedule a conversation with our team!
 
