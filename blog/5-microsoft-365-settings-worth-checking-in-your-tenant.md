@@ -1,23 +1,21 @@
 ---
-title: 5 Microsoft 365 Security Settings Every Admin Should Check
+title: 5 Microsoft 365 Security Settings Every NKY Business Should Have Reviewed
 date: 2026-06-23
 author: William Jones
 draft: true
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1782115462/pexels-cottonbro-6803531-2048x1365_sdqwyv.jpg
-featuredImageAlt: IT specialist auditing Microsoft 365 tenant settings to
+featuredImageAlt: IT specialist reviewing and auditing Microsoft 365 settings to
   strengthen security, compliance, and user access controls
 categories:
   - Managed IT
-seoTitle: Top 5 Microsoft 365 Security Settings for Tenant Protection
-metaDescription: Review 5 Microsoft 365 security settings every admin should
-  check to improve tenant security, reduce risks, and strengthen user
-  protection.
+seoTitle: 5 Microsoft 365 Security Settings NKY Businesses Should Review
+metaDescription: Is your Microsoft 365 environment more than two years old? Here
+  are 5 security settings every Northern Kentucky business should review.
 focusKeyphrase: Microsoft 365 Security Settings
-ogTitle: "Microsoft 365 Security: 5 Settings That Could Be Putting Your Tenant
-  at Risk | Simple IT"
-ogDescription: Overlooked Microsoft 365 settings can leave your tenant
-  vulnerable to security risks and unauthorized access. Learn how to identify
-  and fix 5 key settings every admin should review.
+ogTitle: Is Your Microsoft 365 Actually Secure? 5 Settings to Check | Simple IT
+ogDescription: Older Microsoft 365 environments often have security gaps that
+  nobody knows about. Here are 5 settings worth a closer look, especially if
+  your setup hasn't been audited in a while.
 ---
 If your Microsoft 365 environment is more than two or three years old, there's a good chance it has security gaps you don't know about. Not because something went wrong — but because Microsoft regularly tightens its default settings, and those changes don't automatically apply to older setups. Your Microsoft 365 environment (your company's unique instance, often called a 'tenant') stays exactly as it was when it was first built, even as the threat landscape around it keeps evolving. 
 
