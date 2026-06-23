@@ -19,7 +19,7 @@ ogDescription: Think offboarding problems start when an employee resigns? The
   real cause may go back to their first day. Find out how onboarding shapes the
   entire employee lifecycle.
 ---
-By the time an employee hands in their notice, the decisions that will make their departure clean or messy have already been made. They were made in the first weeks of the person's tenure, when nobody was paying close attention because the new hire had just arrived and there were a hundred other things to do. A shared login here, a quick SaaS sign-up there, a personal laptop used until the company hardware arrived. By month six, none of those feel like decisions at all. They feel like how things are.
+By the time an employee hands in their notice, the decisions that will make their departure clean or messy have already been made. They were made in the first weeks of the person's tenure, when nobody was paying close attention because the new hire had just arrived and there were a hundred other things to do. A shared login here, a quick SaaS sign-up there, a personal laptop used until the company hardware arrived. What feels like a convenience during onboarding often becomes a security risk during offboarding. By month six, none of those feel like decisions at all. They feel like how things are.
 
 This post covers what's really going wrong when offboarding takes three weeks, the four onboarding shortcuts that guarantee a painful exit, how to retrofit hygiene on the team you already have, and what your IT provider should be doing at onboarding that probably isn't happening.
 
@@ -61,9 +61,9 @@ From the client's side, your business just doesn't know who they are anymore.
 
 The fix is a shared inbox or CRM where client communication is logged. Even a Microsoft 365 shared mailbox with a clear expectation that client threads are CC'd to it is a meaningful improvement over what most small businesses have today.
 
-## **How to retrofit hygiene on the team you already have** 
+## **How to retrofit hygiene on the team you already have**
 
-The cleanup most businesses need is for the team they already have, before the next hire arrives. You can't go back and re-onboard your existing staff, but you can audit what's there and close the gaps before the next departure.
+The cleanup most small businesses need is for the team they already have, before the next hire arrives. You can't go back and re-onboard your existing staff, but you can audit what's there and close the gaps before the next departure.
 
 ### **The SaaS audit**
 
@@ -102,3 +102,15 @@ You don't need to know the exact date of the next resignation to start. The work
 **Weeks 7 and 8:** Write the onboarding process you wish you'd had. Use everything you found in the previous six weeks as the input. Apply it to your next hire from day one, and use it as the template for a handover document for every existing staff member.
 
 Most of this is an operational task rather than a technology project. A spreadsheet, some honest conversations with your team, and a few hours of your IT provider's time will cover the bulk of it.
+
+## **Not sure where to start?**
+
+We've seen these challenges affect businesses of all sizes, including many small businesses throughout Northern Kentucky that rely on Microsoft 365, cloud applications, and employee-owned devices to support day-to-day operations.
+
+At **Simple IT**, we help Northern Kentucky businesses build secure onboarding and offboarding processes that improve cybersecurity, protect business data, and make employee transitions significantly easier.
+
+Would your business be ready if an employee left today? If you'd like a second set of eyes on your current onboarding and offboarding processes, give us a call at **859-449-7878** or email [info@simple-it.us](mailto:info@simple-it.us) to schedule a conversation with our team.
+
+###### *\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__*
+
+###### *Article used with permission from [The Technology Press](https://thetechnologypress.com/what-immutable-backup-means-on-your-cyber-insurance-form/).*
