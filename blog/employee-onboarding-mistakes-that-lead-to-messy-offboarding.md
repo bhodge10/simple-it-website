@@ -107,7 +107,7 @@ Most of this is an operational task rather than a technology project. A spreadsh
 
 We've seen these challenges affect businesses of all sizes, including many small businesses throughout Northern Kentucky that rely on Microsoft 365, cloud applications, and employee-owned devices to support day-to-day operations.
 
-At **Simple IT**, we help Northern Kentucky businesses build secure onboarding and offboarding processes that improve cybersecurity, protect business data, and make employee transitions significantly easier.
+At **Simple IT**, we help Northern Kentucky businesses, from Ft. Mitchell and Florence to Covington, Erlanger, Newport, and Independence, build secure onboarding and offboarding processes that strengthen cybersecurity, protect business data, and make employee transitions significantly easier.
 
 Would your business be ready if an employee left today? If you'd like a second set of eyes on your current onboarding and offboarding processes, give us a call at **859-449-7878** or email [info@simple-it.us](mailto:info@simple-it.us) to schedule a conversation with our team.
 
