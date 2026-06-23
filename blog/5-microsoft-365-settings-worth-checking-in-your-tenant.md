@@ -2,7 +2,7 @@
 title: 5 Microsoft 365 Security Settings Every NKY Business Should Have Reviewed
 date: 2026-06-23
 author: William Jones
-draft: true
+draft: false
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1782115462/pexels-cottonbro-6803531-2048x1365_sdqwyv.jpg
 featuredImageAlt: IT specialist reviewing and auditing Microsoft 365 settings to
   strengthen security, compliance, and user access controls
