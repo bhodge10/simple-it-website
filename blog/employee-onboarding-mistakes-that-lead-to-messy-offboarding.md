@@ -8,11 +8,11 @@ featuredImageAlt: Employee onboarding meeting with manager reviewing training
   checklist, expectations, and workplace orientation
 categories:
   - Business Tips
-seoTitle: Why Employee Onboarding Impacts Employee Offboarding
-metaDescription: Discover how poor employee onboarding can lead to offboarding
-  issues, lost knowledge, and security risks. Learn how to improve both
-  processes.
-focusKeyphrase: Employee Onboarding
+seoTitle: How IT Onboarding Shapes Your Offboarding | Simple IT
+metaDescription: Poor IT onboarding creates security risks and messy
+  offboarding. Simple IT helps Northern Kentucky small businesses protect data
+  and keep transitions simple.
+focusKeyphrase: IT onboarding and offboarding for small businesses
 ogTitle: Your Offboarding Problems May Have Started on an Employee's First Day |
   Simple IT
 ogDescription: Think offboarding problems start when an employee resigns? The
@@ -21,13 +21,15 @@ ogDescription: Think offboarding problems start when an employee resigns? The
 ---
 By the time an employee hands in their notice, the decisions that will make their departure clean or messy have already been made. They were made in the first weeks of the person's tenure, when nobody was paying close attention because the new hire had just arrived and there were a hundred other things to do. A shared login here, a quick SaaS sign-up there, a personal laptop used until the company hardware arrived. What feels like a convenience during onboarding often becomes a security risk during offboarding. By month six, none of those feel like decisions at all. They feel like how things are.
 
-This post covers what's really going wrong when offboarding takes three weeks, the four onboarding shortcuts that guarantee a painful exit, how to retrofit hygiene on the team you already have, and what your IT provider should be doing at onboarding that probably isn't happening.
+For operation-oriented businesses where continuity isn't optional, where a shift starts, a floor runs, or a shipment moves whether or not the right people have the right access, these onboarding shortcuts don't just create HR headaches. They create operational risk that's been quietly building as each new employee starts.
 
-## **What's really going wrong when offboarding takes three weeks**
+This post covers what's really going wrong when offboarding takes weeks and not minutes, the four onboarding shortcuts that guarantee a painful exit, how to retrofit hygiene on the team you already have, and what your IT provider should be doing at onboarding that probably isn't happening.
+
+## **What's really going wrong when offboarding takes weeks**
 
 A clean offboarding takes about 90 minutes of IT time. An account is disabled in your identity provider, which cascades access revocation across every tool connected via single sign-on. The device is remotely wiped or collected and wiped on-site. Email is forwarded to a manager or converted to a shared mailbox. The departing person's accounts in your CRM and project tools are reassigned. A handover note, already templated because it was templated at onboarding, gets filled in and filed.
 
-The messy version of the same process can take three weeks. It starts with a manual list of tools nobody can fully remember, which usually means asking the departing employee to help reconstruct it. You find a Figma account, a Loom workspace, a Notion instance, and an Airtable base, all set up independently, all with passwords sitting in the departing employee's personal password manager. The laptop is at their house and they're not in any rush. A client emails to say they received a strange message from a personal address. Six weeks later, a vendor charges the company card for a seat you thought you cancelled.
+The messy version of the same process can take weeks. It starts with a manual list of tools nobody can fully remember, which usually means asking the departing employee to help reconstruct it. You find a Figma account, a Loom workspace, a Notion instance, and an Airtable base, all set up independently, all with passwords sitting in the departing employee's personal password manager. The laptop is at their house and they're not in any rush. A client emails to say they received a strange message from a personal address. Six weeks later, a vendor charges the company card for a seat you thought you cancelled.
 
 Whether your offboarding is clean or chaotic depends on what was set up during onboarding.
 
@@ -107,9 +109,9 @@ Most of this is an operational task rather than a technology project. A spreadsh
 
 We've seen these challenges affect businesses of all sizes, including many small businesses throughout Northern Kentucky that rely on Microsoft 365, cloud applications, and employee-owned devices to support day-to-day operations.
 
-At **Simple IT**, we help Northern Kentucky businesses, from Ft. Mitchell and Florence to Covington, Erlanger, Newport, and Independence, build secure onboarding and offboarding processes that strengthen cybersecurity, protect business data, and make employee transitions significantly easier.
+At **[Simple IT](www.simple-it.us)**, we help Northern Kentucky and Cincinnati area businesses, including a number of the logistics and distribution businesses near Hebron and the CVG corridor where business continuity and staffing is critical, build secure onboarding and offboarding processes which strengthen cybersecurity, protect business data, and make employee transitions significantly easier.
 
-Would your business be ready if an employee left today? If you'd like a second set of eyes on your current onboarding and offboarding processes, give us a call at **859-449-7878** or email [info@simple-it.us](mailto:info@simple-it.us) to schedule a conversation with our team.
+Would your business be ready to execute a simple offboarding in 90 minutes or less if an employee left today? If not, or if you'd benefit from a second set of eyes on your current processes, we're ready to help! Give us a call at **859-449-7878** or email [info@simple-it.us](mailto:info@simple-it.us) to connect with our team.
 
 ###### *\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__*
 
