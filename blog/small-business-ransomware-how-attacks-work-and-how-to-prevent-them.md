@@ -1,28 +1,29 @@
 ---
-title: "Small Business Ransomware: How Attacks Work and How to Prevent Them"
+title: "Small Business Ransomware Protection: How Attacks Work and How to
+  Prevent Them"
 date: 2026-06-30
 author: Brad Hodge
 draft: true
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1782747968/ChatGPT_Image_Jun_29_2026_11_40_30_PM_siystk.png
-featuredImageAlt: Computer displaying a small business ransomware attack with
-  encrypted files and cybersecurity threat warning
+featuredImageAlt: Computer displaying a ransomware attack on a small business
+  with encrypted files and cybersecurity threat warning
 categories:
   - Cybersecurity
 seoTitle: How Small Businesses in NKY Can Prevent Ransomware Attacks
-metaDescription: Find out how ransomware attacks affect small businesses and
-  discover practical ways to strengthen cybersecurity and protect your business
-  data.
-focusKeyphrase: Small Business Ransomware
+metaDescription: See how ransomware actually targets small businesses in
+  Northern Kentucky, and the Microsoft 365 security controls that prevent
+  ransomware before it begins.
+focusKeyphrase: Small Business Ransomware Protection NKY
 ogTitle: Don't Wait Until Ransomware Hits Your Business | Simple IT
 ogDescription: Would your business be ready if ransomware struck tomorrow? See
   how these attacks happen and the cybersecurity steps that can help protect
   your data.
 ---
-Small businesses are the most common ransomware target by volume of incidents, even though many small business owners assume hackers focus on larger organizations. A 22-person company has enough revenue to be worth attacking, no dedicated security team to defend it, and a publicly traceable footprint that takes about an hour to research.
+Most small business owners assume hackers are after bigger targets. Unfortunately, they're not! An 8-person company has enough revenue and connections to be worth attacking, no dedicated security team to slow anyone down, and a public footprint that takes about an hour or less to map. You're not too small to target... you're a perfectly vulnerable target, and that makes you just the right size.
 
 What follows is a step-by-step walkthrough of how a small business gets attacked, written from the attacker's side. The company in this account is composite, but the methods are accurate to current threat intelligence reporting. After the walkthrough, you'll see five specific points where the attack would have been stopped by controls that come bundled with security tools most small businesses already pay for.
 
-## **Monday: how I picked you**
+## **Monday: How I picked you**
 
 I work regular hours and run a small volume operation. My spreadsheet has about 40 prospects per month, and I prefer businesses between 10 and 50 staff. The reason for that range is economics. Large enterprises have security teams, incident response contracts, and lawyers who make recovery expensive on my end. At the other end of the scale, sole traders rarely have enough at stake to bother with. A 22-person commercial services company sits in the right zone: payroll, customer database, project files, supplier relationships, and an owner who will pay to get the lot back. The return per hour is better at this size than at either extreme.
 
@@ -30,7 +31,7 @@ I did not find you through a breach or a tip. I found you on a public business r
 
 The fact that nothing has gone wrong at your company yet is the strongest signal I get. It tells me your credentials are probably still valid, your staff has not been trained to spot anything, and nobody has had a reason to change a password. A clean record is the first indicator I look for.
 
-## **Tuesday: building your org chart for free**
+## **Tuesday: Building your org chart for free**
 
 I spend about 40 minutes researching your company today using only a browser.
 
@@ -58,7 +59,7 @@ Your family member's credentials are more interesting than they look at first. T
 
 Total spend so far: $14.
 
-## **Thursday: getting past your MFA**
+## **Thursday: Getting past your MFA**
 
 Multi-factor authentication stops a lot of attacks, but the implementation matters more than the checkbox.
 
@@ -74,7 +75,7 @@ I had a backup plan in case the email did not get clicked. Earlier in the day, I
 
 By Thursday night, I am inside your office manager's Microsoft 365 account. I set up an inbox forwarding rule so her emails copy to an address I control without notifying her, then I wait.
 
-## **Friday 2:47pm: why I waited 36 hours before encrypting**
+## **Friday 2:47pm: Why I waited 36 hours before encrypting**
 
 I spend 36 hours reading email before I encrypt anything. That dwell time is how I size the ransom correctly.
 
@@ -90,7 +91,7 @@ Total cost to me: $14 for credentials and about six hours of work spread across 
 
 ## **Five places this attack would have died**
 
-The attack on your business worked because five ordinary things were not in place. None of them were expensive. Most were already bundled into security tools you already pay for.
+The attack on your business worked because five ordinary things were not in place. None of them were expensive.
 
 ### **1. The credential purchase on Wednesday.**
 
@@ -98,7 +99,7 @@ The attack on your business worked because five ordinary things were not in plac
 
 ### **2. The MFA bypass on Thursday night.**
 
-Microsoft already blocks the simpler push-bombing attack, because[ number matching](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-mfa-number-match) has been enabled by default for all Microsoft Authenticator push notifications since May 2023. The current dominant credential-based bypass is adversary-in-the-middle phishing. Defenses include phishing-resistant MFA (FIDO2 hardware keys, passkeys, or Windows Hello for Business), Conditional Access policies that require a compliant or hybrid-joined device, and anti-phishing protection in Microsoft Defender for Office 365. Any one of these would have either prevented the session token capture or made the captured token unusable from my IP address.
+Microsoft already blocks the simpler push-bombing attack, because[ number matching](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-mfa-number-match) has been enabled by default for all Microsoft Authenticator push notifications since May 2023. The current dominant credential-based bypass is adversary-in-the-middle phishing. The fix here is stronger MFA — think hardware security keys or Windows Hello — combined with a policy that only allows trusted devices to log in. Your IT provider can set this up using tools already included in Microsoft 365. Any one of these would have either prevented the session token capture or made the captured token unusable from my IP address.
 
 ### **3. The inbox forwarding rule.**
 
@@ -106,7 +107,7 @@ Microsoft 365 allows admins to[ block external email forwarding rules](https://l
 
 ### **4. The 36-hour dwell time.**
 
-Microsoft Defender for Business, included in Microsoft 365 Business Premium, generates an alert when a new inbox forwarding rule is created. If anyone had been watching those alerts, or if the alerts had been routed somewhere visible, I would have been detected on Thursday night. The most impactful change for a business your size is rarely a new product purchase. The improvement comes from someone reviewing the security alerts that the tools you already pay for are already generating.
+Microsoft Defender for Business, included in Microsoft 365 Business Premium, generates an alert when a new inbox forwarding rule is created. If anyone had been watching those alerts, or if the alerts had been routed somewhere visible, I would have been detected on Thursday night. The improvement often comes from someone actually reviewing the alerts your existing tools are already generating.
 
 ### **5. The public business records.**
 
@@ -114,19 +115,17 @@ You cannot unpublish a state contracting registry or a federal contract award. T
 
 ## **Three questions to send your IT provider**
 
-These three questions cover most of where the example attack failed. Each one corresponds to a control that comes bundled with security tools you most likely already pay for.
+Next time you talk to your IT provider, these three questions are worth asking. The answers should already be yes, but if they're not, that's definitely worth knowing now.
 
 1. Are we using phishing-resistant MFA (FIDO2 keys, passkeys, or Windows Hello for Business) for finance, admin, and executive logins?
-
 2. Is external email forwarding blocked at the tenant level?
-
 3. Are our security alerts going somewhere, and is someone reviewing them?
 
-This scenario isn't unique to large organizations. Small businesses throughout Northern Kentucky, including Florence, Ft. Mitchell, Covington, Erlanger, Newport, and Independence, face many of the same ransomware threats every day. The difference is often whether the right security controls are already in place before an attacker gets in.
+This isn't a hypothetical for Northern Kentucky and Southern Ohio businesses. We see versions just like this play out across Cincinnati, Blue Ash, Florence, Covington, Newport, Erlanger, and Independence. And it doesn't target one type of business more than another either.  Accounting firms, contractors, manufacturers, healthcare offices, and non-profits are all in the same crosshairs. The businesses that avoid it aren't lucky, rather they have the right protections in-place to show ransomware attackers that they wouldn't be an easy target.
 
 Concerned about how your business would respond to a ransomware attack? At **[Simple IT](www.simple-it.us)**, we help Northern Kentucky businesses strengthen ransomware protection, Microsoft 365 security, and email security with a security-first approach.
 
-If you'd like a second set of eyes on your cybersecurity posture, give us a call at **859-449-7878** or email [info@simple-it.us](mailto:info@simple-it.us) to schedule a conversation with our team.
+Ready to find out where your business stands? Schedule a free IT assessment with Simple IT by calling our Tech Support Team at **859-449-7878**, email us at **[info@simple-it.us](mailto:info@simple-it.us)**, or register online at **[https://simple-it.us](https://simple-it.us/#contact)** ... we'll be ready when you are!
 
 ###### *\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__*
 
