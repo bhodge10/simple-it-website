@@ -3,7 +3,7 @@ title: "Small Business Ransomware Protection: How Attacks Work and How to
   Prevent Them"
 date: 2026-06-30
 author: Brad Hodge
-draft: true
+draft: false
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1782747968/ChatGPT_Image_Jun_29_2026_11_40_30_PM_siystk.png
 featuredImageAlt: Computer displaying a ransomware attack on a small business
   with encrypted files and cybersecurity threat warning
