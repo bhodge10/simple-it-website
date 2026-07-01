@@ -113,3 +113,13 @@ Work through this in order. Most items are achievable in a month if you start no
 **Weeks 3 to 4.** Document or update your incident response plan, then run a 60-minute tabletop exercise with your leadership team. Keep the notes. That's your “tested in the past 12 months” evidence.
 
 **Week 4.** Sit down with the application and answer honestly. Flag anything you couldn't fix, with a specific remediation date.
+
+## **Take the Next Step Today!**
+
+Businesses across Fort Mitchell, Florence, Covington, Newport, Erlanger, Independence, and the rest of Northern Kentucky are facing more detailed renewal questions than ever before. At [Simple IT](www.simple-it.us), we help businesses strengthen Microsoft 365 security, ransomware protection, email security, data backup and recovery, and business continuity planning so they're better prepared for today's insurer expectations.
+
+Not sure if your business is ready for its next cyber insurance renewal? Schedule a free IT assessment with Simple IT by calling **859-449-7878**, emailing [info@simple-it.us](mailto:info@simple-it.us), or register online at https://simple-it.us. We'll help you identify potential gaps before you submit your renewal application.
+
+###### ***\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__***
+
+###### ***Article used with permission from [The Technology Press](mailto:info@simple-it.us).***
