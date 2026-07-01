@@ -123,8 +123,6 @@ Next time you talk to your IT provider, these three questions are worth asking. 
 
 This isn't a hypothetical for Northern Kentucky and Southern Ohio businesses. We see versions just like this play out across Cincinnati, Blue Ash, Florence, Covington, Newport, Erlanger, and Independence. And it doesn't target one type of business more than another either.  Accounting firms, contractors, manufacturers, healthcare offices, and non-profits are all in the same crosshairs. The businesses that avoid it aren't lucky, rather they have the right protections in-place to show ransomware attackers that they wouldn't be an easy target.
 
-## Take the Next Step Today!
-
 Concerned about how your business would respond to a ransomware attack? At **[Simple IT](www.simple-it.us)**, we help Northern Kentucky businesses strengthen ransomware protection, Microsoft 365 security, and email security with a security-first approach.
 
 Ready to find out where your business stands? Schedule a free IT assessment with Simple IT by calling our Tech Support Team at **859-449-7878**, email us at **[info@simple-it.us](mailto:info@simple-it.us)**, or register online at **[https://simple-it.us](https://simple-it.us/#contact)** ... we'll be ready when you are!
