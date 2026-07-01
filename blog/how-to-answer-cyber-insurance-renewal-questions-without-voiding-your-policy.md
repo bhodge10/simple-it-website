@@ -1,17 +1,22 @@
 ---
-title: How to Answer Cyber Insurance Renewal Questions Without Voiding Your Policy
+title: Cyber Insurance Renewal Is Harder in 2026. Here's Why.
 date: 2026-07-02
 author: Kevin Lane
 draft: true
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1782903739/ChatGPT_Image_Jul_1_2026_07_01_37_PM_dsobli.png
-featuredImageAlt: f
+featuredImageAlt: Business owner reviewing cyber insurance renewal questions
+  before policy renewal.
 categories:
-  - Managed IT
-seoTitle: faw
-metaDescription: fw
-focusKeyphrase: fwfw
-ogTitle: fw
-ogDescription: fw
+  - Cybersecurity
+seoTitle: Cyber Insurance Renewal Questions Every NKY Business Should Know
+metaDescription: Learn how to answer cyber insurance renewal questions
+  accurately, avoid mistakes that could void your policy, and prepare for a
+  smoother 2026 renewal.
+focusKeyphrase: Cyber Insurance Renewal Questions
+ogTitle: Cyber Insurance Renewals Got Tougher. Are You Ready?
+ogDescription: Cyber insurance renewals have changed. Learn how to answer the
+  latest renewal questions honestly, avoid costly mistakes, and protect your
+  coverage in 2026.
 ---
 If you have a cyber insurance renewal coming up, the application is probably longer than the one you filled in last time. It's also more specific. Each new question maps to a control that, if missing, allowed a major 2023 or 2024 claim to escalate. The wording reflects how carriers responded to losses they paid in 2023 and 2024, and how you answer the form matters more than it used to.
 
