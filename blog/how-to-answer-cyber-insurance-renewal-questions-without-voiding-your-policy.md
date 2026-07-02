@@ -1,5 +1,5 @@
 ---
-title: Cyber Insurance Renewal Is Harder in 2026. Here's Why.
+title: "Cyber Insurance: What Business Owners Need to Know in 2026"
 date: 2026-07-02
 author: Kevin Lane
 draft: true
