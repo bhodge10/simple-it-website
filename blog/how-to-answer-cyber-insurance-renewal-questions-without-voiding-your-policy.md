@@ -1,30 +1,30 @@
 ---
-title: "Cyber Insurance: What Business Owners Need to Know in 2026"
+title: "Cyber Insurance Requirements: What Business Owners Need to Know"
 date: 2026-07-02
 author: Kevin Lane
 draft: true
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1782903739/ChatGPT_Image_Jul_1_2026_07_01_37_PM_dsobli.png
-featuredImageAlt: Business owner reviewing cyber insurance renewal questions
-  before policy renewal.
+featuredImageAlt: Business owner reviewing cyber insurance requirements for
+  policy renewal questions.
 categories:
   - Cybersecurity
-seoTitle: Cyber Insurance Renewal Questions Every NKY Business Should Know
-metaDescription: Learn how to answer cyber insurance renewal questions
-  accurately, avoid mistakes that could void your policy, and prepare for a
-  smoother 2026 renewal.
-focusKeyphrase: Cyber Insurance Renewal Questions
-ogTitle: Cyber Insurance Renewals Got Tougher. Are You Ready?
-ogDescription: Cyber insurance renewals have changed. Learn how to answer the
-  latest renewal questions honestly, avoid costly mistakes, and protect your
-  coverage in 2026.
+seoTitle: "Cyber Insurance Requirements: What NKY Businesses Need to Know"
+metaDescription: See what carriers now require for cyber insurance, avoid the
+  mistakes that void coverage, and get renewal-ready with Simple IT's Northern
+  Kentucky IT team.
+focusKeyphrase: cyber insurance requirements
+ogTitle: "New Cyber Insurance Requirements: Is Your Business Ready?"
+ogDescription: Cyber insurance requirements are tightening. See what carriers
+  now ask, avoid the mistakes that void coverage, and get renewal-ready with
+  Simple IT.
 ---
-If you have a cyber insurance renewal coming up, the application is probably longer than the one you filled in last time. It's also more specific. Each new question maps to a control that, if missing, allowed a major 2023 or 2024 claim to escalate. The wording reflects how carriers responded to losses they paid in 2023 and 2024, and how you answer the form matters more than it used to.
+Cyber insurance requirements have tightened, and if you have a renewal coming up, the application is probably longer than the one you filled in last time. It's also more specific. Each new question maps to a control that, if missing, allowed a major 2023 or 2024 claim to escalate. The wording reflects how carriers responded to losses they paid in 2023 and 2024, and how you answer the form matters more than it used to.
 
 This post covers why the application got longer, what each new section is asking, how to answer honestly without overstating your controls, and what to fix in the 30 days before submission. The expensive mistake on a cyber insurance application is rescission, where a future claim is denied because the carrier finds that the controls you declared were not in place at the time.
 
-## **Why the renewal application got longer**
+## Why cyber insurance requirements have become more strict
 
-The current generation of cyber insurance applications was shaped by three specific claim events from 2023 and 2024.
+The current generation of cyber insurance requirements are shaped by three specific claim events from 2023 and 2024.
 
 The[ MOVEit supply-chain breach](https://www.cybersecuritydive.com/news/moveit-breach-timeline/687417/) surfaced on May 28, 2023, when Progress Software received the first reports of unusual activity from customers. The Cl0p ransomware group had been exploiting a previously unknown vulnerability in Progress Software's MOVEit Transfer file-sharing tool, with activity detected by some researchers as early as February of that year. By late 2023, more than 2,650 organizations and over 66 million individuals had been affected, with totals rising further into 2024. Carriers paid claims across that footprint, and the experience reshaped how underwriters ask about third-party software risk.
 
@@ -36,7 +36,7 @@ If you run an e-commerce store handling cardholder data, a healthcare practice w
 
 ## **The backup question changed**
 
-The backup question on cyber insurance applications has tightened materially since 2023. What used to be a single yes/no question now asks whether those backups are immutable or air-gapped, when they were last tested, and whether they can be deleted by your domain administrator credentials.
+The backup question on cyber insurance requirements has tightened materially since 2023. What used to be a single yes/no question now asks whether those backups are immutable or air-gapped, when they were last tested, and whether they can be deleted by your domain administrator credentials.
 
 Expect wording on your form like: “Are backups stored in an immutable or air-gapped state, tested for restoration within the past 12 months, and inaccessible to domain administrator credentials?”
 
@@ -116,9 +116,9 @@ Work through this in order. Most items are achievable in a month if you start no
 
 ## **Take the Next Step Today!**
 
-Businesses across Fort Mitchell, Florence, Covington, Newport, Erlanger, Independence, and the rest of Northern Kentucky are facing more detailed renewal questions than ever before. At [Simple IT](www.simple-it.us), we help businesses strengthen Microsoft 365 security, ransomware protection, email security, data backup and recovery, and business continuity planning so they're better prepared for today's insurer expectations.
+Businesses across Fort Mitchell, Florence, Covington, Newport, Erlanger, Independence, and the rest of Northern Kentucky are facing more detailed cyber insurance requirements than ever before. At [Simple IT](www.simple-it.us), we help businesses [strengthen Microsoft 365 security, ransomware protection, email security, data backup and recovery, and business continuity planning](https://simple-it.us/our-services) so they're better prepared for today's insurer expectations.
 
-Not sure if your business is ready for its next cyber insurance renewal? Schedule a free IT assessment with Simple IT by calling **859-449-7878**, emailing [info@simple-it.us](mailto:info@simple-it.us), or register online at https://simple-it.us. We'll help you identify potential gaps before you submit your renewal application.
+Not sure if your business is ready for its next cyber insurance renewal? [Schedule a free IT assessment](https://simple-it.us/#contact) with Simple IT by calling **859-449-7878**, emailing [info@simple-it.us](mailto:info@simple-it.us), or register online at https://simple-it.us. We'll help you identify potential gaps before you submit your renewal application.
 
 ###### ***\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__***
 
