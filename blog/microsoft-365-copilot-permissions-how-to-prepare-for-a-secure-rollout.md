@@ -8,6 +8,7 @@ featuredImageAlt: Microsoft 365 permissions dashboard with Copilot security and
   access management illustration
 categories:
   - Cybersecurity
+  - Cloud
 metaDescription: Preparing to enable Microsoft 365 Copilot? Learn how to review
   permissions, secure sensitive data, and reduce security risks before rollout.
 focusKeyphrase: Microsoft 365 Copilot Permissions
