@@ -1,7 +1,7 @@
 ---
 title: "Microsoft 365 Copilot Permissions: How to Prepare for a Secure Rollout"
-date: 2026-07-06
-author: text
+date: 2026-07-08
+author: William Jones
 draft: true
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1783317878/ChatGPT_Image_Jul_6_2026_02_03_20_PM_wvh3ix.png
 featuredImageAlt: Microsoft 365 permissions dashboard with Copilot security and
