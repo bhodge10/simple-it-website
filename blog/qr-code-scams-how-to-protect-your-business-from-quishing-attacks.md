@@ -20,7 +20,7 @@ QR codes are part of normal business now.
 
 You scan them to see a menu, pay for parking, connect to Wi-Fi, or open a shared document.
 
- Attackers know that, and they have started hiding malicious links inside QR codes to get past the security tools that would normally catch a bad link in an email.
+Attackers know that, and they have started hiding malicious links inside QR codes to get past the security tools that would normally catch a bad link in an email.
 
 The technique has a name, quishing, and it works because a QR code is just an image.
 
