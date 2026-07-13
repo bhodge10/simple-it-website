@@ -3,7 +3,7 @@ title: "Cyber Insurance Requirements: What Business Owners Need to Know"
 date: 2026-07-02
 author: Kevin Lane
 draft: false
-featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1782903739/ChatGPT_Image_Jul_1_2026_07_01_37_PM_dsobli.png
+featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1783946640/Untitled_Design_41_gtvdzx.png
 featuredImageAlt: Business owner reviewing cyber insurance requirements for
   policy renewal questions.
 categories:
