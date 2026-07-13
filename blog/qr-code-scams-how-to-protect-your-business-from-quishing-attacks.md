@@ -7,26 +7,27 @@ featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1783930192/pex
 featuredImageAlt: Smartphone displaying a QR code representing QR code scams and quishing attacks
 categories:
   - Cybersecurity
-metaDescription: Learn how QR code scams work, what quishing is, the warning
-  signs to watch for, and practical steps to protect your business from
-  cybercriminals.
+seoTitle: "QR Code Scams: How to Protect Your Business"
+metaDescription: QR code scams are on the rise. Learn how quishing works, the
+  warning signs to watch for, and how Northern Kentucky businesses can protect
+  themselves from cybercriminals.
 focusKeyphrase: "QR code scams "
-ogTitle: "QR Code Scams: Learn How to Spot Quishing Attacks"
-ogDescription: QR code scams are becoming more common. Learn how quishing works,
-  how to spot suspicious QR codes, and how to protect your business from cyber
-  threats.
+ogTitle: "QR Code Scams: How to Spot and Stop Quishing Attacks"
+ogDescription: QR code scams are on the rise and they're sneaking past normal
+  email security. Learn how "quishing" works, how to spot a fake code, and how
+  Northern Kentucky businesses can stay protected.
 ---
 QR codes are part of normal business now.
 
-You scan them to see a menu, pay for parking, connect to Wi-Fi, or open a shared document.
+You quickly scan them to see a menu, pay for parking, connect to Wi-Fi, or open a shared document.
 
-Attackers know that, and they have started hiding malicious links inside QR codes to get past the security tools that would normally catch a bad link in an email.
+Attackers know QR codes are getting clicked quickly and often, too, so they've started hiding malicious links inside QR codes to get past the security tools that would normally catch a bad link in an email.
 
-The technique has a name, quishing, and it works because a QR code is just an image.
+This specific technique has a name, "Quishing", and it works because a QR code is just an image.
 
-Your email filter reads text, so a link encoded into a QR code can pass straight through. When you scan it, you usually do so on your phone, which sits outside most of the protection your work computer has.
+Your [email filter](https://simple-it.us/managed-it-services) reads text, so a link encoded into a QR code can pass straight through. When you scan it, you usually do so on your phone, which sits outside most of the protection your work computer has.
 
-This post covers what a QR code scam is, why it gets past your security, what the common ones look like, and the habits that protect your business.
+In this post we'll cover what a QR code scam is, how it can get past your security, what common ones look like, and the habits that protect your business.
 
 ## **What is a QR code scam?**
 
@@ -56,7 +57,7 @@ Your personal phone usually has none of that. So the moment you scan, you step o
 
 ## **How common are QR code scams?**
 
-The volume is climbing fast. In its report on email threats for the first quarter of 2026, Microsoft said it detected around 8.3 billion email-based phishing threats in those three months.
+The volume is climbing fast. In its report on email threats for the [first quarter of 2026, Microsoft said it detected around 8.3 billion email-based phishing threats](https://www.microsoft.com/en-us/security/blog/2026/04/30/email-threat-landscape-q1-2026-trends-and-insights/) in those three months.
 
 QR code phishing rose 146% across the quarter, from 7.6 million attacks in January to 18.7 million in March.
 
@@ -64,7 +65,7 @@ By the end of the quarter it had reached its highest monthly volume in at least 
 
 Microsoft also found that most of these attacks arrived as PDF attachments, growing from 65% of QR code attacks in January to 70% in March.
 
-The QR code sits inside a PDF, the PDF is attached to an email, and the whole thing looks like an ordinary document until someone scans it.
+The QR code sits inside a PDF, the PDF is attached to an email, and the whole thing looks like an ordinary document until someone scans the QR code image.
 
 ## **What QR code scams look like**
 
@@ -73,8 +74,8 @@ These are the QR code scams that come up most often.
 * **A "security" email.** You get a message that looks like it is from Microsoft or your IT team, telling you to scan a code to re-enroll your multi-factor authentication or keep your account active. The code leads to a fake login page.
 * **A shared document.** An email says a colleague or client has shared a file, and you need to scan the code to view it. The page asks you to sign in first.
 * **A fake invoice.** A PDF invoice includes a QR code "to pay faster." The code routes your payment to the attacker.
-* **A delivery notice.** A text or email about a missed package asks you to scan a code to reschedule. The US[ Federal Trade Commission](https://consumer.ftc.gov/consumer-alerts/2023/12/scammers-hide-harmful-links-qr-codes-steal-your-information) has warned about this exact scam.
-* **A sticker in the real world.** Attackers print QR code stickers and place them over legitimate ones on parking meters, posters, and payment terminals. You think you are paying for parking, and instead you are handing your card details to a stranger.
+* **A delivery notice.** A text or email about a missed package asks you to scan a code to reschedule. The US [Federal Trade Commission](https://consumer.ftc.gov/consumer-alerts/2023/12/scammers-hide-harmful-links-qr-codes-steal-your-information) has warned about this exact scam.
+* **A sticker in the real world.** Attackers print their own QR code stickers and slap them right over the real ones on parking meters, posters, and payment terminals. You scan, thinking you're paying for parking, but instead you've just handed your card details to a total stranger.
 
 ## **How to protect your business from QR code scams**
 
@@ -84,28 +85,28 @@ Protecting yourself against Quishing comes down to a few habits:
 * **Check the web address before you act.** When you scan a code, your phone shows the link before it opens. Read it. If the address is not the official site you expected, close it.
 * **Go direct instead of scanning.** If an email says your Microsoft account needs attention, open your browser and type the address yourself, or use a bookmark. Don't rely on the code to take you to the right place.
 * **Watch for urgency.** Messages that threaten account closure or a fine "within 24 hours" are trying to rush you past your own judgment. That pressure is itself a warning sign.
-* **Use phishing-resistant MFA.** If a scam does capture a password, phishing-resistant multi-factor authentication (a passkey, a hardware key, or number-matching in an authenticator app) makes that password much harder to use.
+* **Use phishing-resistant MFA.** If a scam does capture a password, using a phishing-resistant multi-factor authentication tool, like an authenticator app or fingerprint reader, makes that password much harder to use.
 * **Check physical codes for tampering.** Before scanning a code on a parking meter or payment terminal, look for a sticker placed over the original.
-* **Tell your team.** Most people have never been warned about QR code scams. Send your staff a short message with a real example so they know what to watch for.
+* **Tell your team.** Most people have never been warned about QR code scams. Send your staff a short message with reference to these real-world examples so they know what to watch for.
 
 ## **What to do if someone already scanned one**
 
 If you or someone on your team scanned a QR code and entered details on the page that opened:
 
-1.  Change the password for that account right away, along with any other account that used the same password.
+1. Change the password for that account right away, along with any other account that uses the same password.
 2. Confirm multi-factor authentication is turned on for the account.
 3. Tell whoever manages your IT, so they can check for unusual sign-ins.
 4. If card or banking details were entered, call the bank and watch the account closely.
 
-Acting quickly limits what an attacker can do with the details they captured.
+Acting quickly limits what an attacker can do with the details they've captured.
 
 ## Protect Your Business from Today's Cyber Threats
 
-QR code scams are just one of many cybersecurity threats businesses face today. [Simple IT](www.simple-it.us) helps businesses in Fort Mitchell, Florence, Covington, Erlanger, Newport, Independence, and throughout Northern Kentucky stay protected with proactive IT support and cybersecurity solutions.
+QR code scams are just one of many cybersecurity threats businesses face today. [Simple IT](www.simple-it.us) helps businesses in Fort Mitchell, Florence, Covington, Erlanger, Newport, Independence, and throughout Northern Kentucky stay protected with proactive IT services, support and cybersecurity solutions.
 
-With 15+ years serving Northern Kentucky and a guaranteed 15-minute response time, Simple IT is the IT partner that actually shows up when you need us most.
+With 15+ years serving Northern Kentucky and a guaranteed 15-minute response time, Simple IT is the area's team of trusted experts, and the Managed Service Provider who will actually respond when you need us most.
 
-Ready to strengthen your business's cybersecurity? [Schedule a free IT assessment](https://simple-it.us/#contact) today by calling **859-449-7878**, emailing [info@simple-it.us](mailto:info@simple-it.us), or contacting Simple IT online.
+Ready to strengthen your business's cybersecurity? [Schedule a free IT assessment](https://simple-it.us/#contact) today by calling our Support Team at **859-449-7878**, emailing us at [info@simple-it.us](mailto:info@simple-it.us).
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__
 
