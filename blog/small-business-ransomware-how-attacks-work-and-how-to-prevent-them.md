@@ -4,7 +4,7 @@ title: "Small Business Ransomware Protection: How Attacks Work and How to
 date: 2026-06-30
 author: Brad Hodge
 draft: false
-featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1782747968/ChatGPT_Image_Jun_29_2026_11_40_30_PM_siystk.png
+featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1783946919/ransomware_ngbs0t.png
 featuredImageAlt: Computer displaying a ransomware attack on a small business
   with encrypted files and cybersecurity threat warning
 categories:
