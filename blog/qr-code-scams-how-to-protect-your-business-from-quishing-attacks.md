@@ -98,3 +98,15 @@ If you or someone on your team scanned a QR code and entered details on the page
 4. If card or banking details were entered, call the bank and watch the account closely.
 
 Acting quickly limits what an attacker can do with the details they captured.
+
+## Protect Your Business from Today's Cyber Threats
+
+QR code scams are just one of many cybersecurity threats businesses face today. [Simple IT](www.simple-it.us) helps businesses in Fort Mitchell, Florence, Covington, Erlanger, Newport, Independence, and throughout Northern Kentucky stay protected with proactive IT support and cybersecurity solutions.
+
+With 15+ years serving Northern Kentucky and a guaranteed 15-minute response time, Simple IT is the IT partner that actually shows up when you need us most.
+
+Ready to strengthen your business's cybersecurity? [Schedule a free IT assessment](https://simple-it.us/#contact) today by calling **859-449-7878**, emailing [info@simple-it.us](mailto:info@simple-it.us), or contacting Simple IT online.
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__
+
+***Article used with permission from [The Technology Press](mailto:info@simple-it.us).***
