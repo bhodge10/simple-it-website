@@ -23,6 +23,8 @@ Imagine one of your customers receives an invoice that appears to come from your
 
 The From line would show your domain, your logo could be pasted into the message, and it could ask one of your clients to pay an invoice or update banking details. This is called email spoofing, and it is one of the most common ways fraud against your clients and suppliers begins.
 
+For many Northern Kentucky businesses, a single spoofed email can damage customer trust, delay payments, and even lead to financial loss. Whether you run an accounting firm in Covington, a contractor in Florence, or a manufacturing business in Erlanger, protecting your business email is essential to protecting your reputation.
+
 The good news? Three simple email security settings can dramatically reduce that risk.
 
 They're called SPF, DKIM, and DMARC.
