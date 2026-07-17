@@ -31,7 +31,7 @@ Most businesses have one or two of them set up and the third missing.
 
 That's usually all it takes to let a spoofed email through. This post explains what each one does, the setting most businesses get wrong, and how to check your own domain.
 
-**<H2>Why scammers can send email in your company's name</H2>**
+## **Why scammers can send email in your company's name**
 
 Email was built in a more trusting time.
 
