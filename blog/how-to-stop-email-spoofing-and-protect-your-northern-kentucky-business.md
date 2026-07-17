@@ -122,9 +122,7 @@ Microsoft recommends this same gradual path, starting at none and working toward
 
 ## **Protect Your Business Before Someone Else Uses Your Name**
 
-Email spoofing is one of those cybersecurity risks most businesses don't think about until customers start calling about emails they never sent. By then, your reputation may already be affected.
-
-A quick review of your domain settings can identify missing SPF, DKIM, or DMARC records before scammers have the opportunity to take advantage of them.
+Email spoofing is one of those cybersecurity risks most businesses don't think about until customers start calling about emails they never sent. By then, your reputation may already be affected. A quick review of your domain settings can identify missing SPF, DKIM, or DMARC records before scammers have the opportunity to take advantage of them.
 
 At Simple IT, protecting businesses starts with a security-first approach. If you're a business in Northern Kentucky, we can help you evaluate your email security and discuss practical ways to strengthen your cybersecurity. \
 \
