@@ -5,19 +5,19 @@ author: Brad Hodge
 draft: false
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1784258674/brett-jordan-LPZy4da9aRo-unsplash_lybh5y.jpg
 featuredImageAlt: Email app displaying unread messages, representing email
-  spoofing risks and business email security.
+  spoofing protection and business email security.
 categories:
   - Cybersecurity
   - Business Tips
-seoTitle: Stop Email Spoofing Before It Hurts Your Business
-metaDescription: Email spoofing can damage your reputation. Learn how to protect
-  your business with proven email security practices that help stop
+seoTitle: Stop Email Spoofing Before It Hurts Your Business | Simple IT
+metaDescription: Email spoofing protection starts here. Learn how to safeguard
+  your business reputation with proven email security practices that stop
   impersonation attacks.
-focusKeyphrase: Email Spoofing
-ogTitle: Scammers could be sending emails that look like they came from your
-  business without you even knowing. Learn how to stop email spoofing and
+focusKeyphrase: Email Spoofing Protection
+ogTitle: Protect Your Business from Email Spoofing Before It's Too Late | Simple IT
+ogDescription: Scammers could be sending emails that look like they came from
+  your business without you even knowing. Learn how to stop email spoofing and
   protect your reputation.
-ogDescription: Protect Your Business from Email Spoofing Before It's Too Late | Simple IT
 ---
 Imagine one of your customers receives an invoice that appears to come from your business. Your logo is there. Your company name is correct. The email looks legitimate, but you never sent it.
 
@@ -49,15 +49,15 @@ Whether you're an accounting firm in Florence, a manufacturer in Erlanger, or a 
 
 Three DNS records work together to prove an email really came from your domain. You add them once, at your domain registrar or DNS host, and receiving mail servers check them on every message you send.
 
-### **SPF (Sender Policy Framework)**
+### **SPF (Sender Policy Framework) ... Who is allowed to send email as you.**
 
 SPF is a list of the mail servers allowed to send email for your domain, published as a DNS record. When a receiving server gets a message claiming to be from you, it checks whether the sending server is on that list. If a server that isn't on the list tries to send as your domain, SPF flags it.
 
-### **DKIM (DomainKeys Identified Mail)**
+### **DKIM (DomainKeys Identified Mail) ... A seal on every email you send.**
 
 DKIM adds a tamper-proof signature to every message you send. Your mail server signs outgoing email with a private key, and the matching public key sits in your DNS. The receiving server checks the signature to confirm two things: the message really came from your domain, and nobody altered it along the way.
 
-### **DMARC (Domain-based Message Authentication, Reporting and Conformance)**
+### **DMARC (Domain-based Message Authentication, Reporting and Conformance) ... Rules for what happens when a message fails the check.** 
 
 DMARC ties the other two together and tells receiving servers what to do when a message fails the check. It also confirms that the domain in the visible From address matches the domain SPF and DKIM verified, which is the part that stops someone forging your exact address.
 
@@ -76,6 +76,8 @@ A lot of businesses set up DMARC at p=none, watch the reports come in, and never
 Real protection only starts at quarantine or reject.
 
 [Microsoft's own guidance](https://learn.microsoft.com/en-us/defender-office-365/email-authentication-dmarc-configure) is to work toward p=reject once you've confirmed your legitimate mail passes.
+
+Not sure which setting your domain is currently on? Let us know ... We'll be happy to run it for you to confirm, and suggest where adjustments could be helpful to keep everything secured. 👍
 
 ## **What SPF, DKIM, and DMARC don't stop**
 
@@ -124,9 +126,9 @@ Microsoft recommends this same gradual path, starting at none and working toward
 
 Email spoofing is one of those cybersecurity risks most businesses don't think about until customers start calling about emails they never sent. By then, your reputation may already be affected. A quick review of your domain settings can identify missing SPF, DKIM, or DMARC records before scammers have the opportunity to take advantage of them.
 
-At Simple IT, protecting businesses starts with a security-first approach. If you're a business in Northern Kentucky, we can help you evaluate your email security and discuss practical ways to strengthen your cybersecurity. \
+At Simple IT, we protect organizations with a security-first approach. If your Northern Kentucky business is looking for a trusted IT provider, we can evaluate your email security and discuss practical ways to strengthen your cybersecurity posture.  Plus, with our 15-minute response guarantee, you won't be stuck waiting while a spoofed email spreads to your clients.\
 \
-Ready to protect your business from email spoofing and other cyber threats? [Schedule a free IT assessment](https://simple-it.us/#contact) today by calling our Support Team at **859-449-7878** or emailing us at [info@simple-it.us](mailto:info@simple-it.us). We'll help you identify potential vulnerabilities and discuss practical ways to strengthen your cybersecurity.
+Ready to protect your Northern Kentucky business from email spoofing and other cyber threats? [Schedule your free IT assessment](https://simple-it.us/#contact) today, connect with our Support Team by calling **859-449-7878** or emailing us at [info@simple-it.us](mailto:info@simple-it.us). We'll help you identify potential vulnerabilities and discuss practical ways to strengthen your cybersecurity.
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__
 
