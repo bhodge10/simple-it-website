@@ -20,7 +20,7 @@ ogDescription: Passwords are one of the biggest security risks for businesses
 ---
 Passwords are still one of the biggest security risks for businesses. 
 
-People reuse them across accounts, write them on sticky notes, and type them into convincing fake login pages without realizing it.
+People reuse them across accounts, write them on sticky notes, and type them into convincingly fake login pages without realizing it.
 
 Passkeys for business are designed to replace traditional passwords with a faster and far more secure way to sign in.
 
@@ -42,7 +42,7 @@ The private key stays locked on your device and never leaves it.
 
 The public key is stored by the website.
 
-When you sign in, the site sends a challenge that only your private key can answer, your device answers it once you confirm with your fingerprint or PIN, and you're in. The website never sees a password, because there isn't one. This approach comes from a standard called[ FIDO](https://fidoalliance.org/passkeys/), which Apple, Google, and Microsoft all build on.
+When you sign in, the site sends a challenge that only your private key can answer, your device answers it once you confirm with your fingerprint or PIN, and you're in. The website never sees a password, because there isn't one. This approach comes from a standard called [FIDO](https://fidoalliance.org/passkeys/), which Apple, Google, and Microsoft all build on.
 
 ## Why Passkeys Are More Secure Than Passwords
 
@@ -60,7 +60,7 @@ Passkeys also reduce the need to rely on passwords combined with traditional mul
 
 ## Where Can Businesses Use Passkeys?
 
-Support has spread fast.
+Passkey integration, security, and support has spread fast.
 
 You can already sign in with passkeys to Microsoft, Google, and Apple accounts, plus a growing list of banks, password managers, and business tools.
 
@@ -74,7 +74,7 @@ A synced passkey is backed up to your Apple, Google, or Microsoft account, so it
 
 ## Should Your Business Use Passkeys?
 
-For most businesses, yes, and you can start small. There's no need to switch everything overnight or drop passwords on day one.
+For most businesses, the answer is "Yes", and you can start small. There's no need to switch everything overnight or drop passwords on day one.
 
 If you use Microsoft 365, passkeys are already available through Microsoft Entra.
 
@@ -85,12 +85,10 @@ They're also just faster. Microsoft says signing in with a synced passkey takes 
 Here’s how you can start using passkeys:
 
 1. Turn passkeys on for your most sensitive accounts first: administrators, finance, and anyone who can move money or change systems.
-
 2. Let everyone else add a passkey as a faster, safer way to sign in, alongside their normal login at first.
-
 3. Make sure each person has a backup, like a second device or a security key, so a lost phone doesn't lock anyone out.
 
-Your IT provider can switch this on and run the rollout so nobody gets locked out along the way.
+Your IT provider, like Simple IT, can switch this on and run the rollout so nobody gets locked out along the way.
 
 ## Things to Consider Before Switching to Passkeys
 
@@ -104,9 +102,9 @@ Passkeys aren't magic, and a few things are worth planning for.
 
 As more software providers adopt passkeys for business, passwordless authentication is quickly becoming the new standard for secure logins. Businesses that start planning now can strengthen security, reduce phishing risks, and make signing in easier for employees.
 
-At [Simple IT](www.simple-it.us), we help Northern Kentucky businesses, including Florence, Covington, Erlanger, Fort Mitchell, Newport, and Independence,implement practical cybersecurity solutions that fit their environment. Whether you're looking to improve Microsoft 365 security, enhance account protection, or build a stronger cybersecurity strategy, our local team is here to help!
+At [Simple IT](www.simple-it.us), we help Northern Kentucky businesses, including Florence, Covington, Erlanger, Fort Mitchell, Newport, and Independence, implement practical cybersecurity solutions that fit their environment. Whether you're looking to improve Microsoft 365 security, enhance account protection, or build a stronger cybersecurity strategy, our local team is here to help!
 
-Our IT experts can assess your current technology, identify opportunities to strengthen your security, and recommend the right solutions for your business. [Schedule your free IT assessment](https://simple-it.us/#contact) online, call us at **859-449-7878**, or email [info@simple-it.us](mailto:info@simple-it.us). 
+Our IT experts can assess your current technology, identify opportunities to strengthen your security, and recommend the right solutions for your business. [Schedule your free IT assessment](https://simple-it.us/#contact) online, call us at **859-449-7878**, or email us at [info@simple-it.us](mailto:info@simple-it.us).
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__
 
