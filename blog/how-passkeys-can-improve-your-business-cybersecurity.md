@@ -104,7 +104,7 @@ Passkeys aren't magic, and a few things are worth planning for.
 
 As more software providers adopt passkeys for business, passwordless authentication is quickly becoming the new standard for secure logins. Businesses that start planning now can strengthen security, reduce phishing risks, and make signing in easier for employees.
 
-At [Simple IT](www.simple-it.us), we help Northern Kentucky businesses, including Florence, Covington, Erlanger, Fort Mitchell, Newport, and Independence,implement practical cybersecurity solutions that fit their environment. Whether you're looking to improve Microsoft 365 security, enhance account protection, or build a stronger cybersecurity strategy, our local team is here to help.
+At [Simple IT](www.simple-it.us), we help Northern Kentucky businesses, including Florence, Covington, Erlanger, Fort Mitchell, Newport, and Independence,implement practical cybersecurity solutions that fit their environment. Whether you're looking to improve Microsoft 365 security, enhance account protection, or build a stronger cybersecurity strategy, our local team is here to help!
 
 Our IT experts can assess your current technology, identify opportunities to strengthen your security, and recommend the right solutions for your business. [Schedule your free IT assessment](https://simple-it.us/#contact) online, call us at **859-449-7878**, or email [info@simple-it.us](mailto:info@simple-it.us).
 
