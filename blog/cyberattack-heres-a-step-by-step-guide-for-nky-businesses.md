@@ -25,7 +25,7 @@ Whether you're running a manufacturing company in Erlanger, an accounting firm i
 
 It's also the easiest time to make a costly mistake, like turning off the wrong machine, deleting evidence, or replying from an email account the attacker is already reading.
 
-The step-by-step guide below will help NKY business owners respond quickly and confidently. You don't need to be a cybersecurity expert, you just need a clear plan.
+The step-by-step guide below is provided to help NKY business owners respond quickly and confidently. You don't need to be a cybersecurity expert, you just need a clear plan.
 
 Doing these steps doesn’t require technical knowledge.
 
@@ -42,20 +42,14 @@ Before you touch anything, avoid these:
 
 If your Northern Kentucky business suspects a cyberattack, work through these steps immediately:
 
-1. Disconnect the affected devices from the network. Unplug the network cable and turn off Wi-Fi on anything that looks affected. This stops the problem spreading to other computers and to your backups. CISA's guidance is to isolate devices rather than power them off where you can, and to shut a device down only if you can't get it off the network any other way.
-2. Call your IT provider straight away, by phone. Don't email, in case the attacker is watching your inbox. If you have cyber insurance, call them next, because many policies require you to involve their incident team early.
+1. Disconnect the affected devices from the network. Unplug the network cable and turn off Wi-Fi on anything that looks affected. This stops the problem spreading to other computers and to your backups. [CISA](https://www.cisa.gov/)'s guidance is to isolate devices rather than power them off where you can, and to shut a device down only if you can't get it off the network any other way.
+2. Call your IT provider right away, by phone. Don't email, in case the attacker is watching your inbox. If you have cyber insurance, call your provider next, because most policies require you to involve their incident team within a preset timeframe.
 3. Leave the evidence alone. Don't wipe, reinstall, or tidy up the affected machines yet. Screenshots of the ransom note or suspicious emails are useful, but keep the originals too.
 4. If money was sent, call your bank immediately. Ask them to recall the transfer and freeze it if they can. With wire and bank fraud, acting in the first few hours makes the biggest difference.
 5. Reset passwords from a clean device, and turn on multi-factor authentication. Start with email and any admin accounts, and use a device you know isn't affected.
-6. Report it. That can help you recover, and it's sometimes legally required. Where to report depends on your country.
+6. Report it. That can help you recover, and it's sometimes legally required. It's easy to file a complaint at the FBI's [Internet Crime Complaint Center,](https://www.ic3.gov/) as well as [Kentucky's Office of Homeland Security](https://homelandsecurity.ky.gov/Pages/Cybersecurity.aspx).
 
 ## Reporting a Cyberattack
-
-You've reaWhere you report depends on where you are:
-
-* United States: file with the FBI's Internet Crime Complaint Center (IC3), and report to CISA.
-* United Kingdom: report through the NCSC, and to Action Fraud.
-* Australia: report through ReportCyber, or call the 24/7 hotline on 1300 CYBER1.
 
 If money was wired to a scammer, report it fast.
 
@@ -63,9 +57,9 @@ The FBI says reporting wire fraud to IC3 within 72 hours gives its Recovery Asse
 
 If personal data about your customers or staff was exposed, you may be legally required to notify a regulator and the people affected, sometimes within 72 hours.
 
-The rules depend on where you operate, like GDPR in the UK and Europe, state breach-notification laws in the US, and the Notifiable Data Breaches scheme in Australia.
+The rules depend on where you operate. So contact your city, county and state agencies based on the locations where your business operates.
 
-Ask your lawyer or IT provider early so you don't miss a deadline.
+Consult with your IT provider early for assistance with reporting, and so you don't miss any critical reporting deadlines. 
 
 ## Should you pay the ransom?
 
@@ -81,7 +75,7 @@ The easiest cyberattack to recover from is the one you've already planned for.
 
 Every Northern Kentucky small business should have a simple incident response plan that includes:
 
-* Who to call first (your IT provider, your insurer) and their numbers, kept somewhere you can reach without your main systems.
+* Who to call first (your IT provider, your insurer) and their numbers, kept somewhere you can reach without your main systems. Dedicated contacts in your personal mobile device are advised.
 * Where your backups are, and proof they've been tested by restoring from them.
 * Which accounts and devices matter most, so you know what to protect first.
 
@@ -89,7 +83,7 @@ A single page covering those is enough for most small businesses, and it'll save
 
 ## Conclusion
 
-No business in Northern Kentucky is immune to cyber threats, but every business can be better prepared.
+No business in Northern Kentucky is immune to cyber threats, and smaller businesses often make the easiest targets, but every business can be better prepared.
 
 Having the right response plan and a trusted local IT partner can mean the difference between a minor disruption and days of costly downtime. If you're unsure whether your current cybersecurity protections are enough, it's worth reviewing your incident response plan before an emergency happens.
 
