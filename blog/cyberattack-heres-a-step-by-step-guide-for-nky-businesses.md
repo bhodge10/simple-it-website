@@ -29,7 +29,7 @@ The step-by-step guide below will help NKY business owners respond quickly and c
 
 Doing these steps doesn’t require technical knowledge.
 
-## Before anything else: don't make it worse
+## Before Anything Else: Don't Make It Worse
 
 Before you touch anything, avoid these:
 
