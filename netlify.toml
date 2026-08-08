@@ -43,6 +43,16 @@ to = "/our-services"
 status = 301
 
 [[redirects]]
+from = "/reviews/"
+to = "https://maps.google.com/?cid=6111536906787146092"
+status = 301
+
+[[redirects]]
+from = "/reviews"
+to = "https://maps.google.com/?cid=6111536906787146092"
+status = 301
+
+[[redirects]]
 from = "/testimonials/"
 to = "/about-us"
 status = 301
