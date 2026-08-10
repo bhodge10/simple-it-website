@@ -30,6 +30,7 @@
     
     <!-- Reuse same styles from main site -->
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/google-reviews.css">
     
     <style>
         /* Page-specific styles */
@@ -146,7 +147,7 @@
           "name": "How quickly do you actually respond?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our guarantee is 15 minutes for critical issues, but our actual average last quarter was 11 minutes. For remote issues, we're often logged in and working within 5-8 minutes. For onsite support, we're never more than 30 minutes away in Northern Kentucky."
+            "text": "Our guarantee is 15 minutes for critical issues—and we treat it as a ceiling, not a target. For remote issues, we're often logged in and working within minutes. For onsite support, we're never more than 30 minutes away in Northern Kentucky."
           }
         },
         {
@@ -243,8 +244,8 @@
                     <div style="color: var(--text-secondary);">Average Uptime</div>
                 </div>
                 <div>
-                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--secondary);">11 min</div>
-                    <div style="color: var(--text-secondary);">Actual Response Time</div>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--secondary);">&lt;15 min</div>
+                    <div style="color: var(--text-secondary);">Guaranteed Response Time</div>
                 </div>
                 <div>
                     <div style="font-size: 2.5rem; font-weight: 700; color: var(--secondary);">24/7</div>
@@ -433,7 +434,7 @@
 
             <div style="background: var(--dark-secondary); padding: 2rem; border-radius: 12px;">
                 <h3 style="color: var(--primary); margin-bottom: 1rem;">How quickly do you actually respond?</h3>
-                <p>Our guarantee is 15 minutes for critical issues, but our actual average last quarter was 11 minutes. For remote issues, we're often logged in and working within 5-8 minutes. For onsite support, we're never more than 30 minutes away in Northern Kentucky.</p>
+                <p>Our guarantee is 15 minutes for critical issues—and we treat it as a ceiling, not a target. For remote issues, we're often logged in and working within minutes. For onsite support, we're never more than 30 minutes away in Northern Kentucky.</p>
             </div>
 
             <div style="background: var(--dark-secondary); padding: 2rem; border-radius: 12px;">
@@ -473,6 +474,17 @@
     </section>
 
     <!-- CTA Section -->
+    <!-- Google Reviews Section -->
+    <section id="reviews" class="google-reviews-section" style="padding: 4rem 0; background: var(--dark-secondary);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing);">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2>What Our Clients Say on Google</h2>
+                <p style="color: var(--text-secondary); font-size: 1.1rem;">Real reviews from real businesses in Northern Kentucky</p>
+            </div>
+            <div id="google-reviews"></div>
+        </div>
+    </section>
+
     <section id="contact" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 4rem var(--spacing); text-align: center;">
         <div style="max-width: 800px; margin: 0 auto;">
             <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: white;">Ready to Experience 15-Minute Response Time?</h2>
@@ -553,4 +565,10 @@
 
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', () => {
-      
+                      navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+    <script src="/google-reviews.js" defer></script>
+</body>
+</html>
