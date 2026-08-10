@@ -1,7 +1,7 @@
 ---
 title: "Balancing AI Benefits & Cybersecurity Risks for Your Business"
 date: 2025-11-22
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/balancing-ai-benefits-cybersecurity-risks-business.jpg"
 featuredImageAlt: "Balancing Ai Benefits Cybersecurity Risks Business"

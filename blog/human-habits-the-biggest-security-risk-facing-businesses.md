@@ -1,7 +1,7 @@
 ---
 title: Why Employee Web Habits Are Your NKY Business' Biggest Security Risk
 date: 2026-06-16
-author: Kevin Lane
+author: "Simple IT Team"
 draft: false
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1781295887/2026-06-6_satoq0.png
 featuredImageAlt: "Anonymous hacker on a laptop illustrating security breach

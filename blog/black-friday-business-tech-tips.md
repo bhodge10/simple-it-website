@@ -1,7 +1,7 @@
 ---
 title: "Black Friday Tips – Business Tech Without the Headache"
 date: 2025-11-19
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/black-friday-business-tech-tips.png"
 featuredImageAlt: "Black Friday Business Tech Tips"

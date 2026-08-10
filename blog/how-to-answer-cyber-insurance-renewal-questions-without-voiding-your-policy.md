@@ -1,7 +1,7 @@
 ---
 title: "Cyber Insurance Requirements: What Business Owners Need to Know"
 date: 2026-07-02
-author: Kevin Lane
+author: "Simple IT Team"
 draft: false
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1783946640/Untitled_Design_41_gtvdzx.png
 featuredImageAlt: Business owner reviewing cyber insurance requirements for

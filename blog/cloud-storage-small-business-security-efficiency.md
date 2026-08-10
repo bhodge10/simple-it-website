@@ -1,7 +1,7 @@
 ---
 title: "Cloud Storage Made Simple: 6 Tools to Protect Your Business Data"
 date: 2025-05-02
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/cloud-storage-small-business-security-efficiency.png"
 featuredImageAlt: "Cloud Storage Small Business Security Efficiency"

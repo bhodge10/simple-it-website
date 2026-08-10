@@ -1,7 +1,7 @@
 ---
 title: "AI Tools for Business Success in Northern Kentucky: What to Know in 2025"
 date: 2025-09-23
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/ai-tools-for-business-success-northern-kentucky-2025.jpg"
 featuredImageAlt: "Ai Tools For Business Success Northern Kentucky 2025"

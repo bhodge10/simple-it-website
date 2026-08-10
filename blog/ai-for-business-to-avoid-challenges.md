@@ -1,7 +1,7 @@
 ---
 title: "AI for Business: What to Know to Avoid Challenges"
 date: 2025-03-12
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/ai-for-business-to-avoid-challenges.jpg"
 featuredImageAlt: "Ai For Business To Avoid Challenges"

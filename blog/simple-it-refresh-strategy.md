@@ -1,7 +1,7 @@
 ---
 title: "Don't Lose Time to Old Tech: Create Your Business’s Simple IT Refresh Strategy"
 date: 2025-07-17
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/simple-it-refresh-strategy.jpg"
 featuredImageAlt: "Simple It Refresh Strategy"

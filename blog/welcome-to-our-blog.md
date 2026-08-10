@@ -1,7 +1,7 @@
 ---
 title: Welcome to the Simple IT Blog
 date: 2026-02-11
-author: Kevin Lane
+author: "Simple IT Team"
 draft: false
 featuredImage: /images/blog/keep-it-simple.png
 featuredImageAlt: ""

@@ -1,7 +1,7 @@
 ---
 title: "How to Minimize the Damage of Ransomware for Your Northern Kentucky Business"
 date: 2025-02-28
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/minimize-ransomware.png"
 featuredImageAlt: "Minimize Ransomware"

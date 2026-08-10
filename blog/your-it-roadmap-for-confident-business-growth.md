@@ -1,7 +1,7 @@
 ---
 title: "Your IT Roadmap for Confident Business Growth"
 date: 2025-11-24
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/your-it-roadmap-for-confident-business-growth.jpg"
 featuredImageAlt: "Your It Roadmap For Confident Business Growth"

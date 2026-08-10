@@ -1,7 +1,7 @@
 ---
 title: "Organize Your Devices for Better Productivity: 8 Tips from Simple IT"
 date: 2025-03-04
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/organize-your-devices-for-better-productivity.jpg"
 featuredImageAlt: "Organize Your Devices For Better Productivity"

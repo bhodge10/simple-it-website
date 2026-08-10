@@ -1,7 +1,7 @@
 ---
 title: "Adversary-in-the-Middle Attacks: How Phishing Sites Steal Your Active Login"
 date: 2026-05-28
-author: Kevin Lane
+author: "Simple IT Team"
 draft: false
 featuredImage: /images/blog/difference-between-malware-ransomware.png
 featuredImageAlt: An illustration of an anonymous hacker in a blue hoodie

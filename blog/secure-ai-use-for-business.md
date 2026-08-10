@@ -1,7 +1,7 @@
 ---
 title: "Secure AI Use for Business Data"
 date: 2026-01-07
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/secure-ai-use-for-business.jpg"
 featuredImageAlt: "Secure Ai Use For Business"

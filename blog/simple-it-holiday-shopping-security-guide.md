@@ -1,7 +1,7 @@
 ---
 title: "Simple IT Holiday Shopping Security Guide"
 date: 2025-12-09
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/simple-it-holiday-shopping-security-guide.png"
 featuredImageAlt: "Simple It Holiday Shopping Security Guide"

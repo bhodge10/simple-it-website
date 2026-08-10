@@ -1,7 +1,7 @@
 ---
 title: "QR Code Scams: How to Protect Your Business from Quishing Attacks"
 date: 2026-07-15
-author: Kevin Lane
+author: "Simple IT Team"
 draft: false
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1783930192/pexels-pixabay-278430_c8nfih.jpg
 featuredImageAlt: Smartphone displaying a QR code representing QR code scams and quishing attacks

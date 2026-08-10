@@ -1,7 +1,7 @@
 ---
 title: Employee Onboarding Mistakes That Lead to Messy Offboarding
 date: 2026-06-25
-author: Kevin Lane
+author: "Simple IT Team"
 draft: false
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1783947115/ChatGPT_Image_Jun_24_2026_12_29_09_AM_jjolgw.png
 featuredImageAlt: Employee onboarding meeting with manager reviewing training

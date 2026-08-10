@@ -1,7 +1,7 @@
 ---
 title: "Renewed Tech … Simple IT’s Guide to Finding Value in Pre-Used Devices"
 date: 2025-04-09
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/simpleits-guide-to-pre-used-devices.jpg"
 featuredImageAlt: "Simpleits Guide To Pre Used Devices"

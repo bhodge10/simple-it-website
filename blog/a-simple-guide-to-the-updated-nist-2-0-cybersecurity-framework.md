@@ -1,7 +1,7 @@
 ---
 title: "A Simple Guide to the Updated NIST 2.0 Cybersecurity Framework"
 date: 2024-07-25
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/a-simple-guide-to-the-updated-nist-2-0-cybersecurity-framework.png"
 featuredImageAlt: "A Simple Guide To The Updated Nist 2 0 Cybersecurity Framework"

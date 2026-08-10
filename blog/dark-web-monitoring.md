@@ -1,7 +1,7 @@
 ---
 title: "Do You Really Need Dark Web Monitoring?"
 date: 2025-01-15
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/dark-web-monitoring.jpg"
 featuredImageAlt: "Dark Web Monitoring"

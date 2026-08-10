@@ -1,7 +1,7 @@
 ---
 title: "Tips to Boost Business Productivity with Reliable Wi-Fi"
 date: 2025-09-02
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/tips-to-boost-business-productivity-with-reliable-wifi.jpg"
 featuredImageAlt: "Tips To Boost Business Productivity With Reliable Wifi"

@@ -1,7 +1,7 @@
 ---
 title: "Is Your Smart Office a Security Risk? What NKY Businesses Need to Know About IoT"
 date: 2025-09-08
-author: "Kevin Lane"
+author: "Simple IT Team"
 draft: false
 featuredImage: "/images/blog/smart-office-iot-security-northern-kentucky.jpg"
 featuredImageAlt: "Smart Office Iot Security Northern Kentucky"
