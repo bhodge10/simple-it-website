@@ -1,8 +1,8 @@
 ---
 title: "What IT Support Costs in Cincinnati (2026)"
 date: 2026-08-11
-author: "Simple IT Team"
-draft: true
+author: "Brad Hodge"
+draft: false
 featuredImageAlt: "Cincinnati business owner reviewing IT support pricing options"
 categories:
   - "Business Tips"
