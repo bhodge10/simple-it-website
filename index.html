@@ -1046,7 +1046,8 @@
             margin: 0 auto;
         }
         
-        .cta-form input {
+        .cta-form input,
+        .cta-form select {
             padding: 1.2rem;
             border-radius: 12px;
             border: none;
@@ -1613,7 +1614,8 @@
                 flex-direction: column;
             }
             
-            .cta-form input {
+            .cta-form input,
+            .cta-form select {
                 min-width: 100%;
             }
         }
@@ -2268,6 +2270,14 @@
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Work Email" required>
                 <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="employees" required>
+                    <option value="">Company Size...</option>
+                    <option value="1-4">1-4 employees</option>
+                    <option value="5-15">5-15 employees</option>
+                    <option value="15-30">15-30 employees</option>
+                    <option value="30-50">30-50 employees</option>
+                    <option value="50+">50+ employees</option>
+                </select>
                 <button type="submit" id="assessSubmitBtn">Book Your Free Assessment →</button>
                 <div id="assessFormMessage" style="margin-top: 10px; display: none;"></div>
             </form>
