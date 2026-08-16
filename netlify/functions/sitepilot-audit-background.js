@@ -76,15 +76,30 @@ exports.handler = async (event) => {
         fetchError = err.message;
       }
     }
-    if (!liveHtml) console.warn('Live HTML fetch failed for', domain, '—', fetchError || 'connection failed');
+    if (!liveHtml) {
+      // Never grade a site we couldn't see — a fabricated conservative D+
+      // tells a prospect with a good site that the tool is junk. Store the
+      // blocked state so the page pitches a hands-on review, and if the
+      // prospect already left their email, tell the team a manual audit is
+      // needed (it runs from the portal's SitePilot module).
+      console.warn('Live HTML fetch blocked for', domain, '—', fetchError || 'connection failed');
+      await store.setJSON(auditId, { status: 'blocked', domain, reason: fetchError || 'connection failed' });
+      try {
+        const emailDataRaw = await store.get(`email-${auditId}`);
+        if (emailDataRaw) {
+          const emailData = JSON.parse(emailDataRaw);
+          if (emailData && emailData.email) {
+            await sendBlockedLeadNotification(emailData.email, emailData.name, domain);
+          }
+        }
+      } catch (e) {
+        console.error('Blocked-lead notify error:', e.message);
+      }
+      return { statusCode: 200, body: 'done' };
+    }
 
     // ─── Step 2: Build prompt ───
-    let htmlContext = '';
-    if (liveHtml) {
-      htmlContext = `\n\nHere is the LIVE HTML fetched directly from ${domain} right now (not cached):\n\n<homepage_html>\n${liveHtml}\n</homepage_html>\n\nIMPORTANT: Base your technical analysis (meta tags, titles, schema markup, heading structure, internal links, content quality) on this LIVE HTML. The live HTML is the ground truth for what is currently on the site.`;
-    } else {
-      htmlContext = `\n\nNOTE: Could not fetch live HTML from ${domain} (${fetchError || 'connection failed'}). Base your analysis on your knowledge of this domain and what a typical site like this would have.`;
-    }
+    const htmlContext = `\n\nHere is the LIVE HTML fetched directly from ${domain} right now (not cached):\n\n<homepage_html>\n${liveHtml}\n</homepage_html>\n\nIMPORTANT: Base your technical analysis (meta tags, titles, schema markup, heading structure, internal links, content quality) on this LIVE HTML. The live HTML is the ground truth for what is currently on the site.`;
 
     // ─── Step 3: Call Claude API ───
     const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -153,7 +168,6 @@ Rules:
 - Keep visible_issue to one sentence
 - If schema markup IS present in the live HTML, acknowledge it and score accordingly
 - Most small business sites score 40-70. A well-optimized site with schema, good content, and local pages should score 75-90.
-- If you could not access the live HTML, note that in the summary and score conservatively (45-55)
 
 CRITICAL — LANGUAGE RULES FOR ALL visible_issue, summary, AND blurred_findings TEXT:
 - Write for a small business owner, NOT a developer or marketer
@@ -375,6 +389,30 @@ async function sendReportEmail(email, name, domain, results) {
           <p style="margin:4px 0;">2220 Grandview Drive, Suite 250 | Ft. Mitchell, KY 41017</p>
           <p style="margin:10px 0 0;font-size:11px;color:#bbb;">You received this because you requested an SEO audit on simple-it.us/sitepilot</p>
         </div>
+      </div>
+    `,
+  });
+}
+
+// The prospect's site blocked our scan and they left their email — the team
+// owes them a hands-on review (portal → SitePilot → Leads → Manual Audit).
+async function sendBlockedLeadNotification(email, name, domain) {
+  const transporter = getTransporter();
+  await transporter.sendMail({
+    from: '"SitePilot Lead" <info@simple-it.us>',
+    to: 'info@simple-it.us',
+    subject: `ACTION NEEDED — SitePilot manual audit: ${domain} blocked our scan (${name || email})`,
+    html: `
+      <div style="font-family:Arial,sans-serif;max-width:600px;">
+        <h2 style="color:#2B4C7E;">Manual Audit Needed</h2>
+        <p style="color:#333;"><strong>${domain}</strong> blocks automated scans (bot protection), so no report was generated or sent. The prospect was told a real person will review their site and email the full report <strong>within one business day</strong>.</p>
+        <table style="width:100%;border-collapse:collapse;">
+          <tr style="background:#f5f5f5;"><td style="padding:10px;border:1px solid #ddd;"><strong>Name:</strong></td><td style="padding:10px;border:1px solid #ddd;">${name || 'Not provided'}</td></tr>
+          <tr><td style="padding:10px;border:1px solid #ddd;"><strong>Email:</strong></td><td style="padding:10px;border:1px solid #ddd;">${email}</td></tr>
+          <tr style="background:#f5f5f5;"><td style="padding:10px;border:1px solid #ddd;"><strong>Domain:</strong></td><td style="padding:10px;border:1px solid #ddd;">${domain}</td></tr>
+          <tr><td style="padding:10px;border:1px solid #ddd;"><strong>Time:</strong></td><td style="padding:10px;border:1px solid #ddd;">${new Date().toLocaleString()}</td></tr>
+        </table>
+        <p style="margin-top:20px;color:#333;"><strong>To run it:</strong> portal &rarr; SitePilot &rarr; Leads &rarr; Manual Audit. Open the prospect's site in your browser, view page source, paste it in — the tool grades it and emails them the branded report.</p>
       </div>
     `,
   });

@@ -779,6 +779,7 @@
         var currentDomain = '';
         var currentResults = null;
         var currentAuditId = '';
+        var auditBlocked = false; // site's WAF blocked our scan — manual-review path
         var lastAuditTime = 0;
         var COOLDOWN_MS = 30000; // 30 seconds between audits
         var pollTimer = null;
@@ -952,6 +953,20 @@
             pendingShown = true;
         }
 
+        // The prospect's site blocks automated scans (WAF/bot challenge). Never
+        // show a fabricated grade — frame the block as a positive and pitch the
+        // hands-on review instead.
+        function showAuditBlocked() {
+            auditBlocked = true;
+            if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
+            showAuditPending(
+                'Your site’s security is doing its job',
+                'Your website actively blocks automated scans — good sign! It also means we can’t grade it remotely. Enter your email and a real person at Simple IT will review your site by hand and send your full report within one business day.'
+            );
+            document.getElementById('loadingOrWait').innerHTML =
+                '<a href="javascript:void(0)" onclick="location.reload()" style="color:#0066FF;text-decoration:underline;">Start a new audit</a>';
+        }
+
         // Poll for audit results from background function
         function pollForResults() {
             var elapsed = Date.now() - pollStartTime;
@@ -994,6 +1009,8 @@
                         });
                     }
                     showResults(currentResults);
+                } else if (data.status === 'blocked') {
+                    showAuditBlocked();
                 } else if (data.status === 'error') {
                     // Background function errored — show pending state with email capture
                     if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
@@ -1027,7 +1044,7 @@
             btn.disabled = true;
             btn.textContent = 'Sending...';
 
-            var notifyPayload = { auditId: currentAuditId, email: email, name: name, domain: currentDomain };
+            var notifyPayload = { auditId: currentAuditId, email: email, name: name, domain: currentDomain, blocked: auditBlocked };
             // If results are already available (sync audit succeeded), include them
             if (currentResults) {
                 notifyPayload.results = currentResults;
@@ -1135,6 +1152,7 @@
             // Generate audit ID and store state
             currentDomain = domain;
             currentAuditId = domain.replace(/[^a-z0-9]/g, '-') + '-' + Date.now();
+            auditBlocked = false;
 
             // Show loading
             checksSection.style.display = 'none';
@@ -1209,6 +1227,12 @@
                 return res.json();
             })
             .then(function(results) {
+                if (results && results.blocked) {
+                    // Site's WAF rejected the scan — no point retrying via the
+                    // background function, it fetches from the same place.
+                    showAuditBlocked();
+                    return;
+                }
                 if (!results || !results.overall_score) throw new Error('Invalid results');
                 // Sync audit succeeded — show results immediately
                 cleanupLoading();

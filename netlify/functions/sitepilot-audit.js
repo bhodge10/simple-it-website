@@ -79,12 +79,21 @@ exports.handler = async (event) => {
       fetchError = err.message;
     }
   }
-  if (!liveHtml) console.warn('Live HTML fetch failed for', domain, '—', fetchError || 'connection failed');
+  if (!liveHtml) {
+    // Never grade a site we couldn't see — a fabricated conservative D+ tells
+    // a prospect with a good site that the tool is junk. Report the block so
+    // the page pitches a hands-on review instead (manual audit runs from the
+    // portal's SitePilot module).
+    console.warn('Live HTML fetch blocked for', domain, '—', fetchError || 'connection failed');
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ blocked: true, domain, reason: fetchError || 'connection failed' }),
+    };
+  }
 
   // ─── Step 2: Build the prompt with live HTML context ───
-  let htmlContext = '';
-  if (liveHtml) {
-    htmlContext = `
+  const htmlContext = `
 
 Here is the LIVE HTML fetched directly from ${domain} right now (not cached):
 
@@ -93,11 +102,6 @@ ${liveHtml}
 </homepage_html>
 
 IMPORTANT: Base your technical analysis (meta tags, titles, schema markup, heading structure, internal links, content quality) on this LIVE HTML. The live HTML is the ground truth for what is currently on the site.`;
-  } else {
-    htmlContext = `
-
-NOTE: Could not fetch live HTML from ${domain} (${fetchError || 'connection failed'}). Base your analysis on your knowledge of this domain and what a typical site like this would have.`;
-  }
 
   // ─── Step 3: Call Claude API with live HTML context ───
   try {
@@ -166,7 +170,6 @@ Rules:
 - Keep visible_issue to one sentence
 - If schema markup IS present in the live HTML, acknowledge it and score accordingly
 - Most small business sites score 40-70. A well-optimized site with schema, good content, and local pages should score 75-90.
-- If you could not access the live HTML, note that in the summary and score conservatively (45-55)
 
 CRITICAL — LANGUAGE RULES FOR ALL visible_issue, summary, AND blurred_findings TEXT:
 - Write for a small business owner, NOT a developer or marketer

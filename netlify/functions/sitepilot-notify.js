@@ -14,12 +14,23 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request' }) };
   }
 
-  const { auditId, email, name, domain, results } = body;
+  const { auditId, email, name, domain, results, blocked } = body;
   if (!email) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Missing email' }) };
   }
 
   try {
+    // Site blocked our scan (bot protection) — there are no results and never
+    // will be from the automated path. Tell the team a manual audit is owed.
+    if (blocked) {
+      await sendBlockedLeadNotification(email, name, domain);
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ queued: true }),
+      };
+    }
+
     // If frontend already has results, send email immediately (no Blobs needed)
     if (results && results.overall_score) {
       await sendReportEmail(email, name, domain, results);
@@ -47,6 +58,14 @@ exports.handler = async (event) => {
             statusCode: 200,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ sent: true }),
+          };
+        }
+        if (auditData.status === 'blocked') {
+          await sendBlockedLeadNotification(email, name, domain);
+          return {
+            statusCode: 200,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ queued: true }),
           };
         }
       }
@@ -194,6 +213,30 @@ async function sendReportEmail(email, name, domain, results) {
           <p style="margin:4px 0;">2220 Grandview Drive, Suite 250 | Ft. Mitchell, KY 41017</p>
           <p style="margin:10px 0 0;font-size:11px;color:#bbb;">You received this because you requested an SEO audit on simple-it.us/sitepilot</p>
         </div>
+      </div>
+    `,
+  });
+}
+
+// The prospect's site blocked our scan and they left their email — the team
+// owes them a hands-on review (portal → SitePilot → Leads → Manual Audit).
+async function sendBlockedLeadNotification(email, name, domain) {
+  const transporter = getTransporter();
+  await transporter.sendMail({
+    from: '"SitePilot Lead" <info@simple-it.us>',
+    to: 'info@simple-it.us',
+    subject: `ACTION NEEDED — SitePilot manual audit: ${domain} blocked our scan (${name || email})`,
+    html: `
+      <div style="font-family:Arial,sans-serif;max-width:600px;">
+        <h2 style="color:#2B4C7E;">Manual Audit Needed</h2>
+        <p style="color:#333;"><strong>${domain}</strong> blocks automated scans (bot protection), so no report was generated or sent. The prospect was told a real person will review their site and email the full report <strong>within one business day</strong>.</p>
+        <table style="width:100%;border-collapse:collapse;">
+          <tr style="background:#f5f5f5;"><td style="padding:10px;border:1px solid #ddd;"><strong>Name:</strong></td><td style="padding:10px;border:1px solid #ddd;">${name || 'Not provided'}</td></tr>
+          <tr><td style="padding:10px;border:1px solid #ddd;"><strong>Email:</strong></td><td style="padding:10px;border:1px solid #ddd;">${email}</td></tr>
+          <tr style="background:#f5f5f5;"><td style="padding:10px;border:1px solid #ddd;"><strong>Domain:</strong></td><td style="padding:10px;border:1px solid #ddd;">${domain}</td></tr>
+          <tr><td style="padding:10px;border:1px solid #ddd;"><strong>Time:</strong></td><td style="padding:10px;border:1px solid #ddd;">${new Date().toLocaleString()}</td></tr>
+        </table>
+        <p style="margin-top:20px;color:#333;"><strong>To run it:</strong> portal &rarr; SitePilot &rarr; Leads &rarr; Manual Audit. Open the prospect's site in your browser, view page source, paste it in — the tool grades it and emails them the branded report.</p>
       </div>
     `,
   });
