@@ -1,10 +1,15 @@
 // Background function: fetches live HTML, calls Claude, stores results in Blobs
 // Netlify runs this in the background (up to 15 min) and returns 202 immediately
 const fetch = require('node-fetch');
-const { getStore } = require('@netlify/blobs');
+const { getStore, connectLambda } = require('@netlify/blobs');
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event) => {
+  // Legacy-style (exports.handler) functions must connect the Blobs client to
+  // the invocation event — without this, getStore() throws and every audit
+  // "errored" even when the analysis itself was fine.
+  if (typeof connectLambda === 'function') connectLambda(event);
+
   let body;
   try {
     body = JSON.parse(event.body);

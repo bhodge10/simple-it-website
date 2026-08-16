@@ -1,7 +1,11 @@
 // Returns audit status and results from Netlify Blobs
-const { getStore } = require('@netlify/blobs');
+const { getStore, connectLambda } = require('@netlify/blobs');
 
 exports.handler = async (event) => {
+  // Legacy-style functions must connect Blobs to the invocation event or
+  // getStore() throws — the source of every "Could not check audit status".
+  if (typeof connectLambda === 'function') connectLambda(event);
+
   if (event.httpMethod !== 'GET') {
     return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
   }
@@ -34,7 +38,11 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status: 'error', error: 'Could not check audit status' }),
+      // status 'unavailable', NOT 'error': the page treats 'error' as "the
+      // audit failed" and stops polling — a storage hiccup here shouldn't
+      // kill an audit that's still running. Include the real message so the
+      // next person doesn't have to guess what broke.
+      body: JSON.stringify({ status: 'unavailable', error: 'Could not check audit status', detail: err.message }),
     };
   }
 };

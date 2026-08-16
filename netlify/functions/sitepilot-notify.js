@@ -1,8 +1,12 @@
 // Stores email for an audit and sends results immediately if already complete
-const { getStore } = require('@netlify/blobs');
+const { getStore, connectLambda } = require('@netlify/blobs');
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event) => {
+  // Legacy-style functions must connect Blobs to the invocation event or
+  // getStore() throws.
+  if (typeof connectLambda === 'function') connectLambda(event);
+
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
   }

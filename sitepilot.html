@@ -1207,73 +1207,31 @@
                 }
             }, 10000);
 
-            // Step 1: Try synchronous audit (works for most sites within Netlify timeout)
-            var syncController = new AbortController();
-            var syncTimeout = setTimeout(function() { syncController.abort(); }, 15000);
-
-            fetch('/.netlify/functions/sitepilot-audit', {
+            // Background function + polling only. The old sync-first attempt
+            // is gone: the model now thinks before answering (20-40s), which
+            // blew past both the 15s client abort and Netlify's sync-function
+            // limit, and the aborted sync call kept running server-side,
+            // double-spending the Claude call when the background retry kicked
+            // in. Blocked sites surface via the poll (status 'blocked') within
+            // a few seconds.
+            fetch('/.netlify/functions/sitepilot-audit-background', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ domain: domain }),
-                signal: syncController.signal
+                body: JSON.stringify({ domain: domain, auditId: currentAuditId })
             })
             .then(function(res) {
-                clearTimeout(syncTimeout);
-                if (!res.ok) {
-                    return res.json().catch(function() { return { error: 'Unknown error' }; }).then(function(err) {
-                        throw new Error(err.error || 'Audit failed');
-                    });
+                if (!res.ok && res.status !== 202) {
+                    throw new Error('Background function returned ' + res.status);
                 }
-                return res.json();
+                pollStartTime = Date.now();
+                pollTimer = setTimeout(pollForResults, 5000);
             })
-            .then(function(results) {
-                if (results && results.blocked) {
-                    // Site's WAF rejected the scan — no point retrying via the
-                    // background function, it fetches from the same place.
-                    showAuditBlocked();
-                    return;
-                }
-                if (!results || !results.overall_score) throw new Error('Invalid results');
-                // Sync audit succeeded — show results immediately
-                cleanupLoading();
-                currentResults = results;
-                trackScan(domain, currentResults);
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'audit_completed', {
-                        'event_category': 'SitePilot',
-                        'event_label': domain,
-                        'audit_source': 'live',
-                        'audit_score': results.overall_score,
-                        'audit_grade': results.overall_grade
-                    });
-                }
-                showResults(currentResults);
-            })
-            .catch(function(syncErr) {
-                clearTimeout(syncTimeout);
-                console.warn('Sync audit failed:', syncErr.message, '— trying background function');
-
-                // Step 2: Try background function (for slow sites / longer analysis)
-                fetch('/.netlify/functions/sitepilot-audit-background', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ domain: domain, auditId: currentAuditId })
-                })
-                .then(function(res) {
-                    if (!res.ok && res.status !== 202) {
-                        throw new Error('Background function returned ' + res.status);
-                    }
-                    // Background function started — poll for results
-                    pollStartTime = Date.now();
-                    pollTimer = setTimeout(pollForResults, 5000);
-                })
-                .catch(function(bgErr) {
-                    console.warn('Background audit also failed:', bgErr.message);
-                    showAuditPending(
-                        'Your audit is being processed',
-                        'Enter your email below and we\u2019ll send your full report as soon as it\u2019s ready.'
-                    );
-                });
+            .catch(function(bgErr) {
+                console.warn('Audit start failed:', bgErr.message);
+                showAuditPending(
+                    'Your audit is being processed',
+                    'Enter your email below and we\u2019ll send your full report as soon as it\u2019s ready.'
+                );
             });
         }
 
