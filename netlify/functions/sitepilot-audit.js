@@ -103,9 +103,12 @@ NOTE: Could not fetch live HTML from ${domain} (${fetchError || 'connection fail
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 2048,
-        temperature: 0,
+        // Sonnet 4 was retired from the API (audits died with "model:
+        // claude-sonnet-4-20250514"). Sonnet 5 thinks by default: temperature
+        // can't be set alongside thinking, and max_tokens covers thinking +
+        // answer, so give it headroom.
+        model: 'claude-sonnet-5',
+        max_tokens: 6000,
         messages: [
           {
             role: 'user',
