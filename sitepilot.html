@@ -572,6 +572,10 @@
             <span>&#x26A1; Results in under 60 seconds</span>
             <span>&#x1F512; No signup or login needed</span>
         </div>
+        <p style="margin-top:1.4rem;font-size:0.9rem;color:#8B8AA0;">
+            Prefer to see it instead of read about it?
+            <a href="https://sitepilot.simple-it.us/try" style="color:#00D4AA;font-weight:600;text-decoration:none;">Get a free redesign concept of your website &rarr;</a>
+        </p>
     </section>
 
     <!-- What SitePilot Checks -->
@@ -674,6 +678,15 @@
         <div class="blurred-section">
             <h3>What Else We Found</h3>
             <div id="blurredList"></div>
+        </div>
+
+        <!-- Mockup funnel CTA — the strongest moment: they've just seen the
+             problems; now show them the fix. Links to the SitePilot concept
+             generator with their domain prefilled. -->
+        <div style="margin-bottom:2rem;background:linear-gradient(135deg,#111638,#0d1230);border:1px solid rgba(0,212,170,0.25);border-radius:12px;padding:28px;text-align:center;">
+            <p style="color:#E8E6F0;font-size:1.15rem;margin:0 0 6px;font-weight:700;">Want to <em>see</em> the fix instead?</p>
+            <p style="color:#8B8AA0;font-size:0.9rem;margin:0 0 18px;">We'll design a modern concept of your homepage from what's already on your site — free, in about two minutes.</p>
+            <a id="mockupCtaLink" href="https://sitepilot.simple-it.us/try" style="display:inline-block;padding:13px 26px;background:linear-gradient(135deg,#0066FF,#00D4AA);color:#fff;border-radius:8px;font-weight:700;font-size:0.95rem;text-decoration:none;">Show me my new website &rarr;</a>
         </div>
 
         <!-- CTA / Lead Form -->
@@ -1248,6 +1261,12 @@
 
         function showResults(data) {
             resultsSection.style.display = 'block';
+            // Carry the audited domain into the mockup funnel (prefill only —
+            // the funnel never auto-submits).
+            var mockupLink = document.getElementById('mockupCtaLink');
+            if (mockupLink && currentDomain) {
+                mockupLink.href = 'https://sitepilot.simple-it.us/try?domain=' + encodeURIComponent(currentDomain);
+            }
 
             // Reset results email card
             document.getElementById('resultsEmailForm').style.display = 'block';
