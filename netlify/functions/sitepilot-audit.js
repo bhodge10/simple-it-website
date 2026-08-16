@@ -23,14 +23,20 @@ exports.handler = async (event) => {
   // ─── Step 1: Fetch the LIVE homepage HTML ───
   let liveHtml = '';
   let fetchError = '';
-  const urls = [`https://${domain}`, `http://${domain}`];
+  // www fallback + browser-grade headers: some hosts (Cloudflare bot rules
+  // especially) reject bot-labeled or sparse requests coming from datacenter
+  // IPs like the one this function runs on, while the same site loads fine
+  // from a browser.
+  const bare = domain.replace(/^www\./, '');
+  const urls = [`https://${bare}`, `https://www.${bare}`, `http://${bare}`];
 
   for (const url of urls) {
     try {
       const res = await fetch(url, {
         headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; SitePilot SEO Auditor; +https://simple-it.us/sitepilot)',
-          'Accept': 'text/html',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+          'Accept-Language': 'en-US,en;q=0.9',
         },
         redirect: 'follow',
         timeout: 5000,
@@ -64,11 +70,16 @@ exports.handler = async (event) => {
         }
 
         break;
+      } else {
+        // Record blocked/denied responses so the "couldn't load" path can be
+        // diagnosed from logs instead of guessed at.
+        fetchError = 'HTTP ' + res.status + ' from ' + url;
       }
     } catch (err) {
       fetchError = err.message;
     }
   }
+  if (!liveHtml) console.warn('Live HTML fetch failed for', domain, '—', fetchError || 'connection failed');
 
   // ─── Step 2: Build the prompt with live HTML context ───
   let htmlContext = '';
@@ -149,6 +160,7 @@ Respond with ONLY a JSON object — no markdown, no backticks, no explanation:
 {"overall_score":<0-100>,"overall_grade":"<letter grade>","summary":"<one sentence specific to this site>","categories":{"meta":{"score":<0-100>,"visible_issue":"<one specific issue you actually found or 'No major issues detected'>"},"content":{"score":<0-100>,"visible_issue":"<one specific issue>"},"schema":{"score":<0-100>,"visible_issue":"<one specific issue>"},"mobile":{"score":<0-100>,"visible_issue":"<one specific issue>"},"performance":{"score":<0-100>,"visible_issue":"<one specific issue>"},"local":{"score":<0-100>,"visible_issue":"<one specific issue>"}},"critical_count":<number>,"warning_count":<number>,"passed_count":<number>,"blurred_findings":["<teaser 1>","<teaser 2>","<teaser 3>"]}
 
 Rules:
+- categories must contain EXACTLY these six keys and no others: meta, content, schema, mobile, performance, local
 - Base technical scores on the LIVE HTML, not guesses
 - If a category looks good in the live HTML, score it high
 - Keep visible_issue to one sentence
