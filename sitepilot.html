@@ -338,39 +338,8 @@
         }
         .issue-text { font-size: 0.95rem; line-height: 1.5; }
 
-        /* Blurred findings */
-        .blurred-section { margin-bottom: 3rem; }
-        .blurred-section h3 { font-size: 1.3rem; margin-bottom: 1.2rem; }
-        .blurred-item {
-            position: relative;
-            background: #111638;
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-        .blurred-text {
-            filter: blur(4px);
-            user-select: none;
-            pointer-events: none;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-        .blurred-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: #00D4AA;
-            background: rgba(17, 22, 56, 0.3);
-        }
+        /* (blurred-teaser styles removed 2026-08-18 — the locked "What Else
+           We Found" rows promised a fuller report than the email delivers) */
 
         /* CTA / Lead Form */
         .cta {
@@ -672,12 +641,6 @@
         <div class="issues">
             <h3>What We Found</h3>
             <div id="issuesList"></div>
-        </div>
-
-        <!-- Blurred Findings -->
-        <div class="blurred-section">
-            <h3>What Else We Found</h3>
-            <div id="blurredList"></div>
         </div>
 
         <!-- Mockup funnel CTA — the strongest moment: they've just seen the
@@ -1307,18 +1270,6 @@
                     '<div class="issue-text">' + icat.visible_issue + '</div>' +
                     '</div>';
                 issuesEl.appendChild(item);
-            }
-
-            // Blurred findings
-            var blurredEl = document.getElementById('blurredList');
-            blurredEl.innerHTML = '';
-            for (var b = 0; b < data.blurred_findings.length; b++) {
-                var bItem = document.createElement('div');
-                bItem.className = 'blurred-item';
-                bItem.innerHTML =
-                    '<div class="blurred-text">' + data.blurred_findings[b] + '</div>' +
-                    '<div class="blurred-overlay">\uD83D\uDD12 Get the full report</div>';
-                blurredEl.appendChild(bItem);
             }
 
             // Scroll to results
