@@ -775,21 +775,24 @@
 
     <script>
     (function() {
+        // The portal is the backend now (public-intake cutover 2026-08-18):
+        // audit runs synchronously there, leads and report emails land there.
+        // The old sitepilot-* Netlify functions and the retired admin app are
+        // out of the request path entirely.
+        var PORTAL_API = 'https://portal.simple-it.us/api/public/sitepilot';
+
         // State
         var currentDomain = '';
         var currentResults = null;
-        var currentAuditId = '';
         var auditBlocked = false; // site's WAF blocked our scan — manual-review path
         var lastAuditTime = 0;
         var COOLDOWN_MS = 30000; // 30 seconds between audits
-        var pollTimer = null;
-        var pollStartTime = 0;
-        var SLOW_POLL_AFTER_MS = 90000; // switch to slow polling after 90s
-        var STOP_POLL_AFTER_MS = 300000; // stop polling after 5 minutes
         var msgInterval = null;
         var pendingShown = false;
 
-        // Fire-and-forget scan tracking to portal
+        // Fire-and-forget scan tracking to the portal (SitePilot → Leads;
+        // a form fill within 30 minutes promotes this row instead of
+        // creating a duplicate).
         function trackScan(domain, results) {
             try {
                 var body = {
@@ -807,7 +810,7 @@
                         passed_count: results.passed_count
                     } : null
                 };
-                fetch('https://sitepilotadmindashboard.netlify.app/.netlify/functions/ingest-lead', {
+                fetch(PORTAL_API + '/leads', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
@@ -931,7 +934,6 @@
         // Clean up loading state
         function cleanupLoading() {
             if (msgInterval) { clearInterval(msgInterval); msgInterval = null; }
-            if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
             loadingSection.style.display = 'none';
             pendingShown = false;
         }
@@ -958,7 +960,6 @@
         // hands-on review instead.
         function showAuditBlocked() {
             auditBlocked = true;
-            if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
             showAuditPending(
                 'Your site’s security is doing its job',
                 'Your website actively blocks automated scans — good sign! It also means we can’t grade it remotely. Enter your email and a real person at Simple IT will review your site by hand and send your full report within one business day.'
@@ -967,68 +968,21 @@
                 '<a href="javascript:void(0)" onclick="location.reload()" style="color:#0066FF;text-decoration:underline;">Start a new audit</a>';
         }
 
-        // Poll for audit results from background function
-        function pollForResults() {
-            var elapsed = Date.now() - pollStartTime;
-
-            // After 5 minutes, stop polling — show email-only state
-            if (elapsed > STOP_POLL_AFTER_MS) {
-                if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
-                showAuditPending(
-                    'Your audit is still being generated',
-                    'Enter your email above and we\u2019ll send your full report as soon as it\u2019s ready.'
-                );
-                document.getElementById('loadingOrWait').innerHTML =
-                    '<a href="javascript:void(0)" onclick="location.reload()" style="color:#0066FF;text-decoration:underline;">Start a new audit</a>';
-                return;
+        // Audit completed — record, track, render.
+        function handleAuditResults(results) {
+            cleanupLoading();
+            currentResults = results;
+            trackScan(currentDomain, currentResults);
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'audit_completed', {
+                    'event_category': 'SitePilot',
+                    'event_label': currentDomain,
+                    'audit_source': 'live',
+                    'audit_score': currentResults.overall_score,
+                    'audit_grade': currentResults.overall_grade
+                });
             }
-
-            // After 90 seconds, switch to slow polling + show pending state
-            if (elapsed > SLOW_POLL_AFTER_MS && !pendingShown) {
-                showAuditPending(
-                    'Your audit is taking a bit longer...',
-                    'We\u2019re still analyzing the site. Results will appear automatically, or enter your email above.'
-                );
-            }
-
-            fetch('/.netlify/functions/sitepilot-status?id=' + encodeURIComponent(currentAuditId))
-            .then(function(res) { return res.json(); })
-            .then(function(data) {
-                if (data.status === 'complete' && data.results) {
-                    // Results ready!
-                    cleanupLoading();
-                    currentResults = data.results;
-                    trackScan(currentDomain, currentResults);
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'audit_completed', {
-                            'event_category': 'SitePilot',
-                            'event_label': currentDomain,
-                            'audit_source': 'live',
-                            'audit_score': currentResults.overall_score,
-                            'audit_grade': currentResults.overall_grade
-                        });
-                    }
-                    showResults(currentResults);
-                } else if (data.status === 'blocked') {
-                    showAuditBlocked();
-                } else if (data.status === 'error') {
-                    // Background function errored — show pending state with email capture
-                    if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
-                    showAuditPending(
-                        'Your audit needs a closer look',
-                        'This site requires a deeper analysis. Enter your email above and we\u2019ll send your full report shortly.'
-                    );
-                } else {
-                    // Still processing — poll again (slower after 90s)
-                    var delay = elapsed > SLOW_POLL_AFTER_MS ? 15000 : 5000;
-                    pollTimer = setTimeout(pollForResults, delay);
-                }
-            })
-            .catch(function() {
-                // Network error on poll — retry
-                var delay = elapsed > SLOW_POLL_AFTER_MS ? 15000 : 5000;
-                pollTimer = setTimeout(pollForResults, delay);
-            });
+            showResults(currentResults);
         }
 
         // Submit email for notification when results are ready
@@ -1044,12 +998,13 @@
             btn.disabled = true;
             btn.textContent = 'Sending...';
 
-            var notifyPayload = { auditId: currentAuditId, email: email, name: name, domain: currentDomain, blocked: auditBlocked };
-            // If results are already available (sync audit succeeded), include them
+            var notifyPayload = { email: email, name: name, domain: currentDomain, blocked: auditBlocked };
+            // If results are already on screen, they ride along so the portal
+            // can email the full report immediately.
             if (currentResults) {
                 notifyPayload.results = currentResults;
             }
-            fetch('/.netlify/functions/sitepilot-notify', {
+            fetch(PORTAL_API + '/report-email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(notifyPayload)
@@ -1087,10 +1042,10 @@
             btn.disabled = true;
             btn.textContent = 'Sending...';
 
-            fetch('/.netlify/functions/sitepilot-notify', {
+            fetch(PORTAL_API + '/report-email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ auditId: currentAuditId, email: email, name: name, domain: currentDomain, results: currentResults })
+                body: JSON.stringify({ email: email, name: name, domain: currentDomain, results: currentResults })
             })
             .then(function(res) { return res.json(); })
             .then(function() {
@@ -1151,7 +1106,6 @@
 
             // Generate audit ID and store state
             currentDomain = domain;
-            currentAuditId = domain.replace(/[^a-z0-9]/g, '-') + '-' + Date.now();
             auditBlocked = false;
 
             // Show loading
@@ -1207,30 +1161,47 @@
                 }
             }, 10000);
 
-            // Background function + polling only. The old sync-first attempt
-            // is gone: the model now thinks before answering (20-40s), which
-            // blew past both the 15s client abort and Netlify's sync-function
-            // limit, and the aborted sync call kept running server-side,
-            // double-spending the Claude call when the background retry kicked
-            // in. Blocked sites surface via the poll (status 'blocked') within
-            // a few seconds.
-            fetch('/.netlify/functions/sitepilot-audit-background', {
+            // One synchronous call to the portal — no Netlify function
+            // timeout to dodge anymore, so the old background+poll machinery
+            // is gone (public-intake cutover 2026-08-18). The model thinks for
+            // 20-60s; the rotating messages cover the wait. 422 = the site's
+            // WAF blocked our fetch (manual-review pitch); 429 = the per-IP
+            // hourly limit.
+            var auditAbort = new AbortController();
+            var auditTimeout = setTimeout(function() { auditAbort.abort(); }, 120000);
+            fetch(PORTAL_API + '/audit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ domain: domain, auditId: currentAuditId })
+                body: JSON.stringify({ domain: domain }),
+                signal: auditAbort.signal
             })
             .then(function(res) {
-                if (!res.ok && res.status !== 202) {
-                    throw new Error('Background function returned ' + res.status);
+                clearTimeout(auditTimeout);
+                if (res.status === 422) {
+                    showAuditBlocked();
+                    return null;
                 }
-                pollStartTime = Date.now();
-                pollTimer = setTimeout(pollForResults, 5000);
+                if (res.status === 429) {
+                    showAuditPending(
+                        'Our auditor is in high demand right now',
+                        'Enter your email below and we\u2019ll run the audit and send your full report shortly.'
+                    );
+                    return null;
+                }
+                if (!res.ok) throw new Error('Audit returned ' + res.status);
+                return res.json();
             })
-            .catch(function(bgErr) {
-                console.warn('Audit start failed:', bgErr.message);
+            .then(function(results) {
+                if (!results) return;
+                if (!results.overall_score || !results.categories) throw new Error('Incomplete results');
+                handleAuditResults(results);
+            })
+            .catch(function(err) {
+                clearTimeout(auditTimeout);
+                console.warn('Audit failed:', err.message);
                 showAuditPending(
-                    'Your audit is being processed',
-                    'Enter your email below and we\u2019ll send your full report as soon as it\u2019s ready.'
+                    'Your audit needs a closer look',
+                    'This site requires a deeper analysis. Enter your email above and we\u2019ll send your full report within one business day.'
                 );
             });
         }
