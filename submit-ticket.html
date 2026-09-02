@@ -761,6 +761,13 @@
 
             <!-- Ticket Form -->
             <form id="ticketForm">
+                <!-- Honeypot: off-screen, humans never see or fill it; bots that
+                     auto-fill every field do. Both ticket APIs silently drop
+                     submissions where "website" arrives non-empty. -->
+                <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+                    <label for="hp_website">Website</label>
+                    <input type="text" id="hp_website" name="website" tabindex="-1" autocomplete="off">
+                </div>
                 <!-- Priority Selection -->
                 <div class="form-section">
                     <h2><span class="section-icon">&#127919;</span> Priority Level</h2>
@@ -887,6 +894,7 @@
 
                 <!-- Submit -->
                 <div class="submit-section">
+                    <div id="turnstileBox" style="display:flex; justify-content:center; margin-bottom:1rem;"></div>
                     <button type="submit" class="submit-btn" id="submitBtn">Submit Ticket &#8594;</button>
                     <p style="margin-top: 1rem; color: var(--text-secondary);">You'll receive a confirmation with your ticket number</p>
                 </div>
@@ -901,8 +909,35 @@
     </footer>
 
     <script>
-        // API endpoint - production
-        const API_URL = 'https://simpleit-api.onrender.com/api/public/tickets';
+        // API endpoint — the portal is the sole receiver as of the 2026-09-02
+        // cutover (the old Syncro-backed simpleit-api endpoint is retired).
+        const API_URL = 'https://portal.simple-it.us/api/public/tickets';
+
+        // Anti-spam: when the page rendered — the portal rejects submissions
+        // that arrive less than 3 seconds later (humans can't fill this form
+        // that fast; bots do).
+        const FORM_LOADED_AT = Date.now();
+
+        // Cloudflare Turnstile. Paste the SITE key from the Cloudflare
+        // dashboard to activate the captcha; leave '' and nothing loads or
+        // renders. Deploy order matters: set this + deploy FIRST, then set
+        // TURNSTILE_SECRET_KEY on the portal's Render service — the portal
+        // only enforces tokens once its secret exists.
+        const TURNSTILE_SITE_KEY = '';
+        let turnstileWidgetId = null;
+        window.initTurnstile = function () {
+            turnstileWidgetId = turnstile.render('#turnstileBox', {
+                sitekey: TURNSTILE_SITE_KEY,
+                appearance: 'interaction-only'
+            });
+        };
+        if (TURNSTILE_SITE_KEY) {
+            const ts = document.createElement('script');
+            ts.src = 'https://challenges.cloudflare.com/turnstile/api.js?onload=initTurnstile&render=explicit';
+            ts.async = true;
+            ts.defer = true;
+            document.head.appendChild(ts);
+        }
 
         // Auto-format phone number
         document.getElementById('phone').addEventListener('input', function(e) {
@@ -939,7 +974,15 @@
                 contact_phone: document.getElementById('phone').value.trim(),
                 subject: document.getElementById('subject').value.trim(),
                 priority: document.querySelector('input[name="priority"]:checked').value,
-                description: buildDescription()
+                description: buildDescription(),
+                // Anti-spam fields — both APIs check the honeypot; the portal
+                // also checks render-to-submit time and (once keys are live)
+                // the Turnstile token.
+                website: document.getElementById('hp_website').value,
+                form_ts: FORM_LOADED_AT,
+                turnstile_token: (turnstileWidgetId !== null && window.turnstile)
+                    ? turnstile.getResponse(turnstileWidgetId)
+                    : undefined
             };
 
             try {
@@ -951,51 +994,46 @@
                     body: JSON.stringify(formData)
                 });
 
-                const data = await response.json();
+                const data = await response.json().catch(() => ({}));
 
-                if (response.ok && data.success) {
-                    // Send confirmation email to customer
-                    try {
-                        await fetch('/.netlify/functions/send-ticket-confirmation', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                contact_email: formData.contact_email,
-                                contact_name: formData.contact_name,
-                                contact_phone: formData.contact_phone,
-                                company_name: formData.company_name,
-                                subject: formData.subject,
-                                description: formData.description,
-                                ticketNumber: data.syncroTicketNumber,
-                                priority: formData.priority
-                            })
-                        });
-                        console.log('Confirmation email sent');
-                    } catch (emailError) {
-                        console.error('Failed to send confirmation email:', emailError);
-                        // Don't show error to user - ticket was still created successfully
+                // Portal responses: {ticketId, status:'created'} for a known
+                // customer, {status:'received'} when the submission is held
+                // for review (unknown company — a reviewer approves it and the
+                // ticket materializes then).
+                if (response.ok && (data.status === 'created' || data.status === 'received')) {
+                    if (data.status === 'created' && data.ticketId) {
+                        // Confirmation email, keyed to the portal ticket id.
+                        // Held submissions get NO email on purpose: unknown
+                        // senders include the spam the portal is quietly
+                        // dropping, and confirmations to those addresses are
+                        // backscatter.
+                        try {
+                            await fetch('/.netlify/functions/send-ticket-confirmation', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    contact_email: formData.contact_email,
+                                    contact_name: formData.contact_name,
+                                    contact_phone: formData.contact_phone,
+                                    company_name: formData.company_name,
+                                    subject: formData.subject,
+                                    description: formData.description,
+                                    ticketNumber: data.ticketId,
+                                    priority: formData.priority
+                                })
+                            });
+                            console.log('Confirmation email sent');
+                        } catch (emailError) {
+                            console.error('Failed to send confirmation email:', emailError);
+                            // Don't show error to user - ticket was still created successfully
+                        }
                     }
 
-                    // Dual-write to new portal during transition. Fire-and-forget: Syncro is the
-                    // source of truth, portal is shadow-recording so the team can test against
-                    // real submissions. Failures must not affect customer-visible success.
-                    fetch('https://portal.simple-it.us/api/public/tickets', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            ...formData,
-                            externalRef: 'syncro:' + data.syncroTicketNumber
-                        })
-                    })
-                        .then(r => console.log('Portal ticket recorded:', r.status))
-                        .catch(err => console.warn('Portal dual-write failed:', err));
-
-                    // Show success message with ticket number
-                    showSuccess(data.syncroTicketNumber);
+                    // Show success message with ticket number (or the
+                    // "received" variant when there's no ticket yet)
+                    showSuccess(data.ticketId || null);
                 } else {
                     // Show error
                     showError(data.error || 'Failed to submit ticket. Please try again.');
@@ -1006,6 +1044,11 @@
             } finally {
                 submitBtn.textContent = 'Submit Ticket \u2192';
                 submitBtn.disabled = false;
+                // Tokens are single-use \u2014 refresh so a retry after an error
+                // doesn't submit a spent token.
+                if (turnstileWidgetId !== null && window.turnstile) {
+                    turnstile.reset(turnstileWidgetId);
+                }
             }
         });
 
@@ -1050,8 +1093,17 @@
             document.getElementById('formContainer').style.display = 'none';
             document.getElementById('errorMessage').classList.remove('show');
 
+            // Portal ids are already customer-readable ("TKT-0412"). No id =
+            // the held-for-review path — hide the number box rather than show
+            // a placeholder.
+            const numberBox = document.querySelector('.ticket-number-display');
             const ticketDisplay = document.getElementById('ticketNumberDisplay');
-            ticketDisplay.textContent = '#' + ticketNumber;
+            if (ticketNumber) {
+                numberBox.style.display = '';
+                ticketDisplay.textContent = ticketNumber;
+            } else {
+                numberBox.style.display = 'none';
+            }
 
             const successContainer = document.getElementById('successMessage');
             successContainer.classList.add('show');
