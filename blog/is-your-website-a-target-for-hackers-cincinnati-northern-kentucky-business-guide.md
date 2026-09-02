@@ -1,6 +1,6 @@
 ---
-title: Is Your Website a Hacker’s Easy Target? (Cincinnati & Northern Kentucky
-  Business Guide)
+title: Is Your Website a Hacker’s Easy Target? A Cincinnati & Northern Kentucky
+  Business Guide
 date: 2026-09-03
 author: Brad Hodge
 draft: true
