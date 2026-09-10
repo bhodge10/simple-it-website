@@ -2,7 +2,7 @@
 title: How to Spot a Phishing Email Now That They Look Real
 date: 2026-09-11
 author: William Jones
-draft: false
+draft: true
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1789039393/mightyfinebros-hacker-7382500_so87hr.jpg
 featuredImageAlt: Phishing email scam warning showing a fake password change
   message and hacker targeting a laptop
