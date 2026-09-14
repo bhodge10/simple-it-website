@@ -2,7 +2,7 @@
 title: How to Spot a Phishing Email Now That They Look Real
 date: 2026-09-11
 author: William Jones
-draft: false
+draft: true
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1789039393/mightyfinebros-hacker-7382500_so87hr.jpg
 featuredImageAlt: Phishing email scam warning showing a fake password change
   message and hacker targeting a laptop
@@ -24,7 +24,7 @@ For years, the advice for spotting phishing emails was simple: look for bad spel
 
 It doesn't anymore. Scammers now use AI to write their emails, and AI writes cleanly. The typos and awkward phrasing that used to give phishing away are gone, and the messages landing in your team's inbox read as well as anything from a real company. Worse, they can be written to sound like they came from someone you already know.
 
-![Phishing email scam targeting a laptop with a fake password change warning and hacker using a fishing hook](https://res.cloudinary.com/dygso04l2/image/upload/v1789039393/mightyfinebros-hacker-7382500_so87hr.jpg "How to Spot a Phishing Email Now That They Look Real")
+![Phishing scam email targeting a laptop and attempting to steal credit card information and cash](https://res.cloudinary.com/dygso04l2/image/upload/v1789040571/mohamed_hassan-scam-3933004_kggwte.jpg "Phishing Scam Targeting Financial Information")
 
 ## Why the Old Advice Stopped Working
 
