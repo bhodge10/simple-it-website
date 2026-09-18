@@ -2,7 +2,7 @@
 title: "OneDrive vs SharePoint: Where Your Business Files Should Live"
 date: 2026-09-19
 author: Brad Hodge
-draft: true
+draft: false
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1789748938/tumisu-cloud-6181051_t2f06r.jpg
 featuredImageAlt: Cloud computing concept with a hand touching a cloud against a
   blue digital network background.
