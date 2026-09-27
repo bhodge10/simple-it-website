@@ -66,3 +66,13 @@ A good plan answers these questions:
 Keep this to a single page, somewhere you can reach without your main systems, whether that's printed or in a separate app. Write down your critical tools, your backup way to communicate, where the essentials live, who's in charge, and who to call. Review it once or twice a year so the names and numbers stay current.
 
 ## **Need Help Preparing for an IT Outage?**
+
+A Microsoft 365 outage can happen without warning, but having the right IT support, backup solutions, and business continuity plan in place can help minimize downtime and keep your business running.
+
+Need reliable IT support in Northern Kentucky? [Simple IT](https://simple-it.us/) provides managed IT services, Microsoft 365 support, cybersecurity, cloud solutions, backup, and disaster recovery services for businesses throughout Ft. Mitchell, Florence, Erlanger, Covington, Newport, and Independence.
+
+If you're unsure whether your business is prepared for a Microsoft 365 outage or unexpected downtime, [schedule your free IT assessment](https://simple-it.us/#contact), call **859-449-7878**, or email [info@simple-it.us](mailto:info@simple-it.us)
+
+.\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__
+
+***Article used with permission from [The Technology Press](https://thetechnologypress.com/what-immutable-backup-means-on-your-cyber-insurance-form/).***
