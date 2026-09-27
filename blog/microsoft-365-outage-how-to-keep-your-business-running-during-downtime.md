@@ -65,4 +65,4 @@ A good plan answers these questions:
 
 Keep this to a single page, somewhere you can reach without your main systems, whether that's printed or in a separate app. Write down your critical tools, your backup way to communicate, where the essentials live, who's in charge, and who to call. Review it once or twice a year so the names and numbers stay current.
 
-## Need Help Preparing for an IT Outage?
+## **Need Help Preparing for an IT Outage?**
