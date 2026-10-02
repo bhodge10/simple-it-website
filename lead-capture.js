@@ -52,6 +52,14 @@
     payload.utmContent = attr.utm_content || null;
     payload.referrer = attr.referrer || (document.referrer || null);
     payload.landingUrl = attr.landingUrl || window.location.href;
+    // First-party visitor id from visitor-tracking.js — lets the portal tie
+    // the pages this person read before submitting to the lead it creates.
+    try {
+      if (window.SimpleITVisitor && typeof window.SimpleITVisitor.get === 'function') {
+        var visitor = window.SimpleITVisitor.get();
+        if (visitor && visitor.vid) payload.visitorId = visitor.vid;
+      }
+    } catch (e) {}
     return payload;
   }
 
