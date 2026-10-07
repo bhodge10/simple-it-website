@@ -1,5 +1,4 @@
 const markdownIt = require("markdown-it");
-const fetchPortalPosts = require("./_data/portalPosts.js");
 
 module.exports = function(eleventyConfig) {
   // --- Passthrough Copy: copy ALL existing site files as-is ---
@@ -96,29 +95,13 @@ module.exports = function(eleventyConfig) {
     return (arr || []).slice(0, count);
   });
 
-  // --- Merged blog index: local markdown posts + portal-authored posts ---
-  // Portal posts are wrapped so they expose the same shape as Eleventy
-  // collection items (`url`, `date`, `data.*`, `templateContent`) — that lets
-  // blog.njk and feed.njk iterate the merged collection without branching.
-  eleventyConfig.addCollection("allBlogPosts", async (collectionApi) => {
-    const local = collectionApi.getFilteredByTag("blog").filter(p => !p.data.draft);
-    const portal = await fetchPortalPosts();
-    const portalItems = portal.map(p => ({
-      url: p.url,
-      date: p.publishedAtDate,
-      data: {
-        title: p.title,
-        metaDescription: p.metaDescription,
-        featuredImage: p.ogImageUrl,
-        categories: p.tags,
-        author: p.author.fullName,
-        draft: false,
-        isPortal: true,
-        portal: p,
-      },
-      templateContent: p.bodyHtml,
-    }));
-    return [...local, ...portalItems].sort((a, b) => a.date - b.date);
+  // --- Blog index: published markdown posts (authored in Decap CMS) ---
+  // Used by blog.njk and feed.njk. (Portal-authored posts were merged in here
+  // until 2026-10-06; the blog lives entirely in Decap now.)
+  eleventyConfig.addCollection("allBlogPosts", (collectionApi) => {
+    return collectionApi.getFilteredByTag("blog")
+      .filter(p => !p.data.draft)
+      .sort((a, b) => a.date - b.date);
   });
 
   // --- Blog by Category Collection ---

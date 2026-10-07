@@ -284,13 +284,4 @@ eleventyExcludeFromCollections: true
   </url>
   {%- endif %}{%- endfor %}
 
-  {%- for post in portalPosts %}
-  <url>
-    <loc>https://simple-it.us/blog/{{ post.slug }}/</loc>
-    <lastmod>{{ post.updatedAtDate | htmlDateString }}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  {%- endfor %}
-
 </urlset>
