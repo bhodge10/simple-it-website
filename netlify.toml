@@ -2047,6 +2047,15 @@ to = "https://bookings.cloud.microsoft/bookwithme/user/dd05765a352f476fb86fde3fb
 status = 302
 force = true
 
+# Alias for /book (covers /brad and /brad/). Points at /book rather than the
+# booking URL so the destination stays defined in the /book rule only.
+
+[[redirects]]
+from = "/brad"
+to = "/book"
+status = 302
+force = true
+
 # Catch-all: return 404 page (not a redirect)
 
 [[redirects]]
