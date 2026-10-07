@@ -2036,6 +2036,17 @@ from = "/ticket-confirmation-email-preview"
 to = "/"
 status = 301
 
+# Booking link for business-card QR code: change here only.
+# simple-it.us/book is printed on cards, so keep this rule; only edit "to".
+# 302 (not 301) so browsers don't cache it and the destination can change.
+# Netlify normalizes trailing slashes, so this one rule covers /book and /book/.
+
+[[redirects]]
+from = "/book"
+to = "https://bookings.cloud.microsoft/bookwithme/user/dd05765a352f476fb86fde3fbeb64b2a@simple-it.us/meetingtype/kzBjfw5BhUep2W4NE-ah9Q2?anonymous"
+status = 302
+force = true
+
 # Catch-all: return 404 page (not a redirect)
 
 [[redirects]]
