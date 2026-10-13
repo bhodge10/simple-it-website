@@ -14,7 +14,7 @@ seoTitle: "Guest Wi-Fi Security: How to Protect Your Business Network"
 metaDescription: Learn why guest Wi-Fi security matters for Northern Kentucky
   (NKY) businesses and how separate guest networks improve business network
   security and data protection.
-focusKeyphrase: guest Wi-Fi security
+focusKeyphrase: IT support in Northern Kentucky
 ---
 ## Guest Wi-Fi Security: Why Northern Kentucky Businesses Need a Separate Network
 
@@ -30,7 +30,7 @@ A properly configured guest network gives visitors internet access without allow
 
 When someone connects to your guest Wi-Fi, they should be able to browse the internet, use email, and access online services. They should not be able to connect to anything on your internal business network.
 
-![Two business professionals using mobile devices in an office, highlighting the importance of guest Wi-Fi security, business network protection, and cybersecurity for Northern Kentucky small businesses.](https://res.cloudinary.com/dygso04l2/image/upload/v1791886213/pexels-silverkblack-36766693_hospdn.jpg "IT Support in NKY")
+![Two business professionals using mobile devices in an office, highlighting the importance of guest Wi-Fi security, business network protection, and cybersecurity for Northern Kentucky small businesses.](https://res.cloudinary.com/dygso04l2/image/upload/v1791886213/pexels-silverkblack-36766693_hospdn.jpg)
 
 That includes:
 
@@ -99,7 +99,7 @@ Client isolation and business-network separation are two different controls. Cli
 
 A personal phone that only needs internet access can usually use the guest network. The same applies to a personal laptop that does not need to connect to internal business systems.
 
-![Laptop, smartphone, and digital tablet on an office desk, highlighting the importance of guest Wi-Fi security, business network protection, and IT support for small businesses in Northern Kentucky (NKY).](https://res.cloudinary.com/dygso04l2/image/upload/v1791886348/pexels-readymade-3850200_ikbb9r.jpg "IT Support in Northern Kentucky")
+![Laptop, smartphone, and digital tablet on an office desk, highlighting the importance of guest Wi-Fi security, business network protection, and IT support for small businesses in Northern Kentucky (NKY).](https://res.cloudinary.com/dygso04l2/image/upload/v1791886348/pexels-readymade-3850200_ikbb9r.jpg)
 
 If employees use personal devices to access company files, applications, or internal systems, the business needs a clear bring-your-own-device policy. Those devices may require security software, device management, encryption, and specific access rules.
 
