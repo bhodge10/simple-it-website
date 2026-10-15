@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Website Visibility Checkup | SitePilot by Simple IT</title>
     <link rel="canonical" href="https://simple-it.us/sitepilot">
-    <meta name="description" content="Find out why your competitors show up on Google and you don't. Free website visibility checkup for small businesses — no technical knowledge needed.">
+    <meta name="description" content="See how your homepage looks to new customers and Google — what's working, what's worth a look, and what to fix first. Free 30-second checkup, plain English.">
     <link rel="icon" type="image/png" href="/simple-it-logo.png">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Free Website Visibility Checkup | SitePilot by Simple IT">
-    <meta property="og:description" content="Find out why your competitors show up on Google and you don't. Free website visibility checkup for small businesses — no technical knowledge needed.">
+    <meta property="og:description" content="See how your homepage looks to new customers and Google — what's working, what's worth a look, and what to fix first. Free 30-second checkup, plain English.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://simple-it.us/simple-it-logo.png">
     <meta property="og:url" content="https://simple-it.us/sitepilot">
@@ -19,7 +19,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Free Website Visibility Checkup | SitePilot by Simple IT">
-    <meta name="twitter:description" content="Find out why your competitors show up on Google and you don't. Free website visibility checkup for small businesses — no technical knowledge needed.">
+    <meta name="twitter:description" content="See how your homepage looks to new customers and Google — what's working, what's worth a look, and what to fix first. Free 30-second checkup, plain English.">
     <meta name="twitter:image" content="https://simple-it.us/simple-it-logo.png">
 
     <!-- LocalBusiness Schema -->
@@ -106,7 +106,6 @@
             line-height: 1.15;
             margin-bottom: 1.2rem;
         }
-        .hero h1 .red { color: #FF4757; }
         .hero .subtitle {
             color: #8B8AA0;
             font-size: 1.1rem;
@@ -297,7 +296,17 @@
             margin-bottom: 0.75rem;
         }
         .cat-name { font-weight: 600; font-size: 0.95rem; }
-        .cat-score { font-weight: 700; font-size: 0.95rem; }
+        .cat-score { font-weight: 700; font-size: 0.95rem; white-space: nowrap; }
+        .cat-score-wrap { flex-shrink: 0; margin-left: 0.75rem; text-align: right; }
+        .cat-status { display: block; font-size: 0.75rem; font-weight: 600; margin-top: 0.15rem; white-space: nowrap; }
+        .status-dot {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            margin-right: 0.35rem;
+            vertical-align: 1px;
+        }
         .bar-bg {
             height: 8px;
             background: rgba(255,255,255,0.08);
@@ -531,8 +540,8 @@
     <!-- Hero -->
     <section class="hero">
         <div class="badge">Free Website Audit</div>
-        <h1>Is your website <span class="red">invisible</span> to Google?</h1>
-        <p class="subtitle">Find out why your competitors show up on Google and you don't. Free 30-second website checkup — no technical knowledge needed.</p>
+        <h1>How does your website look to new customers and Google?</h1>
+        <p class="subtitle">A free 30-second checkup of your homepage: what's working, what's worth a look, and what to fix first &mdash; in plain English, no technical knowledge needed.</p>
         <div class="input-row">
             <input type="text" id="domainInput" placeholder="&#x1F310; yourbusiness.com">
             <button id="auditBtn">Audit My Site</button>
@@ -550,8 +559,8 @@
 
     <!-- What SitePilot Checks -->
     <section class="checks" id="checksSection">
-        <h2>What's costing you customers?</h2>
-        <p style="text-align:center;color:#8B8AA0;font-size:0.95rem;max-width:560px;margin:-1rem auto 2rem;">Most business owners don't realize their website is turning away customers. We check the 6 things that matter most.</p>
+        <h2>What we check</h2>
+        <p style="text-align:center;color:#8B8AA0;font-size:0.95rem;max-width:560px;margin:-1rem auto 2rem;">Six things that decide whether people find you, trust you and get in touch.</p>
         <div class="checks-grid">
             <div class="check-card">
                 <div class="icon">&#x1F50D;</div>
@@ -615,7 +624,7 @@
             </div>
             <p class="summary" id="summaryText"></p>
             <div class="issue-badges" id="issueBadges"></div>
-            <p style="color:#8B8AA0;font-size:12px;margin-top:16px;">Don't worry — 87% of small business websites have visibility issues. Most owners don't know until they check.</p>
+            <p style="color:#8B8AA0;font-size:12px;margin-top:16px;" id="scopeLine">We read your homepage only, as it loaded today.</p>
             <p style="color:#6B6A80;font-size:11px;margin-top:8px;">Powered by <a href="/" style="color:#0066FF;text-decoration:none;">Simple IT</a> — Helping local businesses get found online for 15+ years</p>
         </div>
 
@@ -655,8 +664,8 @@
 
         <!-- CTA / Lead Form -->
         <div class="cta">
-            <h2>Ready to stop being invisible?</h2>
-            <p class="cta-sub">We'll show you exactly who's finding your competitors instead of you — and how to change that in 30 days.</p>
+            <h2>Want a hand with the fixes?</h2>
+            <p class="cta-sub">We'll walk you through your results, point out the quick wins, and show you what customers see when they search for what you do.</p>
 
             <div id="leadFormWrapper">
                 <div class="cta-grid">
@@ -869,10 +878,10 @@
                     '<h3>\u2705 We\'ve got your results!</h3>' +
                     '<p><strong>' + userName + '</strong>, the Simple IT team will review the report for <strong>' + currentDomain + '</strong> and get back to you within 1 business day.</p>' +
                     '<p>Here\'s the quick version:</p>' +
-                    '<p>\u2022 Your Visibility Score: <strong>' + (currentResults ? currentResults.overall_grade : '') + '</strong> (' + (currentResults ? currentResults.overall_score : '') + '/100)<br>' +
-                    '\u2022 ' + (currentResults ? currentResults.critical_count : 0) + ' things that need attention right away<br>' +
-                    '\u2022 ' + (currentResults ? currentResults.warning_count : 0) + ' things that could be better</p>' +
-                    '<p class="dim">We\'ll show you exactly what your customers see when they search for your business \u2014 and how to make sure they find YOU instead of a competitor. Talk soon!</p>';
+                    '<p>\u2022 Your score: <strong>' + (currentResults ? currentResults.overall_grade : '') + '</strong> (' + (currentResults ? currentResults.overall_score : '') + '/100)<br>' +
+                    '\u2022 ' + areasLabel(currentResults ? currentResults.critical_count : 0, 'to fix first') + '<br>' +
+                    '\u2022 ' + areasLabel(currentResults ? currentResults.warning_count : 0, 'worth a look') + '</p>' +
+                    '<p class="dim">We\'ll show you what customers see when they search for your business, and which changes would help most. Talk soon!</p>';
                 document.getElementById('leadFormWrapper').style.display = 'none';
                 successEl.style.display = 'block';
             })
@@ -1100,7 +1109,6 @@
                 'Reading your site like a customer would...',
                 'Testing your site on mobile phones...',
                 'Checking if nearby customers can see you...',
-                'Comparing your visibility to competitors...',
                 'Checking how fast your site loads...',
                 'Putting your report together...',
                 'Almost there...',
@@ -1170,10 +1178,29 @@
             });
         }
 
-        function getScoreColor(score) {
-            if (score >= 80) return '#00D4AA';
-            if (score >= 60) return '#FFBE0B';
-            return '#FF4757';
+        // Calm, brand-palette statuses (accuracy spec §5): teal = looks good,
+        // brand blue = worth a look, soft orange only for fix first. No red,
+        // no "urgent" — owners who feel scolded go looking for reasons the
+        // score is wrong. Thresholds match the portal's (80 / 60); the portal
+        // also sends each area's status, which wins when present.
+        var STATUS = {
+            looks_good: { label: 'Looks good', color: '#00D4AA' },
+            worth_a_look: { label: 'Worth a look', color: '#5B9BFF' },
+            fix_first: { label: 'Fix first', color: '#F4A261' }
+        };
+        function statusOf(score, status) {
+            if (STATUS[status]) return STATUS[status];
+            if (score >= 80) return STATUS.looks_good;
+            if (score >= 60) return STATUS.worth_a_look;
+            return STATUS.fix_first;
+        }
+        function getScoreColor(score, status) {
+            return statusOf(score, status).color;
+        }
+        // "1 area to fix first" / "4 areas to fix first"
+        function areasLabel(n, what) {
+            n = Number(n) || 0;
+            return n + (n === 1 ? ' area ' : ' areas ') + what;
         }
 
         function showResults(data) {
@@ -1211,10 +1238,14 @@
             document.getElementById('gradeText').style.color = scoreColor;
             document.getElementById('scoreNumber').textContent = data.overall_score + '/100';
             document.getElementById('summaryText').textContent = data.summary;
+            var dot = function(s) { return '<span class="status-dot" style="background:' + STATUS[s].color + '"></span>'; };
             document.getElementById('issueBadges').innerHTML =
-                '\uD83D\uDD34 ' + data.critical_count + ' Urgent Issues \u00B7 ' +
-                '\uD83D\uDFE1 ' + data.warning_count + ' Things to Improve \u00B7 ' +
-                '\uD83D\uDFE2 ' + data.passed_count + ' Looking Good';
+                '<span>' + dot('fix_first') + areasLabel(data.critical_count, 'to fix first') + '</span>' +
+                '<span>' + dot('worth_a_look') + areasLabel(data.warning_count, 'worth a look') + '</span>' +
+                '<span>' + dot('looks_good') + areasLabel(data.passed_count, 'looking good') + '</span>';
+            var scanned = data.scanned_at ? new Date(data.scanned_at) : null;
+            document.getElementById('scopeLine').textContent = 'We read your homepage only, as it loaded ' +
+                (scanned && !isNaN(scanned) ? 'on ' + scanned.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : 'today') + '.';
 
             // Category names
             var catNames = {
@@ -1235,13 +1266,15 @@
             for (var i = 0; i < keys.length; i++) {
                 var key = keys[i];
                 var cat = data.categories[key];
-                var color = getScoreColor(cat.score);
+                var st = statusOf(cat.score, cat.status);
+                var color = st.color;
                 var div = document.createElement('div');
                 div.className = 'category';
                 div.innerHTML =
                     '<div class="cat-header">' +
                     '<span class="cat-name">' + catNames[key] + '</span>' +
-                    '<span class="cat-score" style="color:' + color + '">' + cat.score + '/100</span>' +
+                    '<span class="cat-score-wrap"><span class="cat-score" style="color:' + color + '">' + cat.score + '/100</span>' +
+                    '<span class="cat-status" style="color:' + color + '">' + st.label + '</span></span>' +
                     '</div>' +
                     '<div class="bar-bg"><div class="bar-fill" data-width="' + cat.score + '" style="background:' + color + '"></div></div>';
                 catsEl.appendChild(div);
@@ -1261,15 +1294,17 @@
             for (var k = 0; k < keys.length; k++) {
                 var ikey = keys[k];
                 var icat = data.categories[ikey];
-                var icolor = getScoreColor(icat.score);
+                var icolor = getScoreColor(icat.score, icat.status);
                 var item = document.createElement('div');
                 item.className = 'issue-item';
                 item.innerHTML =
                     '<div class="issue-dot" style="background:' + icolor + '"></div>' +
                     '<div>' +
                     '<div class="issue-cat">' + catNames[ikey] + '</div>' +
-                    '<div class="issue-text">' + icat.visible_issue + '</div>' +
+                    '<div class="issue-text"></div>' +
                     '</div>';
+                // Model-written text: set as text, never as HTML.
+                item.querySelector('.issue-text').textContent = icat.visible_issue || '';
                 issuesEl.appendChild(item);
             }
 
