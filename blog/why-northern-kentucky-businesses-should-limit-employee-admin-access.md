@@ -55,6 +55,8 @@ Both types of access should be reviewed separately as part of a business's overa
 
 For Northern Kentucky businesses, protecting company computers is about more than installing antivirus software. It also means controlling who can make important changes to those devices.
 
+![Employees collaborating around a laptop in an office, highlighting the importance of managing employee administrator access and business computer security.](https://res.cloudinary.com/dygso04l2/image/upload/v1792150607/pexels-mikhail-nilov-7731358_otlpgt.jpg)
+
 Software launched by an employee normally starts with the permissions available to that employee.
 
 If the software asks for administrator approval and the employee approves it, the program may be able to install system components, change settings, or affect information belonging to other users.
@@ -101,6 +103,8 @@ A provider offering managed IT services in Northern Kentucky can help businesses
 ## How to Manage Software Installations Without Permanent Administrator Access
 
 Removing permanent administrator rights doesn't mean employees have to stop working whenever they need new software.
+
+![Employee working on a laptop with software displayed on the screen, illustrating the importance of limiting admin access to protect Northern Kentucky businesses from cybersecurity risks.](https://res.cloudinary.com/dygso04l2/image/upload/v1792150870/pexels-divinetechygirl-1181243_ggsa9g.jpg)
 
 With the right IT support process, Northern Kentucky businesses can still install and update approved applications without giving every employee full control over their computers.
 
