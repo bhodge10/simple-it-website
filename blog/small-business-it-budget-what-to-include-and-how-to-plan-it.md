@@ -14,7 +14,8 @@ seoTitle: How Much Should a Small Business Spend on IT?
 metaDescription: Learn how to plan a small business IT budget in Cincinnati and
   Northern Kentucky, including IT support, cybersecurity, software, and hardware
   costs.
-focusKeyphrase: Planning your IT budget? Explore essential technology costs and
+focusKeyphrase: small business IT budget
+ogDescription: Planning your IT budget? Explore essential technology costs and
   budgeting tips for small businesses in Cincinnati and Northern Kentucky.
 ---
 If your IT budget only covers computers, Microsoft 365, and the occasional repair, it is probably missing several costs.
