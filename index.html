@@ -1270,7 +1270,17 @@
             border: 3px solid var(--primary);
             box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
         }
-        
+
+        .team-member-photo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
         .team-member-card h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
@@ -2359,18 +2369,18 @@
             <div class="team-member-card">
                 <img src="brad-hodge-headshot.jpg" alt="Brad Hodge - Owner" class="team-member-photo" loading="lazy" width="180" height="240">
                 <h3>Brad Hodge</h3>
-                <p class="member-title">Owner & Lead Technician</p>
+                <p class="member-title">Owner</p>
                 <p class="member-bio">
                     Founded Simple IT with a mission to deliver responsive, reliable IT support to Northern Kentucky businesses. Brad brings 15+ years of experience and a commitment to the 15-minute response guarantee.
                 </p>
             </div>
             
             <div class="team-member-card">
-                <img src="ryan-bailey.jpg" alt="Ryan Bailey - IT Specialist" class="team-member-photo" loading="lazy" width="180" height="240">
+                <img src="ryan-bailey.jpg" alt="Ryan Bailey - Project Manager and On-Premise Security Specialist" class="team-member-photo" loading="lazy" width="180" height="240">
                 <h3>Ryan Bailey</h3>
-                <p class="member-title">IT Support Specialist</p>
+                <p class="member-title">Project Manager & On-Premise Security Specialist</p>
                 <p class="member-bio">
-                    Brings unique expertise as both an IT specialist and Lieutenant Fireman in Northern Kentucky with KY Fire Code Inspector certification. Ryan's emergency response training and safety-first mindset translate directly to rapid incident response, risk assessment, and comprehensive disaster recovery planning for our clients.
+                    Brings unique expertise as both an IT specialist and Fireman in Northern Kentucky with KY Fire Code Inspector certification. Ryan's emergency response training and safety-first mindset translate directly to rapid incident response, risk assessment, and comprehensive disaster recovery planning for our clients.
                 </p>
             </div>
             
@@ -2380,6 +2390,15 @@
                 <p class="member-title">Systems Engineer</p>
                 <p class="member-bio">
                     Specializes in cloud solutions and system optimization. William helps businesses migrate to modern infrastructure and maximize their technology investments.
+                </p>
+            </div>
+
+            <div class="team-member-card">
+                <div class="team-member-photo team-member-photo-placeholder" role="img" aria-label="Lyn Abella - Help Desk Technician">LA</div>
+                <h3>Lyn Abella</h3>
+                <p class="member-title">Help Desk Technician</p>
+                <p class="member-bio">
+                    When something isn’t working and you just need it fixed, Lyn is the person who picks up. She’s the friendly voice on the other end of a Simple IT support request — the one who listens to what’s actually going wrong, doesn’t make you feel bad for asking, and sticks with it until it’s sorted. Whether it’s an email that won’t send, a printer that’s decided to take the day off, or a password that’s locked you out of your morning, Lyn handles it with patience and a smile you can hear.
                 </p>
             </div>
         </div>

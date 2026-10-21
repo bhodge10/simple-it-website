@@ -265,7 +265,7 @@
         
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -282,6 +282,18 @@
             margin-bottom: 1rem;
             border: 3px solid var(--primary);
             box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .team-member-photo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
         }
         
         .team-member h4 {
@@ -612,13 +624,19 @@
                 <div class="team-member">
                     <img src="/ryan-bailey.jpg" alt="Ryan Bailey" class="team-member-photo" loading="lazy" width="180" height="240">
                     <h4>Ryan Bailey</h4>
-                    <p>Network Administrator</p>
+                    <p>Project Manager & On-Premise Security Specialist</p>
                 </div>
                 
                 <div class="team-member">
                     <img src="/william-jones.jpg" alt="William Jones" class="team-member-photo" loading="lazy" width="180" height="240">
                     <h4>William Jones</h4>
                     <p>Support Specialist</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-photo team-member-photo-placeholder" role="img" aria-label="Lyn Abella">LA</div>
+                    <h4>Lyn Abella</h4>
+                    <p>Help Desk Technician</p>
                 </div>
             </div>
         </div>
