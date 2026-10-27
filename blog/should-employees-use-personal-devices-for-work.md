@@ -1,6 +1,6 @@
 ---
 title: Should Employees Use Personal Devices for Work?
-date: 2026-10-02
+date: 2026-10-27
 author: Brad Hodge
 draft: false
 featuredImage: https://res.cloudinary.com/dygso04l2/image/upload/v1793097525/pexels-silverkblack-36712982_zak7us.jpg
